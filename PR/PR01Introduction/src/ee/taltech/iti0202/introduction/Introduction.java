@@ -78,7 +78,7 @@ public class Introduction {
         if (!first.matches("[A-Za-z]+") && !second.matches("[A-Za-z]+")) {
             return "FALSE";
         } else if (first.length() > second.length()) {
-            return (second + (first.substring(first.length() - second.length()))).toLowerCase();
+            return (first.substring(first.length() - second.length()) + second).toLowerCase();
         } else if (second.length() > first.length()) {
             return (first + second.substring(second.length() - first.length())).toUpperCase();
         }
@@ -124,7 +124,7 @@ public class Introduction {
         int[] array = {9, 0, 24, -6, 3};
         System.out.println(Arrays.toString(introduction.findEvenNumbersArray(array))); // [0, 24, -6]
 
-        String result = introduction.findTheString("Good", "afternoon");
+        String result = introduction.findTheString("afternoon", "noon");
         System.out.println(result);  // GOODNOON
         result = introduction.findTheString("ABC", "BCDkjlk");
         System.out.println(result);  // lolo
