@@ -99,10 +99,10 @@ public class Introduction {
         }
         for (int i = 0; i < word.length() - 2; i++) {
             if (i >= 1) {
-                if ((word.charAt(i) == word.charAt(i + 1)) && word.charAt(i) == word.charAt(i + 2) && word.charAt(i) != word.charAt((i + 3) % word.length()) && word.charAt(i) != word.charAt(i - 1)) {
+                if (word.charAt(i) == word.charAt(i + 1) && word.charAt(i) == word.charAt(i + 2) && word.charAt(i) != word.charAt((i + 3) % word.length()) && word.charAt(i) != word.charAt(i - 1)) {
                     result += 1;
                 }
-            } else if ((word.charAt(i) == word.charAt(i + 1)) && word.charAt(i) == word.charAt(i + 2) && word.charAt(i) != word.charAt((i + 3) % word.length())) {
+            } else if (word.charAt(i) == word.charAt(i + 1) && word.charAt(i) == word.charAt(i + 2) && word.charAt(i) != word.charAt((i + 3) % word.length())) {
                 result += 1;
             }
         }
