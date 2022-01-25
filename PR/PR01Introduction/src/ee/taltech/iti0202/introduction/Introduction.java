@@ -78,9 +78,9 @@ public class Introduction {
         if (!first.matches("[A-Za-z]+") && !second.matches("[A-Za-z]+")) {
             return "FALSE";
         } else if (first.length() > second.length()) {
-            return (second + first.substring(second.length() + 1)).toLowerCase();
+            return (second + (first.substring(first.length() - second.length()))).toLowerCase();
         } else if (second.length() > first.length()) {
-            return (first + second.substring(first.length() + 1)).toUpperCase();
+            return (first + second.substring(second.length() - first.length())).toUpperCase();
         }
         return first + second;
     }
@@ -126,7 +126,7 @@ public class Introduction {
 
         String result = introduction.findTheString("Good", "afternoon");
         System.out.println(result);  // GOODNOON
-        result = introduction.findTheString("Hello", "lo");
+        result = introduction.findTheString("ABC", "BCDkjlk");
         System.out.println(result);  // lolo
         System.out.println(introduction.findTheString("", ""));  // FALSE
         System.out.println(introduction.findTheString("", "   "));  // FALSE
