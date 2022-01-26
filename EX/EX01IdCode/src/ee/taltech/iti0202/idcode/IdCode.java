@@ -98,7 +98,16 @@ public class IdCode {
      * @return int with person's birth year.
      */
     public int getFullYear() {
-        return 0;
+        int genderNumber = Integer.parseInt(idCodeValue.substring(0, 1));
+        String fullYear = "";
+        if (genderNumber == 1 || genderNumber == 2) {
+            fullYear = "18" + idCodeValue.substring(1, 3);
+        } else if (genderNumber == 3 || genderNumber == 4) {
+            fullYear = "19" + idCodeValue.substring(1, 3);
+        } else if (genderNumber == 5 || genderNumber == 6) {
+            fullYear = "20" + idCodeValue.substring(1, 3);
+        }
+        return Integer.parseInt(fullYear);
     }
 
     /**
@@ -174,7 +183,15 @@ public class IdCode {
      * @return boolean describing whether the given year is a leap year.
      */
     private boolean isLeapYear(int fullYear) {
-        return false;
+        if (fullYear % 400 == 0) {
+            return true;
+        } else if (fullYear % 100 == 0) {
+            return false;
+        } else if (fullYear % 4 == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
