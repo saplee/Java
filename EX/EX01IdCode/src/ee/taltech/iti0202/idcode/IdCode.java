@@ -44,7 +44,17 @@ public class IdCode {
      * @return String containing information.
      */
     public String getInformation() {
-        return null;
+        String city = "";
+        if (getFullYear() > 2012) {
+            city = "unknown";
+        } else {
+            city = getBirthPlace();
+        }
+        if (isCorrect()) {
+            return "This is a " + getGender() + " born on " + idCodeValue.substring(5, 7) + "." + idCodeValue.substring(3, 5) + "." + getFullYear() + " in " + city + ".";
+        } else {
+            return null;
+        }
     }
 
     /**
