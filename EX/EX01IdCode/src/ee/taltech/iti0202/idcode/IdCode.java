@@ -51,7 +51,7 @@ public class IdCode {
             city = getBirthPlace();
         }
         if (isCorrect()) {
-            return "This is a " + getGender() + " born on " + idCodeValue.substring(5, 7) + "." + idCodeValue.substring(3, 5) + "." + getFullYear() + " in " + city + ".";
+            return "This is a " + getGender() + " born on " + idCodeValue.substring(5, 7) + "." + idCodeValue.substring(3, 5) + "." + getFullYear() + " in " + city;
         } else {
             return null;
         }
