@@ -46,7 +46,11 @@ public class IdCode {
      * @return enum describing person's gender
      */
     public Gender getGender() {
-        return null;
+        int gender = Integer.parseInt(idCodeValue.substring(0, 1));
+        return switch (gender) {
+            case 1, 3, 5 -> Gender.MALE;
+            default -> Gender.FEMALE;
+        };
     }
 
     /**
