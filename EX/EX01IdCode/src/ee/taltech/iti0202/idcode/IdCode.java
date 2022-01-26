@@ -55,7 +55,37 @@ public class IdCode {
      * @return String with the person's birth place.
      */
     public String getBirthPlace() {
-        return null;
+        int birthPlace = Integer.parseInt(idCodeValue.substring(7, 10));
+        if (1 <= birthPlace && 10 >= birthPlace) {
+            return "Kuressaare";
+        } else if (11 <= birthPlace && 20 >= birthPlace) {
+            return "Tartu";
+        } else if (21 <= birthPlace && 220 >= birthPlace) {
+            return "Tallinn";
+        } else if (221 <= birthPlace && 270 >= birthPlace) {
+            return "Kohtla-Järve";
+        } else if (271 <= birthPlace && 370 >= birthPlace) {
+            return "Tartu";
+        } else if (371 <= birthPlace && 420 >= birthPlace) {
+            return "Narva";
+        } else if (421 <= birthPlace && 470 >= birthPlace) {
+            return "Pärnu";
+        } else if (471 <= birthPlace && 490 >= birthPlace) {
+            return "Tallinn";
+        } else if (491 <= birthPlace && 520 >= birthPlace) {
+            return "Paide";
+        } else if (521 <= birthPlace && 570 >= birthPlace) {
+            return "Rakvere";
+        } else if (571 <= birthPlace && 600 >= birthPlace) {
+            return "Valga";
+        } else if (601 <= birthPlace && 650 >= birthPlace) {
+            return "Viljandi";
+        } else if (651 <= birthPlace && 700 >= birthPlace) {
+            return "Võru";
+        } else if (701 <= birthPlace) {
+            return "unknown";
+        }
+        return "unknown";
     }
 
     /**
