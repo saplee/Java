@@ -53,7 +53,7 @@ public class IdCode {
         if (isCorrect()) {
             return "This is a " + getGender() + " born on " + idCodeValue.substring(5, 7) + "." + idCodeValue.substring(3, 5) + "." + getFullYear() + " in " + city;
         } else {
-            return null;
+            throw new IllegalArgumentException();
         }
     }
 
