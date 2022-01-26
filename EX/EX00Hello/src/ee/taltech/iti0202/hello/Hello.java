@@ -15,7 +15,7 @@ public class Hello {
      */
     public static String getGreeting(String name) {
         if (name.length() == 0) {
-            return "Hello";
+            return "Hello!";
         } else {
             return "Hello," + " " + name + "!";
         }
