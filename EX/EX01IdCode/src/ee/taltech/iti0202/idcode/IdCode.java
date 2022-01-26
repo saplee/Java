@@ -30,7 +30,12 @@ public class IdCode {
      * @return boolean describing whether or not the id code was correct.
      */
     public boolean isCorrect() {
-        return false;
+        String idCode = idCodeValue.replaceAll("\\D+", "");
+        if (!isGenderNumberCorrect() && !isDayNumberCorrect() && !isControlNumberCorrect() && !isMonthNumberCorrect() && !isYearNumberCorrect() && idCode.length() == 11) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -132,7 +137,12 @@ public class IdCode {
      * @return boolean describing whether the year number is correct.
      */
     private boolean isYearNumberCorrect() {
-        return false;
+        int yearNumber = Integer.parseInt(idCodeValue.substring(1, 3));
+        if (yearNumber < 0 || yearNumber >= 100) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
