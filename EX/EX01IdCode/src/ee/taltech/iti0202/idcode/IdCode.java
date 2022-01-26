@@ -107,7 +107,12 @@ public class IdCode {
      * @return boolean describing whether the gender number is correct.
      */
     private boolean isGenderNumberCorrect() {
-        return false;
+        int genderNumber = Integer.parseInt(idCodeValue.substring(0, 1));
+        if (genderNumber > 6 || genderNumber <= 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
