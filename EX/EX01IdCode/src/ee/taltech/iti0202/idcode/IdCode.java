@@ -1,6 +1,8 @@
 
 package ee.taltech.iti0202.idcode;
 
+import java.util.List;
+
 public class IdCode {
 
     private final String idCodeValue;
@@ -153,7 +155,28 @@ public class IdCode {
      * @return boolean describing whether the day number is correct.
      */
     private boolean isDayNumberCorrect() {
-        return false;
+        int fullYear = getFullYear();
+        boolean leapYear = isLeapYear(fullYear);
+        int month = Integer.parseInt(idCodeValue.substring(3, 5));
+        int day = Integer.parseInt(idCodeValue.substring(5, 7));
+        int[] lst1 = {1, 3, 5, 7, 8, 10, 12};
+        int[] lst2 = {4, 6, 9, 11};
+        for (int x : lst1) {
+            if (month == x && day > 31) {
+                return false;
+            }
+        }
+        for (int y : lst2) {
+            if (month == y && day > 30) {
+                return false;
+            }
+        }
+        if (leapYear && month == 2 && day > 29) {
+            return false;
+        } else if (!leapYear && month == 2 && day > 28) {
+            return false;
+        }
+        return true;
     }
 
     /**
