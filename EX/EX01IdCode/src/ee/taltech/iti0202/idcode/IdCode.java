@@ -31,7 +31,7 @@ public class IdCode {
      */
     public boolean isCorrect() {
         String idCode = idCodeValue.replaceAll("\\D+", "");
-        if (!isGenderNumberCorrect() && !isDayNumberCorrect() && !isControlNumberCorrect() && !isMonthNumberCorrect() && !isYearNumberCorrect() && idCode.length() == 11) {
+        if (!isGenderNumberCorrect() || !isDayNumberCorrect() || !isControlNumberCorrect() || !isMonthNumberCorrect() || !isYearNumberCorrect() || idCode.length() != 11) {
             return false;
         } else {
             return true;
