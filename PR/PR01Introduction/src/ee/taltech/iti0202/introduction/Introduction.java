@@ -58,7 +58,13 @@ public class Introduction {
      * @return array of even numbers.
      */
     public int[] findEvenNumbersArray(int[] numbers) {
-        return null;
+        List<Integer> result = new ArrayList<>();
+        for (Integer x : numbers) {
+            if (x % 2 == 0) {
+                result.add(x);
+            }
+        }
+        return result.stream().mapToInt(i -> i).toArray();
     }
 
     /**
