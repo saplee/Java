@@ -13,21 +13,18 @@ public class WebBrowser {
      * Goes to homepage.
      */
     public void homePage() {
-        //TODO: implement
     }
 
     /**
      * Goes back to previous page.
      */
     public void back() {
-        //TODO: implement
     }
 
     /**
      * Goes forward to next page.
      */
     public void forward() {
-        //TODO: implement
     }
 
     /**
@@ -37,7 +34,6 @@ public class WebBrowser {
      */
     public void goTo(String url) {
         currentPage = url;
-        //TODO: implement
     }
 
     /**
@@ -45,7 +41,6 @@ public class WebBrowser {
      */
     public void addAsBookmark() {
         bookMarks.add(currentPage);
-        //TODO: implement
     }
 
     /**
@@ -54,16 +49,14 @@ public class WebBrowser {
      * @param bookmark to remove
      */
     public void removeBookmark(String bookmark) {
-        //TODO: implement
+        bookMarks.remove(bookmark);
     }
 
     public List<String> getBookmarks() {
-        //TODO: implement
-        return null;
+        return bookMarks;
     }
 
     public void setHomePage(String homePage) {
-        //TODO: implement
         homePage1 = homePage;
     }
 
@@ -74,7 +67,6 @@ public class WebBrowser {
      * @return a String that contains top three visited pages separated with a newline "\n"
      */
     public String getTop3VisitedPages() {
-        //TODO: implement
         return null;
     }
 
@@ -89,7 +81,6 @@ public class WebBrowser {
      * @return list of all visited pages
      */
     public List<String> getHistory() {
-        //TODO: implement
         return null;
     }
 
@@ -100,7 +91,6 @@ public class WebBrowser {
      * @return active web page
      */
     public String getCurrentUrl() {
-        //TODO: implement
         return null;
     }
 }
