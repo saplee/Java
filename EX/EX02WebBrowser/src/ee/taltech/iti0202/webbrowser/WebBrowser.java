@@ -7,6 +7,8 @@ public class WebBrowser {
     String homePage1 = "google.com";
     String currentPage = "google.com";
     List<String> bookMarks = new ArrayList<>();
+    List<String> historyPage = new ArrayList<>();
+    String previousPage = "";
     int backCount = 0;
     private String homePage;
 
@@ -88,7 +90,7 @@ public class WebBrowser {
      * @return list of all visited pages
      */
     public List<String> getHistory() {
-        return null;
+        return historyPage;
     }
 
 
@@ -98,6 +100,10 @@ public class WebBrowser {
      * @return active web page
      */
     public String getCurrentUrl() {
+        if (!currentPage.equals(previousPage)){
+            historyPage.add(currentPage);
+            previousPage = currentPage;
+        }
         return currentPage;
     }
 }
