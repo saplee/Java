@@ -40,9 +40,16 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-        currentPage = url;
-        historyPage.add(url);
-        previousPage = url;
+        if (!currentPage.equals(url) && previousPage.equals("")) {
+            historyPage.add(currentPage);
+            historyPage.add(url);
+            currentPage = url;
+            previousPage = "google.com";
+        } else if (!currentPage.equals(url)) {
+            historyPage.add(url);
+            previousPage = currentPage;
+            currentPage = url;
+        }
     }
 
     /**
@@ -92,10 +99,6 @@ public class WebBrowser {
      * @return list of all visited pages
      */
     public List<String> getHistory() {
-        if (!getCurrentUrl().equals(previousPage)) {
-            historyPage.add(currentPage);
-            previousPage = getCurrentUrl();
-        }
         return historyPage;
     }
 
