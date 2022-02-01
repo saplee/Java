@@ -42,9 +42,12 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-        historyPage.add("google.com");
-        previousPage = "google.com";
-        if (!currentPage.equals(url)) {
+        if (!currentPage.equals(url) && previousPage.equals("")) {
+            historyPage.add(currentPage);
+            historyPage.add(url);
+            previousPage = currentPage;
+            currentPage = url;
+        } else if (!currentPage.equals(url)) {
             historyPage.add(url);
             previousPage = currentPage;
             currentPage = url;
@@ -117,6 +120,7 @@ public class WebBrowser {
 
     public static void main(String[] args) {
         WebBrowser webBrowser = new WebBrowser();
+        webBrowser.goTo("");
         System.out.println(webBrowser.getHistory());
 
     }
