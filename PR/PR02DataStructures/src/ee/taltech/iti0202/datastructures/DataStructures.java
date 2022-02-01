@@ -2,6 +2,7 @@ package ee.taltech.iti0202.datastructures;
 
 import java.util.*;
 
+
 public class DataStructures {
 
     /**
@@ -20,6 +21,8 @@ public class DataStructures {
      * @param sentence input String to find the longest words
      * @return the longest String from input
      */
+    Map<String, Integer> studentDict = new HashMap<>();
+
     public static String findLongestWord(String sentence) {
         String[] splited = sentence.split("\\s");
         int maxLength = 0;
@@ -87,9 +90,20 @@ public class DataStructures {
      * Only add student if his/hers grade is in the range of 0-5.
      *
      * @param studentInfo String with a pattern (name:grade)
+     * @return
      */
     public void addStudent(String studentInfo) {
-
+        int grade = 0;
+        String student = "";
+        String[] word = studentInfo.split(":");
+        if (Integer.parseInt(word[1]) >= 0 && Integer.parseInt(word[1]) <= 5) {
+            grade = Integer.parseInt(word[1]);
+            student = word[0];
+        } else {
+            grade = -1;
+            student = word[0];
+        }
+        studentDict.put(student, grade);
     }
 
     /**
@@ -101,7 +115,7 @@ public class DataStructures {
      * @return int student's grade.
      */
     public int getStudentGrade(String name) {
-        return 0;
+        return studentDict.get(name);
     }
 
     /**
