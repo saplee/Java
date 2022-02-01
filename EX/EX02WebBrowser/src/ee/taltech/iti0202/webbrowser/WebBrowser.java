@@ -13,6 +13,7 @@ public class WebBrowser {
      * Goes to homepage.
      */
     public void homePage() {
+        currentPage = homePage1;
     }
 
     /**
@@ -91,7 +92,7 @@ public class WebBrowser {
      * @return active web page
      */
     public String getCurrentUrl() {
-        return null;
+        return currentPage;
     }
 }
 
