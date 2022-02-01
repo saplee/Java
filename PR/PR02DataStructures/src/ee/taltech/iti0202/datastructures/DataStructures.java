@@ -15,7 +15,7 @@ public class DataStructures {
      * <p>
      * Hints:
      * You can split words into an array using "str.split()"
-     * Sorting the list with the longest words can definitely help you to find the word which comes alphabetically first.
+     * Sorting the list with the longest words can definitely help you to find the word which comes alphabetically.
      *
      * @param sentence input String to find the longest words
      * @return the longest String from input
@@ -49,7 +49,11 @@ public class DataStructures {
      * @return map containing all word to count mappings.
      */
     public static Map<String, Integer> wordCount(String[] sentence) {
-        return null;
+        Map<String, Integer> dict = new HashMap<>();
+        for (String name : sentence) {
+            dict.put(name, dict.getOrDefault(name, 0) + 1);
+        }
+        return dict;
     }
 
     /**
@@ -100,9 +104,11 @@ public class DataStructures {
         System.out.println(findLongestWord("hello ahllo")); // "ahllo"
 
         System.out.println(wordCount(new String[]{})); // empty
-        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"})); // {bacon=2, eggs=2, SPAM=3}
+        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"}));
+        // {bacon=2, eggs=2, SPAM=3}
 
-        System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo] any order
+        System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); //
+        // [baz, bar, foo] any order
         System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a] any order
         System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
 
