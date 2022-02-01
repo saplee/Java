@@ -41,6 +41,8 @@ public class WebBrowser {
      */
     public void goTo(String url) {
         currentPage = url;
+        historyPage.add(url);
+        previousPage = url;
     }
 
     /**
