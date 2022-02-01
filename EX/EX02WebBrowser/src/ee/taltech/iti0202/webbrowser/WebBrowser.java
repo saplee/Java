@@ -90,6 +90,10 @@ public class WebBrowser {
      * @return list of all visited pages
      */
     public List<String> getHistory() {
+        if (!getCurrentUrl().equals(previousPage)) {
+            historyPage.add(currentPage);
+            previousPage = getCurrentUrl();
+        }
         return historyPage;
     }
 
@@ -100,10 +104,6 @@ public class WebBrowser {
      * @return active web page
      */
     public String getCurrentUrl() {
-        if (!currentPage.equals(previousPage)){
-            historyPage.add(currentPage);
-            previousPage = currentPage;
-        }
         return currentPage;
     }
 }
