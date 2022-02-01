@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WebBrowser {
-    String homePage1 = "www.google.com";
-    String currentPage = "www.google.com";
+    String homePage1 = "google.com";
+    String currentPage = "google.com";
     List<String> bookMarks = new ArrayList<>();
+    int backCount = 0;
     private String homePage;
 
     /**
@@ -26,6 +27,9 @@ public class WebBrowser {
      * Goes forward to next page.
      */
     public void forward() {
+        if (backCount == 0) {
+            currentPage = currentPage;
+        }
     }
 
     /**
@@ -41,7 +45,9 @@ public class WebBrowser {
      * Add a webpage as a bookmark.
      */
     public void addAsBookmark() {
-        bookMarks.add(currentPage);
+        if (!bookMarks.contains(currentPage)) {
+            bookMarks.add(currentPage);
+        }
     }
 
     /**
