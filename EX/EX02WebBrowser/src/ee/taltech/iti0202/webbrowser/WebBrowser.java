@@ -40,8 +40,10 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-        if (previousPage.equals("")) {
-            historyPage.add("google.com");
+        if (!currentPage.equals(url) && previousPage.equals("")) {
+            historyPage.add(currentPage);
+            historyPage.add(url);
+            currentPage = url;
             previousPage = "google.com";
         } else if (!currentPage.equals(url)) {
             historyPage.add(url);
@@ -110,4 +112,3 @@ public class WebBrowser {
         return currentPage;
     }
 }
-
