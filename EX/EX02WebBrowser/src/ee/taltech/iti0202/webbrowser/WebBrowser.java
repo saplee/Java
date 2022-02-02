@@ -131,11 +131,11 @@ public class WebBrowser {
             }
         }
         if (result.size() == 1) {
-            return result.get(0) + " - " + dict.get(result.get(0));
+            return result.get(0) + " - " + dict.get(result.get(0)) + " visits";
         } else if (result.size() == 2) {
-            return result.get(0) + " - " + dict.get(result.get(0)) + "\n" + result.get(1) + " - " + dict.get(result.get(1));
+            return result.get(0) + " - " + dict.get(result.get(0)) + " visits" + "\n" + result.get(1) + " - " + dict.get(result.get(1)) + " visits";
         } else if (result.size() >= 3) {
-            return result.get(0) + " - " + dict.get(result.get(0)) + "\n" + result.get(1) + " - " + dict.get(result.get(1)) + "\n" + result.get(2) + " - " + dict.get(result.get(2));
+            return result.get(0) + " - " + dict.get(result.get(0)) + " visits" + "\n" + result.get(1) + " - " + dict.get(result.get(1)) + " visits" + "\n" + result.get(2) + " - " + dict.get(result.get(2)) + " visits";
         }
         return null;
     }
