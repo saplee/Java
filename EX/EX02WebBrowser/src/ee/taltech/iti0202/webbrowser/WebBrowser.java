@@ -18,11 +18,13 @@ public class WebBrowser {
      */
     public void homePage() {
         if (!homePage1.equals(currentPage) && previousPage.equals("")) {
+            backStack.add(currentPage);
             previousPage = currentPage;
             currentPage = homePage1;
             historyPage.add(previousPage);
             historyPage.add(currentPage);
         } else if (!homePage1.equals(currentPage)) {
+            backStack.add(currentPage);
             historyPage.add(homePage1);
             previousPage = currentPage;
             currentPage = homePage1;
