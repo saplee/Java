@@ -18,7 +18,16 @@ public class WebBrowser {
      * Goes to homepage.
      */
     public void homePage() {
-        currentPage = homePage1;
+        if (!homePage1.equals(currentPage) && previousPage.equals("")) {
+            previousPage = currentPage;
+            currentPage = homePage1;
+            historyPage.add(previousPage);
+            historyPage.add(currentPage);
+        } else if (!homePage1.equals(currentPage)) {
+            historyPage.add(homePage1);
+            previousPage = currentPage;
+            currentPage = homePage1;
+        }
     }
 
     /**
@@ -120,7 +129,9 @@ public class WebBrowser {
 
     public static void main(String[] args) {
         WebBrowser webBrowser = new WebBrowser();
-        webBrowser.goTo("m");
+        webBrowser.goTo("j");
+        webBrowser.setHomePage("f");
+        webBrowser.homePage();
         System.out.println(webBrowser.getHistory());
 
     }
