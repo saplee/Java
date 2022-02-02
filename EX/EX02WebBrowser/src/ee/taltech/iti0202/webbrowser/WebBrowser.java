@@ -1,18 +1,17 @@
 
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class WebBrowser {
     String homePage1 = "google.com";
     String currentPage = "google.com";
     List<String> bookMarks = new ArrayList<>();
     List<String> historyPage = new ArrayList<>();
+    Stack<String> backStack = new Stack<>();
+    Stack<String> forwardStack = new Stack<>();
     String previousPage = "";
-    int backCount = 0;
-    private String homePage;
+
 
     /**
      * Goes to homepage.
@@ -27,6 +26,7 @@ public class WebBrowser {
             historyPage.add(homePage1);
             previousPage = currentPage;
             currentPage = homePage1;
+
         }
     }
 
@@ -34,15 +34,17 @@ public class WebBrowser {
      * Goes back to previous page.
      */
     public void back() {
+        if (backStack.size() >= 1) {
+            String newPage = backStack.pop();
+            historyPage.add(newPage);
+            currentPage = newPage;
+        }
     }
 
     /**
      * Goes forward to next page.
      */
     public void forward() {
-        if (backCount == 0) {
-            currentPage = currentPage;
-        }
     }
 
     /**
@@ -54,12 +56,15 @@ public class WebBrowser {
         if (!currentPage.equals(url) && previousPage.equals("")) {
             historyPage.add(currentPage);
             historyPage.add(url);
+            backStack.add(currentPage);
             previousPage = currentPage;
             currentPage = url;
         } else if (!currentPage.equals(url)) {
             historyPage.add(url);
             previousPage = currentPage;
+            backStack.add(previousPage);
             currentPage = url;
+
         }
     }
 
@@ -129,9 +134,9 @@ public class WebBrowser {
 
     public static void main(String[] args) {
         WebBrowser webBrowser = new WebBrowser();
-        webBrowser.goTo("j");
-        webBrowser.setHomePage("f");
-        webBrowser.homePage();
+        webBrowser.goTo("facebook");
+        webBrowser.goTo("google.com");
+        webBrowser.back();
         System.out.println(webBrowser.getHistory());
 
     }
