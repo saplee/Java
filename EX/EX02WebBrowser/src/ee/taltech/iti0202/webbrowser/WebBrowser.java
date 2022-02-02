@@ -119,6 +119,7 @@ public class WebBrowser {
      */
     public String getTop3VisitedPages() {
         int number = 0;
+        String word = "";
         Map<String, Integer> dict = new HashMap<>();
         List<String> result = new ArrayList<>();
         for (String page : historyPage) {
@@ -130,14 +131,14 @@ public class WebBrowser {
                 number = dict.get(key);
             }
         }
-        if (result.size() == 1) {
-            return result.get(0) + " - " + dict.get(result.get(0)) + " visits";
-        } else if (result.size() == 2) {
-            return result.get(0) + " - " + dict.get(result.get(0)) + " visits" + "\n" + result.get(1) + " - " + dict.get(result.get(1)) + " visits";
-        } else if (result.size() >= 3) {
-            return result.get(0) + " - " + dict.get(result.get(0)) + " visits" + "\n" + result.get(1) + " - " + dict.get(result.get(1)) + " visits" + "\n" + result.get(2) + " - " + dict.get(result.get(2)) + " visits";
+        for (String pages : result) {
+            if (dict.get(pages) == 1) {
+                word += "\n" + pages + " - " + dict.get(pages) + " visit";
+            } else if (dict.get(pages) >= 2) {
+                word += "\n" + pages + " - " + dict.get(pages) + " visits";
+            }
         }
-        return null;
+        return word;
     }
 
     /**
