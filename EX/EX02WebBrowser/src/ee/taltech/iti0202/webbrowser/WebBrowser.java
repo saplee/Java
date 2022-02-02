@@ -1,4 +1,3 @@
-
 package ee.taltech.iti0202.webbrowser;
 
 import java.util.ArrayList;
@@ -129,9 +128,6 @@ public class WebBrowser {
             if (dict.get(key) >= number) {
                 result.add(0, key);
                 number = dict.get(key);
-            } else {
-                result.add(key);
-                number = dict.get(key);
             }
         }
         for (String pages : result) {
@@ -178,4 +174,3 @@ public class WebBrowser {
 
     }
 }
-
