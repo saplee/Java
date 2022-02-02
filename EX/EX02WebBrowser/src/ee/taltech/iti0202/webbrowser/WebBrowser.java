@@ -1,7 +1,12 @@
 
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+
 
 public class WebBrowser {
     String homePage1 = "google.com";
@@ -113,6 +118,25 @@ public class WebBrowser {
      * @return a String that contains top three visited pages separated with a newline "\n"
      */
     public String getTop3VisitedPages() {
+        int number = 0;
+        Map<String, Integer> dict = new HashMap<>();
+        List<String> result = new ArrayList<>();
+        for (String page : historyPage) {
+            dict.put(page, dict.getOrDefault(page, 0) + 1);
+        }
+        for (String key : dict.keySet()) {
+            if (dict.get(key) >= number) {
+                result.add(0, key);
+                number = dict.get(key);
+            }
+        }
+        if (result.size() == 1) {
+            return result.get(0) + " - " + dict.get(result.get(0));
+        } else if (result.size() == 2) {
+            return result.get(0) + " - " + dict.get(result.get(0)) + "\n" + result.get(1) + " - " + dict.get(result.get(1));
+        } else if (result.size() >= 3) {
+            return result.get(0) + " - " + dict.get(result.get(0)) + "\n" + result.get(1) + " - " + dict.get(result.get(1)) + "\n" + result.get(2) + " - " + dict.get(result.get(2));
+        }
         return null;
     }
 
@@ -134,7 +158,6 @@ public class WebBrowser {
         return historyPage;
     }
 
-
     /**
      * Returns the active web page (string).
      *
@@ -150,6 +173,7 @@ public class WebBrowser {
         webBrowser.back();
         webBrowser.forward();
         System.out.println(webBrowser.getHistory());
+        System.out.println(webBrowser.getTop3VisitedPages());
 
     }
 }
