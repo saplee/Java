@@ -130,7 +130,7 @@ public class WebBrowser {
                 result.add(0, key);
                 number = dict.get(key);
             } else {
-                result.add(-1, key);
+                result.add(key);
                 number = dict.get(key);
             }
         }
