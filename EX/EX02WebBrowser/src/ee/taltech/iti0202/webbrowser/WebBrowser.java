@@ -38,6 +38,7 @@ public class WebBrowser {
     public void back() {
         if (backStack.size() >= 1) {
             String newPage = backStack.pop();
+            forwardStack.add(currentPage);
             historyPage.add(newPage);
             currentPage = newPage;
         }
@@ -47,6 +48,12 @@ public class WebBrowser {
      * Goes forward to next page.
      */
     public void forward() {
+        if (forwardStack.size() >= 1) {
+            String newPage1 = forwardStack.pop();
+            backStack.add(currentPage);
+            historyPage.add(newPage1);
+            currentPage = newPage1;
+        }
     }
 
     /**
@@ -61,12 +68,13 @@ public class WebBrowser {
             backStack.add(currentPage);
             previousPage = currentPage;
             currentPage = url;
+            forwardStack.clear();
         } else if (!currentPage.equals(url)) {
             historyPage.add(url);
             previousPage = currentPage;
             backStack.add(previousPage);
             currentPage = url;
-
+            forwardStack.clear();
         }
     }
 
@@ -137,8 +145,8 @@ public class WebBrowser {
     public static void main(String[] args) {
         WebBrowser webBrowser = new WebBrowser();
         webBrowser.goTo("facebook");
-        webBrowser.goTo("google.com");
         webBrowser.back();
+        webBrowser.forward();
         System.out.println(webBrowser.getHistory());
 
     }
