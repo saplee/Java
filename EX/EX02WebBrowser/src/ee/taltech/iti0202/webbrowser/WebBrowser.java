@@ -132,6 +132,9 @@ public class WebBrowser {
             if (dict.get(key) >= number) {
                 result.add(0, key);
                 number = dict.get(key);
+            }else if (dict.get(key) == number){
+                result.add(1, key);
+                number = dict.get(key);
             }
         }
         for (String pages : result) {
