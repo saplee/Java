@@ -81,11 +81,8 @@ public class DataStructures {
         List<String> result = new ArrayList<>();
         for (String word : words) {
             dict.put(word, dict.getOrDefault(word, 0) + 1);
-        }
-        Set<String> keys = dict.keySet();
-        for (String key : keys) {
-            if (dict.get(key) % 2 == 0) {
-                result.add(key);
+            if (dict.get(word) % 2 == 0) {
+                result.add(word);
             }
         }
         return result;

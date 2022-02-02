@@ -120,7 +120,7 @@ public class WebBrowser {
 
     public static void main(String[] args) {
         WebBrowser webBrowser = new WebBrowser();
-        webBrowser.goTo("");
+        webBrowser.goTo("m");
         System.out.println(webBrowser.getHistory());
 
     }
