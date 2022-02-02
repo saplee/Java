@@ -123,7 +123,7 @@ public class WebBrowser {
         Map<String, Integer> dict = new HashMap<>();
         List<String> result = new ArrayList<>();
         if (previousPage.equals("")) {
-            result.add(currentPage);
+            dict.put(currentPage, 1);
         }
         for (String page : historyPage) {
             dict.put(page, dict.getOrDefault(page, 0) + 1);
@@ -173,7 +173,6 @@ public class WebBrowser {
 
     public static void main(String[] args) {
         WebBrowser webBrowser = new WebBrowser();
-        System.out.println(webBrowser.getHistory());
         System.out.println(webBrowser.getTop3VisitedPages());
 
     }
