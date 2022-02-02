@@ -122,6 +122,9 @@ public class WebBrowser {
         String word = "";
         Map<String, Integer> dict = new HashMap<>();
         List<String> result = new ArrayList<>();
+        if (previousPage.equals("")) {
+            result.add(currentPage);
+        }
         for (String page : historyPage) {
             dict.put(page, dict.getOrDefault(page, 0) + 1);
         }
