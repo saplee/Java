@@ -125,7 +125,10 @@ public class WebBrowser {
             dict.put(page, dict.getOrDefault(page, 0) + 1);
         }
         for (String key : dict.keySet()) {
-            if (dict.get(key) >= number) {
+            if (dict.get(key) == number) {
+                result.add(key);
+                number = dict.get(key);
+            } else if (dict.get(key) > number) {
                 result.add(0, key);
                 number = dict.get(key);
             }
