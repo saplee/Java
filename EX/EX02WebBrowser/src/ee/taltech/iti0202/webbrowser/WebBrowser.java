@@ -1,7 +1,14 @@
 
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
 
 
 public class WebBrowser {
@@ -117,6 +124,7 @@ public class WebBrowser {
         int number = 0;
         String word = "";
         LinkedHashMap<String, Integer> dict = new LinkedHashMap<String, Integer>();
+        LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
         List<String> result = new ArrayList<>();
         if (previousPage.equals("")) {
             dict.put(currentPage, 1);
@@ -124,17 +132,17 @@ public class WebBrowser {
         for (String page : historyPage) {
             dict.put(page, dict.getOrDefault(page, 0) + 1);
         }
-        for (String key : dict.keySet()) {
-            if (dict.get(key) == number) {
+        dict.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+        Set<String> keys = sortedMap.keySet();
+        for (String key : keys) {
+            if (number <= 2) {
                 result.add(key);
-                number = dict.get(key);
-            } else if (dict.get(key) > number) {
-                result.add(0, key);
-                number = dict.get(key);
+                number += 1;
             }
         }
         for (String pages : result) {
-            if (dict.get(pages) == 1) {
+            if (sortedMap.get(pages) == 1) {
                 word += "\n" + pages + " - " + dict.get(pages) + " visit";
             } else if (dict.get(pages) >= 2) {
                 word += "\n" + pages + " - " + dict.get(pages) + " visits";
@@ -173,19 +181,9 @@ public class WebBrowser {
     public static void main(String[] args) {
         WebBrowser webBrowser = new WebBrowser();
         webBrowser.goTo("TWITTER_URL");
-        webBrowser.goTo("FACEBOOK_URL");
-        webBrowser.goTo("TALTECH_URL");
-        webBrowser.goTo("NETI_URL");
-        webBrowser.goTo("TALTECH_URL");
-        webBrowser.back();
-        webBrowser.back();
-        webBrowser.back();
-        webBrowser.back();
-        for (int i = 0; i < 10; i++) {
-            webBrowser.forward();
-            webBrowser.back();
-        }
-        webBrowser.forward();
         System.out.print(webBrowser.getTop3VisitedPages());
     }
 }
+
+
+
