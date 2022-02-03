@@ -123,7 +123,7 @@ public class WebBrowser {
     public String getTop3VisitedPages() {
         int number = 0;
         String word = "";
-        LinkedHashMap<String, Integer> dict = new LinkedHashMap<String, Integer>();
+        LinkedHashMap<String, Integer> dict = new LinkedHashMap<>();
         LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
         List<String> result = new ArrayList<>();
         if (previousPage.equals("")) {
