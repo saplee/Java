@@ -1,11 +1,7 @@
 
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 
 public class WebBrowser {
@@ -120,7 +116,7 @@ public class WebBrowser {
     public String getTop3VisitedPages() {
         int number = 0;
         String word = "";
-        Map<String, Integer> dict = new HashMap<>();
+        LinkedHashMap<String, Integer> dict = new LinkedHashMap<String, Integer>();
         List<String> result = new ArrayList<>();
         if (previousPage.equals("")) {
             dict.put(currentPage, 1);
@@ -173,7 +169,20 @@ public class WebBrowser {
 
     public static void main(String[] args) {
         WebBrowser webBrowser = new WebBrowser();
-        System.out.println(webBrowser.getTop3VisitedPages());
-
+        webBrowser.goTo("TWITTER_URL");
+        webBrowser.goTo("FACEBOOK_URL");
+        webBrowser.goTo("TALTECH_URL");
+        webBrowser.goTo("NETI_URL");
+        webBrowser.goTo("TALTECH_URL");
+        webBrowser.back();
+        webBrowser.back();
+        webBrowser.back();
+        webBrowser.back();
+        for (int i = 0; i < 10; i++) {
+            webBrowser.forward();
+            webBrowser.back();
+        }
+        webBrowser.forward();
+        System.out.print(webBrowser.getTop3VisitedPages());
     }
 }
