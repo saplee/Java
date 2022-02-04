@@ -1,7 +1,6 @@
 
 package ee.taltech.iti0202.webbrowser;
 
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
