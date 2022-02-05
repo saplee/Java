@@ -32,7 +32,7 @@ public class Person {
 
     public boolean sellBook(Book book) {
         if (book == null || Book.getOwner() != null) {
-            return true;
+            return false;
         } else {
             money += Book.getPrice();
             return true;
