@@ -1,5 +1,7 @@
 package ee.taltech.iti0202.bookshelf;
 
+import javax.swing.plaf.TreeUI;
+
 public class Person {
     private static int money;
     private static String name;
@@ -18,10 +20,20 @@ public class Person {
     }
 
     public boolean buyBook(Book book) {
-        return false;
+        if (book == null || Book.getPrice() > money || Book.getOwner() == null) {
+            return false;
+        } else {
+            money -= Book.getPrice();
+            return true;
+        }
     }
 
     public boolean sellBook(Book book) {
-        return false;
+        if (book == null || Book.getOwner() != null) {
+            return false;
+        } else {
+            money += Book.getPrice();
+            return true;
+        }
     }
 }
