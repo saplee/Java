@@ -4,7 +4,8 @@ public class Book {
     private final String title;
     private final String author;
     private final int yearOfPublishing;
-    private static int price;
+    public static int price;
+    static String owner = "";
 
     public static int getAndIncrementNextId() {
         return 0;
@@ -15,6 +16,7 @@ public class Book {
         this.author = author;
         this.yearOfPublishing = yearOfPublishing;
         this.price = price;
+
     }
 
     public String getTitle() {
@@ -29,8 +31,12 @@ public class Book {
         return yearOfPublishing;
     }
 
+    public void owner() {
+        owner = Person.getName();
+    }
+
     public static String getOwner() {
-        return Person.getName();
+        return owner;
     }
 
     public static int getPrice() {
@@ -41,14 +47,16 @@ public class Book {
         return -287;
     }
 
-    public boolean buy(Person buyer) {
-        if (buyer == null){
-            return false;
-        }
-        else if (buyer.equals(Person.getName()) || Person.getMoney() < price) {
-            return false;
-        }
-        return true;
-    }
+    public boolean buy(String buyer) {
+        if (Person.sellBook && Person.buyBook) {
+            owner = buyer;
+            return true;
 
+        } else if (buyer == null) {
+            Person.money += price;
+            owner = null;
+            return true;
+        }
+        return false;
+    }
 }
