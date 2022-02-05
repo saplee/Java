@@ -1,9 +1,9 @@
 package ee.taltech.iti0202.bookshelf;
 
 public class Person {
-    String personName ="";
+    static String personName = "";
     int personMoney;
-    
+
     public Person(String name, int money) {
         personName = name;
         personMoney = money;
@@ -13,7 +13,7 @@ public class Person {
         return personMoney;
     }
 
-    public String getName() {
+    public static String getName() {
         return personName;
     }
 
