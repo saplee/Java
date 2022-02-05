@@ -47,7 +47,4 @@ public class Book {
         return -287;
     }
 
-    public boolean buy(String buyer) {
-        return false;
-    }
 }

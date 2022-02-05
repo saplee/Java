@@ -21,21 +21,4 @@ public class Person {
         return name;
     }
 
-    public boolean buyBook(Book book) {
-        if (book == null || Book.getPrice() > money || Book.getOwner() == null) {
-            return false;
-        } else {
-            money -= Book.getPrice();
-            return true;
-        }
-    }
-
-    public boolean sellBook(Book book) {
-        if (book == null || Book.getOwner() != null) {
-            return true;
-        } else {
-            money += Book.getPrice();
-            return true;
-        }
-    }
 }
