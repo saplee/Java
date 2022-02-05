@@ -4,7 +4,7 @@ public class Book {
     private final String title;
     private final String author;
     private final int yearOfPublishing;
-    private final int price;
+    private static int price;
 
     public static int getAndIncrementNextId() {
         return 0;
@@ -29,11 +29,11 @@ public class Book {
         return yearOfPublishing;
     }
 
-    public Person getOwner() {
+    public static Person getOwner() {
         return null;
     }
 
-    public int getPrice() {
+    public static int getPrice() {
         return price;
     }
 
