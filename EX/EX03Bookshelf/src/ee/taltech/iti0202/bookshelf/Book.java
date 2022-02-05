@@ -42,7 +42,10 @@ public class Book {
     }
 
     public boolean buy(Person buyer) {
-        if (buyer.equals(Person.getName()) || Person.getMoney() < price) {
+        if (buyer == null){
+            return false;
+        }
+        else if (buyer.equals(Person.getName()) || Person.getMoney() < price) {
             return false;
         }
         return true;
