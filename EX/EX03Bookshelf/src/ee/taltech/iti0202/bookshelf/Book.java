@@ -48,15 +48,6 @@ public class Book {
     }
 
     public boolean buy(String buyer) {
-        if (Person.sellBook && Person.buyBook) {
-            owner = buyer;
-            return true;
-
-        } else if (buyer == null) {
-            Person.money += price;
-            owner = null;
-            return true;
-        }
         return false;
     }
 }
