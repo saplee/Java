@@ -42,6 +42,7 @@ public class Book {
     }
 
     public boolean buy(Person buyer) {
+        return true;
     }
 
 }
