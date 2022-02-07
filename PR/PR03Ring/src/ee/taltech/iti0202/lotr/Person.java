@@ -15,7 +15,15 @@ public class Person {
         this.race = race;
         this.name = name;
     }
-
+    public String getName(){
+        return name;
+    }
+    public String getRace() {
+        return race;
+    }
+    public Ring getRing(){
+        return ring;
+    }
     public void setRing(Ring ring) {
         this.ring = ring;
     }
@@ -33,4 +41,3 @@ public class Person {
         return "No";
     }
 }
-
