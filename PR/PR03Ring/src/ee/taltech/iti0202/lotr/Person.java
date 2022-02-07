@@ -38,13 +38,13 @@ public class Person {
         } else if (ring != null && ring.getMaterial().equals(Ring.Material.GOLD)
                 && ring.getType().equals(Ring.Type.THE_ONE)
                 && !name.equals("Sauron")) {
-            return "No, he just stole the ring.";
+            return "No, he just stole the ring";
         } else if (ring != null && name.equals("Sauron") && ring.getType().equals(Ring.Type.THE_ONE)
                 && !ring.getMaterial().equals(Ring.Material.GOLD)) {
             return "No, the ring is fake!";
         } else if (ring != null && name.equals("Sauron") && ring.getType().equals(Ring.Type.THE_ONE)
                 && ring.getMaterial().equals(Ring.Material.GOLD)) {
-            return "Affirmative.";
+            return "Affirmative";
         }
         return "No";
     }
