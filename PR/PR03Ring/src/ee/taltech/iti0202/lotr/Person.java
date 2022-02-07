@@ -15,15 +15,19 @@ public class Person {
         this.race = race;
         this.name = name;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
+
     public String getRace() {
         return race;
     }
-    public Ring getRing(){
+
+    public Ring getRing() {
         return ring;
     }
+
     public void setRing(Ring ring) {
         this.ring = ring;
     }
@@ -31,11 +35,11 @@ public class Person {
     public String isSauron() {
         if (name.equals("Sauron") && (!ring.getType().equals("THE_ONE") || ring == null)) {
             return "No, but he's claiming to be.";
-        } else if (ring.getMaterial().equals("GOLD") && ring.getType().equals("THE_ONE") && !name.equals("Sauron")) {
+        } else if (ring != null && ring.getMaterial().equals("GOLD") && ring.getType().equals("THE_ONE") && !name.equals("Sauron")) {
             return "No, he just stole the ring.";
-        } else if (name.equals("Sauron") && ring.getType().equals("THE_ONE") && !ring.getMaterial().equals("GOLD")) {
+        } else if (ring != null && name.equals("Sauron") && ring.getType().equals("THE_ONE") && !ring.getMaterial().equals("GOLD")) {
             return "No, the ring is fake!";
-        } else if (name.equals("Sauron") && ring.getType().equals("THE_ONE") && ring.getMaterial().equals("GOLD")) {
+        } else if (ring != null && name.equals("Sauron") && ring.getType().equals("THE_ONE") && ring.getMaterial().equals("GOLD")) {
             return "Affirmative.";
         }
         return "No";
