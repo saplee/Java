@@ -33,18 +33,19 @@ public class Person {
     }
 
     public String isSauron() {
-        if (name.equals("Sauron") && (!ring.getType().equals("THE_ONE") || ring == null)) {
+        if (name.equals("Sauron") && (ring == null || !ring.equals(Ring.Type.THE_ONE))) {
             return "No, but he's claiming to be.";
-        } else if (ring != null && ring.getMaterial().equals("GOLD") && ring.getType().equals("THE_ONE")
+        } else if (ring != null && ring.getMaterial().equals(Ring.Material.GOLD) && ring.getType().equals(Ring.Type.THE_ONE)
                 && !name.equals("Sauron")) {
             return "No, he just stole the ring.";
-        } else if (ring != null && name.equals("Sauron") && ring.getType().equals("THE_ONE")
-                && !ring.getMaterial().equals("GOLD")) {
+        } else if (ring != null && name.equals("Sauron") && ring.getType().equals(Ring.Type.THE_ONE)
+                && !ring.getMaterial().equals(Ring.Material.GOLD)) {
             return "No, the ring is fake!";
-        } else if (ring != null && name.equals("Sauron") && ring.getType().equals("THE_ONE")
-                && ring.getMaterial().equals("GOLD")) {
+        } else if (ring != null && name.equals("Sauron") && ring.getType().equals(Ring.Type.THE_ONE)
+                && ring.getMaterial().equals(Ring.Material.GOLD)) {
             return "Affirmative.";
         }
         return "No";
     }
 }
+
