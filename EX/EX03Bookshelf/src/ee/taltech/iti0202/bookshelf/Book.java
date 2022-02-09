@@ -52,7 +52,7 @@ public class Book {
     }
 
     public boolean buy(Person buyer) {
-        if (buyer != null && owner!=null && (price > buyer.getMoney() && !buyer.equals(owner))) {
+        if (buyer != null && owner!=null && (price > buyer.getMoney() || buyer.equals(owner))) {
             return false;
         } else if (buyer == null && owner != null) {
             return owner.sellBook(this);
