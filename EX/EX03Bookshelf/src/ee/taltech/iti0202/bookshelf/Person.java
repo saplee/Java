@@ -29,7 +29,7 @@ public class Person {
         }
     }
     public boolean sellBook(Book book) {
-        if (book == null || book.getOwner() == null || !book.getOwner().getName().equals(name)) {
+        if (book == null || book.getOwner() == null || book.getOwner().equals(this)){
             return false;
         } else {
             book.setOwner(null);
