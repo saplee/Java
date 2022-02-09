@@ -1,13 +1,14 @@
 package ee.taltech.iti0202.bookshelf;
 
 
+
 public class Book {
     private String title;
     private String author;
     private int yearOfPublishing;
     private int price;
     private Person owner;
-    private int id = 0;
+    private int id;
     private static int number = -1;
 
 
@@ -15,6 +16,13 @@ public class Book {
         return number += 1;
     }
 
+    /**
+     * Book.
+     * @param title
+     * @param author
+     * @param yearOfPublishing
+     * @param price
+     */
     public Book(String title, String author, int yearOfPublishing, int price) {
         this.title = title;
         this.author = author;
@@ -52,7 +60,7 @@ public class Book {
     }
 
     public boolean buy(Person buyer) {
-        if (buyer != null && owner!=null && (price > buyer.getMoney() || buyer.equals(owner))) {
+        if (buyer != null && owner != null && (price > buyer.getMoney() || buyer.equals(owner))) {
             return false;
         } else if (buyer == null && owner != null) {
             return owner.sellBook(this);
@@ -61,6 +69,7 @@ public class Book {
             return buyer.buyBook(this);
         } else if (buyer != null && buyer.getMoney() > price) {
             return buyer.buyBook(this);
-        }return false;
+        }
+        return false;
     }
 }
