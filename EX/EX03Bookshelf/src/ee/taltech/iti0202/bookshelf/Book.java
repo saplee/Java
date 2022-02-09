@@ -56,10 +56,10 @@ public class Book {
             return false;
         } else if (buyer == null && owner != null) {
             return owner.sellBook(this);
-        } else if (buyer != null && owner != null) {
+        } else if (buyer != null && owner != null && buyer.getMoney() > price) {
             owner.sellBook(this);
             return buyer.buyBook(this);
-        } else if (buyer != null) {
+        } else if (buyer != null && buyer.getMoney() > price) {
             return buyer.buyBook(this);
         }return false;
     }
