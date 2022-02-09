@@ -6,6 +6,12 @@ public class Person {
     private int money;
     private String name;
 
+    /**
+     * Person
+     *
+     * @param name
+     * @param money
+     */
     public Person(String name, int money) {
         this.money = money;
         this.name = name;
@@ -19,6 +25,10 @@ public class Person {
         return name;
     }
 
+    /**
+     * @param book
+     * @return
+     */
     public boolean buyBook(Book book) {
         if (book == null || book.getPrice() > money || book.getOwner() != null) {
             return false;
@@ -28,8 +38,13 @@ public class Person {
             return true;
         }
     }
+
+    /**
+     * @param book
+     * @return
+     */
     public boolean sellBook(Book book) {
-        if (book == null || book.getOwner() == null || !book.getOwner().equals(this)){
+        if (book == null || book.getOwner() == null || !book.getOwner().equals(this)) {
             return false;
         } else {
             book.setOwner(null);

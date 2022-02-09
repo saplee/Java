@@ -59,6 +59,11 @@ public class Book {
         return id;
     }
 
+    /**
+     *
+     * @param buyer
+     * @return
+     */
     public boolean buy(Person buyer) {
         if (buyer != null && owner != null && (price > buyer.getMoney() || buyer.equals(owner))) {
             return false;
