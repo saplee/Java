@@ -59,7 +59,6 @@ public class Book {
         } else if (owner != null) {
             owner.sellBook(this);
             return buyer.buyBook(this);
-        }
-        return false;
+        }return true;
     }
 }
