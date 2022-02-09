@@ -52,14 +52,14 @@ public class Book {
     }
 
     public boolean buy(Person buyer) {
-        if (buyer != null && (price > buyer.getMoney() || !buyer.equals(owner))) {
+        if (buyer != null && owner!=null && (price > buyer.getMoney() || !buyer.equals(owner))) {
             return false;
         } else if (buyer == null && owner != null) {
             return owner.sellBook(this);
         } else if (buyer != null && owner != null) {
             owner.sellBook(this);
             return buyer.buyBook(this);
-        } else if (buyer != null && owner == null) {
+        } else if (buyer != null) {
             return buyer.buyBook(this);
         }return false;
     }
