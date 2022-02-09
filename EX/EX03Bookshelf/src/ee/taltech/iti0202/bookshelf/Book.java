@@ -13,7 +13,7 @@ public class Book {
 
 
     public static int getAndIncrementNextId() {
-        return number += 1;
+        return ++number;
     }
 
     /**
