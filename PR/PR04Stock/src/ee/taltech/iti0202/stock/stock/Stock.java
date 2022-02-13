@@ -1,4 +1,5 @@
 package ee.taltech.iti0202.stock.stock;
+
 import ee.taltech.iti0202.stock.exceptions.StockException;
 import ee.taltech.iti0202.stock.product.Product;
 
@@ -26,8 +27,8 @@ public class Stock {
 
     /**
      * Create a new stock with the given name and the max capacity for the products.
-     * 
-     * @param name the name of the stock.
+     *
+     * @param name        the name of the stock.
      * @param maxCapacity max amount of products allowed in the stock.
      */
     public Stock(String name, int maxCapacity) {
@@ -51,7 +52,7 @@ public class Stock {
 
     /**
      * Get a product from a stock by name with the lowest price.
-     *
+     * <p>
      * If there are several products with the same name and price,
      * returns the product with the lowest id.
      *
@@ -65,9 +66,9 @@ public class Stock {
     /**
      * Remove and return a product from a stock,
      * if stock has a given product.
-     *
+     * <p>
      * Use getProduct() method to get the product.
-     * 
+     * <p>
      * If there is nothing to remove, return Optional.empty()
      *
      * @param name Name of the product to be removed
@@ -89,7 +90,7 @@ public class Stock {
 
     /**
      * Get a list of current products in the stock filtered by name.
-     *
+     * <p>
      * Order the products by price ascending. In case of the same price, by id ascending.
      *
      * @param name Name to be filtered.
