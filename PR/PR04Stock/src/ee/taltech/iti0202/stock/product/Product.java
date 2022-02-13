@@ -6,7 +6,7 @@ public class Product {
     private String name;
     private int price;
     private int id;
-    private static int number = -1;
+    private static int number = 0;
 
     /**
      * Create a new product with the given name and price.
