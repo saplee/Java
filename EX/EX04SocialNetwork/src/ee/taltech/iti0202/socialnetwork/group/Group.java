@@ -3,6 +3,7 @@ package ee.taltech.iti0202.socialnetwork.group;
 import ee.taltech.iti0202.socialnetwork.message.Message;
 import ee.taltech.iti0202.socialnetwork.user.User;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,12 +16,14 @@ public class Group {
 
     /**
      * Name and owner.
+     *
      * @param name
      * @param owner
      */
     public Group(String name, User owner) {
         this.name = name;
         this.owner = owner;
+        groupMembers.add(owner);
     }
 
     public String getName() {
@@ -28,7 +31,6 @@ public class Group {
     }
 
     /**
-     *
      * @param name
      */
     public void setName(String name) {
@@ -36,7 +38,6 @@ public class Group {
     }
 
     /**
-     *
      * @return
      */
     public User getOwner() {
@@ -44,7 +45,6 @@ public class Group {
     }
 
     /**
-     *
      * @param user
      */
     public void addUser(User user) {
@@ -56,7 +56,6 @@ public class Group {
     }
 
     /**
-     *
      * @param message
      */
     public void publishMessage(Message message) {
