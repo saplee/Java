@@ -32,6 +32,8 @@ public class Stock {
     private LinkedList<Product> stockList = new LinkedList<>();
     private LinkedHashMap<Product, Integer> dict = new LinkedHashMap<>();
     private LinkedHashMap<Product, Integer> sortedMap = new LinkedHashMap<>();
+    private LinkedHashMap<Product, Integer> dict2 = new LinkedHashMap<>();
+    private LinkedHashMap<Product, Integer> sortedMap2 = new LinkedHashMap<>();
     private LinkedList<Product> stockList2 = new LinkedList<>();
     private final int num = 10000000;
 
@@ -127,13 +129,19 @@ public class Stock {
     public List<Product> getProducts(String name) {
         for (Product product : stockList) {
             if (product.getName().equals(name)) {
-                dict.put(product, product.getPrice());
+                dict.put(product, product.getId());
             }
         }
         dict.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.naturalOrder()))
                 .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
         Set<Product> keys = sortedMap.keySet();
-        stockList2.addAll(keys);
+        for (Product key: keys){
+            dict2.put(key, key.getPrice());
+        }
+        dict2.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.naturalOrder()))
+                .forEachOrdered(x -> sortedMap2.put(x.getKey(), x.getValue()));
+        Set<Product> keys2 = sortedMap2.keySet();
+        stockList2.addAll(keys2);
         return stockList2;
     }
 
@@ -160,5 +168,21 @@ public class Stock {
             return true;
         }
         return false;
+    }
+    public static void main(String[] args) throws StockException {
+        Stock stock = new Stock("fruits", 32);
+        stock.addProduct(new Product("banana", 1));
+        stock.addProduct(new Product("apple", 64));
+        stock.addProduct(new Product("cherry", 5));
+        stock.addProduct(new Product("banana", 2));
+        stock.addProduct(new Product("apple", 33));
+        stock.addProduct(new Product("banana", 33));
+
+        List<Product> bananas = stock.getProducts("banana");
+        List<Product> apples = stock.getProducts("apple");
+        List<Product> random = stock.getProducts("random");
+        List<Product> products = stock.getProducts();
+        System.out.println(bananas.size());
+
     }
 }
