@@ -1,9 +1,13 @@
 
 package ee.taltech.iti0202.socialnetwork.group;
+
 import ee.taltech.iti0202.socialnetwork.message.Message;
 import ee.taltech.iti0202.socialnetwork.user.User;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 public class Group {
 
@@ -57,8 +61,8 @@ public class Group {
      * @param message
      */
     public void publishMessage(Message message) {
-        for (User person : groupMembers){
-            if (person.equals(message.getAuthor())){
+        for (User person : groupMembers) {
+            if (person.equals(message.getAuthor())) {
                 messageList.add(message);
             }
         }
