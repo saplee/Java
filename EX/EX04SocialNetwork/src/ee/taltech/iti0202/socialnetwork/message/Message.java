@@ -7,21 +7,21 @@ public class Message {
     private String message;
     private User author;
 
-    public Message(String title, String message, User author){
+    public Message(String title, String message, User author) {
         this.title = title;
         this.message = message;
         this.author = author;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return message;
     }
 
-    public User getAuthor(){
+    public User getAuthor() {
         return author;
     }
 }

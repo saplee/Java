@@ -9,16 +9,16 @@ public class Feed {
     private User user;
     private Set<Message> messages;
 
-    public Feed(User user, Set<Message> messages){
+    public Feed(User user, Set<Message> messages) {
         this.user = user;
         this.messages = messages;
     }
 
-    public User getUser(){
+    public User getUser() {
         return user;
     }
 
-    public Set<Message> getMessages(){
+    public Set<Message> getMessages() {
         return messages;
     }
 }
