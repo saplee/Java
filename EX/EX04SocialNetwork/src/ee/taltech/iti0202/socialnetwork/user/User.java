@@ -4,10 +4,19 @@ public class User {
     private String name;
     private Integer age;
 
+    /**
+     * User.
+     * @param name
+     */
     public User(String name) {
         this.name = name;
     }
 
+    /**
+     * User and age.
+     * @param name
+     * @param age
+     */
     public User(String name, Integer age) {
         this.name = name;
         this.age = age;

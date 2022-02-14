@@ -11,14 +11,18 @@ public class Group {
     private String name;
     private User owner;
 
+    /**
+     * Name and owner.
+     * @param name
+     * @param owner
+     */
     public Group(String name, User owner) {
-
         this.name = name;
         this.owner = owner;
     }
 
     public String getName() {
-        return null;
+        return name;
     }
 
     public void setName(String name) {
