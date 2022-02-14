@@ -3,6 +3,8 @@ package ee.taltech.iti0202.stock.stock;
 import ee.taltech.iti0202.stock.exceptions.StockException;
 import ee.taltech.iti0202.stock.product.Product;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +26,7 @@ public class Stock {
 
     private String name;
     private int maxCapacity;
+    private LinkedList<Product> stockList = new LinkedList<>();
 
     /**
      * Create a new stock with the given name and the max capacity for the products.
@@ -48,6 +51,9 @@ public class Stock {
      */
 
     public void addProduct(Product product) throws StockException {
+        if (!stockList.contains(product) && stockList.size() < maxCapacity) {
+            stockList.add(product);
+        }
     }
 
     /**
@@ -85,7 +91,7 @@ public class Stock {
      * @return List
      */
     public List<Product> getProducts() {
-        return null;
+        return stockList;
     }
 
     /**
@@ -115,7 +121,11 @@ public class Stock {
      * @return boolean
      */
     public boolean isFull() {
-        return false;
+        if (stockList.size() == maxCapacity) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
