@@ -11,7 +11,7 @@ public class Group {
 
     private String name;
     private User owner;
-    private Set<User> groupMembers = new HashSet<>();
+    private Set<User> groupMembers = new HashSet<>(Set.of(owner));
 
     /**
      * Name and owner.
