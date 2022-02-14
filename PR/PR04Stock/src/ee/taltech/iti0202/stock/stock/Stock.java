@@ -152,8 +152,6 @@ public class Stock {
     public boolean isFull() {
         if (stockList.size() == maxCapacity) {
             return true;
-        } else {
-            return false;
-        }
+        }return false;
     }
 }
