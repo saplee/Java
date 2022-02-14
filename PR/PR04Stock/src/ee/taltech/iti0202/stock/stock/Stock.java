@@ -30,10 +30,6 @@ public class Stock {
     private String name;
     private int maxCapacity;
     private LinkedList<Product> stockList = new LinkedList<>();
-    private LinkedHashMap<Product, Integer> dict = new LinkedHashMap<>();
-    private LinkedHashMap<Product, Integer> sortedMap = new LinkedHashMap<>();
-    private LinkedHashMap<Product, Integer> dict2 = new LinkedHashMap<>();
-    private LinkedHashMap<Product, Integer> sortedMap2 = new LinkedHashMap<>();
     private final int num = 10000000;
 
     /**
