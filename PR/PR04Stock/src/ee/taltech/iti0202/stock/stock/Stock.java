@@ -160,7 +160,7 @@ public class Stock {
         Stock fruitStock = new Stock("fruit-stock-1", 4);
 
         Product cheapApple = new Product("apple", 3);
-        Product expensiveApple = new Product("apple", 9);
+        Product expensiveApple = new Product("apple", 3);
         Product orange = new Product("orange", 5);
         Product mango = new Product("mango", 6);
         Product pear = new Product("pear", 4);
