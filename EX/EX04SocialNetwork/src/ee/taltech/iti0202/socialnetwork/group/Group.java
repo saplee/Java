@@ -53,6 +53,10 @@ public class Group {
         return null;
     }
 
+    /**
+     *
+     * @param message
+     */
     public void publishMessage(Message message) {
 
     }
