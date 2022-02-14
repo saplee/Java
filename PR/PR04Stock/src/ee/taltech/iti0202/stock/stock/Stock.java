@@ -27,7 +27,7 @@ public class Stock {
     private LinkedHashMap<Product, Integer> dict = new LinkedHashMap<>();
     private LinkedHashMap<Product, Integer> sortedMap = new LinkedHashMap<>();
     private LinkedList<Product> stockList2 = new LinkedList<>();
-    private int num = 10000000;
+    private final int num = 10000000;
 
     /**
      * Create a new stock with the given name and the max capacity for the products.
