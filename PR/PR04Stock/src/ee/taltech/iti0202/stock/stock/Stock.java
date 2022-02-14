@@ -3,10 +3,7 @@ package ee.taltech.iti0202.stock.stock;
 import ee.taltech.iti0202.stock.exceptions.StockException;
 import ee.taltech.iti0202.stock.product.Product;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * The stock class.
@@ -27,6 +24,9 @@ public class Stock {
     private String name;
     private int maxCapacity;
     private LinkedList<Product> stockList = new LinkedList<>();
+    private LinkedHashMap<Product, Integer> dict = new LinkedHashMap<>();
+    private LinkedHashMap<Product, Integer> sortedMap = new LinkedHashMap<>();
+    private LinkedList<Product> stockList2 = new LinkedList<>();
 
     /**
      * Create a new stock with the given name and the max capacity for the products.
@@ -118,7 +118,16 @@ public class Stock {
      * @return List
      */
     public List<Product> getProducts(String name) {
-        return null;
+        for (Product product : stockList) {
+            if (product.getName().equals(name)) {
+                dict.put(product, product.getPrice());
+            }
+        }
+        dict.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.naturalOrder()))
+                .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+        Set<Product> keys = sortedMap.keySet();
+        stockList2.addAll(keys);
+        return stockList2;
     }
 
     /**
@@ -127,7 +136,11 @@ public class Stock {
      * @return Total price.
      */
     public int getTotalPrice() {
-        return -1;
+        int result = 0;
+        for (Product item : stockList) {
+            result += item.getPrice();
+        }
+        return result;
     }
 
     /**
