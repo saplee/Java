@@ -15,6 +15,10 @@ public class SocialNetwork {
     private Set<Group> groups = new HashSet<>();
     private Group group;
 
+    /**
+     *
+     * @param group
+     */
     public void registerGroup(Group group) {
         this.group = group;
         groups.add(group);
