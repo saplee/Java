@@ -25,14 +25,26 @@ public class Group {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public User getOwner() {
         return owner;
     }
 
+    /**
+     *
+     * @param user
+     */
     public void addUser(User user) {
 
     }
