@@ -27,6 +27,7 @@ public class Stock {
     private LinkedHashMap<Product, Integer> dict = new LinkedHashMap<>();
     private LinkedHashMap<Product, Integer> sortedMap = new LinkedHashMap<>();
     private LinkedList<Product> stockList2 = new LinkedList<>();
+    private int num = 10000000;
 
     /**
      * Create a new stock with the given name and the max capacity for the products.
@@ -67,7 +68,7 @@ public class Stock {
      */
     public Optional<Product> getProduct(String name) {
         Product result = null;
-        int number = 1000000000;
+        int number = num;
         for (Product product : stockList) {
             if (product.getName().equals(name) && product.getPrice() <= number) {
                 result = product;
@@ -90,7 +91,7 @@ public class Stock {
 
     public Optional<Product> removeProduct(String name) {
         Product result = null;
-        int number = 1000000000;
+        int number = num;
         for (Product product : stockList) {
             if (product.getName().equals(name) && product.getPrice() <= number) {
                 result = product;
@@ -155,48 +156,4 @@ public class Stock {
             return false;
         }
     }
-
-    public static void main(String[] args) throws StockException {
-        Stock fruitStock = new Stock("fruit-stock-1", 4);
-
-        Product cheapApple = new Product("apple", 3);
-        Product expensiveApple = new Product("apple", 3);
-        Product orange = new Product("orange", 5);
-        Product mango = new Product("mango", 6);
-        Product pear = new Product("pear", 4);
-        System.out.println(pear.getId()); // 5
-
-        fruitStock.addProduct(expensiveApple);
-        fruitStock.addProduct(cheapApple);
-        System.out.println(fruitStock.getProducts()); // expensiveApple, cheapApple
-
-        Optional<Product> apple = fruitStock.getProduct("apple"); // Optional.of(cheapApple)
-        apple.ifPresent(System.out::println); // cheapApple
-
-        fruitStock.addProduct(orange);
-        fruitStock.addProduct(mango);
-        System.out.println(fruitStock.getProducts().size()); // 4
-        System.out.println(fruitStock.getProducts("apple")); // cheapApple, expensiveApple
-
-        try {
-            fruitStock.addProduct(pear);
-        } catch (StockException e) {
-            System.out.println(e.getReason()); // STOCK_IS_FULL
-        }
-
-        try {
-            fruitStock.addProduct(mango);
-        } catch (StockException e) {
-            System.out.println(e.getReason()); // STOCK_ALREADY_CONTAINS_PRODUCT
-        }
-
-        Optional<Product> removedMango = fruitStock.removeProduct("mango"); // Optional.of(mango)
-        removedMango.ifPresent(System.out::println);
-
-        System.out.println(fruitStock.removeProduct("apple")); // Optional[cheapApple]
-        System.out.println(fruitStock.removeProduct("apple").get()); // Optional[expensiveApple]
-        System.out.println(fruitStock.removeProduct("dumpling")); // Optional.empty
-
-    }
 }
-
