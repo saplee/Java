@@ -139,7 +139,7 @@ public class Stock {
         dict.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.naturalOrder()))
                 .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
         Set<Product> keys = sortedMap.keySet();
-        for (Product key: keys){
+        for (Product key : keys) {
             dict2.put(key, key.getPrice());
         }
         dict2.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.naturalOrder()))
