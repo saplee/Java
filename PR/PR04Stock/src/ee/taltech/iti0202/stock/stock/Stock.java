@@ -97,8 +97,15 @@ public class Stock {
      */
 
     public Optional<Product> removeProduct(String name) {
-        stockList.remove(getProduct(name));
-        return getProduct(name);
+        Product result = null;
+        int number = num;
+        for (Product product : stockList) {
+            if (product.getName().equals(name) && product.getPrice() <= number) {
+                result = product;
+            }
+        }
+        stockList.remove(result);
+        return Optional.ofNullable(result);
     }
 
     /**
