@@ -19,7 +19,7 @@ public class Product {
      * @throws StockException NEGATIVE_PRICE
      */
     public Product(String name, int price) throws StockException {
-        if (price<0){
+        if (price < 0) {
             throw new StockException(StockException.Reason.NEGATIVE_PRICE);
         }
         this.name = name;
