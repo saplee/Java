@@ -55,7 +55,11 @@ public class Stock {
      */
 
     public void addProduct(Product product) throws StockException {
-        if (!stockList.contains(product) && stockList.size() < maxCapacity) {
+        if (stockList.contains(product)) {
+            throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
+        } else if (stockList.size() == maxCapacity) {
+            throw new StockException(StockException.Reason.STOCK_IS_FULL);
+        } else if (!stockList.contains(product) && stockList.size() < maxCapacity) {
             stockList.add(product);
         }
     }
