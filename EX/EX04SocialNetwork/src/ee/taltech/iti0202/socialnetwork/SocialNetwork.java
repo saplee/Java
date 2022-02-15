@@ -6,6 +6,7 @@ import ee.taltech.iti0202.socialnetwork.message.Message;
 import ee.taltech.iti0202.socialnetwork.user.User;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SocialNetwork {
@@ -38,7 +39,6 @@ public class SocialNetwork {
         Set<Message> allMessages = new HashSet<>();
         for (Group group : groups){
             if (group.getParticipants().contains(user)){
-                group.getMessages().add((Message) allMessages);
             }
         }
         return new Feed(user, allMessages);
