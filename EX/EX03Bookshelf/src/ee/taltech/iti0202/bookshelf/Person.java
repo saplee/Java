@@ -17,10 +17,18 @@ public class Person {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMoney() {
         return money;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
