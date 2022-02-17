@@ -68,6 +68,10 @@ public class Group {
         }
     }
 
+    /**
+     *
+     * @return messageList
+     */
     public List<Message> getMessages() {
         return messageList;
     }
