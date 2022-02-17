@@ -25,6 +25,10 @@ public class SocialNetwork {
         groups.add(group);
     }
 
+    /**
+     *
+     * @return
+     */
     public Set<Group> getGroups() {
         return groups;
     }
