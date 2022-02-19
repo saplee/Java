@@ -5,24 +5,28 @@ import java.util.List;
 
 public class Person {
     private List<Cat> cats = new ArrayList<>();
-    public Person(){
+
+    public Person() {
 
     }
-    boolean addCat(Cat cat){
-        if (cats.contains(cat)){
+
+    public boolean addCat(Cat cat) {
+        if (cats.contains(cat)) {
             return false;
-        }else {
+        } else {
             cats.add(cat);
             return true;
         }
     }
-    public List<Cat> getCats(){
+
+    public List<Cat> getCats() {
         return cats;
     }
-    boolean sellCat(Person sellTo, Cat cat){
-        if (sellTo.equals(this) || !cats.contains(cat)){
+
+    public boolean sellCat(Person sellTo, Cat cat) {
+        if (sellTo.equals(this) || !cats.contains(cat)) {
             return false;
-        }else {
+        } else {
             cats.remove(cat);
             sellTo.addCat(cat);
             return true;
