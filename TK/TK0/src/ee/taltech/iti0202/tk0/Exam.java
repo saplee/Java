@@ -42,8 +42,7 @@ public class Exam {
     public static int loneSum(int a, int b, int c) {
         if (a == b && b == c) {
             return 0;
-        }
-        else if  (a == b) {
+        } else if (a == b) {
             return c;
         } else if (a == c) {
             return b;
@@ -72,11 +71,11 @@ public class Exam {
                 newWord = newWord.substring(newWord.indexOf("bread") + 5);
                 count += 1;
             }
-        }if (count!=2){
+        }
+        if (count != 2) {
             return result;
-        }else if(count==2){
-            String word = str.substring(str.indexOf("bread") + 5);
-            result = word.substring(0, word.indexOf("bread"));
+        } else if (count == 2) {
+            result = str.substring(str.indexOf("bread") + 5, str.lastIndexOf("bread"));
         }
         return result;
     }
