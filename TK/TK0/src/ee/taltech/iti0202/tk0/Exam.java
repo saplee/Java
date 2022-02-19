@@ -40,14 +40,15 @@ public class Exam {
      * loneSum(3, 3, 3) → 0
      */
     public static int loneSum(int a, int b, int c) {
-        if (a == b) {
+        if (a == b && b == c) {
+            return 0;
+        }
+        else if  (a == b) {
             return c;
         } else if (a == c) {
             return b;
         } else if (b == c) {
             return a;
-        } else if (a == b && b == c) {
-            return 0;
         }
         return a + b + c;
     }
@@ -63,7 +64,21 @@ public class Exam {
      * getSandwich("xxbreadyy") → ""
      */
     public static String getSandwich(String str) {
-        return "";
+        int count = 0;
+        String result = "";
+        String newWord = str;
+        for (int i = 0; i < 2; i += 1) {
+            if (newWord.contains("bread")) {
+                newWord = newWord.substring(newWord.indexOf("bread") + 5);
+                count += 1;
+            }
+        }if (count!=2){
+            return result;
+        }else if(count==2){
+            String word = str.substring(str.indexOf("bread") + 5);
+            result = word.substring(0, word.indexOf("bread"));
+        }
+        return result;
     }
 
 
@@ -97,6 +112,6 @@ public class Exam {
 
     public static void main(String[] args) {
         List<Integer> myList = new ArrayList<>(List.of(1, 0, 1, 0, 0, 1, 1));
-        System.out.println(loneSum(1, 2, 3));
+        System.out.println(getSandwich("xxbreadjambreadyy"));
     }
 }
