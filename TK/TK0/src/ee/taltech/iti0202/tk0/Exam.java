@@ -44,7 +44,9 @@ public class Exam {
             return c;
         } else if (a == c) {
             return b;
-        } else if (a == c && a == b) {
+        } else if (b == c) {
+            return a;
+        } else if (a == b && b == c) {
             return 0;
         }
         return a + b + c;
@@ -88,7 +90,7 @@ public class Exam {
             }
         }
         if (!result.containsKey("bread")) {
-            result.put("bread", "cherry");
+            result.put("bread", "butter");
         }
         return result;
     }
