@@ -19,7 +19,8 @@ public class ResourceStorage {
 
     public void addResource(String resource, int amount) {
         String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
-        if (amount > 0 && !resource.isEmpty() && !resourceMap.containsKey(newResource) && resource.trim().length() > 0) {
+        if (amount > 0 && !resource.isEmpty() && !resourceMap.containsKey(newResource)
+                && resource.trim().length() > 0) {
             resourceMap.put(newResource, amount);
         } else if (amount > 0 && !resource.isEmpty() && resource.trim().length() > 0) {
             resourceMap.put(newResource, resourceMap.get(newResource) + amount);
@@ -45,8 +46,13 @@ public class ResourceStorage {
     }
 
     public boolean takeResource(String resource, int amount) {
-        return false;
+        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
+        if (resourceMap.get(newResource) < amount) {
+            return false;
+        }
+        return true;
     }
+
     public static void main(String[] args) {
         ResourceStorage resourceStorage = new ResourceStorage();
         resourceStorage.addResource("steel", 3);
