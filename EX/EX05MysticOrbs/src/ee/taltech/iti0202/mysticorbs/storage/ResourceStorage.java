@@ -15,7 +15,9 @@ public class ResourceStorage {
     }
 
     public void addResource(String resource, int amount) {
-        resourceMap.put(resource, resourceMap.getOrDefault(resource, amount) + amount);
+        if (amount>0 && !resource.isEmpty() && !resource.isBlank()){
+            resourceMap.put(resource, resourceMap.getOrDefault(resource, amount) + amount);
+        }
     }
 
     public int getResourceAmount(String resource) {
