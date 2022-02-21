@@ -11,10 +11,10 @@ public class ResourceStorage {
         Set<String> keys = resourceMap.keySet();
         for (String key : keys) {
             if (resourceMap.get(key) > 0) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public void addResource(String resource, int amount) {
