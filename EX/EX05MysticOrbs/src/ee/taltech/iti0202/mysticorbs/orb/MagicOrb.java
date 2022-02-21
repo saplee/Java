@@ -7,7 +7,7 @@ public class MagicOrb extends Orb {
     }
     @Override
     public void charge(String resource, int amount) {
-        energy = energy * 2;
+        energy = resource.length() * amount * 2;
     }
 
     public String toString() {
