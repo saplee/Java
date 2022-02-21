@@ -4,7 +4,7 @@ public class SpaceOrb extends Orb {
 
     public SpaceOrb(String creator) {
         super(creator);
-        energy = 100;
+        this.energy = 100;
     }
 
     public String toString() {
