@@ -11,6 +11,12 @@ public class SpaceOrb extends Orb {
         super(creator);
         energy = 100;
     }
+    @Override
+    public void charge(String resource, int amount) {
+        if (!resource.toLowerCase(Locale.ROOT).equals("dust")) {
+            energy = 100;
+        }
+    }
 
     /**
      *
@@ -19,6 +25,7 @@ public class SpaceOrb extends Orb {
     public String toString() {
         return "SpaceOrb by " + creator;
     }
+
 
     /**
      *
