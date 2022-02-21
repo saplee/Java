@@ -7,6 +7,10 @@ import java.util.Set;
 public class ResourceStorage {
     private LinkedHashMap<String, Integer> resourceMap = new LinkedHashMap<>();
 
+    /**
+     *
+     * @return
+     */
     public boolean isEmpty() {
         Set<String> keys = resourceMap.keySet();
         for (String key : keys) {
@@ -17,6 +21,11 @@ public class ResourceStorage {
         return true;
     }
 
+    /**
+     *
+     * @param resource
+     * @param amount
+     */
     public void addResource(String resource, int amount) {
         String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
         if (amount > 0 && !resource.isEmpty() && !resourceMap.containsKey(newResource)
@@ -27,6 +36,11 @@ public class ResourceStorage {
         }
     }
 
+    /**
+     *
+     * @param resource
+     * @return
+     */
     public int getResourceAmount(String resource) {
         String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
         if (resourceMap.containsKey(newResource)) {
@@ -35,6 +49,12 @@ public class ResourceStorage {
         return 0;
     }
 
+    /**
+     *
+     * @param resource
+     * @param amount
+     * @return
+     */
     public boolean hasEnoughResource(String resource, int amount) {
         String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
         if (amount < 1) {
@@ -45,6 +65,12 @@ public class ResourceStorage {
         return false;
     }
 
+    /**
+     *
+     * @param resource
+     * @param amount
+     * @return
+     */
     public boolean takeResource(String resource, int amount) {
         String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
         if (resourceMap.get(newResource) < amount) {
@@ -54,12 +80,5 @@ public class ResourceStorage {
                     resourceMap.get(newResource) - amount);
             return true;
         }
-    }
-
-    public static void main(String[] args) {
-        ResourceStorage resourceStorage = new ResourceStorage();
-        resourceStorage.addResource("steel", 3);
-        resourceStorage.addResource("steEl.", 3);
-        System.out.println(resourceStorage.getResourceAmount("STEEL"));
     }
 }
