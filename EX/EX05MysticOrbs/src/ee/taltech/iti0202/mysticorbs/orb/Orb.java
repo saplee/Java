@@ -19,8 +19,8 @@ public class Orb {
      */
     public void charge(String resource, int amount) {
         String word = resource.replace(" ", "");
-        if (!resource.toLowerCase(Locale.ROOT).equals("dust") && word.length() != 0 && amount >= 0) {
-            energy = word.length() * amount;
+        if (!resource.toLowerCase(Locale.ROOT).equals("dust") && word.length() != 0 && amount > 0) {
+            energy += resource.length() * amount;
         }
     }
 
