@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.mysticorbs.storage;
 
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Set;
 
 public class ResourceStorage {
@@ -17,24 +18,27 @@ public class ResourceStorage {
     }
 
     public void addResource(String resource, int amount) {
+        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
         if (amount > 0 && !resource.isEmpty() && !resourceMap.containsKey(resource) && resource.trim().length() > 0) {
-            resourceMap.put(resource, amount);
+            resourceMap.put(newResource, amount);
         } else if (amount > 0 && !resource.isEmpty() && resource.trim().length() > 0) {
-            resourceMap.put(resource, resourceMap.get(resource) + amount);
+            resourceMap.put(newResource, resourceMap.get(newResource) + amount);
         }
     }
 
     public int getResourceAmount(String resource) {
-        if (resourceMap.containsKey(resource)) {
-            return resourceMap.get(resource);
+        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
+        if (resourceMap.containsKey(newResource)) {
+            return resourceMap.get(newResource);
         }
         return 0;
     }
 
     public boolean hasEnoughResource(String resource, int amount) {
+        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
         if (amount < 1) {
             return false;
-        } else if (resourceMap.get(resource) >= amount) {
+        } else if (resourceMap.get(newResource) >= amount) {
             return true;
         }
         return false;
