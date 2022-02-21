@@ -6,12 +6,9 @@ public class SpaceOrb extends Orb {
 
     public SpaceOrb(String creator) {
         super(creator);
-    }
-
-    @Override
-    public void charge(String resource, int amount) {
         energy = 100;
     }
+
 
     public String toString() {
         return "SpaceOrb by " + creator;
