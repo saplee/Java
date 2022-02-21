@@ -5,12 +5,13 @@ public class MagicOrb extends Orb {
     public MagicOrb(String creator) {
         super(creator);
     }
+
     @Override
     public void charge(String resource, int amount) {
         energy = resource.length() * amount * 2;
     }
 
     public String toString() {
-        return  "MagicOrb by " + creator;
+        return "MagicOrb by " + creator;
     }
 }

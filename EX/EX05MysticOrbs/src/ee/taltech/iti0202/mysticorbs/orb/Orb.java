@@ -9,6 +9,7 @@ public class Orb {
     public Orb(String creator) {
         this.creator = creator;
     }
+
     public void charge(String resource, int amount) {
         if (!resource.toLowerCase(Locale.ROOT).equals("dust")) {
             energy = resource.length() * amount;

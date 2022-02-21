@@ -17,9 +17,9 @@ public class ResourceStorage {
     }
 
     public void addResource(String resource, int amount) {
-        if (amount > 0 && !resource.isEmpty() && !resourceMap.containsKey(resource)) {
+        if (amount > 0 && !resource.isEmpty() && !resourceMap.containsKey(resource) && resource.trim().length() > 0) {
             resourceMap.put(resource, amount);
-        } else if (amount > 0 && !resource.isEmpty()) {
+        } else if (amount > 0 && !resource.isEmpty() && resource.trim().length() > 0) {
             resourceMap.put(resource, resourceMap.get(resource) + amount);
         }
     }
@@ -36,7 +36,8 @@ public class ResourceStorage {
             return false;
         } else if (resourceMap.get(resource) >= amount) {
             return true;
-        }return false;
+        }
+        return false;
     }
 
     public boolean takeResource(String resource, int amount) {

@@ -17,7 +17,7 @@ public class OrbFactory {
 
 
     public void addOven(Oven oven) {
-        if(oven.getResourceStorage().equals(resourceStorage) || !ovens.contains(oven)){
+        if (oven.getResourceStorage().equals(resourceStorage) || !ovens.contains(oven)) {
             ovens.add(oven);
         }
     }
