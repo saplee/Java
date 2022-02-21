@@ -1,10 +1,16 @@
 package ee.taltech.iti0202.mysticorbs.orb;
 
+import java.util.Locale;
+
 public class SpaceOrb extends Orb {
 
     public SpaceOrb(String creator) {
         super(creator);
-        this.energy = 100;
+    }
+
+    @Override
+    public void charge(String resource, int amount) {
+        energy = 100;
     }
 
     public String toString() {
