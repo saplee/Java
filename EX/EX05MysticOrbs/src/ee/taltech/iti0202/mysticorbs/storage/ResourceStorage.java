@@ -49,8 +49,11 @@ public class ResourceStorage {
         String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
         if (resourceMap.get(newResource) < amount) {
             return false;
+        } else {
+            resourceMap.replace(newResource, resourceMap.get(newResource),
+                    resourceMap.get(newResource) - amount);
+            return true;
         }
-        return true;
     }
 
     public static void main(String[] args) {
