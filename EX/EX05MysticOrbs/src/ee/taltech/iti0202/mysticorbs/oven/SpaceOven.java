@@ -27,22 +27,21 @@ public class SpaceOven extends Oven {
     public Optional<Orb> craftOrb() {
         if (!isBroken() && resourceStorage.hasEnoughResource("meteorite stone", 1)
                 && resourceStorage.hasEnoughResource("star fragment", 15)) {
-            SpaceOrb spaceOrb = new SpaceOrb(name);
             resourceStorage.takeResource("star fragment", 15);
             resourceStorage.takeResource("meteorite stone", 1);
+            SpaceOrb spaceOrb = new SpaceOrb(name);
             spaceOrb.charge("meteorite stone", 1);
-            spaceOrb.charge("star fragment", 15);
             counter += 1;
             return Optional.of(spaceOrb);
         } else if (!isBroken() && resourceStorage.hasEnoughResource("steel", 1)
                 && resourceStorage.hasEnoughResource("pearl", 1)) {
-            Orb orb = new Orb(name);
             resourceStorage.takeResource("silver", 1);
             resourceStorage.takeResource("pearl", 1);
-            orb.charge("silver", 1);
-            orb.charge("pearl", 1);
+            Orb orb1 = new Orb(name);
+            orb1.charge("silver", 1);
+            orb1.charge("pearl", 1);
             counter += 1;
-            return Optional.of(orb);
+            return Optional.of(orb1);
         }
         return Optional.empty();
     }
