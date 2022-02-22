@@ -9,7 +9,7 @@ public class Oven {
     protected String name;
     protected ResourceStorage resourceStorage;
     protected int counter;
-    protected int orbs;
+
 
     public Oven(String name, ResourceStorage resourceStorage) {
         this.name = name;

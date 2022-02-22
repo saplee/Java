@@ -33,7 +33,7 @@ public class SpaceOven extends Oven {
             spaceOrb.charge("meteorite stone", 1);
             counter += 1;
             return Optional.of(spaceOrb);
-        } else if (!isBroken() && resourceStorage.hasEnoughResource("silver", 1)
+        } else if (resourceStorage.hasEnoughResource("silver", 1)
                 && resourceStorage.hasEnoughResource("pearl", 1)) {
             resourceStorage.takeResource("silver", 1);
             resourceStorage.takeResource("pearl", 1);
