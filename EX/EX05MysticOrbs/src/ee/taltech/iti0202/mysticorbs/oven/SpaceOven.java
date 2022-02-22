@@ -25,10 +25,10 @@ public class SpaceOven extends Oven {
 
     @Override
     public Optional<Orb> craftOrb() {
-        if (!isBroken() && resourceStorage.hasEnoughResource("meteorite stone", 1)
-                && resourceStorage.hasEnoughResource("star fragment", 15)) {
-            resourceStorage.takeResource("star fragment", 15);
-            resourceStorage.takeResource("meteorite stone", 1);
+        if (!isBroken() && resourceStorage.hasEnoughResource("meteoritestone", 1)
+                && resourceStorage.hasEnoughResource("starfragment", 15)) {
+            resourceStorage.takeResource("starfragment", 15);
+            resourceStorage.takeResource("meteoritestone", 1);
             SpaceOrb spaceOrb = new SpaceOrb(name);
             spaceOrb.charge("meteorite stone", 1);
             counter += 1;
