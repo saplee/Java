@@ -33,7 +33,7 @@ public class SpaceOven extends Oven {
             spaceOrb.charge("meteorite stone", 1);
             counter += 1;
             return Optional.of(spaceOrb);
-        } else if (!isBroken() && resourceStorage.hasEnoughResource("steel", 1)
+        } else if (!isBroken() && resourceStorage.hasEnoughResource("silver", 1)
                 && resourceStorage.hasEnoughResource("pearl", 1)) {
             resourceStorage.takeResource("silver", 1);
             resourceStorage.takeResource("pearl", 1);
@@ -44,15 +44,5 @@ public class SpaceOven extends Oven {
             return Optional.of(orb1);
         }
         return Optional.empty();
-    }
-
-    public static void main(String[] args) {
-        ResourceStorage resourceStorage = new ResourceStorage();
-        resourceStorage.addResource("star fragment", 12);
-        resourceStorage.addResource("meteorite stone", 1);
-        resourceStorage.addResource("Steel", 2);
-        resourceStorage.addResource("PEARL", 4);
-        SpaceOven spaceOven = new SpaceOven("k", resourceStorage);
-        System.out.println(spaceOven.craftOrb());
     }
 }
