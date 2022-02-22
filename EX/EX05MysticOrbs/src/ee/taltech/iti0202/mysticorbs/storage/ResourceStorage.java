@@ -59,7 +59,7 @@ public class ResourceStorage {
         String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
         if (amount < 1) {
             return false;
-        } else if (resourceMap.get(newResource) >= amount) {
+        } else if (resourceMap.containsKey(newResource) && resourceMap.get(newResource) >= amount) {
             return true;
         }
         return false;
