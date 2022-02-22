@@ -35,8 +35,10 @@ public class Oven {
     }
 
     public Optional<Orb> craftOrb() {
-        if (!isBroken() && resourceStorage.hasEnoughResource("silver", 1) && resourceStorage.hasEnoughResource("pearl",1) && resourceStorage.takeResource("silver", 1) && resourceStorage.takeResource("pearl", 1)) {
+        if (!isBroken() && resourceStorage.hasEnoughResource("silver", 1) && resourceStorage.hasEnoughResource("pearl", 1)) {
             Orb orb = new Orb(name);
+            resourceStorage.takeResource("silver", 1);
+            resourceStorage.takeResource("pearl", 1);
             orb.charge("silver", 1);
             orb.charge("pearl", 1);
             counter += 1;
