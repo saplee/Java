@@ -8,7 +8,7 @@ import java.util.Optional;
 public class Oven {
     protected String name;
     protected ResourceStorage resourceStorage;
-    private int counter;
+    protected int counter;
     protected int orbs;
 
     public Oven(String name, ResourceStorage resourceStorage) {

@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
+import ee.taltech.iti0202.mysticorbs.orb.MagicOrb;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
@@ -12,11 +13,22 @@ public class MagicOven extends Oven {
 
     @Override
     public boolean isBroken() {
-        return super.isBroken();
+        if (counter >= 5) {
+            return true;
+        }
+        return false;
     }
 
     @Override
     public Optional<Orb> craftOrb() {
-        return super.craftOrb();
+        if (!isBroken() && resourceStorage.hasEnoughResource("gold", 1) && resourceStorage.hasEnoughResource("dust", 3)) {
+            MagicOrb magicOrb = new MagicOrb(name);
+            resourceStorage.takeResource("gold", 1);
+            resourceStorage.takeResource("dust", 3);
+            magicOrb.charge("gold", 1);
+            magicOrb.charge("dust", 3);
+            return Optional.of(magicOrb);
+        }
+        return Optional.empty();
     }
 }

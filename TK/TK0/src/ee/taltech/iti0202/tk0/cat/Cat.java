@@ -1,11 +1,8 @@
 package ee.taltech.iti0202.tk0.cat;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Cat {
     private String name;
-    private int age;
+    private Integer age;
     private String color;
 
 
@@ -19,6 +16,7 @@ public class Cat {
         this.color = color;
     }
 
+
     public String getName() {
         return name;
     }
@@ -29,5 +27,12 @@ public class Cat {
 
     public String getColor() {
         return color;
+    }
+
+    public String toString() {
+        if (color == null && age == null) {
+            return name;
+        }
+        return color + " " + name + " (" + age + ")";
     }
 }
