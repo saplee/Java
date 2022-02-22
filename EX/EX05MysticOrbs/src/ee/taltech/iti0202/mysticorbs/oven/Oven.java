@@ -6,9 +6,10 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 import java.util.Optional;
 
 public class Oven {
-    private String name;
-    private ResourceStorage resourceStorage;
+    protected String name;
+    protected ResourceStorage resourceStorage;
     private int counter;
+    protected int orbs;
 
     public Oven(String name, ResourceStorage resourceStorage) {
         this.name = name;
@@ -24,7 +25,7 @@ public class Oven {
     }
 
     public int getCreatedOrbsAmount() {
-        return 0;
+        return orbs;
     }
 
     public boolean isBroken() {
@@ -42,6 +43,7 @@ public class Oven {
             orb.charge("silver", 1);
             orb.charge("pearl", 1);
             counter += 1;
+            orbs += 1;
             return Optional.of(orb);
         }
         return Optional.empty();
