@@ -27,6 +27,7 @@ public class MagicOven extends Oven {
             resourceStorage.takeResource("dust", 3);
             magicOrb.charge("gold", 1);
             magicOrb.charge("dust", 3);
+            counter += 1;
             return Optional.of(magicOrb);
         }
         return Optional.empty();

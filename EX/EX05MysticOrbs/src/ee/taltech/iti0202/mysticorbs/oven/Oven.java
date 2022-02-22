@@ -25,7 +25,7 @@ public class Oven {
     }
 
     public int getCreatedOrbsAmount() {
-        return orbs;
+        return counter;
     }
 
     public boolean isBroken() {
@@ -43,7 +43,6 @@ public class Oven {
             orb.charge("silver", 1);
             orb.charge("pearl", 1);
             counter += 1;
-            orbs += 1;
             return Optional.of(orb);
         }
         return Optional.empty();
