@@ -30,6 +30,8 @@ public class SpaceOven extends Oven {
             SpaceOrb spaceOrb = new SpaceOrb(name);
             resourceStorage.takeResource("star fragment", 15);
             resourceStorage.takeResource("meteorite stone", 1);
+            spaceOrb.charge("meteorite stone", 1);
+            spaceOrb.charge("star fragment", 15);
             counter += 1;
             return Optional.of(spaceOrb);
         } else if (!isBroken() && resourceStorage.hasEnoughResource("steel", 1)
