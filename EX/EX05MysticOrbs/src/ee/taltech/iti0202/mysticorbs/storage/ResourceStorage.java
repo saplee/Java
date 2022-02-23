@@ -77,13 +77,4 @@ public class ResourceStorage {
         }
         return false;
     }
-
-    public static void main(String[] args) {
-        ResourceStorage resourceStorage = new ResourceStorage();
-        resourceStorage.addResource("res1", 23);
-        resourceStorage.addResource("res1", 23);
-        resourceStorage.addResource("res2", 223);
-        System.out.println(resourceStorage.takeResource("res2", 1));
-        System.out.println(resourceStorage.getResourceAmount("res2"));
-    }
 }
