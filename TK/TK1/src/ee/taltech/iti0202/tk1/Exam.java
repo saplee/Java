@@ -1,6 +1,10 @@
 package ee.taltech.iti0202.tk1;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import static java.util.stream.Collectors.toMap;
 
 public class Exam {
 
@@ -80,18 +84,11 @@ public class Exam {
      * mapAB({"a": "aaa", "b": "bbb", "c": "aaa"}) → {"a": "aaa", "b": "bbb", "c": "aaa"}
      */
     public static Map<String, String> mapAB(Map<String, String> map) {
-        Set<String> keys = map.keySet();
-        LinkedHashMap<String, String> result = new LinkedHashMap<>();
-        for (String key : keys) {
-            if ( map.containsKey("b") && map.containsKey("a") && key.equals("a") && map.get("a").equals(map.get("b"))) {
-                keys.remove("a");
-                keys.remove("b");
-
-            }
+        if (map.containsKey("b") && map.containsKey("a") && map.equals("a") && map.get("a").equals(map.get("b"))) {
+            return map.entrySet().stream()
+                    .filter(e -> !e.getKey().equals("a") && !e.getKey().equals("b"))
+                    .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
         }
-        for (String key : keys) {
-            result.put(key, map.get(key));
-        }
-        return result;
+        return map;
     }
 }
