@@ -8,7 +8,6 @@ public class ResourceStorage {
     private LinkedHashMap<String, Integer> resourceMap = new LinkedHashMap<>();
 
     /**
-     *
      * @return
      */
     public boolean isEmpty() {
@@ -22,7 +21,6 @@ public class ResourceStorage {
     }
 
     /**
-     *
      * @param resource
      * @param amount
      */
@@ -37,7 +35,6 @@ public class ResourceStorage {
     }
 
     /**
-     *
      * @param resource
      * @return
      */
@@ -50,7 +47,6 @@ public class ResourceStorage {
     }
 
     /**
-     *
      * @param resource
      * @param amount
      * @return
@@ -66,7 +62,6 @@ public class ResourceStorage {
     }
 
     /**
-     *
      * @param resource
      * @param amount
      * @return
@@ -75,7 +70,7 @@ public class ResourceStorage {
         String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
         if (resourceMap.containsKey(newResource) && resourceMap.get(newResource) < amount) {
             return false;
-        } else if (resourceMap.containsKey(newResource)){
+        } else if (resourceMap.containsKey(newResource)) {
             resourceMap.replace(newResource, resourceMap.get(newResource),
                     resourceMap.get(newResource) - amount);
             return true;
