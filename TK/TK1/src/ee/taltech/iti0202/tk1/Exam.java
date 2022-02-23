@@ -38,16 +38,17 @@ public class Exam {
      * blackjack(19, 22) → 19
      */
     public static int blackjack(int a, int b) {
-        if (a > 21 && b > 21) {
+        final int number = 21;
+        if (a > number && b > number) {
             return 0;
         } else if (a > b) {
-            if (a <= 21) {
+            if (a <= number) {
                 return a;
             } else {
                 return b;
             }
         } else if (a < b) {
-            if (b <= 21) {
+            if (b <= number) {
                 return b;
             } else {
                 return a;
@@ -92,11 +93,5 @@ public class Exam {
             result.put(key, map.get(key));
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        List<Integer> k = new ArrayList<>(List.of(-10, -4, -2, -4, -2, 0));
-        System.out.println(centeredAverage(k));
-        System.out.println(blackjack(21, 19));
     }
 }
