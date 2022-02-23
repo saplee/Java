@@ -41,7 +41,7 @@ public class OrbFactory {
      * @return
      */
     public List<Orb> getAndClearProducedOrbsList() {
-        List<Orb> result = new ArrayList<>(orbs);
+        List<Orb> result = new LinkedList<>(orbs);
         orbs.clear();
         return result;
     }
