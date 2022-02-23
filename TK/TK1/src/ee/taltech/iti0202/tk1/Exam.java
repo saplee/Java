@@ -41,18 +41,20 @@ public class Exam {
      * blackjack(19, 22) → 19
      */
     public static int blackjack(int a, int b) {
-        if (a < 22 && b < 22) {
-            if (21 - a < 21 - b) {
+        if (a > 21 && b > 21) {
+            return 0;
+        } else if (a > b) {
+            if (a <= 21) {
                 return a;
-            } else if (21 - b >= 0 && 21 - a > 21 - b) {
+            } else {
                 return b;
             }
-        } else if (a > 21 && b > 21) {
-            return 0;
-        } else if (a > 21 && b <= 21) {
-            return b;
-        } else if (a <= 21 && b > 21) {
-            return a;
+        } else if (a < b) {
+            if (b <= 21) {
+                return b;
+            } else {
+                return a;
+            }
         }
         return 0;
     }
