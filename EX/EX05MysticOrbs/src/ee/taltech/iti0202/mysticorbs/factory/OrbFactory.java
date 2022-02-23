@@ -1,14 +1,10 @@
 package ee.taltech.iti0202.mysticorbs.factory;
 
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
-import ee.taltech.iti0202.mysticorbs.oven.InfinityMagicOven;
-import ee.taltech.iti0202.mysticorbs.oven.MagicOven;
+
 import ee.taltech.iti0202.mysticorbs.oven.Oven;
-import ee.taltech.iti0202.mysticorbs.oven.SpaceOven;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
-
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
