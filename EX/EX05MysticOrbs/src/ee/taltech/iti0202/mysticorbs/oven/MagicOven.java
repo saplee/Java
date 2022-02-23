@@ -7,6 +7,11 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 import java.util.Optional;
 
 public class MagicOven extends Oven {
+    /**
+     *
+     * @param name
+     * @param resourceStorage
+     */
     public MagicOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
     }
@@ -21,7 +26,8 @@ public class MagicOven extends Oven {
 
     @Override
     public Optional<Orb> craftOrb() {
-        if (!isBroken() && resourceStorage.hasEnoughResource("gold", 1) && resourceStorage.hasEnoughResource("dust", 3)) {
+        if (!isBroken() && resourceStorage.hasEnoughResource("gold", 1)
+                && resourceStorage.hasEnoughResource("dust", 3)) {
             MagicOrb magicOrb = new MagicOrb(name);
             resourceStorage.takeResource("gold", 1);
             resourceStorage.takeResource("dust", 3);

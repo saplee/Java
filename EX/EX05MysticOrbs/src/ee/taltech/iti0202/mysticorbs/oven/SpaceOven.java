@@ -17,7 +17,7 @@ public class SpaceOven extends Oven {
 
     @Override
     public boolean isBroken() {
-        if (counter >= 25) {
+        if (counter >= 5 * 5) {
             return true;
         }
         return false;
@@ -26,7 +26,7 @@ public class SpaceOven extends Oven {
     @Override
     public Optional<Orb> craftOrb() {
         if (!isBroken() && resourceStorage.hasEnoughResource("meteoritestone", 1)
-                && resourceStorage.hasEnoughResource("starfragment", 15)) {
+                && resourceStorage.hasEnoughResource("starfragment", 5 * 3)) {
             resourceStorage.takeResource("star fragment", 15);
             resourceStorage.takeResource("meteorite stone", 1);
             SpaceOrb spaceOrb = new SpaceOrb(name);

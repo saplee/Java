@@ -29,7 +29,7 @@ public class Oven {
     }
 
     public boolean isBroken() {
-        if (counter >= 15) {
+        if (counter >= 5 * 3) {
             return true;
         }
         return false;
