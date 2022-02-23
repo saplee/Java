@@ -82,7 +82,7 @@ public class Exam {
         Set<String> keys = map.keySet();
         LinkedHashMap<String, String> result = new LinkedHashMap<>();
         for (String key : keys) {
-            if (key.equals("a") && map.get("a").equals(map.get("b"))) {
+            if ( map.containsKey("b") && map.containsKey("a") && key.equals("a") && map.get("a").equals(map.get("b"))) {
                 keys.remove("a");
                 keys.remove("b");
 
