@@ -27,7 +27,7 @@ public class MagicOven extends Oven {
 
     @Override
     public Optional<Orb> craftOrb() {
-        if (number % 2 == 0) {
+        if (number % 2 != 0) {
             if (!isBroken() && resourceStorage.hasEnoughResource("silver", 1)
                     && resourceStorage.hasEnoughResource("pearl", 1)) {
                 Orb orb = new Orb(name);
