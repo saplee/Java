@@ -7,8 +7,9 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 import java.util.Optional;
 
 public class MagicOven extends Oven {
+    private int number;
+
     /**
-     *
      * @param name
      * @param resourceStorage
      */
@@ -26,15 +27,30 @@ public class MagicOven extends Oven {
 
     @Override
     public Optional<Orb> craftOrb() {
-        if (!isBroken() && resourceStorage.hasEnoughResource("gold", 1)
-                && resourceStorage.hasEnoughResource("dust", 3)) {
-            MagicOrb magicOrb = new MagicOrb(name);
-            resourceStorage.takeResource("gold", 1);
-            resourceStorage.takeResource("dust", 3);
-            magicOrb.charge("gold", 1);
-            magicOrb.charge("dust", 3);
-            counter += 1;
-            return Optional.of(magicOrb);
+        if (number != 0 && number % 2 == 0) {
+            if (!isBroken() && resourceStorage.hasEnoughResource("silver", 1)
+                    && resourceStorage.hasEnoughResource("pearl", 1)) {
+                Orb orb = new Orb(name);
+                resourceStorage.takeResource("silver", 1);
+                resourceStorage.takeResource("pearl", 1);
+                orb.charge("silver", 1);
+                orb.charge("pearl", 1);
+                counter += 1;
+                number++;
+                return Optional.of(orb);
+            }
+        } else {
+            if (!isBroken() && resourceStorage.hasEnoughResource("gold", 1)
+                    && resourceStorage.hasEnoughResource("dust", 3)) {
+                MagicOrb magicOrb = new MagicOrb(name);
+                resourceStorage.takeResource("gold", 1);
+                resourceStorage.takeResource("dust", 3);
+                magicOrb.charge("gold", 1);
+                magicOrb.charge("dust", 3);
+                counter += 1;
+                number++;
+                return Optional.of(magicOrb);
+            }
         }
         return Optional.empty();
     }
