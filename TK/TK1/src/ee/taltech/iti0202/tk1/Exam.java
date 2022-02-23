@@ -84,7 +84,7 @@ public class Exam {
      * mapAB({"a": "aaa", "b": "bbb", "c": "aaa"}) → {"a": "aaa", "b": "bbb", "c": "aaa"}
      */
     public static Map<String, String> mapAB(Map<String, String> map) {
-        if (map.containsKey("b") && map.containsKey("a") && map.equals("a") && map.get("a").equals(map.get("b"))) {
+        if (map.containsKey("b") && map.containsKey("a") && map.get("a").equals(map.get("b"))) {
             return map.entrySet().stream()
                     .filter(e -> !e.getKey().equals("a") && !e.getKey().equals("b"))
                     .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
