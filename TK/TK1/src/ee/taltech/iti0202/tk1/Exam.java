@@ -3,6 +3,7 @@ package ee.taltech.iti0202.tk1;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Exam {
 
@@ -40,10 +41,18 @@ public class Exam {
      * blackjack(19, 22) → 19
      */
     public static int blackjack(int a, int b) {
-        if (21 - a < 21 - b && 21 - a >= 0) {
-            return a;
-        } else if (21 - a > 21 - b && 21 - b >= 0) {
+        if (a < 22 && b < 22) {
+            if (21 - a < 21 - b) {
+                return a;
+            } else if (21 - b >= 0 && 21 - a > 21 - b) {
+                return b;
+            }
+        } else if (a > 21 && b > 21) {
+            return 0;
+        } else if (a > 21 && b <= 21) {
             return b;
+        } else if (a <= 21 && b > 21) {
+            return a;
         }
         return 0;
     }
@@ -71,11 +80,20 @@ public class Exam {
      * mapAB({"a": "aaa", "b": "bbb", "c": "aaa"}) → {"a": "aaa", "b": "bbb", "c": "aaa"}
      */
     public static Map<String, String> mapAB(Map<String, String> map) {
-        return null;
+        Set<String> keys = map.keySet();
+        for (String key : keys) {
+            if (key.equals("a") && map.get("a").equals(map.get("b"))) {
+                map.remove("a");
+                map.remove("b");
+
+            }
+        }
+        return map;
     }
 
     public static void main(String[] args) {
         List<Integer> k = new ArrayList<>(List.of(-10, -4, -2, -4, -2, 0));
         System.out.println(centeredAverage(k));
+        System.out.println(blackjack(21, 19));
     }
 }
