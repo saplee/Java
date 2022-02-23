@@ -1,9 +1,6 @@
 package ee.taltech.iti0202.tk1;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Exam {
 
@@ -56,7 +53,7 @@ public class Exam {
                 return a;
             }
         }
-        return 0;
+        return a;
     }
 
 
@@ -83,14 +80,18 @@ public class Exam {
      */
     public static Map<String, String> mapAB(Map<String, String> map) {
         Set<String> keys = map.keySet();
+        LinkedHashMap<String, String> result = new LinkedHashMap<>();
         for (String key : keys) {
             if (key.equals("a") && map.get("a").equals(map.get("b"))) {
-                map.remove("a");
-                map.remove("b");
+                keys.remove("a");
+                keys.remove("b");
 
             }
         }
-        return map;
+        for (String key : keys) {
+            result.put(key, map.get(key));
+        }
+        return result;
     }
 
     public static void main(String[] args) {
