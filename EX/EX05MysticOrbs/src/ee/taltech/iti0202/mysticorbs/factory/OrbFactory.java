@@ -4,12 +4,16 @@ import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.oven.Oven;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
+import javax.crypto.spec.OAEPParameterSpec;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class OrbFactory {
     private ResourceStorage resourceStorage;
-    private LinkedList<Oven> ovens = new LinkedList<>();
+    private List<Oven> ovens = new LinkedList<>();
+    private List<Orb> orbs = new LinkedList<>();
 
     /**
      * @param resourceStorage
@@ -38,14 +42,22 @@ public class OrbFactory {
      * @return
      */
     public List<Orb> getAndClearProducedOrbsList() {
-        return null;
+        List<Orb> result = new ArrayList<>(orbs);
+        orbs.clear();
+        return result;
     }
 
     /**
      * @return
      */
     public int produceOrbs() {
-        return 0;
+        for (Oven oven : ovens) {
+            Optional<Orb> orb = oven.craftOrb();
+            if (orb.isPresent()) {
+                orbs.add(orb.get());
+            }
+        }
+        return orbs.size();
     }
 
     /**
@@ -53,6 +65,9 @@ public class OrbFactory {
      * @return
      */
     public int produceOrbs(int cycles) {
-        return 0;
+        for (int i = 0; i < cycles; i++) {
+            produceOrbs();
+        }
+        return orbs.size();
     }
 }

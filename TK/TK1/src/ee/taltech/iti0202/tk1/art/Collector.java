@@ -25,8 +25,8 @@ public class Collector {
      */
     boolean sellPainting(Painting painting, Collector fellowCollector) {
         if (!fellowCollector.getPaintings().contains(painting) && result.contains(painting)) {
-            addPainting(painting);
-            fellowCollector.result.remove(painting);
+            fellowCollector.addPainting(painting);
+            this.result.remove(painting);
             return true;
         }
         return false;
