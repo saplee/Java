@@ -25,7 +25,7 @@ public class ResourceStorage {
      * @param amount
      */
     public void addResource(String resource, int amount) {
-        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
+        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z0-9]+", "");
         if (amount > 0 && !resource.isEmpty() && !resourceMap.containsKey(newResource)
                 && resource.trim().length() > 0) {
             resourceMap.put(newResource, amount);
@@ -39,7 +39,7 @@ public class ResourceStorage {
      * @return
      */
     public int getResourceAmount(String resource) {
-        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
+        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z0-9]+", "");
         if (resourceMap.containsKey(newResource)) {
             return resourceMap.get(newResource);
         }
@@ -52,7 +52,7 @@ public class ResourceStorage {
      * @return
      */
     public boolean hasEnoughResource(String resource, int amount) {
-        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
+        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z0-9]+", "");
         if (amount < 1) {
             return false;
         } else if (resourceMap.containsKey(newResource) && resourceMap.get(newResource) >= amount) {
@@ -67,7 +67,7 @@ public class ResourceStorage {
      * @return
      */
     public boolean takeResource(String resource, int amount) {
-        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z]", "");
+        String newResource = resource.toLowerCase().replaceAll("[^A-Za-z0-9]+", "");
         if (resourceMap.containsKey(newResource) && resourceMap.get(newResource) < amount) {
             return false;
         } else if (resourceMap.containsKey(newResource)) {
@@ -76,5 +76,14 @@ public class ResourceStorage {
             return true;
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        ResourceStorage resourceStorage = new ResourceStorage();
+        resourceStorage.addResource("res1", 23);
+        resourceStorage.addResource("res1", 23);
+        resourceStorage.addResource("res2", 223);
+        System.out.println(resourceStorage.takeResource("res2", 1));
+        System.out.println(resourceStorage.getResourceAmount("res2"));
     }
 }
