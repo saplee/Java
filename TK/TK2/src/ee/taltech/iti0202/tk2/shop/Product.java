@@ -36,7 +36,7 @@ public class Product {
      */
     public String toString() {
         if (name != null) {
-            return name + "(" + price + ")";
+            return name + " " + "(" + price + ")";
         }
         return "(" + price + ")";
     }
