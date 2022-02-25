@@ -47,7 +47,7 @@ public class Exam {
         String number = Integer.toString(sum);
         int lastNumber = Integer.parseInt(String.valueOf(number.charAt(number.length() - 1)));
         if (10 - lastNumber <= 5) {
-            sum += 10 + lastNumber;
+            sum += 10 - lastNumber;
         } else {
             sum -= lastNumber;
         }
@@ -96,7 +96,7 @@ public class Exam {
     }
 
     public static void main(String[] args) {
-        System.out.println(roundSum(6, 4, 4));
+        System.out.println(roundSum(16, 17, 23));
     }
 }
 
