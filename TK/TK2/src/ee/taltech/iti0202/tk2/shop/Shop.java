@@ -12,7 +12,7 @@ public class Shop {
      * @param product
      * @return
      */
-    boolean addProduct(Product product) {
+    public boolean addProduct(Product product) {
         if (!products.contains(product) &&
                 !products.stream().map(Product::getPrice).toList().contains(product.getPrice())) {
             products.add(product);
@@ -26,13 +26,14 @@ public class Shop {
      * @param maxPrice
      * @return
      */
-    Optional<Product> sellProduct(String name, int maxPrice) {
+    public Optional<Product> sellProduct(String name, int maxPrice) {
         products.sort(Comparator.comparing(Product::getPrice));
         Product result = null;
         for (Product product : products) {
             if (product.getName() != null && product.getName().equals(name)) ;
             result = product;
         }
+        products.remove(result);
         return Optional.of(result);
     }
 
