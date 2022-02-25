@@ -95,9 +95,5 @@ public class Exam {
         }
         return map;
     }
-
-    public static void main(String[] args) {
-        System.out.println(roundSum(16, 17, 23));
-    }
 }
 
