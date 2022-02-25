@@ -48,7 +48,6 @@ public class Exam {
         int lastNumber = Integer.parseInt(String.valueOf(number.charAt(number.length() - 1)));
         if (10 - lastNumber <= 5) {
             sum += 10 - lastNumber;
-            sum -= 10;
         } else {
             sum -= lastNumber;
         }
