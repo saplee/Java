@@ -17,7 +17,18 @@ public class Exam {
      * sum67([1, 1, 6, 7, 2]) => 4
      */
     public static int sum67(List<Integer> numbers) {
-        return -1;
+        int result = 0;
+        boolean falseOrTrue = false;
+        for (int number : numbers) {
+            if (number == 6 && !falseOrTrue) {
+                falseOrTrue = true;
+            } else if (number == 7 && falseOrTrue) {
+                falseOrTrue = false;
+            } else if (!falseOrTrue) {
+                result += number;
+            }
+        }
+        return result;
     }
 
     /**
@@ -32,7 +43,16 @@ public class Exam {
      * roundSum(6, 4, 4) => 10
      */
     public static int roundSum(int a, int b, int c) {
-        return -1;
+        int sum = a + b + c;
+        String number = Integer.toString(sum);
+        int lastNumber = Integer.parseInt(String.valueOf(number.charAt(number.length() - 1)));
+        ;
+        if (10 - lastNumber <= 5) {
+            sum += 10 - lastNumber;
+        } else {
+            sum -= lastNumber;
+        }
+        return sum;
     }
 
     /**
@@ -79,7 +99,7 @@ public class Exam {
     }
 
     public static void main(String[] args) {
-        System.out.println(oneTwo("abcd"));
+        System.out.println(roundSum(6, 4, 4));
     }
 }
 
