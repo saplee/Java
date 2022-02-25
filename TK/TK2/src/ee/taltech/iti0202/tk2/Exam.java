@@ -49,7 +49,8 @@ public class Exam {
         if (10 - lastNumber <= 5) {
             sum += 10 - lastNumber;
         } else {
-            sum -= lastNumber - 10;
+            sum -= lastNumber;
+            sum -= 10;
         }
         return sum;
     }
