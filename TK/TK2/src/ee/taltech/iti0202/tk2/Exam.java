@@ -50,6 +50,7 @@ public class Exam {
             sum += 10 - lastNumber;
         } else {
             sum -= lastNumber;
+            sum += 10;
         }
         return sum;
     }
