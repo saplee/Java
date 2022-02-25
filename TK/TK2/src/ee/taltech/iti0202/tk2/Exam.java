@@ -66,7 +66,7 @@ public class Exam {
      * oneTwo("tca") => "cat"
      * oneTwo("tcagdo") => "catdog"
      * oneTwo("abcd") => "bca"
-     * oneTwo("a") => ""
+     * oneTwo("a") => " "
      */
     public static String oneTwo(String str) {
         StringBuilder result = new StringBuilder();
