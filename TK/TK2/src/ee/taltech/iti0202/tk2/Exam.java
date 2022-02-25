@@ -46,11 +46,10 @@ public class Exam {
         int sum = a + b + c;
         String number = Integer.toString(sum);
         int lastNumber = Integer.parseInt(String.valueOf(number.charAt(number.length() - 1)));
-        ;
         if (10 - lastNumber <= 5) {
-            sum += 10 - lastNumber;
+            sum += 10 + lastNumber;
         } else {
-            sum -= lastNumber;
+            sum -= lastNumber - 10;
         }
         return sum;
     }
@@ -74,8 +73,6 @@ public class Exam {
             result.append(word.charAt(i - 1));
             result.append(word.charAt(i));
             result.append(word.charAt(i - 2));
-            ;
-
         }
         return result.toString();
     }
