@@ -5,7 +5,6 @@ public class Product {
     private Integer price;
 
     /**
-     *
      * @param name
      * @param price
      */
@@ -15,7 +14,6 @@ public class Product {
     }
 
     /**
-     *
      * @param price
      */
     public Product(int price) {
@@ -27,7 +25,6 @@ public class Product {
     }
 
     /**
-     *
      * @return
      */
     public int getPrice() {
@@ -35,12 +32,12 @@ public class Product {
     }
 
     /**
-     *
      * @return
      */
     public String toString() {
         if (name != null) {
             return name + "(" + price + ")";
-        }return "(" + price + ")";
+        }
+        return "(" + price + ")";
     }
 }

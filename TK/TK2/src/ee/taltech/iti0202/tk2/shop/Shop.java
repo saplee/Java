@@ -40,7 +40,7 @@ public class Shop {
     /**
      * @return
      */
-    List<Product> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 }
