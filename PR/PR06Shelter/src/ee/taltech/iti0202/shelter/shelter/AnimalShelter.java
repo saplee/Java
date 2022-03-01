@@ -6,6 +6,9 @@ import ee.taltech.iti0202.shelter.animalprovider.AnimalProvider;
 import java.util.List;
 
 public class AnimalShelter {
+    /**
+     * @param animalProvider
+     */
     public AnimalShelter(AnimalProvider animalProvider) {
     }
 
@@ -29,4 +32,3 @@ public class AnimalShelter {
         return null;
     }
 }
-
