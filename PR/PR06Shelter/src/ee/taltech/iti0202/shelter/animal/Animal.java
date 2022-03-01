@@ -19,12 +19,15 @@ public abstract class Animal {
     }
 
     /**
-     * @return
+     * @return color
      */
     public String getColor() {
         return color;
     }
 
+    /**
+     * @param color
+     */
     public void setColor(String color) {
         this.color = color;
     }
