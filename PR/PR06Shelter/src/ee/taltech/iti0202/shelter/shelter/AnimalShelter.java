@@ -3,13 +3,18 @@ package ee.taltech.iti0202.shelter.shelter;
 import ee.taltech.iti0202.shelter.animal.Animal;
 import ee.taltech.iti0202.shelter.animalprovider.AnimalProvider;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class AnimalShelter {
+    private AnimalProvider animalProvider;
+    private LinkedList <Animal> result = new LinkedList<>();
+
     /**
      * @param animalProvider
      */
     public AnimalShelter(AnimalProvider animalProvider) {
+        this.animalProvider = animalProvider;
     }
 
     /**
@@ -29,6 +34,6 @@ public class AnimalShelter {
      * @return Maximum {count} number of animals with the given type and color.
      */
     public List<Animal> getAnimals(Animal.Type animalType, String color, int count) {
-        return null;
+        return result;
     }
 }
