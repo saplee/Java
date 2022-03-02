@@ -34,6 +34,20 @@ public class AnimalShelter {
      * @return Maximum {count} number of animals with the given type and color.
      */
     public List<Animal> getAnimals(Animal.Type animalType, String color, int count) {
-        return result;
+        LinkedList<Animal> result = new LinkedList<>();
+        while (true) {
+            List<Animal> myList = animalProvider.provide(animalType);
+            {
+                if (myList.size() != 0) {
+                    for (Animal animal : myList) {
+                        if (animal.getColor().equals(color)) {
+                            result.add(animal);
+                        }
+                    }
+                } else if (result.size() == count) {
+                    return result;
+                }
+            }
+        }
     }
 }
