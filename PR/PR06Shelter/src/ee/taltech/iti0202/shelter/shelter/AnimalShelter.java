@@ -38,12 +38,13 @@ public class AnimalShelter {
             List<Animal> animalList = animalProvider.provide(animalType);
             if (animalList.isEmpty()) {
                 return results;
-            }
-            for (Animal animal : animalList) {
-                if (results.size() == count) {
-                    return results;
-                } else if (animal.getColor().equals(color) && !results.contains(animal) && results.size() < count) {
-                    results.add(animal);
+            } else {
+                for (Animal animal : animalList) {
+                    if (results.size() == count) {
+                        return results;
+                    } else if (animal.getColor().equals(color) && !results.contains(animal) && results.size() < count) {
+                        results.add(animal);
+                    }
                 }
             }
         }
