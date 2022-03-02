@@ -70,13 +70,23 @@ public class OrbFactory {
         return orbs.size();
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Oven> getOvensThatCannotBeFixed() {
         return null;
     }
 
+    /**
+     *
+     */
     public void getRidOfOvensThatCannotBeFixed() {
     }
 
+    /**
+     *
+     */
     public void optimizeOvensOrder() {
     }
 }
