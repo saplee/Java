@@ -1,12 +1,8 @@
 package ee.taltech.iti0202.shelter.shelter;
 
 import ee.taltech.iti0202.shelter.animal.Animal;
-import ee.taltech.iti0202.shelter.animal.Hirola;
-import ee.taltech.iti0202.shelter.animal.Tarantula;
-import ee.taltech.iti0202.shelter.animal.Wombat;
 import ee.taltech.iti0202.shelter.animalprovider.AnimalProvider;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
