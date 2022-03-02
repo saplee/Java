@@ -8,7 +8,7 @@ import java.util.List;
 
 public class AnimalShelter {
     private AnimalProvider animalProvider;
-    private LinkedList <Animal> result = new LinkedList<>();
+    private LinkedList<Animal> result = new LinkedList<>();
 
     /**
      * @param animalProvider
