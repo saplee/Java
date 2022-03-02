@@ -10,7 +10,6 @@ import java.util.List;
 
 public class AnimalShelter {
     private AnimalProvider animalProvider;
-    private LinkedList<Animal> result = new LinkedList<>();
 
     /**
      * @param animalProvider
@@ -51,5 +50,25 @@ public class AnimalShelter {
                 return result;
             }
         }
+    }
+
+    public static void main(String[] args) {
+        AnimalProvider animalProvid = new AnimalProvider() {
+            @Override
+            public List<Animal> provide(Animal.Type type) {
+                List<Animal> animals = new ArrayList<>();
+                Animal animal = new Hirola("red");
+                animals.add(animal);
+                animals.add(animal);
+                animals.add(animal);
+                animals.add(animal);
+                animals.add(animal);
+                animals.add(animal);
+                animals.add(animal);
+                return animals;
+            }
+        };
+        AnimalShelter animalShelter = new AnimalShelter(animalProvid);
+        System.out.println(animalShelter.getAnimals(Animal.Type.HIROLA, "red", 3));
     }
 }
