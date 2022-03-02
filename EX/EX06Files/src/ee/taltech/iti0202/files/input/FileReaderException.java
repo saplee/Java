@@ -6,14 +6,12 @@ public class FileReaderException {
      * @return
      */
     public Throwable getCause() {
-        return null;
     }
 
     /**
      *
      * @return
      */
-    public Throwable getMessage() {
-        return null;
+    public String getMessage() {
     }
 }
