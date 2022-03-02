@@ -1,11 +1,12 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
+import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.Optional;
 
-public class Oven {
+public class Oven implements Comparable, Fixable{
     protected String name;
     protected ResourceStorage resourceStorage;
     protected int counter;
@@ -71,5 +72,20 @@ public class Oven {
             return Optional.of(orb);
         }
         return Optional.empty();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
+    @Override
+    public void fix() throws CannotFixException {
+
+    }
+
+    @Override
+    public int getTimesFixed() {
+        return 0;
     }
 }
