@@ -45,6 +45,8 @@ public class AnimalShelter {
                 }
             } else if (result.size() == count) {
                 return result;
+            } else if (myList.size() == 0) {
+                return result;
             }
         }
     }
