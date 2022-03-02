@@ -10,6 +10,7 @@ import java.util.List;
 
 public class AnimalShelter {
     private AnimalProvider animalProvider;
+    private LinkedList<Animal> result = new LinkedList<>();
 
     /**
      * @param animalProvider
@@ -35,7 +36,6 @@ public class AnimalShelter {
      * @return Maximum {count} number of animals with the given type and color.
      */
     public List<Animal> getAnimals(Animal.Type animalType, String color, int count) {
-        LinkedList<Animal> result = new LinkedList<>();
         while (true) {
             List<Animal> myList = animalProvider.provide(animalType);
             if (myList.size() != 0) {
