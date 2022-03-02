@@ -3,6 +3,7 @@ package ee.taltech.iti0202.shelter.shelter;
 import ee.taltech.iti0202.shelter.animal.Animal;
 import ee.taltech.iti0202.shelter.animalprovider.AnimalProvider;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,20 +34,21 @@ public class AnimalShelter {
      * @return Maximum {count} number of animals with the given type and color.
      */
     public List<Animal> getAnimals(Animal.Type animalType, String color, int count) {
-        LinkedList<Animal> result = new LinkedList<>();
-        while (true) {
-            List<Animal> myList = animalProvider.provide(animalType);
-            if (myList.size() != 0) {
-                for (Animal animal : myList) {
-                    if (result.size() == count) {
-                        return result;
-                    } else if (animal.getColor().equals(color) && !result.contains(animal) && result.size() < count) {
-                        result.add(animal);
-                    }
+        List<Animal> animalList;
+        List<Animal> results = new ArrayList<>();
+        while (results.size() < count) {
+            animalList = animalProvider.provide(animalType);
+            if (animalList.isEmpty()) {
+                return results;
+            }
+            for (Animal animal : animalList) {
+                if (results.size() == count) {
+                    return results;
+                } else if (animal.getColor().equals(color) && !results.contains(animal) && results.size() < count) {
+                    results.add(animal);
                 }
-            } else {
-                return result;
             }
         }
+        return results;
     }
 }
