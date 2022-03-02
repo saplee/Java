@@ -6,10 +6,10 @@ public interface Fixable {
     /**
      * @throws CannotFixException
      */
-    public void fix() throws CannotFixException;
+    void fix() throws CannotFixException;
 
     /**
      * @return
      */
-    public int getTimesFixed();
+    int getTimesFixed();
 }
