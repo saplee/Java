@@ -38,9 +38,9 @@ public class AnimalShelter {
             List<Animal> myList = animalProvider.provide(animalType);
             if (myList.size() != 0) {
                 for (Animal animal : myList) {
-                    if (result.size() < count) {
+                    if (result.size() == count) {
                         return result;
-                    } else if (animal.getColor().equals(color) && !result.contains(animal)) {
+                    } else if (animal.getColor().equals(color) && !result.contains(animal) && result.size() < count) {
                         result.add(animal);
                     }
                 }
