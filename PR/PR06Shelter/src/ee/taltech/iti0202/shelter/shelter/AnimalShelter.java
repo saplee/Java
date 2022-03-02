@@ -2,6 +2,8 @@ package ee.taltech.iti0202.shelter.shelter;
 
 import ee.taltech.iti0202.shelter.animal.Animal;
 import ee.taltech.iti0202.shelter.animal.Hirola;
+import ee.taltech.iti0202.shelter.animal.Tarantula;
+import ee.taltech.iti0202.shelter.animal.Wombat;
 import ee.taltech.iti0202.shelter.animalprovider.AnimalProvider;
 
 import java.util.ArrayList;
@@ -42,7 +44,7 @@ public class AnimalShelter {
                 for (Animal animal : myList) {
                     if (result.size() == count) {
                         return result;
-                    } else if (animal.getColor().equals(color)) {
+                    } else if (animal.getColor().equals(color) && !result.contains(animal)) {
                         result.add(animal);
                     }
                 }
@@ -50,25 +52,5 @@ public class AnimalShelter {
                 return result;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        AnimalProvider animalProvid = new AnimalProvider() {
-            @Override
-            public List<Animal> provide(Animal.Type type) {
-                List<Animal> animals = new ArrayList<>();
-                Animal animal = new Hirola("red");
-                animals.add(animal);
-                animals.add(animal);
-                animals.add(animal);
-                animals.add(animal);
-                animals.add(animal);
-                animals.add(animal);
-                animals.add(animal);
-                return animals;
-            }
-        };
-        AnimalShelter animalShelter = new AnimalShelter(animalProvid);
-        System.out.println(animalShelter.getAnimals(Animal.Type.HIROLA, "red", 3));
     }
 }
