@@ -44,8 +44,9 @@ public class AnimalShelter {
                         result.add(animal);
                     }
                 }
+            } else {
+                return result;
             }
-            return result;
         }
     }
 }
