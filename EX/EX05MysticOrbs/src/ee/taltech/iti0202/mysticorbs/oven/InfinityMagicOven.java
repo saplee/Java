@@ -4,7 +4,6 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 public class InfinityMagicOven extends MagicOven {
     /**
-     *
      * @param name
      * @param resourceStorage
      */

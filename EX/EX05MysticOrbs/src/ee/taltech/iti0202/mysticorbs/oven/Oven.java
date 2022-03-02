@@ -6,13 +6,12 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.Optional;
 
-public class Oven implements Comparable, Fixable{
+public class Oven implements Comparable, Fixable {
     protected String name;
     protected ResourceStorage resourceStorage;
     protected int counter;
 
     /**
-     *
      * @param name
      * @param resourceStorage
      */
@@ -22,7 +21,6 @@ public class Oven implements Comparable, Fixable{
     }
 
     /**
-     *
      * @return
      */
     public String getName() {
@@ -30,7 +28,6 @@ public class Oven implements Comparable, Fixable{
     }
 
     /**
-     *
      * @return
      */
     public ResourceStorage getResourceStorage() {
@@ -38,7 +35,6 @@ public class Oven implements Comparable, Fixable{
     }
 
     /**
-     *
      * @return
      */
     public int getCreatedOrbsAmount() {
@@ -46,7 +42,6 @@ public class Oven implements Comparable, Fixable{
     }
 
     /**
-     *
      * @return
      */
     public boolean isBroken() {
@@ -57,7 +52,6 @@ public class Oven implements Comparable, Fixable{
     }
 
     /**
-     *
      * @return
      */
     public Optional<Orb> craftOrb() {
