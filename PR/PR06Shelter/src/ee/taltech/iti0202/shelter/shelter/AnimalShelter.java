@@ -1,8 +1,10 @@
 package ee.taltech.iti0202.shelter.shelter;
 
 import ee.taltech.iti0202.shelter.animal.Animal;
+import ee.taltech.iti0202.shelter.animal.Hirola;
 import ee.taltech.iti0202.shelter.animalprovider.AnimalProvider;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -37,11 +39,11 @@ public class AnimalShelter {
         LinkedList<Animal> result = new LinkedList<>();
         while (true) {
             List<Animal> myList = animalProvider.provide(animalType);
-            if (result.size() == count) {
-                return result;
-            } else if (myList.size() != 0) {
+            if (myList.size() != 0) {
                 for (Animal animal : myList) {
-                    if (animal.getColor().equals(color)) {
+                    if (result.size() == count) {
+                        return result;
+                    } else if (animal.getColor().equals(color)) {
                         result.add(animal);
                     }
                 }
