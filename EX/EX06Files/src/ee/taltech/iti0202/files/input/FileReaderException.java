@@ -5,7 +5,7 @@ public class FileReaderException {
      *
      * @return
      */
-    public String getCause() {
+    public Throwable getCause() {
         return null;
     }
 
@@ -13,7 +13,7 @@ public class FileReaderException {
      *
      * @return
      */
-    public String getMessage() {
-        return "No such file";
+    public Throwable getMessage() {
+        return null;
     }
 }
