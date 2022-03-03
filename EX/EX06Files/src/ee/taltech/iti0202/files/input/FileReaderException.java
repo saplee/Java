@@ -1,17 +1,11 @@
 package ee.taltech.iti0202.files.input;
 
-public class FileReaderException {
+public class FileReaderException extends RuntimeException {
     /**
-     *
-     * @return
+     * @param reason
+     * @param cause
      */
-    public Throwable getCause() {
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getMessage() {
+    public FileReaderException(String reason, Throwable cause) {
+        super(reason, cause);
     }
 }
