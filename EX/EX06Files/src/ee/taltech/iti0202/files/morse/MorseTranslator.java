@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class MorseTranslator {
-    private HashMap<String, String> map = new HashMap<>();
 
     public Map<String, String> addMorseCodes(List<String> lines) {
+        HashMap<String, String> map = new HashMap<>();
         for (String line : lines) {
             List<String> list = new ArrayList<>(List.of(line.split(" ")));
             map.put(list.get(0), list.get(1));

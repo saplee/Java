@@ -20,8 +20,7 @@ public class OutputFilesWriter {
             }
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            return false;
         }
-        return true;
     }
 }
