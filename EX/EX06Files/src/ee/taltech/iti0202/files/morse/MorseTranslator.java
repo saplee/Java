@@ -7,7 +7,7 @@ public class MorseTranslator {
 
     public Map<String, String> addMorseCodes(List<String> lines) {
         for (String line : lines) {
-            List<String> list = new ArrayList<>(List.of(line.split(" ")));
+            List<String> list = new ArrayList<>(List.of(line.trim().split(" ")));
             map.put(list.get(0).toLowerCase(Locale.ROOT), list.get(1));
         }
         return map;
