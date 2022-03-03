@@ -22,6 +22,6 @@ public class OutputFilesWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return true;
     }
-}
 }
