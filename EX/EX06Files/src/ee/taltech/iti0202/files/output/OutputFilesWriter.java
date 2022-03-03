@@ -16,7 +16,7 @@ public class OutputFilesWriter {
         Path path = Paths.get(filename);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             for (String line : lines) {
-                writer.write(line);
+                writer.write(line + "\n");
             }
             return true;
         } catch (IOException e) {
