@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class InputFilesLines implements InputFilesReader {
@@ -15,7 +16,7 @@ public class InputFilesLines implements InputFilesReader {
     public List<String> readTextFromFile(String filename) {
         List<String> result = new ArrayList<>();
         try (Stream<String> stream = Files.lines(Paths.get(filename))) {
-            result.add(stream.toString());
+            result = stream.collect(Collectors.toList());
 
         } catch (IOException e) {
             throw new FileReaderException("No such file", e);
