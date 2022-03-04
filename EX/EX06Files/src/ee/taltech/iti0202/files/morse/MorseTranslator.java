@@ -58,7 +58,7 @@ public class MorseTranslator {
 
     private String translateLineFromMorse(String line) {
         String result = "";
-        String word = line.toLowerCase().trim();
+        String word = line.trim();
         for (String key : map.keySet()) {
             for (int i = 0; i < line.length(); i++) {
                 if (word.substring(i, i + 1).equals("\t")) {
