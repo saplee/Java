@@ -8,7 +8,7 @@ public class MorseTranslator {
     public Map<String, String> addMorseCodes(List<String> lines) {
         for (String line : lines) {
             List<String> list = new ArrayList<>(List.of(line.trim().split(" ")));
-            map.put(list.get(0).toLowerCase(Locale.ROOT), list.get(1));
+            map.put(list.get(0).toLowerCase(), list.get(1));
         }
         return map;
     }
@@ -27,7 +27,7 @@ public class MorseTranslator {
 
     private String translateLineToMorse(String line) {
         String result = "";
-        String word = line.toLowerCase(Locale.ROOT);
+        String word = line.toLowerCase();
         for (int i = 0; i < line.length(); i++) {
             if (word.substring(i, i + 1).equals(" ")) {
                 result += "\t";
@@ -35,7 +35,7 @@ public class MorseTranslator {
                 result += map.get(word.substring(i, i + 1)) + " ";
             }
         }
-        return result;
+        return result.trim();
     }
 
     private String translateLineFromMorse(String line) {
