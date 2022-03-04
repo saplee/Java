@@ -4,9 +4,9 @@ import java.util.*;
 
 public class MorseTranslator {
     private HashMap<String, String> map = new HashMap<>();
+    private HashMap<String, String> map2 = new HashMap<>();
 
     /**
-     *
      * @param lines
      * @return
      */
@@ -15,11 +15,14 @@ public class MorseTranslator {
             List<String> list = new ArrayList<>(List.of(line.trim().split(" ")));
             map.put(list.get(0).toLowerCase(), list.get(1));
         }
+        for (String line : lines) {
+            List<String> list = new ArrayList<>(List.of(line.trim().split(" ")));
+            map2.put(list.get(1), list.get(0).toLowerCase());
+        }
         return map;
     }
 
     /**
-     *
      * @param lines
      * @return
      */
@@ -32,12 +35,15 @@ public class MorseTranslator {
     }
 
     /**
-     *
      * @param lines
      * @return
      */
     public List<String> translateLinesFromMorse(List<String> lines) {
-        return null;
+        List<String> result = new ArrayList<>();
+        for (String line : lines) {
+            result.add(translateLineFromMorse(line));
+        }
+        return result;
     }
 
     private String translateLineToMorse(String line) {
@@ -56,6 +62,15 @@ public class MorseTranslator {
     }
 
     private String translateLineFromMorse(String line) {
-        return null;
+        String result = "";
+        String word = line.toLowerCase().trim();
+        for (int i = 0; i < line.length(); i++) {
+            if (word.substring(i, i + 1).equals("\t")) {
+                result += " ";
+            } else if (map2.containsKey(word.substring(i, i + 1))) {
+                result += map2.get(word.substring(i, i + 1));
+            }
+        }
+        return result.trim();
     }
 }
