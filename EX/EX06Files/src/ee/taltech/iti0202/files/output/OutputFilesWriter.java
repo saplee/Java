@@ -8,7 +8,12 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class OutputFilesWriter {
-
+    /**
+     *
+     * @param lines
+     * @param filename
+     * @return
+     */
     public boolean writeLinesToFile(List<String> lines, String filename) {
         if (filename == null) {
             return false;
