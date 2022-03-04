@@ -98,12 +98,10 @@ public class MorseTranslator {
 
     private String translateLineFromMorse(String line) {
         String result = "";
-        List<String> list = new ArrayList<>(List.of(line.split(" ")));
+        List<String> list = new ArrayList<>(List.of(line.replaceAll("\t", " \t ").split(" ")));
         for (String morse : list) {
-            if (morse.contains("\t")) {
-                result += map2.get(morse.substring(0, morse.indexOf("\t")));
+            if (morse.equals("\t")) {
                 result += " ";
-                result += map2.get(morse.substring(morse.indexOf("\t") + 1));
             } else if (map2.containsKey(morse)) {
                 result += map2.get(morse);
             }
@@ -113,8 +111,10 @@ public class MorseTranslator {
 
     public static void main(String[] args) {
         List<String> lit = new ArrayList<>(List.of(".-.. --- .-. . --\t.. .--. ... ..- --\t-.. --- .-.. --- .-.\t... .. -\t.- -- . - --..--\t-.-. --- -. ... . -.-. - . - ..- .-.\t.- -.. .. .--. .. ... -.-. .. -. --.\t. .-.. .. - --..--"));
+        List<String> sõna = new ArrayList<>(List.of("ma olen l kol"));
         MorseTranslator morseTranslator = new MorseTranslator();
         morseTranslator.addMorseCodes(morseTranslator.readTextFromFile("/Users/sanderpleesi1/Downloads/morse.txt"));
-        System.out.println(morseTranslator.translateLinesFromMorse(lit));
+        List<String> morse = morseTranslator.translateLinesToMorse(sõna);
+        System.out.println(morseTranslator.translateLinesFromMorse(morse));
     }
 }
