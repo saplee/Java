@@ -37,7 +37,7 @@ public class MorseTranslator {
                 result += " " + map.get(word.substring(i, i + 1));
             }
         }
-        return result.trim();
+        return result;
     }
 
     private String translateLineFromMorse(String line) {
