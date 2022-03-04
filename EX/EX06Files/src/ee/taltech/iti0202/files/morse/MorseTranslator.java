@@ -22,7 +22,16 @@ public class MorseTranslator {
     }
 
     private String translateLineToMorse(String line) {
-        return null;
+        String result = "";
+        String word = line.toLowerCase(Locale.ROOT);
+        for (int i = 0; i < line.length(); i++) {
+            if (word.substring(i, i + 1).equals(" ")) {
+                result += "\t";
+            } else if (map.containsKey(word.substring(i, i + 1))) {
+                result += map.get(word.substring(i, i + 1)) + " ";
+            }
+        }
+        return result;
     }
 
     private String translateLineFromMorse(String line) {
