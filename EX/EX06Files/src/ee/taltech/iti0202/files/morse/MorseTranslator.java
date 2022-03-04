@@ -14,7 +14,7 @@ public class MorseTranslator {
     }
 
     public List<String> translateLinesToMorse(List<String> lines) {
-        return null;
+        return Collections.singletonList(translateLineFromMorse(String.valueOf(lines)));
     }
 
     public List<String> translateLinesFromMorse(List<String> lines) {
