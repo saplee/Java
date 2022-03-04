@@ -33,6 +33,11 @@ public class MorseTranslator {
         return map;
     }
 
+    /**
+     *
+     * @param filename
+     * @return
+     */
     public List<String> readTextFromFile(String filename) {
         Path path = Paths.get(filename);
         List<String> result = new ArrayList<>();
@@ -93,7 +98,7 @@ public class MorseTranslator {
 
     private String translateLineFromMorse(String line) {
         String result = "";
-        List<String> list = new ArrayList<>(List.of(line.trim().split(" ")));
+        List<String> list = new ArrayList<>(List.of(line.split(" ")));
         for (String morse : list) {
             if (morse.contains("\t")) {
                 result += map2.get(morse.substring(0, morse.indexOf("\t")));
