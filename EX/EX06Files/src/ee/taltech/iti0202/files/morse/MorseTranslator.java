@@ -31,8 +31,10 @@ public class MorseTranslator {
         for (int i = 0; i < line.length(); i++) {
             if (word.substring(i, i + 1).equals(" ")) {
                 result += "\t";
+            } else if (map.containsKey(word.substring(i, i + 1)) && i > 1 && word.charAt(i - 1) == ' ') {
+                result += map.get(word.substring(i, i + 1));
             } else if (map.containsKey(word.substring(i, i + 1))) {
-                result +=" " + map.get(word.substring(i, i + 1));
+                result += " " + map.get(word.substring(i, i + 1));
             }
         }
         return result.trim();
