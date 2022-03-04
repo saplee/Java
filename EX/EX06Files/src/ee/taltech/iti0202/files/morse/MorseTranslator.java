@@ -5,6 +5,11 @@ import java.util.*;
 public class MorseTranslator {
     private HashMap<String, String> map = new HashMap<>();
 
+    /**
+     *
+     * @param lines
+     * @return
+     */
     public Map<String, String> addMorseCodes(List<String> lines) {
         for (String line : lines) {
             List<String> list = new ArrayList<>(List.of(line.trim().split(" ")));
@@ -13,6 +18,11 @@ public class MorseTranslator {
         return map;
     }
 
+    /**
+     *
+     * @param lines
+     * @return
+     */
     public List<String> translateLinesToMorse(List<String> lines) {
         List<String> result = new ArrayList<>();
         for (String line : lines) {
@@ -21,6 +31,11 @@ public class MorseTranslator {
         return result;
     }
 
+    /**
+     *
+     * @param lines
+     * @return
+     */
     public List<String> translateLinesFromMorse(List<String> lines) {
         return null;
     }
@@ -37,7 +52,7 @@ public class MorseTranslator {
                 result += " " + map.get(word.substring(i, i + 1));
             }
         }
-        return result;
+        return result.trim();
     }
 
     private String translateLineFromMorse(String line) {
