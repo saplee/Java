@@ -14,9 +14,6 @@ public class MorseTranslator {
     }
 
     public List<String> translateLinesToMorse(List<String> lines) {
-        if (lines.isEmpty()){
-            return lines;
-        }
         List<String> result = new ArrayList<>();
         for (String line : lines) {
             result.add(translateLineToMorse(line));
@@ -33,7 +30,7 @@ public class MorseTranslator {
         String word = line.toLowerCase().trim();
         for (int i = 0; i < line.length(); i++) {
             if (word.substring(i, i + 1).equals(" ")) {
-                result += "\t";
+                result += "\t ";
             } else if (map.containsKey(word.substring(i, i + 1))) {
                 result += map.get(word.substring(i, i + 1)) + " ";
             }
