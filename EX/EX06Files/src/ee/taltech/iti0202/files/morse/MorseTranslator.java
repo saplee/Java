@@ -27,7 +27,7 @@ public class MorseTranslator {
 
     private String translateLineToMorse(String line) {
         String result = "";
-        String word = line.toLowerCase();
+        String word = line.toLowerCase().trim();
         for (int i = 0; i < line.length(); i++) {
             if (word.substring(i, i + 1).equals(" ")) {
                 result += "\t";
