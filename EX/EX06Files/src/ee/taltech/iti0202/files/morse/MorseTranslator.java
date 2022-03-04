@@ -1,9 +1,13 @@
 package ee.taltech.iti0202.files.morse;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MorseTranslator {
     private HashMap<String, String> map = new HashMap<>();
+    private HashMap<String, String> map2 = new HashMap<>();
 
     /**
      * @param lines
@@ -13,6 +17,10 @@ public class MorseTranslator {
         for (String line : lines) {
             List<String> list = new ArrayList<>(List.of(line.trim().split(" ")));
             map.put(list.get(0).toLowerCase(), list.get(1));
+        }
+        for (String line : lines) {
+            List<String> list = new ArrayList<>(List.of(line.trim().split(" ")));
+            map2.put(list.get(1), list.get(0).toLowerCase());
         }
         return map;
     }
@@ -58,16 +66,12 @@ public class MorseTranslator {
 
     private String translateLineFromMorse(String line) {
         String result = "";
-        String word = line.trim();
-        for (String key : map.keySet()) {
-            for (int i = 0; i < line.length(); i++) {
-                if (word.substring(i, i + 1).equals("\t")) {
-                    result += " ";
-                    break;
-                } else if (map.get(key).equals(word.substring(i, i + 1))) {
-                    result += key;
-                    break;
-                }
+        String word = line.toLowerCase().trim();
+        for (int i = 0; i < line.length(); i++) {
+            if (word.substring(i, i + 1).equals("\t")) {
+                result += " ";
+            } else if (map2.containsKey(word.substring(i, i + 1))) {
+                result += map2.get(word.substring(i, i + 1));
             }
         }
         return result.trim();
