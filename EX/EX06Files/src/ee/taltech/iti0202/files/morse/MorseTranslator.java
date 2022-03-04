@@ -14,6 +14,9 @@ public class MorseTranslator {
     }
 
     public List<String> translateLinesToMorse(List<String> lines) {
+        if (lines.isEmpty()){
+            return lines;
+        }
         List<String> result = new ArrayList<>();
         for (String line : lines) {
             result.add(translateLineToMorse(line));
