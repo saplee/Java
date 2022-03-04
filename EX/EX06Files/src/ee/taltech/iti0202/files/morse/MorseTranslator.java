@@ -110,11 +110,11 @@ public class MorseTranslator {
     }
 
     public static void main(String[] args) {
-        List<String> lit = new ArrayList<>(List.of(".-.. --- .-. . --\t.. .--. ... ..- --\t-.. --- .-.. --- .-.\t... .. -\t.- -- . - --..--\t-.-. --- -. ... . -.-. - . - ..- .-.\t.- -.. .. .--. .. ... -.-. .. -. --.\t. .-.. .. - --..--"));
-        List<String> sõna = new ArrayList<>(List.of("ma olen l kol"));
+        List<String> word = new ArrayList<>(List.of("ma olen l kol"));
         MorseTranslator morseTranslator = new MorseTranslator();
-        morseTranslator.addMorseCodes(morseTranslator.readTextFromFile("/Users/sanderpleesi1/Downloads/morse.txt"));
-        List<String> morse = morseTranslator.translateLinesToMorse(sõna);
+        morseTranslator.addMorseCodes(morseTranslator.readTextFromFile(
+                "/Users/sanderpleesi1/Downloads/morse.txt"));
+        List<String> morse = morseTranslator.translateLinesToMorse(word);
         System.out.println(morseTranslator.translateLinesFromMorse(morse));
     }
 }
