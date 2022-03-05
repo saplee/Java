@@ -12,11 +12,12 @@ class InputFilesBufferReaderTest {
     @BeforeEach
     void setUp() {
     }
+
     @Test
-    void bufferReader(){
+    void bufferReader() {
         InputFilesBufferReader inputFilesBufferReader = new InputFilesBufferReader();
         List<String> result = new ArrayList<>(List.of("Java", "Python"));
-        assertEquals(result,inputFilesBufferReader.readTextFromFile("/Users/sanderpleesi1/Downloads/Test.txt"));
+        assertEquals(result, inputFilesBufferReader.readTextFromFile("/Users/sanderpleesi1/Downloads/Test.txt"));
     }
 
 }
