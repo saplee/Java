@@ -108,13 +108,4 @@ public class MorseTranslator {
         }
         return result.trim();
     }
-
-    public static void main(String[] args) {
-        List<String> word = new ArrayList<>(List.of("ma olen l kol"));
-        MorseTranslator morseTranslator = new MorseTranslator();
-        morseTranslator.addMorseCodes(morseTranslator.readTextFromFile(
-                "/Users/sanderpleesi1/Downloads/morse.txt"));
-        List<String> morse = morseTranslator.translateLinesToMorse(word);
-        System.out.println(morseTranslator.translateLinesFromMorse(morse));
-    }
 }
