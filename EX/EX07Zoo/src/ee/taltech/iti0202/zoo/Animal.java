@@ -7,7 +7,12 @@ public class Animal {
     protected Integer eatTime;
     protected Type type;
 
-
+    /**
+     * @param name
+     * @param voice
+     * @param eatTime
+     * @param type
+     */
     public Animal(String name, String voice, Integer eatTime, Type type) {
         this.name = name;
         this.voice = voice;
@@ -15,6 +20,9 @@ public class Animal {
         this.type = type;
     }
 
+    /**
+     *
+     */
     enum Type {
         MAMMAL, BIRD, FISH, REPTILE, AMPHIBIAN
     }
@@ -23,7 +31,7 @@ public class Animal {
         return name;
     }
 
-    public boolean animalHungryOrNot() {
+    public boolean isHungry() {
         return false;
     }
 

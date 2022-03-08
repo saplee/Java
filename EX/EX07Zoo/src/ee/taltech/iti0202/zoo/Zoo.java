@@ -31,4 +31,8 @@ public class Zoo {
     public void nextDay() {
         days++;
     }
+
+    public int getDays() {
+        return days;
+    }
 }

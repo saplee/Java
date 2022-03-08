@@ -1,25 +1,32 @@
 package ee.taltech.iti0202.zoo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Caretaker {
     private String name;
-    private Animal.Type typeCanFeed;
+    private List<Animal.Type> typesCanFeed;
 
-    public Caretaker(String name, Animal.Type typeCanFeed) {
+    public Caretaker(String name, List<Animal.Type> typesCanFeeD) {
         this.name = name;
-        this.typeCanFeed = typeCanFeed;
+        this.typesCanFeed = typesCanFeeD;
     }
 
     public String getName() {
         return name;
     }
 
-    public Animal.Type getTypeCanFeed() {
-        return typeCanFeed;
+    public List<Animal.Type> getTypeCanFeed() {
+        return typesCanFeed;
     }
 
     public List<Animal> caretakerCanFeed(List<Animal> animals) {
-        return null;
+        List<Animal> result = new ArrayList<>();
+        for(Animal animal : animals){
+            if (typesCanFeed.contains(animal.getType())){
+                result.add(animal);
+            }
+        }
+        return result;
     }
 }
