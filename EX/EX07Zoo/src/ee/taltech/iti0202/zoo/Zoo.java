@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.zoo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Zoo {
@@ -20,10 +21,10 @@ public class Zoo {
         return animals;
     }
 
-    public List<String> allAnimalVoices() {
-        List<String> result = new ArrayList<>();
+    public HashMap<String, String> allAnimalVoices() {
+        HashMap<String, String> result = new HashMap<>();
         for (Animal animal : animals) {
-            result.add(animal.getVoice());
+            result.put(animal.getName(), animal.getVoice());
         }
         return result;
     }

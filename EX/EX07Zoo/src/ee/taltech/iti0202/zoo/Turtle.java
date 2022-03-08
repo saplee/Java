@@ -1,18 +1,13 @@
 package ee.taltech.iti0202.zoo;
 
 public class Turtle extends Animal {
-    public Turtle(String name, String voice, Integer eatTime) {
-        super(name, "", eatTime, Type.AMPHIBIAN);
+    public Turtle(String name) {
+        super(name, "",0, Type.AMPHIBIAN);
     }
 
     @Override
     public String getName() {
         return name;
-    }
-
-    @Override
-    public boolean animalHungryOrNot() {
-        return false;
     }
 
     @Override

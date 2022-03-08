@@ -1,7 +1,7 @@
 package ee.taltech.iti0202.zoo;
 
 public class Lamb extends Animal {
-    public Lamb(String name, String voice, Integer eatTime) {
+    public Lamb(String name, Integer eatTime) {
         super(name, "mää", eatTime, Type.MAMMAL);
     }
 
@@ -11,7 +11,7 @@ public class Lamb extends Animal {
     }
 
     @Override
-    public boolean animalHungryOrNot() {
+    public boolean isHungry() {
         return false;
     }
 
