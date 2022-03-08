@@ -27,7 +27,8 @@ public class Zoo {
         }
         return result;
     }
-    public void nextDay(){
+
+    public void nextDay() {
         days++;
     }
 }

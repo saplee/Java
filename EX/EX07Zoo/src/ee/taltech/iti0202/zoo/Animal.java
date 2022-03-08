@@ -1,7 +1,5 @@
 package ee.taltech.iti0202.zoo;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Animal {
     protected String name;

@@ -6,7 +6,7 @@ public class Caretaker {
     private String name;
     private Animal.Type typeCanFeed;
 
-    public Caretaker(String name, Animal.Type typeCanFeed){
+    public Caretaker(String name, Animal.Type typeCanFeed) {
         this.name = name;
         this.typeCanFeed = typeCanFeed;
     }
@@ -18,7 +18,8 @@ public class Caretaker {
     public Animal.Type getTypeCanFeed() {
         return typeCanFeed;
     }
-    public List<Animal> caretakerCanFeed(List<Animal> animals){
+
+    public List<Animal> caretakerCanFeed(List<Animal> animals) {
         return null;
     }
 }
