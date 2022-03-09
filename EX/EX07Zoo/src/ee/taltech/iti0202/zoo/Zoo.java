@@ -1,6 +1,8 @@
 package ee.taltech.iti0202.zoo;
 
 import ee.taltech.iti0202.zoo.animal.Animal;
+import ee.taltech.iti0202.zoo.animal.Monkey;
+import ee.taltech.iti0202.zoo.animal.Turtle;
 import ee.taltech.iti0202.zoo.caretaker.Caretaker;
 
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Zoo {
-    public static int days;
+    public int days;
     protected List<Animal> animals = new ArrayList<>();
     protected List<Caretaker> caretakers = new ArrayList<>();
     protected List<Animal> hungryAnimals = new ArrayList<>();
@@ -54,12 +56,24 @@ public class Zoo {
         return result;
     }
 
-    public static void nextDay() {
-        days++;
+    public void nextDay() {
+        for (Animal animal : animals) {
+            animal.nextDay();
+        }
     }
 
-    public static int getDays() {
+    public int getDays() {
         return days;
     }
 
+    public String getBestWorker() {
+        int number = 0;
+        String result = "";
+        for (Caretaker caretaker : caretakers) {
+            if (caretaker.caretakerCanFeed(animals).size() > number) {
+                result = caretaker.getName();
+            }
+        }
+        return result + "oleks hetkel kõige efektiivsem töötaja.";
+    }
 }

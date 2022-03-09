@@ -2,15 +2,15 @@ package ee.taltech.iti0202.zoo.animal;
 
 
 import ee.taltech.iti0202.zoo.caretaker.Caretaker;
-import ee.taltech.iti0202.zoo.Zoo;
 
-public class Animal extends Zoo {
+
+public class Animal {
     protected String name;
     protected String voice;
     protected Integer eatTime;
     protected Type type;
-    private int previousDays = Zoo.getDays();
-    private int days;
+    private int previousDays = 0;
+    protected int day = 0;
     private String notHungryVoice;
 
     /**
@@ -38,9 +38,12 @@ public class Animal extends Zoo {
         return name;
     }
 
+    public void nextDay() {
+        day++;
+    }
+
     public boolean isHungry() {
-        days = Zoo.getDays();
-        if (days - previousDays > eatTime) {
+        if (day - previousDays > eatTime) {
             voice = "";
             return true;
         }
@@ -53,9 +56,9 @@ public class Animal extends Zoo {
         return voice;
     }
 
-    public void giveFood(int number, Caretaker caretaker) {
+    public void giveFood(Caretaker caretaker) {
         if (isHungry() && caretaker.getTypeCanFeed().contains(type)) {
-            previousDays = number;
+            previousDays = day;
         }
     }
 

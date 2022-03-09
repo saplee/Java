@@ -2,7 +2,6 @@ package ee.taltech.iti0202.zoo.animal;
 
 
 import ee.taltech.iti0202.zoo.caretaker.Caretaker;
-import ee.taltech.iti0202.zoo.Zoo;
 
 import java.util.Random;
 
@@ -11,8 +10,7 @@ public class Monkey extends Animal {
     Random random = new Random();
     int select = random.nextInt(arr.length);
     private String voices = arr[select];
-    private int previousDays = Zoo.getDays();
-    private int days;
+    private int previousDays = 0;
 
 
     public Monkey(String name, Integer eatTime) {
@@ -20,14 +18,8 @@ public class Monkey extends Animal {
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
     public boolean isHungry() {
-        days = Zoo.getDays();
-        if (days - previousDays > eatTime) {
+        if (day - previousDays > eatTime) {
             voices = "BANANA";
             return true;
         }
@@ -38,10 +30,10 @@ public class Monkey extends Animal {
         return false;
     }
 
-
-    public void giveFood(int number, Caretaker caretaker) {
+    @Override
+    public void giveFood(Caretaker caretaker) {
         if (isHungry() && caretaker.getTypeCanFeed().contains(type)) {
-            previousDays = number;
+            previousDays = day;
         }
     }
 

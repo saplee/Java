@@ -6,18 +6,10 @@ public class Lamb extends Animal {
         super(name, "mää", eatTime, Type.MAMMAL);
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
 
     @Override
     public boolean isHungry() {
         return false;
     }
-
-    @Override
-    public String getVoice() {
-        return voice;
-    }
 }
+
