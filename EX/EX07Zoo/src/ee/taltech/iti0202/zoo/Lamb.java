@@ -11,7 +11,7 @@ public class Lamb extends Animal {
     }
 
     @Override
-    public boolean isHungry() {
+    public boolean isHungry(int numbers) {
         return false;
     }
 

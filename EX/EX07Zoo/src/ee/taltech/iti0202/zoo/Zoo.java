@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Zoo {
-    protected int days = 0;
+    private int days;
     protected List<Animal> animals = new ArrayList<>();
+    protected List<Caretaker> caretakers = new ArrayList<>();
+    protected List<Animal> hungryAnimals = new ArrayList<>();
 
     public Zoo() {
     }
@@ -15,10 +17,30 @@ public class Zoo {
         if (!animals.contains(animal)) {
             animals.add(animal);
         }
+        for (Animal animal1 : animals) {
+            if (animal1.isHungry(days) && !hungryAnimals.contains(animal1)) {
+                hungryAnimals.add(animal1);
+            }
+        }
+    }
+
+
+    public void addCaretaker(Caretaker caretaker) {
+        if (!caretakers.contains(caretaker)) {
+            caretakers.add(caretaker);
+        }
     }
 
     public List<Animal> getAnimals() {
         return animals;
+    }
+
+    public List<Caretaker> getCaretaker() {
+        return caretakers;
+    }
+
+    public List<Animal> getHungryAnimals() {
+        return hungryAnimals;
     }
 
     public HashMap<String, String> allAnimalVoices() {
@@ -36,4 +58,5 @@ public class Zoo {
     public int getDays() {
         return days;
     }
+
 }

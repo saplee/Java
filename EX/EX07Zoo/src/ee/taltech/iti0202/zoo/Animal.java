@@ -6,7 +6,8 @@ public class Animal extends Zoo {
     protected String voice;
     protected Integer eatTime;
     protected Type type;
-    protected int counter;
+    private int previousDays = 0;
+    private int days;
 
     /**
      * @param name
@@ -32,21 +33,23 @@ public class Animal extends Zoo {
         return name;
     }
 
-    public boolean isHungry() {
-        if (counter > eatTime) {
+    public boolean isHungry(int number) {
+        days = number;
+        if (days - previousDays > eatTime) {
+            voice = "";
             return true;
         }
         return false;
     }
 
     public String getVoice() {
-        setVoice();
+        isHungry(days);
         return voice;
     }
 
-    public void setVoice() {
-        if (isHungry()) {
-            voice = "";
+    public void giveFood(int number, Caretaker caretaker) {
+        if (caretaker.getTypeCanFeed().equals(type)) {
+            previousDays = number;
         }
     }
 
@@ -55,15 +58,13 @@ public class Animal extends Zoo {
     }
 
 
-    public void giveFood(){
-        counter = 0;
-    }
-
     public static void main(String[] args) {
-        Animal animal = new Animal("f", "g", 12, Type.BIRD);
+        Animal animal = new Animal("mikk", "mida sita", 2, Type.BIRD);
         Zoo zoo = new Zoo();
         zoo.nextDay();
         zoo.nextDay();
-        System.out.println(animal.getDays());
+        zoo.nextDay();
+        zoo.addAnimal(animal);
+        System.out.println(zoo.getHungryAnimals());
     }
 }
