@@ -8,7 +8,7 @@ public class Monkey extends Animal {
     Random random = new Random();
     int select = random.nextInt(arr.length);
     private String voices = arr[select];
-    private int previousDays = 0;
+    private int previousDays = Zoo.getDays();
     private int days;
 
 
@@ -22,34 +22,29 @@ public class Monkey extends Animal {
     }
 
     @Override
-    public boolean isHungry(int number) {
-        days = number;
+    public boolean isHungry() {
+        days = Zoo.getDays();
         if (days - previousDays > eatTime) {
+            voices = "BANANA";
             return true;
         }
+        String[] arr = {"uuh", "ääh"};
+        Random random = new Random();
+        int select = random.nextInt(arr.length);
+        voices = arr[select];
         return false;
     }
 
-    public void setVoice() {
-        if (isHungry(days)) {
-            voices = "BANANA";
-        } else {
-            String[] arr = {"uuh", "ääh"};
-            Random random = new Random();
-            int select = random.nextInt(arr.length);
-            voices = arr[select];
-        }
-    }
 
     public void giveFood(int number, Caretaker caretaker) {
-        if (caretaker.getTypeCanFeed().equals(type)) {
+        if (isHungry() && caretaker.getTypeCanFeed().contains(type)) {
             previousDays = number;
         }
     }
 
     @Override
     public String getVoice() {
-        setVoice();
+        isHungry();
         return voices;
     }
 

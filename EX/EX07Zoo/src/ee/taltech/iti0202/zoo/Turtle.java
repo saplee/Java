@@ -2,7 +2,7 @@ package ee.taltech.iti0202.zoo;
 
 public class Turtle extends Animal {
     private int days;
-    private int previousDays = 0;
+    private int previousDays = Zoo.getDays();
 
     public Turtle(String name) {
         super(name, "", 0, Type.AMPHIBIAN);
@@ -19,8 +19,8 @@ public class Turtle extends Animal {
     }
 
     @Override
-    public boolean isHungry(int number) {
-        days = number;
+    public boolean isHungry() {
+        days = Zoo.getDays();
         if (days - previousDays > eatTime) {
             return true;
         }

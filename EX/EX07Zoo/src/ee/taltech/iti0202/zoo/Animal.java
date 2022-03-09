@@ -1,13 +1,17 @@
 package ee.taltech.iti0202.zoo;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Animal extends Zoo {
     protected String name;
     protected String voice;
     protected Integer eatTime;
     protected Type type;
-    private int previousDays = 0;
+    private int previousDays = Zoo.getDays();
     private int days;
+    private String notHungryVoice;
 
     /**
      * @param name
@@ -18,6 +22,7 @@ public class Animal extends Zoo {
     public Animal(String name, String voice, Integer eatTime, Type type) {
         this.name = name;
         this.voice = voice;
+        this.notHungryVoice = voice;
         this.eatTime = eatTime;
         this.type = type;
     }
@@ -33,22 +38,23 @@ public class Animal extends Zoo {
         return name;
     }
 
-    public boolean isHungry(int number) {
-        days = number;
+    public boolean isHungry() {
+        days = Zoo.getDays();
         if (days - previousDays > eatTime) {
             voice = "";
             return true;
         }
+        voice = notHungryVoice;
         return false;
     }
 
     public String getVoice() {
-        isHungry(days);
+        isHungry();
         return voice;
     }
 
     public void giveFood(int number, Caretaker caretaker) {
-        if (caretaker.getTypeCanFeed().equals(type)) {
+        if (isHungry() && caretaker.getTypeCanFeed().contains(type)) {
             previousDays = number;
         }
     }
@@ -59,12 +65,21 @@ public class Animal extends Zoo {
 
 
     public static void main(String[] args) {
-        Animal animal = new Animal("mikk", "mida sita", 2, Type.BIRD);
+        Animal animal = new Animal("mikk", "mida", 2, Type.BIRD);
         Zoo zoo = new Zoo();
-        zoo.nextDay();
-        zoo.nextDay();
-        zoo.nextDay();
+        List<Type> f = new ArrayList<>(List.of(Type.BIRD));
+        Caretaker caretaker = new Caretaker("Mattias", f);
         zoo.addAnimal(animal);
-        System.out.println(zoo.getHungryAnimals());
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.nextDay();
+        Animal animal2 = new Animal("mikk", "mk", 2, Type.BIRD);
+        zoo.addAnimal(animal2);
+        animal.giveFood(Zoo.getDays(), caretaker);
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.nextDay();
+        animal.giveFood(Zoo.getDays(), caretaker);
+        System.out.println(animal.getVoice());
     }
 }
