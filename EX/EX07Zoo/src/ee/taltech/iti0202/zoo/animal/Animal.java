@@ -1,8 +1,8 @@
-package ee.taltech.iti0202.zoo;
+package ee.taltech.iti0202.zoo.animal;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import ee.taltech.iti0202.zoo.caretaker.Caretaker;
+import ee.taltech.iti0202.zoo.Zoo;
 
 public class Animal extends Zoo {
     protected String name;
@@ -30,7 +30,7 @@ public class Animal extends Zoo {
     /**
      *
      */
-    enum Type {
+    public enum Type {
         MAMMAL, BIRD, FISH, REPTILE, AMPHIBIAN
     }
 
@@ -63,23 +63,4 @@ public class Animal extends Zoo {
         return type;
     }
 
-
-    public static void main(String[] args) {
-        Animal animal = new Animal("mikk", "mida", 2, Type.BIRD);
-        Zoo zoo = new Zoo();
-        List<Type> f = new ArrayList<>(List.of(Type.BIRD));
-        Caretaker caretaker = new Caretaker("Mattias", f);
-        zoo.addAnimal(animal);
-        zoo.nextDay();
-        zoo.nextDay();
-        zoo.nextDay();
-        Animal animal2 = new Animal("mikk", "mk", 2, Type.BIRD);
-        zoo.addAnimal(animal2);
-        animal.giveFood(Zoo.getDays(), caretaker);
-        zoo.nextDay();
-        zoo.nextDay();
-        zoo.nextDay();
-        animal.giveFood(Zoo.getDays(), caretaker);
-        System.out.println(animal.getVoice());
-    }
 }

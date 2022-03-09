@@ -1,5 +1,8 @@
 package ee.taltech.iti0202.zoo;
 
+import ee.taltech.iti0202.zoo.animal.Animal;
+import ee.taltech.iti0202.zoo.caretaker.Caretaker;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
