@@ -19,7 +19,7 @@ class MonkeyTest {
     void setUp() {
     }
     @Test
-    void getMonkeyVoice(){
+    void testGetMonkeyVoice(){
         List<String> voice = new ArrayList<>(List.of("uuh", "ääh"));
         Monkey monkey = new Monkey("pam", 4);
         Zoo zoo = new Zoo();
@@ -27,7 +27,7 @@ class MonkeyTest {
         assertTrue(voice.contains(monkey.getVoice()));
     }
     @Test
-    void getMonkeyVoiceWhenHungry(){
+    void testGetMonkeyVoiceWhenHungry(){
         Monkey monkey = new Monkey("pam", 4);
         Zoo zoo = new Zoo();
         zoo.addAnimal(monkey);
@@ -39,7 +39,7 @@ class MonkeyTest {
         assertEquals("BANANA", monkey.getVoice());
     }
     @Test
-    void getMonkeyType(){
+    void testGetMonkeyType(){
         Monkey monkey = new Monkey("pam", 4);
         Zoo zoo = new Zoo();
         zoo.addAnimal(monkey);

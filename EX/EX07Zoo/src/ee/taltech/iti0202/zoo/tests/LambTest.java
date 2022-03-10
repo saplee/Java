@@ -15,7 +15,7 @@ class LambTest {
     }
 
     @Test
-    void TestGetLambVoice() {
+    void testGetLambVoice() {
         Lamb lamb = new Lamb("Jan", 3);
         Zoo zoo = new Zoo();
         zoo.addAnimal(lamb);
@@ -23,7 +23,7 @@ class LambTest {
     }
 
     @Test
-    void TestGetLambVoice2() {
+    void testGetLambVoice2() {
         Lamb lamb = new Lamb("Jan", 5);
         Zoo zoo = new Zoo();
         zoo.addAnimal(lamb);
@@ -46,7 +46,7 @@ class LambTest {
     }
 
     @Test
-    void TestGetLambType() {
+    void testGetLambType() {
         Lamb lamb = new Lamb("Jan", 5);
         Zoo zoo = new Zoo();
         zoo.addAnimal(lamb);
@@ -54,7 +54,7 @@ class LambTest {
     }
 
     @Test
-    void TestIsLambHungry() {
+    void testIsLambHungry() {
         Lamb lamb = new Lamb("Jan", 2);
         Zoo zoo = new Zoo();
         zoo.addAnimal(lamb);

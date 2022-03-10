@@ -42,9 +42,4 @@ public class Monkey extends Animal {
         isHungry();
         return voices;
     }
-
-    @Override
-    public Type getType() {
-        return type;
-    }
 }
