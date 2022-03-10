@@ -18,16 +18,18 @@ class MonkeyTest {
     @BeforeEach
     void setUp() {
     }
+
     @Test
-    void testGetMonkeyVoice(){
+    void testGetMonkeyVoice() {
         List<String> voice = new ArrayList<>(List.of("uuh", "ääh"));
         Monkey monkey = new Monkey("pam", 4);
         Zoo zoo = new Zoo();
         zoo.addAnimal(monkey);
         assertTrue(voice.contains(monkey.getVoice()));
     }
+
     @Test
-    void testGetMonkeyVoiceWhenHungry(){
+    void testGetMonkeyVoiceWhenHungry() {
         Monkey monkey = new Monkey("pam", 4);
         Zoo zoo = new Zoo();
         zoo.addAnimal(monkey);
@@ -38,8 +40,9 @@ class MonkeyTest {
         zoo.nextDay();
         assertEquals("BANANA", monkey.getVoice());
     }
+
     @Test
-    void testGetMonkeyType(){
+    void testGetMonkeyType() {
         Monkey monkey = new Monkey("pam", 4);
         Zoo zoo = new Zoo();
         zoo.addAnimal(monkey);
