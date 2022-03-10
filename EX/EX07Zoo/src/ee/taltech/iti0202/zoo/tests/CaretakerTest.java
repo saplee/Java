@@ -5,13 +5,12 @@ import ee.taltech.iti0202.zoo.animal.Animal;
 import ee.taltech.iti0202.zoo.animal.Monkey;
 import ee.taltech.iti0202.zoo.animal.Turtle;
 import ee.taltech.iti0202.zoo.caretaker.Caretaker;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CaretakerTest {
     @BeforeEach
@@ -22,14 +21,14 @@ class CaretakerTest {
     void testCaretakerName() {
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
         Caretaker caretaker = new Caretaker("Ago", types);
-        assertEquals("Ago", caretaker.getName());
+        Assertions.assertEquals("Ago", caretaker.getName());
     }
 
     @Test
     void testGetTypes() {
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
         Caretaker caretaker = new Caretaker("Ago", types);
-        assertEquals(types, caretaker.getTypeCanFeed());
+        Assertions.assertEquals(types, caretaker.getTypeCanFeed());
     }
 
     @Test
@@ -58,7 +57,7 @@ class CaretakerTest {
         zoo.nextDay();
         zoo.nextDay();
         zoo.nextDay();
-        assertEquals("Ago oleks hetkel kõige efektiivsem töötaja.", zoo.getBestWorker());
+        Assertions.assertEquals("Ago oleks hetkel kõige efektiivsem töötaja.", zoo.getBestWorker());
     }
 
 }
