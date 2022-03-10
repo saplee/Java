@@ -2,10 +2,9 @@ package ee.taltech.iti0202.zoo.tests;
 
 import ee.taltech.iti0202.zoo.animal.Animal;
 import ee.taltech.iti0202.zoo.animal.Turtle;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TurtleTest {
     @BeforeEach
@@ -15,13 +14,13 @@ class TurtleTest {
     @Test
     void testGetTurtleType() {
         Turtle turtle = new Turtle("John", 3);
-        assertEquals(Animal.Type.AMPHIBIAN, turtle.getType());
+        Assertions.assertEquals(Animal.Type.AMPHIBIAN, turtle.getType());
     }
 
     @Test
     void testGetTurtleName() {
         Turtle turtle = new Turtle("John", 3);
-        assertEquals("John", turtle.getName());
+        Assertions.assertEquals("John", turtle.getName());
     }
 
     @Test
@@ -29,7 +28,7 @@ class TurtleTest {
         Turtle turtle = new Turtle("John", 3);
         turtle.nextDay();
         turtle.nextDay();
-        assertEquals("", turtle.getVoice());
+        Assertions.assertEquals("", turtle.getVoice());
     }
 
     @Test
@@ -39,7 +38,7 @@ class TurtleTest {
         turtle.nextDay();
         turtle.nextDay();
         turtle.nextDay();
-        assertEquals("", turtle.getVoice());
+        Assertions.assertEquals("", turtle.getVoice());
     }
 
 }

@@ -36,7 +36,8 @@ class CaretakerTest {
     void testGetBestCaretaker() {
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.AMPHIBIAN, Animal.Type.MAMMAL, Animal.Type.FISH));
         Caretaker caretaker = new Caretaker("Ago", types);
-        List<Animal.Type> types2 = new ArrayList<>(List.of(Animal.Type.AMPHIBIAN, Animal.Type.FISH, Animal.Type.REPTILE, Animal.Type.BIRD));
+        List<Animal.Type> types2 = new ArrayList<>(List.of(Animal.Type.AMPHIBIAN, Animal.Type.FISH, Animal.Type.REPTILE,
+                Animal.Type.BIRD));
         Caretaker caretaker2 = new Caretaker("Mati", types2);
         Zoo zoo = new Zoo();
         zoo.addCaretaker(caretaker);

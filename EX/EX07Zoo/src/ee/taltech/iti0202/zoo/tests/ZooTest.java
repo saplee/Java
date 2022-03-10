@@ -5,15 +5,13 @@ import ee.taltech.iti0202.zoo.animal.Animal;
 import ee.taltech.iti0202.zoo.animal.Monkey;
 import ee.taltech.iti0202.zoo.animal.Turtle;
 import ee.taltech.iti0202.zoo.caretaker.Caretaker;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ZooTest {
     @BeforeEach
@@ -30,7 +28,7 @@ class ZooTest {
         zoo.addAnimal(animal);
         zoo.addAnimal(turtle);
         List<Animal> result = new ArrayList<>(List.of(monkey, animal, turtle));
-        assertEquals(result, zoo.getAnimals());
+        Assertions.assertEquals(result, zoo.getAnimals());
     }
 
     @Test
@@ -46,7 +44,7 @@ class ZooTest {
         zoo.addAnimal(animal);
         zoo.addAnimal(turtle);
         List<Caretaker> result = new ArrayList<>(List.of(caretaker));
-        assertEquals(result, zoo.getCaretaker());
+        Assertions.assertEquals(result, zoo.getCaretaker());
     }
 
     @Test
@@ -65,7 +63,7 @@ class ZooTest {
         zoo.nextDay();
         zoo.nextDay();
         List<Animal> result = new ArrayList<>();
-        assertEquals(result, zoo.getHungryAnimals());
+        Assertions.assertEquals(result, zoo.getHungryAnimals());
     }
 
     @Test
@@ -87,7 +85,7 @@ class ZooTest {
         zoo.nextDay();
         zoo.nextDay();
         List<Animal> result = new ArrayList<>(List.of(monkey, animal, turtle));
-        assertEquals(result, zoo.getHungryAnimals());
+        Assertions.assertEquals(result, zoo.getHungryAnimals());
     }
 
     @Test
@@ -112,7 +110,7 @@ class ZooTest {
         monkey.giveFood(caretaker);
         turtle.giveFood(caretaker);
         List<Animal> result = new ArrayList<>(List.of(monkey, animal, turtle));
-        assertEquals(result, zoo.getHungryAnimals());
+        Assertions.assertEquals(result, zoo.getHungryAnimals());
     }
 
     @Test
@@ -140,7 +138,7 @@ class ZooTest {
         result.put("pam", "BANANA");
         result.put("John", "");
         result.put("Ago", "");
-        assertEquals(result, zoo.allAnimalVoices());
+        Assertions.assertEquals(result, zoo.allAnimalVoices());
     }
 
 }
