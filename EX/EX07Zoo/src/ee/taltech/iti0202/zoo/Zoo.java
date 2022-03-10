@@ -1,8 +1,6 @@
 package ee.taltech.iti0202.zoo;
 
 import ee.taltech.iti0202.zoo.animal.Animal;
-import ee.taltech.iti0202.zoo.animal.Monkey;
-import ee.taltech.iti0202.zoo.animal.Turtle;
 import ee.taltech.iti0202.zoo.caretaker.Caretaker;
 
 import java.util.ArrayList;
@@ -70,10 +68,11 @@ public class Zoo {
         int number = 0;
         String result = "";
         for (Caretaker caretaker : caretakers) {
-            if (caretaker.caretakerCanFeed(animals).size() > number) {
+            if (caretaker.caretakerCanFeed(getHungryAnimals()).size() > number) {
+                number = caretaker.caretakerCanFeed(getHungryAnimals()).size();
                 result = caretaker.getName();
             }
         }
-        return result + "oleks hetkel kõige efektiivsem töötaja.";
+        return result + " oleks hetkel kõige efektiivsem töötaja.";
     }
 }
