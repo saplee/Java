@@ -3,10 +3,9 @@ package ee.taltech.iti0202.zoo.tests;
 import ee.taltech.iti0202.zoo.Zoo;
 import ee.taltech.iti0202.zoo.animal.Animal;
 import ee.taltech.iti0202.zoo.animal.Lamb;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 class LambTest {
@@ -19,7 +18,7 @@ class LambTest {
         Lamb lamb = new Lamb("Jan", 3);
         Zoo zoo = new Zoo();
         zoo.addAnimal(lamb);
-        assertEquals("mää", lamb.getVoice());
+        Assertions.assertEquals("mää", lamb.getVoice());
     }
 
     @Test
@@ -42,7 +41,7 @@ class LambTest {
         zoo.nextDay();
         zoo.nextDay();
         zoo.nextDay();
-        assertEquals("mää", lamb.getVoice());
+        Assertions.assertEquals("mää", lamb.getVoice());
     }
 
     @Test
@@ -50,7 +49,7 @@ class LambTest {
         Lamb lamb = new Lamb("Jan", 5);
         Zoo zoo = new Zoo();
         zoo.addAnimal(lamb);
-        assertEquals(Animal.Type.MAMMAL, lamb.getType());
+        Assertions.assertEquals(Animal.Type.MAMMAL, lamb.getType());
     }
 
     @Test
@@ -69,6 +68,6 @@ class LambTest {
         zoo.nextDay();
         zoo.nextDay();
         zoo.nextDay();
-        assertFalse(lamb.isHungry());
+        Assertions.assertFalse(lamb.isHungry());
     }
 }

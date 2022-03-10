@@ -19,8 +19,9 @@ class ZooTest {
     @BeforeEach
     void setUp() {
     }
+
     @Test
-    void testGetAnimals(){
+    void testGetAnimals() {
         Monkey monkey = new Monkey("pam", 4);
         Animal animal = new Animal("Ago", "Java", 1, Animal.Type.MAMMAL);
         Turtle turtle = new Turtle("John", 3);
@@ -31,14 +32,15 @@ class ZooTest {
         List<Animal> result = new ArrayList<>(List.of(monkey, animal, turtle));
         assertEquals(result, zoo.getAnimals());
     }
+
     @Test
-    void testGetCaretakers(){
+    void testGetCaretakers() {
         Monkey monkey = new Monkey("pam", 4);
         Animal animal = new Animal("Ago", "Java", 1, Animal.Type.MAMMAL);
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
-        Caretaker caretaker = new Caretaker("Han",types);
+        Caretaker caretaker = new Caretaker("Han", types);
         zoo.addCaretaker(caretaker);
         zoo.addAnimal(monkey);
         zoo.addAnimal(animal);
@@ -46,14 +48,15 @@ class ZooTest {
         List<Caretaker> result = new ArrayList<>(List.of(caretaker));
         assertEquals(result, zoo.getCaretaker());
     }
+
     @Test
-    void testGetHungryAnimals(){
+    void testGetHungryAnimals() {
         Monkey monkey = new Monkey("pam", 4);
         Animal animal = new Animal("Ago", "Java", 3, Animal.Type.MAMMAL);
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
-        Caretaker caretaker = new Caretaker("Han",types);
+        Caretaker caretaker = new Caretaker("Han", types);
         zoo.addCaretaker(caretaker);
         zoo.addAnimal(monkey);
         zoo.addAnimal(animal);
@@ -64,14 +67,15 @@ class ZooTest {
         List<Animal> result = new ArrayList<>();
         assertEquals(result, zoo.getHungryAnimals());
     }
+
     @Test
-    void testGetHungryAnimals2(){
+    void testGetHungryAnimals2() {
         Monkey monkey = new Monkey("pam", 4);
         Animal animal = new Animal("Ago", "Java", 3, Animal.Type.MAMMAL);
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
-        Caretaker caretaker = new Caretaker("Han",types);
+        Caretaker caretaker = new Caretaker("Han", types);
         zoo.addCaretaker(caretaker);
         zoo.addAnimal(monkey);
         zoo.addAnimal(animal);
@@ -87,13 +91,13 @@ class ZooTest {
     }
 
     @Test
-    void testGetHungryAnimalsWrongCaretaker(){
+    void testGetHungryAnimalsWrongCaretaker() {
         Monkey monkey = new Monkey("pam", 4);
         Animal animal = new Animal("Ago", "Java", 3, Animal.Type.MAMMAL);
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
-        Caretaker caretaker = new Caretaker("Han",types);
+        Caretaker caretaker = new Caretaker("Han", types);
         zoo.addCaretaker(caretaker);
         zoo.addAnimal(monkey);
         zoo.addAnimal(animal);
@@ -110,14 +114,15 @@ class ZooTest {
         List<Animal> result = new ArrayList<>(List.of(monkey, animal, turtle));
         assertEquals(result, zoo.getHungryAnimals());
     }
+
     @Test
-    void testGetHungryAnimalVoices(){
+    void testGetHungryAnimalVoices() {
         Monkey monkey = new Monkey("pam", 4);
         Animal animal = new Animal("Ago", "Java", 3, Animal.Type.MAMMAL);
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
-        Caretaker caretaker = new Caretaker("Han",types);
+        Caretaker caretaker = new Caretaker("Han", types);
         zoo.addCaretaker(caretaker);
         zoo.addAnimal(monkey);
         zoo.addAnimal(animal);

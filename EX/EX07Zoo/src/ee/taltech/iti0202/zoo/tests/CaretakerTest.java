@@ -15,22 +15,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CaretakerTest {
     @BeforeEach
-    void setUp() {}
+    void setUp() {
+    }
+
     @Test
-    void TestCaretakerName(){
+    void testCaretakerName() {
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
         Caretaker caretaker = new Caretaker("Ago", types);
         assertEquals("Ago", caretaker.getName());
     }
+
     @Test
-    void TestGetTypes(){
+    void testGetTypes() {
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
         Caretaker caretaker = new Caretaker("Ago", types);
         assertEquals(types, caretaker.getTypeCanFeed());
     }
 
     @Test
-    void TestGetBestCaretaker(){
+    void testGetBestCaretaker() {
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.AMPHIBIAN, Animal.Type.MAMMAL, Animal.Type.FISH));
         Caretaker caretaker = new Caretaker("Ago", types);
         List<Animal.Type> types2 = new ArrayList<>(List.of(Animal.Type.AMPHIBIAN, Animal.Type.FISH, Animal.Type.REPTILE, Animal.Type.BIRD));
