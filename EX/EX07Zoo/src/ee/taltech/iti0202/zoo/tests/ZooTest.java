@@ -141,4 +141,28 @@ class ZooTest {
         Assertions.assertEquals(result, zoo.allAnimalVoices());
     }
 
+    @Test
+    void testGetHungryAnimalsAfterFood() {
+        Monkey monkey = new Monkey("pam", 4);
+        Animal animal = new Animal("Ago", "Java", 3, Animal.Type.MAMMAL);
+        Turtle turtle = new Turtle("John", 3);
+        Zoo zoo = new Zoo();
+        List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.MAMMAL));
+        Caretaker caretaker = new Caretaker("Han", types);
+        zoo.addCaretaker(caretaker);
+        zoo.addAnimal(monkey);
+        zoo.addAnimal(animal);
+        zoo.addAnimal(turtle);
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.nextDay();
+        animal.giveFood(caretaker);
+        monkey.giveFood(caretaker);
+        turtle.giveFood(caretaker);
+        List<Animal> result = new ArrayList<>(List.of(turtle));
+        Assertions.assertEquals(result, zoo.getHungryAnimals());
+    }
 }
