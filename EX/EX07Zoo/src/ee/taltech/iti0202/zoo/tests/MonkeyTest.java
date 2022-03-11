@@ -25,6 +25,7 @@ class MonkeyTest {
         Monkey monkey = new Monkey("pam", 4);
         Zoo zoo = new Zoo();
         zoo.addAnimal(monkey);
+        zoo.nextDay();
         assertTrue(voice.contains(monkey.getVoice()));
     }
 
@@ -53,4 +54,23 @@ class MonkeyTest {
         zoo.nextDay();
         assertEquals(Animal.Type.MAMMAL, monkey.getType());
     }
+
+    @Test
+    void testGetMonkey2Voice() {
+        Monkey monkey = new Monkey("pam", 4);
+        Monkey monkey2 = new Monkey("lan", 4);
+        List<String> voice = new ArrayList<>(List.of("uuh", "ääh"));
+        Zoo zoo = new Zoo();
+        zoo.addAnimal(monkey);
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.nextDay();
+        zoo.addAnimal(monkey2);
+        assertTrue(voice.contains(monkey2.getVoice()));
+    }
+
 }

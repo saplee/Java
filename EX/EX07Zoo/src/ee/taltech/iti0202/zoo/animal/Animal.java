@@ -9,7 +9,7 @@ public class Animal {
     protected String voice;
     protected Integer eatTime;
     protected Type type;
-    private int previousDays = 0;
+    protected int previousDays = 0;
     protected int day = 0;
     private String notHungryVoice;
 
@@ -65,5 +65,4 @@ public class Animal {
     public Type getType() {
         return type;
     }
-
 }

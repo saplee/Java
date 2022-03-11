@@ -10,7 +10,6 @@ public class Monkey extends Animal {
     Random random = new Random();
     int select = random.nextInt(arr.length);
     private String voices = arr[select];
-    private int previousDays = 0;
 
 
     public Monkey(String name, Integer eatTime) {
@@ -28,13 +27,6 @@ public class Monkey extends Animal {
         int select = random.nextInt(arr.length);
         voices = arr[select];
         return false;
-    }
-
-    @Override
-    public void giveFood(Caretaker caretaker) {
-        if (isHungry() && caretaker.getTypeCanFeed().contains(type)) {
-            previousDays = day;
-        }
     }
 
     @Override
