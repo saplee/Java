@@ -42,10 +42,12 @@ class CaretakerTest {
         Zoo zoo = new Zoo();
         zoo.addCaretaker(caretaker);
         zoo.addCaretaker(caretaker2);
-        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(1).setType(Animal.Type.MAMMAL).createAnimal();
+        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(1).setType(Animal.Type.MAMMAL)
+                .createAnimal();
         Monkey monkey = new Monkey("pam", 4);
         Turtle turtle = new Turtle("John", 3);
-        Animal animal1 = new AnimalBuilder().setName("Hai").setVoice("amps").setEatTime(4).setType(Animal.Type.FISH).createAnimal();
+        Animal animal1 = new AnimalBuilder().setName("Hai").setVoice("amps").setEatTime(4).setType(Animal.Type.FISH)
+                .createAnimal();
         zoo.addAnimal(animal);
         zoo.addAnimal(monkey);
         zoo.addAnimal(animal1);

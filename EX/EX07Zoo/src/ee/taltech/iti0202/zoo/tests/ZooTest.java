@@ -73,7 +73,8 @@ class ZooTest {
     @Test
     void testGetHungryAnimals2() {
         Monkey monkey = new Monkey("pam", 4);
-        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(3).setType(Animal.Type.MAMMAL).createAnimal();
+        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(3).setType(Animal.Type.MAMMAL)
+                .createAnimal();
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));

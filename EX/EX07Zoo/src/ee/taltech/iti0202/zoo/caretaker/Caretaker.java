@@ -19,7 +19,6 @@ public class Caretaker {
         this.name = name;
         this.typesCanFeed = typesCanFeeD;
     }
-
     public String getName() {
         return name;
     }
@@ -28,6 +27,11 @@ public class Caretaker {
         return typesCanFeed;
     }
 
+    /**
+     *
+     * @param animals
+     * @return
+     */
     public List<Animal> caretakerCanFeed(List<Animal> animals) {
         List<Animal> result = new ArrayList<>();
         for (Animal animal : animals) {
