@@ -34,14 +34,25 @@ public class Animal {
         MAMMAL, BIRD, FISH, REPTILE, AMPHIBIAN
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     */
     public void nextDay() {
         day++;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isHungry() {
         if (day - previousDays > eatTime) {
             voice = "";
@@ -51,17 +62,29 @@ public class Animal {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getVoice() {
         isHungry();
         return voice;
     }
 
+    /**
+     *
+     * @param caretaker
+     */
     public void giveFood(Caretaker caretaker) {
         if (isHungry() && caretaker.getTypeCanFeed().contains(type)) {
             previousDays = day;
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Type getType() {
         return type;
     }

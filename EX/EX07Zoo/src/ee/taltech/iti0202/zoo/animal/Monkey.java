@@ -9,7 +9,11 @@ public class Monkey extends Animal {
     int select = random.nextInt(arr.length);
     private String voices = arr[select];
 
-
+    /**
+     *
+     * @param name
+     * @param eatTime
+     */
     public Monkey(String name, Integer eatTime) {
         super(name, "ääh", eatTime, Animal.Type.MAMMAL);
     }

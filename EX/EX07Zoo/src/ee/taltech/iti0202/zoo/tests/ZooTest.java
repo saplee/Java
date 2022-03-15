@@ -22,7 +22,8 @@ class ZooTest {
     @Test
     void testGetAnimals() {
         Monkey monkey = new Monkey("pam", 4);
-        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(1).setType(Animal.Type.MAMMAL).createAnimal();
+        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(1).setType(Animal.Type.MAMMAL)
+                        .createAnimal();
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         zoo.addAnimal(monkey);
@@ -35,7 +36,8 @@ class ZooTest {
     @Test
     void testGetCaretakers() {
         Monkey monkey = new Monkey("pam", 4);
-        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(1).setType(Animal.Type.MAMMAL).createAnimal();
+        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(1).setType(Animal.Type.MAMMAL)
+                .createAnimal();
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
@@ -51,7 +53,8 @@ class ZooTest {
     @Test
     void testGetHungryAnimals() {
         Monkey monkey = new Monkey("pam", 4);
-        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(3).setType(Animal.Type.MAMMAL).createAnimal();
+        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(3).setType(Animal.Type.MAMMAL)
+                .createAnimal();
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
@@ -92,7 +95,8 @@ class ZooTest {
     @Test
     void testGetHungryAnimalsWrongCaretaker() {
         Monkey monkey = new Monkey("pam", 4);
-        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(3).setType(Animal.Type.MAMMAL).createAnimal();
+        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(3).setType(Animal.Type.MAMMAL)
+                .createAnimal();
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
@@ -117,7 +121,8 @@ class ZooTest {
     @Test
     void testGetHungryAnimalVoices() {
         Monkey monkey = new Monkey("pam", 4);
-        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(3).setType(Animal.Type.MAMMAL).createAnimal();
+        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(3).setType(Animal.Type.MAMMAL)
+                .createAnimal();
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.BIRD));
@@ -145,7 +150,8 @@ class ZooTest {
     @Test
     void testGetHungryAnimalsAfterFood() {
         Monkey monkey = new Monkey("pam", 4);
-        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(3).setType(Animal.Type.MAMMAL).createAnimal();
+        Animal animal = new AnimalBuilder().setName("Ago").setVoice("Java").setEatTime(3).setType(Animal.Type.MAMMAL)
+                .createAnimal();
         Turtle turtle = new Turtle("John", 3);
         Zoo zoo = new Zoo();
         List<Animal.Type> types = new ArrayList<>(List.of(Animal.Type.FISH, Animal.Type.MAMMAL));

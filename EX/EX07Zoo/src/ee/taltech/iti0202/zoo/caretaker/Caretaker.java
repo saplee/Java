@@ -10,6 +10,11 @@ public class Caretaker {
     private String name;
     private List<Animal.Type> typesCanFeed;
 
+    /**
+     *
+     * @param name
+     * @param typesCanFeeD
+     */
     public Caretaker(String name, List<Animal.Type> typesCanFeeD) {
         this.name = name;
         this.typesCanFeed = typesCanFeeD;
