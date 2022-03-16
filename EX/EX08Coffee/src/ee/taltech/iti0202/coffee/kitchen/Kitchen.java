@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.coffee.kitchen;
 
-import ee.taltech.iti0202.coffee.drinks.Drinks;
 import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
 
 import java.util.ArrayList;
@@ -23,7 +22,4 @@ public class Kitchen {
         return coffeeMachines;
     }
 
-    public boolean canMakeCoffee(CoffeeMachine coffeeMachine, Drinks drink) {
-        return true;
-    }
 }

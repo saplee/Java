@@ -26,7 +26,7 @@ public class WaterTank {
     }
 
     public void takeWater() {
-        if (amountOfWater >= 1) {
+        if (!noWaterInTank()) {
             amountOfWater--;
         }
     }
