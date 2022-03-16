@@ -5,10 +5,10 @@ import ee.taltech.iti0202.coffee.water.WaterTank;
 
 public class AutomaticCoffeeMachine extends CoffeeMachine {
 
-
     public AutomaticCoffeeMachine(WaterTank waterTank, Integer needToCleanNumber) {
-        super(waterTank, needToCleanNumber, 1000000000);
+        super(waterTank, needToCleanNumber, 0);
     }
+
     @Override
     public boolean notEnoughCoffeeBeans(int number) {
         return false;

@@ -67,9 +67,9 @@ public class CoffeeMachine {
         Set<String> keys = drink.getMap().keySet();
         Integer amount = 0;
         for (String key : keys) {
-            if (key.toLowerCase().replaceAll(" ", "").equals("coffeebeans"))
+            if (key.toLowerCase().replaceAll(" ", "").equals("coffeebeans")) {
                 amount = drink.getMap().get(key);
-            else {
+            } else {
                 throw new MachineException("Can't make drink!");
             }
         }

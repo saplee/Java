@@ -6,14 +6,16 @@ public class Drink {
     private DrinkType drinkType;
     private Map<String, Integer> map;
 
-    public Drink(DrinkType drinkType , Map <String, Integer> map){
+    public Drink(DrinkType drinkType, Map<String, Integer> map) {
         this.drinkType = drinkType;
         this.map = map;
     }
-    public enum DrinkType{
+
+    public enum DrinkType {
         COFFEE, CACAO, CAPPUCCIONO, WATER
     }
-    public enum CapsuleType{
+
+    public enum CapsuleType {
         COFFEE, CACAO, CAPPUCCIONO, WATER
     }
 
