@@ -29,7 +29,7 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
                 result = Drink.CapsuleType.WATER;
             }
         }
-        if (!waterTank.noWaterInTank() && !needToClean() && !capsuleEmptyInside && !capsuleInMachine) {
+        else if (!waterTank.noWaterInTank() && !needToClean() && !capsuleEmptyInside && !capsuleInMachine) {
             waterTank.takeWater();
             count++;
             result = capsuleType;
