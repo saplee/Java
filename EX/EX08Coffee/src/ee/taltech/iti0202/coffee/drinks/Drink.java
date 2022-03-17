@@ -15,10 +15,6 @@ public class Drink {
         COFFEE, CACAO, CAPPUCCIONO, WATER
     }
 
-    public enum CapsuleType {
-        COFFEE, CACAO, CAPPUCCIONO, WATER
-    }
-
     public Map<String, Integer> getMap() {
         return map;
     }

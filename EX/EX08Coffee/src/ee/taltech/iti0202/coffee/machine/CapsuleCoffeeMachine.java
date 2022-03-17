@@ -19,14 +19,14 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
         }
     }
 
-    public Drink.CapsuleType start(Drink.CapsuleType capsuleType) throws MachineException {
-        Drink.CapsuleType result = null;
+    public Drink.DrinkType start(Drink.DrinkType capsuleType) throws MachineException {
+        Drink.DrinkType result = null;
         if (capsuleType == null) {
             if (waterTank.noWaterInTank() || needToClean()) {
                 throw new MachineException("Can't make drink!");
             } else if (!waterTank.noWaterInTank() && !needToClean() && (capsuleEmptyInside || !capsuleInMachine)) {
                 waterTank.takeWater();
-                result = Drink.CapsuleType.WATER;
+                result = Drink.DrinkType.WATER;
             }
         }
         else if (!waterTank.noWaterInTank() && !needToClean() && !capsuleEmptyInside && !capsuleInMachine) {
