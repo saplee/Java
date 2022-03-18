@@ -13,7 +13,12 @@ public class CoffeeMachine {
     protected Integer coffeeBeans;
     protected int count = 0;
 
-
+    /**
+     *
+     * @param waterTank
+     * @param needToCleanNumber
+     * @param coffeeBeans
+     */
     public CoffeeMachine(WaterTank waterTank, Integer needToCleanNumber, Integer coffeeBeans) {
         this.waterTank = waterTank;
         this.needToCleanNumber = needToCleanNumber;
@@ -21,6 +26,11 @@ public class CoffeeMachine {
         this.coffeeBeansTank = coffeeBeans;
     }
 
+    /**
+     *
+     * @param waterTank
+     * @param coffeeBeans
+     */
     public CoffeeMachine(WaterTank waterTank, Integer coffeeBeans) {
         this.waterTank = waterTank;
         this.needToCleanNumber = 5;
@@ -62,7 +72,12 @@ public class CoffeeMachine {
         }
     }
 
-
+    /**
+     *
+     * @param drink
+     * @return
+     * @throws MachineException
+     */
     public Drink.DrinkType start(Drink drink) throws MachineException {
         Set<String> keys = drink.getMap().keySet();
         Integer amount = 0;
