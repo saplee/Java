@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 
 public class CoffeeMachine {
-    protected static Logger LOGGER = Logger.getLogger(Logging.class.getName());
+    static protected Logger LOGGER = Logger.getLogger(Logging.class.getName());
     private final Integer coffeeBeansTank;
     protected WaterTank waterTank;
     protected Integer needToCleanNumber;
