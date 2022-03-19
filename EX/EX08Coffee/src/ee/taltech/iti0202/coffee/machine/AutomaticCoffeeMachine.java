@@ -1,10 +1,13 @@
 package ee.taltech.iti0202.coffee.machine;
 
 import ee.taltech.iti0202.coffee.drinks.Drink;
+import ee.taltech.iti0202.coffee.logger.Logging;
 import ee.taltech.iti0202.coffee.water.WaterTank;
 
-public class AutomaticCoffeeMachine extends CoffeeMachine {
+import java.util.logging.Logger;
 
+public class AutomaticCoffeeMachine extends CoffeeMachine {
+    private final static Logger LOGGER = Logger.getLogger(Logging.class.getName());
     public AutomaticCoffeeMachine(WaterTank waterTank, Integer needToCleanNumber) {
         super(waterTank, needToCleanNumber, 0);
     }
@@ -21,6 +24,7 @@ public class AutomaticCoffeeMachine extends CoffeeMachine {
             waterTank.takeWater();
             count++;
             result = drink.getDrinkType();
+            LOGGER.info("Drink has created");
         } else if (waterTank.noWaterInTank() || needToClean()) {
             throw new MachineException("Can't make drink!");
         }

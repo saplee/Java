@@ -1,12 +1,17 @@
 package ee.taltech.iti0202.coffee.machine;
 
 import ee.taltech.iti0202.coffee.drinks.Drink;
+import ee.taltech.iti0202.coffee.logger.Logging;
 import ee.taltech.iti0202.coffee.water.WaterTank;
 
 
+
 import java.util.Set;
+import java.util.logging.Logger;
+
 
 public class CoffeeMachine {
+    private final static Logger LOGGER = Logger.getLogger(Logging.class.getName());
     private final Integer coffeeBeansTank;
     protected WaterTank waterTank;
     protected Integer needToCleanNumber;
@@ -94,8 +99,9 @@ public class CoffeeMachine {
             count++;
             takeCoffeeBeans(amount);
             result = drink.getDrinkType();
+            LOGGER.info("Drink has created");
         } else if (waterTank.noWaterInTank() || needToClean() || notEnoughCoffeeBeans(amount)) {
-            throw new MachineException("Can't make drink!");
+            throw new MachineException("No such file");
         }
         return result;
     }

@@ -12,7 +12,7 @@ public class Drink {
     }
 
     public enum DrinkType {
-        COFFEE, CACAO, CAPPUCCIONO, WATER
+        COFFEE, CACAO, CAPPUCCINO, WATER
     }
 
     public Map<String, Integer> getMap() {
