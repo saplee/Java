@@ -23,7 +23,7 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
         Drink.DrinkType result = null;
         if (capsuleType == null) {
             if (waterTank.noWaterInTank() || needToClean()) {
-                throw new MachineException("Can't make drink!");
+                throw new MachineException("Can't make this drink!");
             } else if (!waterTank.noWaterInTank() && !needToClean() && (capsuleEmptyInside || !capsuleInMachine)) {
                 waterTank.takeWater();
                 result = Drink.DrinkType.WATER;

@@ -1,14 +1,15 @@
 package ee.taltech.iti0202.coffee.machine;
 
 public class MachineException extends Exception {
-    private String reason;
-    private Throwable cause;
+    private String result;
 
-    MachineException(String reason) {
-        this.reason = reason;
+
+    MachineException(String result) {
+
+        this.result = result;
     }
 
-    public String getReason() {
-        return reason;
+    public String getResult() {
+        return result;
     }
 }

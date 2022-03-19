@@ -5,7 +5,6 @@ import ee.taltech.iti0202.coffee.logger.Logging;
 import ee.taltech.iti0202.coffee.water.WaterTank;
 
 
-
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -19,7 +18,6 @@ public class CoffeeMachine {
     protected int count = 0;
 
     /**
-     *
      * @param waterTank
      * @param needToCleanNumber
      * @param coffeeBeans
@@ -32,7 +30,6 @@ public class CoffeeMachine {
     }
 
     /**
-     *
      * @param waterTank
      * @param coffeeBeans
      */
@@ -55,6 +52,7 @@ public class CoffeeMachine {
     public void cleanCoffeeMachine() {
         if (count > 0) {
             count = 0;
+            LOGGER.info("Coffee machine was cleaned");
         }
     }
 
@@ -74,11 +72,11 @@ public class CoffeeMachine {
     public void addCoffeeBeans() {
         if (coffeeBeansTank > coffeeBeans) {
             coffeeBeans = coffeeBeansTank;
+            LOGGER.info("Coffee beans added to machine.");
         }
     }
 
     /**
-     *
      * @param drink
      * @return
      * @throws MachineException
@@ -90,7 +88,7 @@ public class CoffeeMachine {
             if (key.toLowerCase().replaceAll(" ", "").equals("coffeebeans")) {
                 amount = drink.getMap().get(key);
             } else {
-                throw new MachineException("Can't make drink!");
+                throw new MachineException("Can't make this drink!");
             }
         }
         Drink.DrinkType result = null;
@@ -101,7 +99,7 @@ public class CoffeeMachine {
             result = drink.getDrinkType();
             LOGGER.info("Drink has created");
         } else if (waterTank.noWaterInTank() || needToClean() || notEnoughCoffeeBeans(amount)) {
-            throw new MachineException("No such file");
+            throw new MachineException("Can't make this drink!");
         }
         return result;
     }

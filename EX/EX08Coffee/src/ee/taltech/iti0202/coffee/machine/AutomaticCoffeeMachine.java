@@ -26,7 +26,7 @@ public class AutomaticCoffeeMachine extends CoffeeMachine {
             result = drink.getDrinkType();
             LOGGER.info("Drink has created");
         } else if (waterTank.noWaterInTank() || needToClean()) {
-            throw new MachineException("Can't make drink!");
+            throw new MachineException("Can't make this drink!");
         }
         return result;
     }
