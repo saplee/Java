@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class Kitchen {
     private List<CoffeeMachine> coffeeMachines = new ArrayList<>();
-    private final static Logger LOGGER = Logger.getLogger(Logging.class.getName());
+    private static Logger LOGGER = Logger.getLogger(Logging.class.getName());
 
     /**
      *

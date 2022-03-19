@@ -7,7 +7,6 @@ import ee.taltech.iti0202.coffee.water.WaterTank;
 import java.util.logging.Logger;
 
 public class AutomaticCoffeeMachine extends CoffeeMachine {
-    private final static Logger LOGGER = Logger.getLogger(Logging.class.getName());
     public AutomaticCoffeeMachine(WaterTank waterTank, Integer needToCleanNumber) {
         super(waterTank, needToCleanNumber, 0);
     }
