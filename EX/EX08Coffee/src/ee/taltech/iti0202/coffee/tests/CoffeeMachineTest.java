@@ -14,20 +14,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class CoffeeMachineTest {
     @Test
     public void testMakeCappuccino() throws MachineException {
+        final int number = 50;
         WaterTank waterTank = new WaterTank(100);
-        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 50, 1000);
+        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 1000);
         Map<String, Integer> map = new HashMap<>();
-        map.put("coffeebeans", 50);
+        map.put("coffeebeans", number);
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO, map);
         assertEquals(Drink.DrinkType.CAPPUCCINO, coffeeMachine.start(drink));
     }
 
     @Test
     public void testMakeCoffee() throws MachineException {
+        final int number = 50;
         WaterTank waterTank = new WaterTank(100);
-        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 50, 1000);
+        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 1000);
         Map<String, Integer> map = new HashMap<>();
-        map.put("coffee beans", 50);
+        map.put("coffee beans", number);
         Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
         assertEquals(Drink.DrinkType.COFFEE, coffeeMachine.start(drink));
 
@@ -35,10 +37,11 @@ class CoffeeMachineTest {
 
     @Test
     public void testMakeCoffee2() throws MachineException {
+        final int number = 50;
         WaterTank waterTank = new WaterTank(100);
-        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 50, 0);
+        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 0);
         Map<String, Integer> map = new HashMap<>();
-        map.put("coffee beans", 50);
+        map.put("coffee beans", number);
         Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
         try {
             // Trying to add garbage to full garbage container.
