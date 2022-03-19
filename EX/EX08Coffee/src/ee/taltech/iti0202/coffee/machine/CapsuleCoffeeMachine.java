@@ -27,14 +27,15 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
             } else if (!waterTank.noWaterInTank() && !needToClean() && (capsuleEmptyInside || !capsuleInMachine)) {
                 waterTank.takeWater();
                 result = Drink.DrinkType.WATER;
+                LOGGER.info("Hot water came.");
             }
-        }
-        else if (!waterTank.noWaterInTank() && !needToClean() && !capsuleEmptyInside && !capsuleInMachine) {
+        } else if (!waterTank.noWaterInTank() && !needToClean() && !capsuleEmptyInside && !capsuleInMachine) {
             waterTank.takeWater();
             count++;
             result = capsuleType;
             capsuleEmptyInside = true;
             capsuleInMachine = true;
+            LOGGER.info("Capsule drink has created");
         } else if (waterTank.noWaterInTank() || needToClean() || capsuleInMachine) {
             throw new MachineException("Can't make drink!");
         }
