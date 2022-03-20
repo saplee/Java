@@ -1,10 +1,11 @@
 package ee.taltech.iti0202.coffee.machine;
 
 import ee.taltech.iti0202.coffee.drinks.Drink;
-import ee.taltech.iti0202.coffee.logger.Logging;
+import ee.taltech.iti0202.coffee.exceptions.EmptyWaterTankException;
+import ee.taltech.iti0202.coffee.exceptions.GarbageContainerFull;
+import ee.taltech.iti0202.coffee.exceptions.MachineException;
 import ee.taltech.iti0202.coffee.water.WaterTank;
 
-import java.util.logging.Logger;
 
 public class AutomaticCoffeeMachine extends CoffeeMachine {
     public AutomaticCoffeeMachine(WaterTank waterTank, Integer needToCleanNumber) {
@@ -17,15 +18,17 @@ public class AutomaticCoffeeMachine extends CoffeeMachine {
     }
 
     @Override
-    public Drink.DrinkType start(Drink drink) throws MachineException {
+    public Drink.DrinkType start(Drink drink) throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         Drink.DrinkType result = null;
         if (!waterTank.noWaterInTank() && !needToClean()) {
             waterTank.takeWater();
             count++;
             result = drink.getDrinkType();
             LOGGER.info("Drink has created");
-        } else if (waterTank.noWaterInTank() || needToClean()) {
-            throw new MachineException("Can't make this drink!");
+        } else if (waterTank.noWaterInTank()) {
+            throw new EmptyWaterTankException("No water in tank!");
+        } else if (needToClean()) {
+            throw new GarbageContainerFull("Garbage container is full!");
         }
         return result;
     }

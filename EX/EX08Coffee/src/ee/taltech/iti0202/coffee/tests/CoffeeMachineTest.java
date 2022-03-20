@@ -2,7 +2,9 @@ package ee.taltech.iti0202.coffee.tests;
 
 import ee.taltech.iti0202.coffee.drinks.Drink;
 import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
-import ee.taltech.iti0202.coffee.machine.MachineException;
+import ee.taltech.iti0202.coffee.exceptions.EmptyWaterTankException;
+import ee.taltech.iti0202.coffee.exceptions.GarbageContainerFull;
+import ee.taltech.iti0202.coffee.exceptions.MachineException;
 import ee.taltech.iti0202.coffee.water.WaterTank;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CoffeeMachineTest {
     @Test
-    public void testMakeCappuccino() throws MachineException {
+    public void testMakeCappuccino() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         final int number = 50;
         WaterTank waterTank = new WaterTank(100);
         CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 1000);
@@ -24,7 +26,7 @@ class CoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCoffee() throws MachineException {
+    public void testMakeCoffee() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         final int number = 50;
         WaterTank waterTank = new WaterTank(100);
         CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 1000);
@@ -36,7 +38,7 @@ class CoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCoffee2() throws MachineException {
+    public void testMakeCoffee2() throws MachineException, GarbageContainerFull, EmptyWaterTankException {
         final int number = 50;
         WaterTank waterTank = new WaterTank(100);
         CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 0);
