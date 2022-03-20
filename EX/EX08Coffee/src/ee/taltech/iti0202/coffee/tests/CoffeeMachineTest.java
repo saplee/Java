@@ -6,12 +6,11 @@ import ee.taltech.iti0202.coffee.exceptions.EmptyWaterTankException;
 import ee.taltech.iti0202.coffee.exceptions.GarbageContainerFull;
 import ee.taltech.iti0202.coffee.exceptions.MachineException;
 import ee.taltech.iti0202.coffee.water.WaterTank;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CoffeeMachineTest {
     @Test
@@ -22,7 +21,7 @@ class CoffeeMachineTest {
         Map<String, Integer> map = new HashMap<>();
         map.put("coffeebeans", number);
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO, map);
-        assertEquals(Drink.DrinkType.CAPPUCCINO, coffeeMachine.start(drink));
+        Assertions.assertEquals(Drink.DrinkType.CAPPUCCINO, coffeeMachine.start(drink));
     }
 
     @Test
@@ -33,7 +32,7 @@ class CoffeeMachineTest {
         Map<String, Integer> map = new HashMap<>();
         map.put("coffee beans", number);
         Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
-        assertEquals(Drink.DrinkType.COFFEE, coffeeMachine.start(drink));
+        Assertions.assertEquals(Drink.DrinkType.COFFEE, coffeeMachine.start(drink));
 
     }
 
@@ -48,9 +47,9 @@ class CoffeeMachineTest {
         try {
             // Trying to add garbage to full garbage container.
             coffeeMachine.start(drink);
-            assertEquals(Drink.DrinkType.COFFEE, drink.getDrinkType());
+            Assertions.assertEquals(Drink.DrinkType.COFFEE, drink.getDrinkType());
         } catch (MachineException machineException) {
-            assertEquals("Can't make this drink!", machineException.getResult());
+            Assertions.assertEquals("Can't make this drink!", machineException.getResult());
         }
     }
 }

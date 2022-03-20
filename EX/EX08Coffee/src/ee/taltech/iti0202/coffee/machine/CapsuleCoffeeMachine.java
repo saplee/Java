@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.coffee.machine;
 
 import ee.taltech.iti0202.coffee.drinks.Drink;
+import ee.taltech.iti0202.coffee.exceptions.CapsuleAlreadyInside;
 import ee.taltech.iti0202.coffee.exceptions.EmptyWaterTankException;
 import ee.taltech.iti0202.coffee.exceptions.GarbageContainerFull;
 import ee.taltech.iti0202.coffee.exceptions.MachineException;
@@ -22,7 +23,7 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
         }
     }
 
-    public Drink.DrinkType start(Drink.DrinkType capsule) throws MachineException, EmptyWaterTankException, GarbageContainerFull {
+    public Drink.DrinkType startCapsuleMachine(Drink.DrinkType capsule) throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
         Drink.DrinkType result = null;
         if (capsule == null) {
             if (waterTank.noWaterInTank()) {
@@ -32,7 +33,7 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
             } else if (!waterTank.noWaterInTank() && !needToClean() && (capsuleEmptyInside || !capsuleInMachine)) {
                 waterTank.takeWater();
                 result = Drink.DrinkType.WATER;
-                LOGGER.info("Hot water came.");
+                LOGGER.info("Hot water has created");
             }
         } else if (!waterTank.noWaterInTank() && !needToClean() && !capsuleEmptyInside && !capsuleInMachine) {
             waterTank.takeWater();
@@ -41,10 +42,12 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
             capsuleEmptyInside = true;
             capsuleInMachine = true;
             LOGGER.info("Capsule drink has created");
-        } else if (waterTank.noWaterInTank() || capsuleInMachine) {
-            throw new MachineException("Can't make drink!");
+        } else if (waterTank.noWaterInTank()) {
+            throw new EmptyWaterTankException("No water in tank!");
         } else if (needToClean()) {
             throw new GarbageContainerFull("Garbage container is full!");
+        } else if (capsuleInMachine) {
+            throw new CapsuleAlreadyInside("Capsule is already inside!");
         }
         return result;
     }
