@@ -76,10 +76,11 @@ public class CoffeeMachine {
 
     /**
      * @param drink
-     * @return
+     * @return DrinkType
      * @throws MachineException
      */
-    public Drink.DrinkType start(Drink drink) throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public Drink.DrinkType start(Drink drink) throws MachineException, EmptyWaterTankException, GarbageContainerFull,
+            CapsuleAlreadyInside {
         Set<String> keys = drink.getMap().keySet();
         Integer amount = 0;
         for (String key : keys) {

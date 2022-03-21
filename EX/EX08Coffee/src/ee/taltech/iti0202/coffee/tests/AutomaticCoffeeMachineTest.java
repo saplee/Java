@@ -85,7 +85,8 @@ class AutomaticCoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCoffeeNoWater() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+    public void testMakeCoffeeNoWater() throws MachineException, GarbageContainerFull, EmptyWaterTankException,
+            CapsuleAlreadyInside {
         final int number = 10;
         WaterTank waterTank = new WaterTank(1);
         // Making coffee machine
