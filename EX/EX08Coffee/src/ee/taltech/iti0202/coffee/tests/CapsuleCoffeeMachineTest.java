@@ -54,7 +54,8 @@ class CapsuleCoffeeMachineTest {
     }
 
     @Test
-    public void testCapsuleAlreadyInside() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public void testCapsuleAlreadyInside() throws MachineException, EmptyWaterTankException, GarbageContainerFull,
+            CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(5);
         CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachine(waterTank);
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO);

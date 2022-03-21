@@ -35,7 +35,8 @@ public class Kitchen {
 
 
 
-    public Drink.DrinkType makeDrink(Drink drink, CoffeeMachine coffeeMachine) throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public Drink.DrinkType makeDrink(Drink drink, CoffeeMachine coffeeMachine) throws MachineException,
+            EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
         return coffeeMachine.start(drink);
     }
 }

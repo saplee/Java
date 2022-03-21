@@ -16,7 +16,7 @@ public class WaterTank {
 
     /**
      *
-     * @return
+     * @return amount of water
      */
     public int getAmountOfWater() {
         return amountOfWater;
@@ -24,7 +24,7 @@ public class WaterTank {
 
     /**
      *
-     * @return
+     * @return boolean
      */
     public boolean noWaterInTank() {
         if (amountOfWater == 0) {
