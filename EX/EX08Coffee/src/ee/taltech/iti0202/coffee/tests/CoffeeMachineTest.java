@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.coffee.tests;
 
 import ee.taltech.iti0202.coffee.drinks.Drink;
+import ee.taltech.iti0202.coffee.exceptions.CapsuleAlreadyInside;
 import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
 import ee.taltech.iti0202.coffee.exceptions.EmptyWaterTankException;
 import ee.taltech.iti0202.coffee.exceptions.GarbageContainerFull;
@@ -14,42 +15,166 @@ import java.util.Map;
 
 class CoffeeMachineTest {
     @Test
-    public void testMakeCappuccino() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
-        final int number = 50;
+    public void testMakeCappuccino() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+        final int number = 10;
         WaterTank waterTank = new WaterTank(100);
         CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 1000);
         Map<String, Integer> map = new HashMap<>();
-        map.put("coffeebeans", number);
+        map.put("coffeebeans", 3);
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO, map);
         Assertions.assertEquals(Drink.DrinkType.CAPPUCCINO, coffeeMachine.start(drink));
     }
 
     @Test
-    public void testMakeCoffee() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
-        final int number = 50;
+    public void testMakeCoffee() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+        final int number = 10;
         WaterTank waterTank = new WaterTank(100);
+        // Making coffee machine
         CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 1000);
         Map<String, Integer> map = new HashMap<>();
-        map.put("coffee beans", number);
+        // Making drink recipe, Coffee machine can only make drinks with coffee beans.
+        map.put("coffee beans", 1);
+        // Making drink with drink Type and recipe
         Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
         Assertions.assertEquals(Drink.DrinkType.COFFEE, coffeeMachine.start(drink));
 
     }
 
     @Test
-    public void testMakeCoffee2() throws MachineException, GarbageContainerFull, EmptyWaterTankException {
-        final int number = 50;
-        WaterTank waterTank = new WaterTank(100);
-        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 0);
+    public void testMakeCoffeeNoWater() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+        final int number = 10;
+        WaterTank waterTank = new WaterTank(1);
+        // Making coffee machine
+        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 100);
         Map<String, Integer> map = new HashMap<>();
-        map.put("coffee beans", number);
+        // Making drink recipe, Coffee machine can only make drinks with coffee beans.
+        map.put("coffee beans", 1);
+        Map<String, Integer> map2 = new HashMap<>();
+        // Making drink recipe, Coffee machine can only make drinks with coffee beans.
+        map2.put("coffee beans", 3);
+        // Making drink with drink Type and recipe
+        Drink drink1 = new Drink(Drink.DrinkType.CAPPUCCINO, map2);
+        // Making drink with drink Type and recipe
         Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
         try {
-            // Trying to add garbage to full garbage container.
+            // Trying to make coffee, but no water in tank.
+            coffeeMachine.start(drink);
+            coffeeMachine.start(drink1);
+            Assertions.assertEquals(Drink.DrinkType.COFFEE, drink.getDrinkType());
+        } catch (EmptyWaterTankException emptyWaterTankException) {
+            Assertions.assertEquals("No water in tank!", emptyWaterTankException.getResult());
+        }
+    }
+
+    @Test
+    public void testMakeCoffeeGarbageContainerFull() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+        WaterTank waterTank = new WaterTank(100);
+        // Making coffee machine
+        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 100);
+        Map<String, Integer> map = new HashMap<>();
+        // Making drink recipe, Coffee machine can only make drinks with coffee beans.
+        map.put("coffee beans", 1);
+        // Making drink with drink Type and recipe
+        Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
+        try {
+            // Trying to make 6 coffee, but garbage container gets full after 5 drinks.
+            coffeeMachine.start(drink);
+            coffeeMachine.start(drink);
+            coffeeMachine.start(drink);
+            coffeeMachine.start(drink);
+            coffeeMachine.start(drink);
+            coffeeMachine.start(drink);
+            Assertions.assertEquals(Drink.DrinkType.COFFEE, drink.getDrinkType());
+        } catch (GarbageContainerFull garbageContainerFull) {
+            Assertions.assertEquals("Garbage container is full!", garbageContainerFull.getResult());
+        }
+    }
+
+    @Test
+    public void testMakeCoffeeGarbageContainerCleaning() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+        WaterTank waterTank = new WaterTank(100);
+        // Making coffee machine
+        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 100);
+        Map<String, Integer> map = new HashMap<>();
+        // Making drink recipe, Coffee machine can only make drinks with coffee beans.
+        map.put("coffee beans", 1);
+        Map<String, Integer> map2 = new HashMap<>();
+        // Making drink recipe, Coffee machine can only make drinks with coffee beans.
+        map2.put("coffee beans", 3);
+        // Making drink with drink Type and recipe
+        Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
+        Drink drink1 = new Drink(Drink.DrinkType.CAPPUCCINO, map2);
+        // Trying to make many drinks and cleaning machine after 5 drink.
+        // Returns CAPPUCCINO
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink);
+        coffeeMachine.cleanCoffeeMachine();
+        coffeeMachine.start(drink1);
+        Assertions.assertEquals(Drink.DrinkType.CAPPUCCINO, drink1.getDrinkType());
+
+    }
+
+    @Test
+    public void testMakeCoffeeAddingWater() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+        WaterTank waterTank = new WaterTank(3);
+        // Making coffee machine
+        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 6, 100);
+        Map<String, Integer> map = new HashMap<>();
+        // Making drink recipe, Coffee machine can only make drinks with coffee beans.
+        map.put("coffee beans", 1);
+        Map<String, Integer> map2 = new HashMap<>();
+        // Making drink recipe, Coffee machine can only make drinks with coffee beans.
+        map2.put("coffee beans", 4);
+        // Making drink with drink Type and recipe
+        Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
+        Drink drink1 = new Drink(Drink.DrinkType.CAPPUCCINO, map2);
+        // Trying to make many drinks and adding water to water tank
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink);
+        waterTank.addWaterToTank();
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink1);
+        Assertions.assertEquals(Drink.DrinkType.CAPPUCCINO, drink1.getDrinkType());
+
+    }
+
+    @Test
+    public void testMakeCoffeeButNotEnoughBeans() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+        WaterTank waterTank = new WaterTank(3);
+        // Making coffee machine
+        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 0);
+        Map<String, Integer> map = new HashMap<>();
+        // Making drink recipe, Coffee machine can only make drinks with coffee beans.
+        map.put("coffee beans", 1);
+        // Making drink with drink Type and recipe
+        Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
+        try {
+            // Trying to make drink but not enough beans.
             coffeeMachine.start(drink);
             Assertions.assertEquals(Drink.DrinkType.COFFEE, drink.getDrinkType());
         } catch (MachineException machineException) {
             Assertions.assertEquals("Can't make this drink!", machineException.getResult());
         }
     }
+
+    @Test
+    public void testMakeCoffeeButNotEnoughBeansButAdding() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+        WaterTank waterTank = new WaterTank(3);
+        // Making coffee machine
+        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 0);
+        Map<String, Integer> map = new HashMap<>();
+        // Making drink recipe, Coffee machine can only make drinks with coffee beans.
+        map.put("coffee beans", 1);
+        // Making drink with drink Type and recipe
+        Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
+        // Trying to make drink and adding beans.
+        coffeeMachine.addCoffeeBeans(10);
+        coffeeMachine.start(drink);
+        Assertions.assertEquals(Drink.DrinkType.COFFEE, drink.getDrinkType());
+        }
 }

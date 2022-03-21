@@ -23,9 +23,10 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
         }
     }
 
-    public Drink.DrinkType startCapsuleMachine(Drink.DrinkType capsule) throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    @Override
+    public Drink.DrinkType start(Drink capsule) throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
         Drink.DrinkType result = null;
-        if (capsule == null) {
+        if (capsule == null || capsule.getDrinkType() == null) {
             if (waterTank.noWaterInTank()) {
                 throw new EmptyWaterTankException("No water in tank!");
             } else if (needToClean()) {
@@ -38,7 +39,7 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
         } else if (!waterTank.noWaterInTank() && !needToClean() && !capsuleEmptyInside && !capsuleInMachine) {
             waterTank.takeWater();
             count++;
-            result = capsule;
+            result = capsule.getDrinkType();
             capsuleEmptyInside = true;
             capsuleInMachine = true;
             LOGGER.info("Capsule drink has created");

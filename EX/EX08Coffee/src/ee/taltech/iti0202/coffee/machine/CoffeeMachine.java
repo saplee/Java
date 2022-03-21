@@ -1,10 +1,10 @@
 package ee.taltech.iti0202.coffee.machine;
 
 import ee.taltech.iti0202.coffee.drinks.Drink;
+import ee.taltech.iti0202.coffee.exceptions.CapsuleAlreadyInside;
 import ee.taltech.iti0202.coffee.exceptions.EmptyWaterTankException;
 import ee.taltech.iti0202.coffee.exceptions.GarbageContainerFull;
 import ee.taltech.iti0202.coffee.exceptions.MachineException;
-import ee.taltech.iti0202.coffee.logger.Logging;
 import ee.taltech.iti0202.coffee.water.WaterTank;
 
 
@@ -13,8 +13,7 @@ import java.util.logging.Logger;
 
 
 public class CoffeeMachine {
-    protected static Logger LOGGER = Logger.getLogger(Logging.class.getName());
-    private final Integer coffeeBeansTank;
+    protected static Logger LOGGER = Logger.getLogger(CoffeeMachine.class.getName());
     protected WaterTank waterTank;
     protected Integer needToCleanNumber;
     protected Integer coffeeBeans;
@@ -29,7 +28,6 @@ public class CoffeeMachine {
         this.waterTank = waterTank;
         this.needToCleanNumber = needToCleanNumber;
         this.coffeeBeans = coffeeBeans;
-        this.coffeeBeansTank = coffeeBeans;
     }
 
     /**
@@ -40,7 +38,6 @@ public class CoffeeMachine {
         this.waterTank = waterTank;
         this.needToCleanNumber = 5;
         this.coffeeBeans = coffeeBeans;
-        this.coffeeBeansTank = coffeeBeans;
     }
 
 
@@ -72,11 +69,9 @@ public class CoffeeMachine {
         }
     }
 
-    public void addCoffeeBeans() {
-        if (coffeeBeansTank > coffeeBeans) {
-            coffeeBeans = coffeeBeansTank;
-            LOGGER.info("Coffee beans added to machine.");
-        }
+    public void addCoffeeBeans(int number) {
+        coffeeBeans += number;
+        LOGGER.info("Coffee beans added to machine.");
     }
 
     /**
@@ -84,7 +79,7 @@ public class CoffeeMachine {
      * @return
      * @throws MachineException
      */
-    public Drink.DrinkType start(Drink drink) throws MachineException, EmptyWaterTankException, GarbageContainerFull {
+    public Drink.DrinkType start(Drink drink) throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
         Set<String> keys = drink.getMap().keySet();
         Integer amount = 0;
         for (String key : keys) {
