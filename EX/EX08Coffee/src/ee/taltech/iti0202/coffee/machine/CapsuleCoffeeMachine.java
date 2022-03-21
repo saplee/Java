@@ -24,7 +24,8 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
     }
 
     @Override
-    public Drink.DrinkType start(Drink capsule) throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public Drink.DrinkType start(Drink capsule) throws MachineException, EmptyWaterTankException, GarbageContainerFull,
+            CapsuleAlreadyInside {
         Drink.DrinkType result = null;
         if (capsule == null || capsule.getDrinkType() == null) {
             if (waterTank.noWaterInTank()) {

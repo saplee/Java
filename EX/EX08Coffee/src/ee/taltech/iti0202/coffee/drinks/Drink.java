@@ -11,6 +11,7 @@ public class Drink {
         this.drinkType = drinkType;
         this.map = map;
     }
+
     public Drink(DrinkType drinkType) {
         this.drinkType = drinkType;
     }
@@ -34,6 +35,7 @@ public class Drink {
             if (key.toLowerCase().replaceAll(" ", "").equals("coffeebeans")) {
                 amount = map.get(key);
             }
-        }return amount;
+        }
+        return amount;
     }
 }

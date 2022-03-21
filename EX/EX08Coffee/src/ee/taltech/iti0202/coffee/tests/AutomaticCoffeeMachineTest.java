@@ -15,7 +15,7 @@ import java.util.Map;
 
 class AutomaticCoffeeMachineTest {
     @Test
-    public void testCappuccino() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public void testCappuccino() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         WaterTank waterTank = new WaterTank(100);
         AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachine(waterTank, 10);
         Map<String, Integer> map = new HashMap<>();
@@ -25,7 +25,7 @@ class AutomaticCoffeeMachineTest {
     }
 
     @Test
-    public void testLatte() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public void testLatte() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         WaterTank waterTank = new WaterTank(100);
         AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachine(waterTank, 10);
         Map<String, Integer> map = new HashMap<>();
@@ -36,7 +36,7 @@ class AutomaticCoffeeMachineTest {
     }
 
     @Test
-    public void testCacao() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public void testCacao() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         WaterTank waterTank = new WaterTank(100);
         AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachine(waterTank, 10);
         Map<String, Integer> map = new HashMap<>();
@@ -47,7 +47,7 @@ class AutomaticCoffeeMachineTest {
     }
 
     @Test
-    public void testNoWater() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public void testNoWater() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         WaterTank waterTank = new WaterTank(5);
         AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachine(waterTank, 10);
         Map<String, Integer> map = new HashMap<>();
@@ -63,7 +63,7 @@ class AutomaticCoffeeMachineTest {
     }
 
     @Test
-    public void AlwaysBeans() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public void AlwaysBeans() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         WaterTank waterTank = new WaterTank(100);
         AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachine(waterTank, 20);
         Map<String, Integer> map = new HashMap<>();
@@ -108,8 +108,10 @@ class AutomaticCoffeeMachineTest {
             Assertions.assertEquals("No water in tank!", emptyWaterTankException.getResult());
         }
     }
+
     @Test
-    public void testMakeCoffeeGarbageContainerFull() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+    public void testMakeCoffeeGarbageContainerFull() throws MachineException, GarbageContainerFull,
+            EmptyWaterTankException {
         WaterTank waterTank = new WaterTank(100);
         final int number = 4;
         // Making coffee machine
