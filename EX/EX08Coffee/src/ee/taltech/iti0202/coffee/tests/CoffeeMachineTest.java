@@ -15,7 +15,8 @@ import java.util.Map;
 
 class CoffeeMachineTest {
     @Test
-    public void testMakeCappuccino() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public void testMakeCappuccino() throws MachineException, EmptyWaterTankException, GarbageContainerFull,
+            CapsuleAlreadyInside {
         final int number = 10;
         WaterTank waterTank = new WaterTank(100);
         CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 1000);
@@ -26,7 +27,8 @@ class CoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCoffee() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public void testMakeCoffee() throws MachineException, EmptyWaterTankException, GarbageContainerFull,
+            CapsuleAlreadyInside {
         final int number = 10;
         WaterTank waterTank = new WaterTank(100);
         // Making coffee machine
@@ -41,7 +43,8 @@ class CoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCoffeeNoWater() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+    public void testMakeCoffeeNoWater() throws MachineException, GarbageContainerFull, EmptyWaterTankException,
+            CapsuleAlreadyInside {
         final int number = 10;
         WaterTank waterTank = new WaterTank(1);
         // Making coffee machine
@@ -67,7 +70,8 @@ class CoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCoffeeGarbageContainerFull() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+    public void testMakeCoffeeGarbageContainerFull() throws MachineException, GarbageContainerFull,
+            EmptyWaterTankException, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(100);
         // Making coffee machine
         CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 100);
@@ -91,7 +95,8 @@ class CoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCoffeeGarbageContainerCleaning() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+    public void testMakeCoffeeGarbageContainerCleaning() throws MachineException, GarbageContainerFull,
+            EmptyWaterTankException, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(100);
         // Making coffee machine
         CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 100);
@@ -118,7 +123,8 @@ class CoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCoffeeAddingWater() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+    public void testMakeCoffeeAddingWater() throws MachineException, GarbageContainerFull,
+            EmptyWaterTankException, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(3);
         // Making coffee machine
         CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 6, 100);
@@ -144,7 +150,8 @@ class CoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCoffeeButNotEnoughBeans() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+    public void testMakeCoffeeButNotEnoughBeans() throws MachineException, GarbageContainerFull,
+            EmptyWaterTankException, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(3);
         // Making coffee machine
         CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 0);
@@ -163,7 +170,8 @@ class CoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCoffeeButNotEnoughBeansButAdding() throws MachineException, GarbageContainerFull, EmptyWaterTankException, CapsuleAlreadyInside {
+    public void testMakeCoffeeButNotEnoughBeansButAdding() throws MachineException, GarbageContainerFull,
+            EmptyWaterTankException, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(3);
         // Making coffee machine
         CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 0);

@@ -63,9 +63,10 @@ class AutomaticCoffeeMachineTest {
     }
 
     @Test
-    public void AlwaysBeans() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
+    public void testAlwaysBeans() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         WaterTank waterTank = new WaterTank(100);
-        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachine(waterTank, 20);
+        final int number = 20;
+        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachine(waterTank, number);
         Map<String, Integer> map = new HashMap<>();
         map.put("coffeebeans", 3);
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO, map);
