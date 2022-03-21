@@ -35,7 +35,7 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
             } else if (!waterTank.noWaterInTank() && !needToClean() && (capsuleEmptyInside || !capsuleInMachine)) {
                 waterTank.takeWater();
                 result = Drink.DrinkType.WATER;
-                LOGGER.info("Hot water has created");
+                logger.info("Hot water has created");
             }
         } else if (!waterTank.noWaterInTank() && !needToClean() && !capsuleEmptyInside && !capsuleInMachine) {
             waterTank.takeWater();
@@ -43,7 +43,7 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
             result = capsule.getDrinkType();
             capsuleEmptyInside = true;
             capsuleInMachine = true;
-            LOGGER.info("Capsule drink has created");
+            logger.info("Capsule drink has created");
         } else if (waterTank.noWaterInTank()) {
             throw new EmptyWaterTankException("No water in tank!");
         } else if (needToClean()) {

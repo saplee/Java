@@ -125,9 +125,10 @@ class CoffeeMachineTest {
     @Test
     public void testMakeCoffeeAddingWater() throws MachineException, GarbageContainerFull,
             EmptyWaterTankException, CapsuleAlreadyInside {
+        final int number = 6;
         WaterTank waterTank = new WaterTank(3);
         // Making coffee machine
-        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, 6, 100);
+        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 100);
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);

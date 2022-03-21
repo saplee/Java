@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 
 public class CoffeeMachine {
-    protected static Logger LOGGER = Logger.getLogger(CoffeeMachine.class.getName());
+    protected static Logger logger = Logger.getLogger(CoffeeMachine.class.getName());
     protected WaterTank waterTank;
     protected Integer needToCleanNumber;
     protected Integer coffeeBeans;
@@ -52,7 +52,7 @@ public class CoffeeMachine {
     public void cleanCoffeeMachine() {
         if (count > 0) {
             count = 0;
-            LOGGER.info("Coffee machine was cleaned");
+            logger.info("Coffee machine was cleaned");
         }
     }
 
@@ -71,7 +71,7 @@ public class CoffeeMachine {
 
     public void addCoffeeBeans(int number) {
         coffeeBeans += number;
-        LOGGER.info("Coffee beans added to machine.");
+        logger.info("Coffee beans added to machine.");
     }
 
     /**
@@ -95,7 +95,7 @@ public class CoffeeMachine {
             count++;
             takeCoffeeBeans(amount);
             result = drink.getDrinkType();
-            LOGGER.info("Drink has created");
+            logger.info("Drink has created");
         } else if (notEnoughCoffeeBeans(amount)) {
             throw new MachineException("Can't make this drink!");
         } else if (waterTank.noWaterInTank()) {

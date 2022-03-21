@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 public class Kitchen {
     private List<CoffeeMachine> coffeeMachines = new ArrayList<>();
-    private static Logger LOGGER = Logger.getLogger(Kitchen.class.getName());
+    private static Logger logger = Logger.getLogger(Kitchen.class.getName());
 
     /**
      *

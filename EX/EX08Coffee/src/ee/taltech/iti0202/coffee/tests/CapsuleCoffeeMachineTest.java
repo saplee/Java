@@ -12,7 +12,8 @@ import org.junit.jupiter.api.Test;
 
 class CapsuleCoffeeMachineTest {
     @Test
-    public void testMakeCapsuleCappuccino() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public void testMakeCapsuleCappuccino() throws MachineException, EmptyWaterTankException,
+            GarbageContainerFull, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(100);
         CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachine(waterTank);
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO);
@@ -20,7 +21,8 @@ class CapsuleCoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCapsuleMachineMakesHotWater() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public void testMakeCapsuleMachineMakesHotWater() throws MachineException, EmptyWaterTankException,
+            GarbageContainerFull, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(100);
         CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachine(waterTank);
         Drink drink = new Drink(null);
@@ -28,7 +30,8 @@ class CapsuleCoffeeMachineTest {
     }
 
     @Test
-    public void testMakeCapsuleMachineNoWater() throws MachineException, EmptyWaterTankException, GarbageContainerFull, CapsuleAlreadyInside {
+    public void testMakeCapsuleMachineNoWater() throws MachineException, EmptyWaterTankException,
+            GarbageContainerFull, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(5);
         CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachine(waterTank);
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO);
