@@ -67,4 +67,41 @@ class CapsuleCoffeeMachineTest {
             Assertions.assertEquals("Capsule is already inside!", capsuleAlreadyInside.getResult());
         }
     }
+
+    @Test
+    public void testCapsuleMachineGarbageContainerFull() throws MachineException, EmptyWaterTankException,
+            GarbageContainerFull,
+            CapsuleAlreadyInside {
+        final int number = 20;
+        WaterTank waterTank = new WaterTank(number);
+        CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachine(waterTank);
+        Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO);
+        Drink drink1 = new Drink(Drink.DrinkType.LATTE);
+        Drink drink2 = new Drink(Drink.DrinkType.CACAO);
+        try {
+            capsuleCoffeeMachine.start(drink);
+            capsuleCoffeeMachine.takeCapsuleOut();
+            capsuleCoffeeMachine.start(drink1);
+            capsuleCoffeeMachine.takeCapsuleOut();
+            capsuleCoffeeMachine.start(drink);
+            capsuleCoffeeMachine.takeCapsuleOut();
+            capsuleCoffeeMachine.start(drink1);
+            capsuleCoffeeMachine.takeCapsuleOut();
+            capsuleCoffeeMachine.start(drink);
+            capsuleCoffeeMachine.takeCapsuleOut();
+            capsuleCoffeeMachine.start(drink1);
+            capsuleCoffeeMachine.takeCapsuleOut();
+            capsuleCoffeeMachine.start(drink);
+            capsuleCoffeeMachine.takeCapsuleOut();
+            capsuleCoffeeMachine.start(drink1);
+            capsuleCoffeeMachine.takeCapsuleOut();
+            capsuleCoffeeMachine.start(drink);
+            capsuleCoffeeMachine.takeCapsuleOut();
+            capsuleCoffeeMachine.start(drink1);
+            capsuleCoffeeMachine.takeCapsuleOut();
+            capsuleCoffeeMachine.start(drink2);
+        } catch (GarbageContainerFull garbageContainerFull) {
+            Assertions.assertEquals("Garbage container is full!", garbageContainerFull.getResult());
+        }
+    }
 }

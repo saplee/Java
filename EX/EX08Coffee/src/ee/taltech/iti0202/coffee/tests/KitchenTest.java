@@ -29,6 +29,6 @@ class KitchenTest {
         // Making drink with drink Type and recipe
         kitchen.addCoffeeMachine(coffeeMachine);
         Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
-        Assertions.assertEquals(Drink.DrinkType.COFFEE,kitchen.makeDrink(drink, coffeeMachine));
+        Assertions.assertEquals(Drink.DrinkType.COFFEE, kitchen.makeDrink(drink, coffeeMachine));
     }
 }
