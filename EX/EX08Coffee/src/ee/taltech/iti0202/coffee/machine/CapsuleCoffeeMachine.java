@@ -20,6 +20,7 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
         if (capsuleInMachine) {
             capsuleInMachine = false;
             capsuleEmptyInside = false;
+            logger.info("Capsule was removed");
         }
     }
 

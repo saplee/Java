@@ -28,16 +28,9 @@ public class CoffeeMachine {
         this.waterTank = waterTank;
         this.needToCleanNumber = needToCleanNumber;
         this.coffeeBeans = coffeeBeans;
-    }
-
-    /**
-     * @param waterTank
-     * @param coffeeBeans
-     */
-    public CoffeeMachine(WaterTank waterTank, Integer coffeeBeans) {
-        this.waterTank = waterTank;
-        this.needToCleanNumber = 5;
-        this.coffeeBeans = coffeeBeans;
+        if (this.needToCleanNumber == null) {
+            this.needToCleanNumber = 5;
+        }
     }
 
 

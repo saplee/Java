@@ -7,6 +7,7 @@ import ee.taltech.iti0202.coffee.exceptions.GarbageContainerFull;
 import ee.taltech.iti0202.coffee.exceptions.MachineException;
 import ee.taltech.iti0202.coffee.kitchen.Kitchen;
 import ee.taltech.iti0202.coffee.machine.CoffeeMachine;
+import ee.taltech.iti0202.coffee.machine.CoffeeMachineBuilder;
 import ee.taltech.iti0202.coffee.water.WaterTank;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ class KitchenTest {
         final int number = 10;
         WaterTank waterTank = new WaterTank(100);
         // Making coffee machine
-        CoffeeMachine coffeeMachine = new CoffeeMachine(waterTank, number, 1000);
+        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number).setCoffeeBeans(1000).createCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);

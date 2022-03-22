@@ -6,6 +6,7 @@ import ee.taltech.iti0202.coffee.exceptions.EmptyWaterTankException;
 import ee.taltech.iti0202.coffee.exceptions.GarbageContainerFull;
 import ee.taltech.iti0202.coffee.exceptions.MachineException;
 import ee.taltech.iti0202.coffee.machine.CapsuleCoffeeMachine;
+import ee.taltech.iti0202.coffee.machine.CapsuleCoffeeMachineBuilder;
 import ee.taltech.iti0202.coffee.water.WaterTank;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ class CapsuleCoffeeMachineTest {
     public void testMakeCapsuleCappuccino() throws MachineException, EmptyWaterTankException,
             GarbageContainerFull, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(100);
-        CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachine(waterTank);
+        CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachineBuilder().setWaterTank(waterTank).createCapsuleCoffeeMachine();
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO);
         Assertions.assertEquals(Drink.DrinkType.CAPPUCCINO, capsuleCoffeeMachine.start(drink));
     }
@@ -24,7 +25,7 @@ class CapsuleCoffeeMachineTest {
     public void testMakeCapsuleMachineMakesHotWater() throws MachineException, EmptyWaterTankException,
             GarbageContainerFull, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(100);
-        CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachine(waterTank);
+        CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachineBuilder().setWaterTank(waterTank).createCapsuleCoffeeMachine();
         Drink drink = new Drink(null);
         Assertions.assertEquals(Drink.DrinkType.WATER, capsuleCoffeeMachine.start(drink));
     }
@@ -33,7 +34,7 @@ class CapsuleCoffeeMachineTest {
     public void testMakeCapsuleMachineNoWater() throws MachineException, EmptyWaterTankException,
             GarbageContainerFull, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(5);
-        CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachine(waterTank);
+        CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachineBuilder().setWaterTank(waterTank).createCapsuleCoffeeMachine();
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO);
         Drink drink1 = new Drink(Drink.DrinkType.LATTE);
         try {
@@ -58,7 +59,7 @@ class CapsuleCoffeeMachineTest {
     public void testCapsuleAlreadyInside() throws MachineException, EmptyWaterTankException, GarbageContainerFull,
             CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(5);
-        CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachine(waterTank);
+        CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachineBuilder().setWaterTank(waterTank).createCapsuleCoffeeMachine();
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO);
         Drink drink1 = new Drink(Drink.DrinkType.LATTE);
         try {
@@ -76,7 +77,7 @@ class CapsuleCoffeeMachineTest {
             CapsuleAlreadyInside {
         final int number = 20;
         WaterTank waterTank = new WaterTank(number);
-        CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachine(waterTank);
+        CapsuleCoffeeMachine capsuleCoffeeMachine = new CapsuleCoffeeMachineBuilder().setWaterTank(waterTank).createCapsuleCoffeeMachine();
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO);
         Drink drink1 = new Drink(Drink.DrinkType.LATTE);
         Drink drink2 = new Drink(Drink.DrinkType.CACAO);
