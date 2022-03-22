@@ -23,7 +23,8 @@ class KitchenTest {
         final int number = 10;
         WaterTank waterTank = new WaterTank(100);
         // Making coffee machine
-        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number).setCoffeeBeans(1000).createCoffeeMachine();
+        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number)
+                .setCoffeeBeans(1000).createCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);
