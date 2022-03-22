@@ -18,7 +18,8 @@ class AutomaticCoffeeMachineTest {
     @Test
     public void testCappuccino() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         WaterTank waterTank = new WaterTank(100);
-        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
+        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank)
+                .setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         map.put("coffeebeans", 3);
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO, map);
@@ -28,7 +29,8 @@ class AutomaticCoffeeMachineTest {
     @Test
     public void testLatte() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         WaterTank waterTank = new WaterTank(100);
-        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
+        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank)
+                .setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         map.put("coffeebeans", 3);
         map.put("milk", 1);
@@ -39,7 +41,8 @@ class AutomaticCoffeeMachineTest {
     @Test
     public void testCacao() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         WaterTank waterTank = new WaterTank(100);
-        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
+        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank)
+                .setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         map.put("cacao", 2);
         map.put("milk", 1);
@@ -50,7 +53,8 @@ class AutomaticCoffeeMachineTest {
     @Test
     public void testNoWater() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         WaterTank waterTank = new WaterTank(5);
-        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
+        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank)
+                .setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         map.put("cacao", 2);
         map.put("milk", 1);
@@ -67,7 +71,8 @@ class AutomaticCoffeeMachineTest {
     public void testAlwaysBeans() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
         WaterTank waterTank = new WaterTank(100);
         final int number = 20;
-        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number).createAutomaticCoffeeMachine();
+        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder()
+                .setWaterTank(waterTank).setNeedToCleanNumber(number).createAutomaticCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         map.put("coffeebeans", 3);
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO, map);
@@ -91,7 +96,8 @@ class AutomaticCoffeeMachineTest {
         final int number = 10;
         WaterTank waterTank = new WaterTank(1);
         // Making coffee machine
-        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number).createAutomaticCoffeeMachine();
+        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank)
+                .setNeedToCleanNumber(number).createAutomaticCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);
@@ -118,7 +124,8 @@ class AutomaticCoffeeMachineTest {
         WaterTank waterTank = new WaterTank(100);
         final int number = 4;
         // Making coffee machine
-        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number).createAutomaticCoffeeMachine();
+        AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank)
+                .setNeedToCleanNumber(number).createAutomaticCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);

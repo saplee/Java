@@ -20,7 +20,8 @@ class CoffeeMachineTest {
             CapsuleAlreadyInside {
         final int number = 10;
         WaterTank waterTank = new WaterTank(100);
-        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number).setCoffeeBeans(1000).createCoffeeMachine();
+        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number)
+                .setCoffeeBeans(1000).createCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         map.put("coffeebeans", 3);
         Drink drink = new Drink(Drink.DrinkType.CAPPUCCINO, map);
@@ -33,7 +34,8 @@ class CoffeeMachineTest {
         final int number = 10;
         WaterTank waterTank = new WaterTank(100);
         // Making coffee machine
-        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number).setCoffeeBeans(1000).createCoffeeMachine();
+        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number)
+                .setCoffeeBeans(1000).createCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);
@@ -49,7 +51,8 @@ class CoffeeMachineTest {
         final int number = 10;
         WaterTank waterTank = new WaterTank(1);
         // Making coffee machine
-        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number).setCoffeeBeans(100).createCoffeeMachine();
+        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number)
+                .setCoffeeBeans(100).createCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);
@@ -75,7 +78,8 @@ class CoffeeMachineTest {
             EmptyWaterTankException, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(100);
         // Making coffee machine
-        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setCoffeeBeans(100).createCoffeeMachine();
+        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setCoffeeBeans(100)
+                .createCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);
@@ -100,7 +104,8 @@ class CoffeeMachineTest {
             EmptyWaterTankException, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(100);
         // Making coffee machine
-        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setCoffeeBeans(100).createCoffeeMachine();
+        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setCoffeeBeans(100)
+                .createCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);
@@ -129,7 +134,8 @@ class CoffeeMachineTest {
         final int number = 6;
         WaterTank waterTank = new WaterTank(3);
         // Making coffee machine
-        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number).setCoffeeBeans(100).createCoffeeMachine();
+        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setNeedToCleanNumber(number)
+                .setCoffeeBeans(100).createCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);
@@ -156,7 +162,8 @@ class CoffeeMachineTest {
             EmptyWaterTankException, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(3);
         // Making coffee machine
-        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setCoffeeBeans(0).createCoffeeMachine();
+        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setCoffeeBeans(0)
+                .createCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);
@@ -176,7 +183,8 @@ class CoffeeMachineTest {
             EmptyWaterTankException, CapsuleAlreadyInside {
         WaterTank waterTank = new WaterTank(3);
         // Making coffee machine
-        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setCoffeeBeans(0).createCoffeeMachine();
+        CoffeeMachine coffeeMachine = new CoffeeMachineBuilder().setWaterTank(waterTank).setCoffeeBeans(0)
+                .createCoffeeMachine();
         Map<String, Integer> map = new HashMap<>();
         // Making drink recipe, Coffee machine can only make drinks with coffee beans.
         map.put("coffee beans", 1);
