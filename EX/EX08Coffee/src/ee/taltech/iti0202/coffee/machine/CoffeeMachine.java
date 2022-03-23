@@ -8,7 +8,9 @@ import ee.taltech.iti0202.coffee.exceptions.MachineException;
 import ee.taltech.iti0202.coffee.water.WaterTank;
 
 
+import java.io.IOException;
 import java.util.Set;
+import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
 
@@ -18,19 +20,21 @@ public class CoffeeMachine {
     protected Integer needToCleanNumber;
     protected Integer coffeeBeans;
     protected int count = 0;
+    FileHandler fileName = new FileHandler("logger.txt");
 
     /**
      * @param waterTank
      * @param needToCleanNumber
      * @param coffeeBeans
      */
-    public CoffeeMachine(WaterTank waterTank, Integer needToCleanNumber, Integer coffeeBeans) {
+    public CoffeeMachine(WaterTank waterTank, Integer needToCleanNumber, Integer coffeeBeans) throws IOException {
         this.waterTank = waterTank;
         this.needToCleanNumber = needToCleanNumber;
         this.coffeeBeans = coffeeBeans;
         if (this.needToCleanNumber == null) {
             this.needToCleanNumber = 5;
         }
+        logger.addHandler(fileName);
     }
 
 

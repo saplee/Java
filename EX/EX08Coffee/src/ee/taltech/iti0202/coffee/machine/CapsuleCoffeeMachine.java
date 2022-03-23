@@ -7,12 +7,14 @@ import ee.taltech.iti0202.coffee.exceptions.GarbageContainerFull;
 import ee.taltech.iti0202.coffee.exceptions.MachineException;
 import ee.taltech.iti0202.coffee.water.WaterTank;
 
+import java.io.IOException;
+
 
 public class CapsuleCoffeeMachine extends CoffeeMachine {
     private boolean capsuleEmptyInside = false;
     private boolean capsuleInMachine = false;
 
-    public CapsuleCoffeeMachine(WaterTank waterTank) {
+    public CapsuleCoffeeMachine(WaterTank waterTank) throws IOException {
         super(waterTank, 10, 0);
     }
 

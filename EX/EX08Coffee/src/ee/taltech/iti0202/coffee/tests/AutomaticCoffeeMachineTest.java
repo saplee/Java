@@ -11,12 +11,13 @@ import ee.taltech.iti0202.coffee.water.WaterTank;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 class AutomaticCoffeeMachineTest {
     @Test
-    public void testCappuccino() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
+    public void testCappuccino() throws MachineException, EmptyWaterTankException, GarbageContainerFull, IOException {
         WaterTank waterTank = new WaterTank(100);
         AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank)
                 .setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
@@ -27,7 +28,7 @@ class AutomaticCoffeeMachineTest {
     }
 
     @Test
-    public void testLatte() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
+    public void testLatte() throws MachineException, EmptyWaterTankException, GarbageContainerFull, IOException {
         WaterTank waterTank = new WaterTank(100);
         AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank)
                 .setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
@@ -39,7 +40,7 @@ class AutomaticCoffeeMachineTest {
     }
 
     @Test
-    public void testCacao() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
+    public void testCacao() throws MachineException, EmptyWaterTankException, GarbageContainerFull, IOException {
         WaterTank waterTank = new WaterTank(100);
         AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank)
                 .setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
@@ -51,7 +52,7 @@ class AutomaticCoffeeMachineTest {
     }
 
     @Test
-    public void testNoWater() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
+    public void testNoWater() throws MachineException, EmptyWaterTankException, GarbageContainerFull, IOException {
         WaterTank waterTank = new WaterTank(5);
         AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder().setWaterTank(waterTank)
                 .setNeedToCleanNumber(10).createAutomaticCoffeeMachine();
@@ -68,7 +69,7 @@ class AutomaticCoffeeMachineTest {
     }
 
     @Test
-    public void testAlwaysBeans() throws MachineException, EmptyWaterTankException, GarbageContainerFull {
+    public void testAlwaysBeans() throws MachineException, EmptyWaterTankException, GarbageContainerFull, IOException {
         WaterTank waterTank = new WaterTank(100);
         final int number = 20;
         AutomaticCoffeeMachine automaticCoffeeMachine = new AutomaticCoffeeMachineBuilder()
@@ -92,7 +93,7 @@ class AutomaticCoffeeMachineTest {
 
     @Test
     public void testMakeCoffeeNoWater() throws MachineException, GarbageContainerFull, EmptyWaterTankException,
-            CapsuleAlreadyInside {
+            CapsuleAlreadyInside, IOException {
         final int number = 10;
         WaterTank waterTank = new WaterTank(1);
         // Making coffee machine
@@ -120,7 +121,7 @@ class AutomaticCoffeeMachineTest {
 
     @Test
     public void testMakeCoffeeGarbageContainerFull() throws MachineException, GarbageContainerFull,
-            EmptyWaterTankException {
+            EmptyWaterTankException, IOException {
         WaterTank waterTank = new WaterTank(100);
         final int number = 4;
         // Making coffee machine

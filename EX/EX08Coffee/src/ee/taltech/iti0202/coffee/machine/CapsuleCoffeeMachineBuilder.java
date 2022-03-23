@@ -2,6 +2,8 @@ package ee.taltech.iti0202.coffee.machine;
 
 import ee.taltech.iti0202.coffee.water.WaterTank;
 
+import java.io.IOException;
+
 public class CapsuleCoffeeMachineBuilder {
     private WaterTank waterTank;
 
@@ -10,7 +12,7 @@ public class CapsuleCoffeeMachineBuilder {
         return this;
     }
 
-    public CapsuleCoffeeMachine createCapsuleCoffeeMachine() {
+    public CapsuleCoffeeMachine createCapsuleCoffeeMachine() throws IOException {
         return new CapsuleCoffeeMachine(waterTank);
     }
 }

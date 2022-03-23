@@ -12,13 +12,14 @@ import ee.taltech.iti0202.coffee.water.WaterTank;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 class KitchenTest {
     @Test
     public void testMakeCoffee() throws MachineException, EmptyWaterTankException, GarbageContainerFull,
-            CapsuleAlreadyInside {
+            CapsuleAlreadyInside, IOException {
         Kitchen kitchen = new Kitchen();
         final int number = 10;
         WaterTank waterTank = new WaterTank(100);

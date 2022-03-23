@@ -6,9 +6,11 @@ import ee.taltech.iti0202.coffee.exceptions.GarbageContainerFull;
 import ee.taltech.iti0202.coffee.exceptions.MachineException;
 import ee.taltech.iti0202.coffee.water.WaterTank;
 
+import java.io.IOException;
+
 
 public class AutomaticCoffeeMachine extends CoffeeMachine {
-    public AutomaticCoffeeMachine(WaterTank waterTank, Integer needToCleanNumber) {
+    public AutomaticCoffeeMachine(WaterTank waterTank, Integer needToCleanNumber) throws IOException {
         super(waterTank, needToCleanNumber, 0);
     }
 
