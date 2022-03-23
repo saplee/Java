@@ -24,7 +24,7 @@ public class AutomaticCoffeeMachine extends CoffeeMachine {
         Drink.DrinkType result = null;
         if (!waterTank.noWaterInTank() && !needToClean()) {
             waterTank.takeWater();
-            count++;
+            count++; //add garbage
             result = drink.getDrinkType();
             logger.info("Drink has created");
         } else if (waterTank.noWaterInTank()) {
