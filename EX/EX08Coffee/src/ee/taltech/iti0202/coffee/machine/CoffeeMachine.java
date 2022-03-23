@@ -20,7 +20,7 @@ public class CoffeeMachine {
     protected Integer needToCleanNumber;
     protected Integer coffeeBeans;
     protected int count = 0;
-    FileHandler fileName = new FileHandler("logger.txt");
+
 
     /**
      * @param waterTank
@@ -34,6 +34,7 @@ public class CoffeeMachine {
         if (this.needToCleanNumber == null) {
             this.needToCleanNumber = 5;
         }
+        FileHandler fileName = new FileHandler("logger.txt");
         logger.addHandler(fileName);
     }
 
