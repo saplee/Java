@@ -39,6 +39,7 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
                 waterTank.takeWater();
                 result = Drink.DrinkType.WATER;
                 logger.info("Hot water has created");
+
             }
         } else if (!waterTank.noWaterInTank() && !needToClean() && !capsuleEmptyInside && !capsuleInMachine) {
             waterTank.takeWater();

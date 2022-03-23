@@ -109,11 +109,11 @@ class AutomaticCoffeeMachineTest {
         Drink drink1 = new Drink(Drink.DrinkType.CAPPUCCINO, map2);
         // Making drink with drink Type and recipe
         Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
+        automaticCoffeeMachine.start(drink);
         try {
             // Trying to make coffee, but no water in tank.
-            automaticCoffeeMachine.start(drink);
             automaticCoffeeMachine.start(drink1);
-            Assertions.assertEquals(Drink.DrinkType.COFFEE, drink.getDrinkType());
+            Assertions.assertEquals(Drink.DrinkType.CAPPUCCINO, drink1.getDrinkType());
         } catch (EmptyWaterTankException emptyWaterTankException) {
             Assertions.assertEquals("No water in tank!", emptyWaterTankException.getResult());
         }
@@ -137,15 +137,13 @@ class AutomaticCoffeeMachineTest {
         Drink drink1 = new Drink(Drink.DrinkType.CAPPUCCINO, map2);
         // Making drink with drink Type and recipe
         Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
+        automaticCoffeeMachine.start(drink);
+        automaticCoffeeMachine.start(drink);
+        automaticCoffeeMachine.start(drink);
+        automaticCoffeeMachine.start(drink);
         try {
             // Trying to make 6 coffee, but garbage container gets full after 4 drinks.
             automaticCoffeeMachine.start(drink);
-            automaticCoffeeMachine.start(drink);
-            automaticCoffeeMachine.start(drink);
-            automaticCoffeeMachine.start(drink);
-            automaticCoffeeMachine.start(drink);
-            automaticCoffeeMachine.start(drink);
-            Assertions.assertEquals(Drink.DrinkType.COFFEE, drink.getDrinkType());
         } catch (GarbageContainerFull garbageContainerFull) {
             Assertions.assertEquals("Garbage container is full!", garbageContainerFull.getResult());
         }

@@ -64,11 +64,10 @@ class CoffeeMachineTest {
         Drink drink1 = new Drink(Drink.DrinkType.CAPPUCCINO, map2);
         // Making drink with drink Type and recipe
         Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
+        coffeeMachine.start(drink);
         try {
             // Trying to make coffee, but no water in tank.
-            coffeeMachine.start(drink);
             coffeeMachine.start(drink1);
-            Assertions.assertEquals(Drink.DrinkType.COFFEE, drink.getDrinkType());
         } catch (EmptyWaterTankException emptyWaterTankException) {
             Assertions.assertEquals("No water in tank!", emptyWaterTankException.getResult());
         }
@@ -86,15 +85,14 @@ class CoffeeMachineTest {
         map.put("coffee beans", 1);
         // Making drink with drink Type and recipe
         Drink drink = new Drink(Drink.DrinkType.COFFEE, map);
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink);
+        coffeeMachine.start(drink);
         try {
-            // Trying to make 6 coffee, but garbage container gets full after 5 drinks.
+            // Trying to make new coffee, but garbage container gets full after 5 drinks.
             coffeeMachine.start(drink);
-            coffeeMachine.start(drink);
-            coffeeMachine.start(drink);
-            coffeeMachine.start(drink);
-            coffeeMachine.start(drink);
-            coffeeMachine.start(drink);
-            Assertions.assertEquals(Drink.DrinkType.COFFEE, drink.getDrinkType());
         } catch (GarbageContainerFull garbageContainerFull) {
             Assertions.assertEquals("Garbage container is full!", garbageContainerFull.getResult());
         }
@@ -173,7 +171,6 @@ class CoffeeMachineTest {
         try {
             // Trying to make drink but not enough beans.
             coffeeMachine.start(drink);
-            Assertions.assertEquals(Drink.DrinkType.COFFEE, drink.getDrinkType());
         } catch (MachineException machineException) {
             Assertions.assertEquals("Can't make this drink!", machineException.getResult());
         }
