@@ -6,6 +6,12 @@ import java.util.Optional;
 
 public class Location {
     private List<Packet> packets = new ArrayList<>();
+    private String name;
+
+    public Location (String name){
+
+        this.name = name;
+    }
     public Integer getDistanceTo(String name) {
         return Integer.MAX_VALUE;
     }
@@ -22,6 +28,6 @@ public class Location {
 
     }
     public String getName(){
-        return null;
+        return name;
     }
 }
