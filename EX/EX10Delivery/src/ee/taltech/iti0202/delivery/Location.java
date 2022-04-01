@@ -22,4 +22,7 @@ public class Location {
     public void addDistance(String location, int distance) {
 
     }
+    public String getName(){
+        return null;
+    }
 }
