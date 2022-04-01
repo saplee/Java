@@ -15,4 +15,7 @@ public class Courier {
     public Strategy getStrategy() {
         return strategy;
     }
+    public String getName(){
+        return null;
+    }
 }
