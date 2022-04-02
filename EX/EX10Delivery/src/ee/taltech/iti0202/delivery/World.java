@@ -9,7 +9,6 @@ public class World {
     private HashMap<String, Courier> courierMap = new HashMap<>();
 
     public World() {
-
     }
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
