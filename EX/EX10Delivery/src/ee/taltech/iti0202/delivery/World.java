@@ -25,7 +25,7 @@ public class World {
             Location location = new Location(name);
             for (int i = 0; i < otherLocations.size(); i++) {
                 location.addDistance(otherLocations.get(i), distances.get(i));
-                locationMap.get(otherLocations.get(i)).addDistance(location.getName(), distances.get(i));
+                locationMap.get(otherLocations.get(i)).addDistance(name, distances.get(i));
             }
             locationMap.put(name, location);
             locations.add(name);
