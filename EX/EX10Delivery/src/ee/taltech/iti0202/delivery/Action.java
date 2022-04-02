@@ -9,7 +9,6 @@ public class Action {
     private List<String> packets = new ArrayList<>();
 
     public Action(Location location) {
-
         this.location = location;
     }
 
@@ -26,8 +25,10 @@ public class Action {
     }
 
     public void addDeposit(String packetName) {
+        deposits.add(packetName);
     }
 
     public void addTake(String packetName) {
+        packets.add(packetName);
     }
 }

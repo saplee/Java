@@ -8,14 +8,14 @@ import java.util.Optional;
 public class Location {
     private List<Packet> packets = new ArrayList<>();
     private String name;
-    private HashMap <String, Integer> distanceMap = new HashMap<>();
+    private HashMap<String, Integer> distanceMap = new HashMap<>();
 
     public Location(String name) {
         this.name = name;
     }
 
     public Integer getDistanceTo(String name) {
-        if (distanceMap.containsKey(name)){
+        if (distanceMap.containsKey(name)) {
             return distanceMap.get(name);
         }
         return Integer.MAX_VALUE;
@@ -26,12 +26,13 @@ public class Location {
     }
 
     public Optional<Packet> getPacket(String name) {
-        for (Packet packet:packets){
-            if (packet.getName().equals(name)){
+        for (Packet packet : packets) {
+            if (packet.getName().equals(name)) {
                 packets.remove(packet);
                 return Optional.of(packet);
             }
-        }return Optional.empty();
+        }
+        return Optional.empty();
     }
 
     public void addDistance(String location, int distance) {
