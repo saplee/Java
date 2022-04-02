@@ -23,7 +23,7 @@ public class World {
     }
 
     public Optional<Courier> addCourier(String name, String to) {
-        if (courierMap.containsKey(name) || locationMap.containsKey(to)) {
+        if (courierMap.containsKey(name) || !locationMap.containsKey(to)) {
             return Optional.empty();
         } else {
             Courier courier = new Courier(name);
