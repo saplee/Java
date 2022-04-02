@@ -8,10 +8,11 @@ public class Location {
     private List<Packet> packets = new ArrayList<>();
     private String name;
 
-    public Location (String name){
+    public Location(String name) {
 
         this.name = name;
     }
+
     public Integer getDistanceTo(String name) {
         return Integer.MAX_VALUE;
     }
@@ -27,7 +28,8 @@ public class Location {
     public void addDistance(String location, int distance) {
 
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 }

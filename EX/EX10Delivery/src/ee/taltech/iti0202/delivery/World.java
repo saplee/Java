@@ -35,7 +35,7 @@ public class World {
     }
 
     public boolean giveStrategy(String name, Strategy strategy) {
-        return false;
+        return true;
     }
 
     public void tick() {
