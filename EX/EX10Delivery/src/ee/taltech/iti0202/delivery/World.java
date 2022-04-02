@@ -19,6 +19,7 @@ public class World {
             Location location = new Location(name);
             for (int i = 0; i < otherLocations.size(); i++) {
                 location.addDistance(otherLocations.get(i), distances.get(i));
+                locationMap.get(otherLocations.get(i)).addDistance(location.getName(), distances.get(i));
             }
             locationMap.put(name, location);
             return Optional.of(location);
@@ -61,6 +62,6 @@ public class World {
 
         Location tallinn = world.addLocation("Tallinn", new ArrayList<>(), new ArrayList<>()).get();
         Location tartu = world.addLocation("Tartu", List.of("Tallinn"), List.of(3)).get();
-        System.out.println(tartu.getDistanceTo("Tallinn"));
+        System.out.println(tallinn.getDistanceTo("Tartu"));
     }
 }
