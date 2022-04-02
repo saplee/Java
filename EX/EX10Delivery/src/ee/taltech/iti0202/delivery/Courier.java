@@ -4,18 +4,32 @@ import java.util.Optional;
 
 public class Courier {
     private Strategy strategy;
+    private String name;
+    private Location location;
 
-    public Optional<Location> getLocation(){
-        return Optional.empty();
+    public Courier(String name) {
+
+        this.name = name;
     }
-    public void setStrategy(Strategy strategy){
+
+    public Optional<Location> getLocation() {
+        return Optional.of(location);
+    }
+
+    public void setStrategy(Strategy strategy) {
         this.strategy = strategy;
     }
 
     public Strategy getStrategy() {
         return strategy;
     }
-    public String getName(){
-        return null;
+
+    public String getName() {
+        return name;
+    }
+
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }
