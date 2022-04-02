@@ -28,6 +28,7 @@ public class Location {
     public Optional<Packet> getPacket(String name) {
         for (Packet packet:packets){
             if (packet.getName().equals(name)){
+                packets.remove(packet);
                 return Optional.of(packet);
             }
         }return Optional.empty();
