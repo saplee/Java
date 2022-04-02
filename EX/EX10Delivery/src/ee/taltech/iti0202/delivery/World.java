@@ -13,6 +13,11 @@ public class World {
     }
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
+        for (String city : otherLocations) {
+            if (!locationMap.containsKey(city)) {
+                return Optional.empty();
+            }
+        }
         if (locationMap.containsKey(name) || otherLocations.size() != distances.size()) {
             return Optional.empty();
         } else {
