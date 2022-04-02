@@ -63,11 +63,4 @@ public class World {
 
     public void tick() {
     }
-
-    public static void main(String[] args) {
-        World world = new World();
-        Location tallinn = world.addLocation("Tallinn", new ArrayList<>(), new ArrayList<>()).get();
-        Location tartu =world.addLocation("Tartu", List.of("Tallinn"), List.of(6)).get();
-        System.out.println(tartu.getDistanceTo("Tallinn"));
-    }
 }
