@@ -27,7 +27,11 @@ public class Location {
     }
 
     public Optional<Packet> getPacket(String name) {
-        return Optional.empty();
+        for (Packet packet:packets){
+            if (packet.getName().equals(name)){
+                return Optional.of(packet);
+            }
+        }return Optional.empty();
     }
 
     public void addDistance(String location, int distance) {
