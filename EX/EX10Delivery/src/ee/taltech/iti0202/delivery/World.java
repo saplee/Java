@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.delivery;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +13,7 @@ public class World {
     }
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
-        if (locationMap.containsKey(name) || otherLocations.size() == distances.size()) {
+        if (locationMap.containsKey(name) || otherLocations.size() != distances.size()) {
             return Optional.empty();
         } else {
             Location location = new Location(name);
@@ -41,6 +42,15 @@ public class World {
         return true;
     }
 
+    public HashMap<String, Courier> getCourierMap() {
+        return courierMap;
+    }
+
+    public HashMap<String, Location> getLocationMap() {
+        return locationMap;
+    }
+
     public void tick() {
     }
+
 }

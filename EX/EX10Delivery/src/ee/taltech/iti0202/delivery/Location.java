@@ -11,7 +11,6 @@ public class Location {
     private HashMap <String, Integer> distanceMap = new HashMap<>();
 
     public Location(String name) {
-
         this.name = name;
     }
 
