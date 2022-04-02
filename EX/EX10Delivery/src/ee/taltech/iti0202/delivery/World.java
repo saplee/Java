@@ -8,6 +8,7 @@ import java.util.Optional;
 public class World {
     private HashMap<String, Location> locationMap = new HashMap<>();
     private HashMap<String, Courier> courierMap = new HashMap<>();
+    private List<String> locations = new ArrayList<>();
 
     public World() {
     }
@@ -18,7 +19,7 @@ public class World {
                 return Optional.empty();
             }
         }
-        if (locationMap.containsKey(name) || otherLocations.size() != distances.size()) {
+        if (locationMap.containsKey(name) || otherLocations.size() != distances.size() || locations != otherLocations) {
             return Optional.empty();
         } else {
             Location location = new Location(name);
@@ -27,6 +28,7 @@ public class World {
                 locationMap.get(otherLocations.get(i)).addDistance(location.getName(), distances.get(i));
             }
             locationMap.put(name, location);
+            locations.add(name);
             return Optional.of(location);
         }
     }
@@ -64,9 +66,7 @@ public class World {
 
     public static void main(String[] args) {
         World world = new World();
-
         Location tallinn = world.addLocation("Tallinn", new ArrayList<>(), new ArrayList<>()).get();
-        Location tartu = world.addLocation("Tartu", List.of("Tallinn"), List.of(3)).get();
-        System.out.println(tallinn.getDistanceTo("Tartu"));
+        System.out.println(world.addLocation("Tartu", List.of(), List.of()));
     }
 }
