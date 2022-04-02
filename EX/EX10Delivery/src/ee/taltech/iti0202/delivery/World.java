@@ -16,6 +16,9 @@ public class World {
             return Optional.empty();
         } else {
             Location location = new Location(name);
+            for (int i = 0; i < otherLocations.size(); i++) {
+                location.addDistance(otherLocations.get(i), distances.get(i));
+            }
             locationMap.put(name, location);
             return Optional.of(location);
         }
