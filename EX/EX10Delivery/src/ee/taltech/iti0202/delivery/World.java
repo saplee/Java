@@ -34,7 +34,11 @@ public class World {
     }
 
     public boolean giveStrategy(String name, Strategy strategy) {
-        return false;
+        if (!courierMap.containsKey(name)) {
+            return false;
+        }
+        courierMap.get(name).setStrategy(strategy);
+        return true;
     }
 
     public void tick() {
