@@ -42,4 +42,8 @@ public class Location {
     public String getName() {
         return name;
     }
+
+    public List<Packet> getPackets() {
+        return packets;
+    }
 }
