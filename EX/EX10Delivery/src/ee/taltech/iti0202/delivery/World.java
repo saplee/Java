@@ -1,9 +1,6 @@
 package ee.taltech.iti0202.delivery;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class World {
     private HashMap<String, Location> locationMap = new HashMap<>();
@@ -20,8 +17,10 @@ public class World {
         } else {
             Location location = new Location(name);
             for (int i = 0; i < otherLocations.size(); i++) {
-                location.addDistance(otherLocations.get(i), distances.get(i));
-                locationMap.get(otherLocations.get(i)).addDistance(name, distances.get(i));
+                if (locations.contains(otherLocations.get(i))) {
+                    location.addDistance(otherLocations.get(i), distances.get(i));
+                    locationMap.get(otherLocations.get(i)).addDistance(name, distances.get(i));
+                }
             }
             locationMap.put(name, location);
             locations.add(name);
