@@ -19,8 +19,8 @@ public class World {
                 return Optional.empty();
             }
         }
-        if (locationMap.containsKey(name) || otherLocations.size() != distances.size() ||
-                locations.size() != otherLocations.size()) {
+        if (locationMap.containsKey(name) || otherLocations.size() != distances.size()
+                || locations.size() != otherLocations.size()) {
             return Optional.empty();
         } else {
             Location location = new Location(name);
