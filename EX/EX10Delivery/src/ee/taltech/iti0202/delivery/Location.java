@@ -24,12 +24,14 @@ public class Location {
     }
 
     public void addPacket(Packet packet) {
-        packets.put(packet.getName(), packet);
-        packetsList.add(packet);
+        if (!packets.containsKey(packet.getName())) {
+            packets.put(packet.getName(), packet);
+            packetsList.add(packet);
+        }
     }
 
     public Optional<Packet> getPacket(String name) {
-        if (packets.containsKey(name)){
+        if (packets.containsKey(name)) {
             packets.remove(name);
             packetsList.remove(packets.get(name));
             return Optional.of(packets.get(name));
