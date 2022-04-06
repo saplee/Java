@@ -19,7 +19,7 @@ public class World {
         } else {
             Location location = new Location(name);
             for (int i = 0; i < otherLocations.size(); i++) {
-                if (locations.contains(otherLocations.get(i))) {
+                if (locations2.contains(otherLocations.get(i))) {
                     location.addDistance(otherLocations.get(i), distances.get(i));
                     locationMap.get(otherLocations.get(i)).addDistance(name, distances.get(i));
                 }
@@ -68,8 +68,8 @@ public class World {
                     location = courier.getLocation().get();
                 }
                 for (String packet : courier.getStrategy().getAction().getDeposit()) {
-                    if (location != null && location.getPacket(packet).isPresent())
-                        courier.addPacket(location.getPacket(packet).get());
+                    if (location != null && location.getPacket(packet).isPresent()){
+                    }
                 }
             }
         }
