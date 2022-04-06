@@ -8,7 +8,6 @@ import java.util.Optional;
 
 public class Location {
     private HashMap<String, Packet> packets = new HashMap<>();
-    private List<Packet> packetsList = new ArrayList<>();
     private String name;
     private HashMap<String, Integer> distanceMap = new HashMap<>();
 
@@ -26,13 +25,11 @@ public class Location {
     public void addPacket(Packet packet) {
         if (!packets.containsKey(packet.getName())) {
             packets.put(packet.getName(), packet);
-            packetsList.add(packet);
         }
     }
 
     public Optional<Packet> getPacket(String name) {
         if (packets.containsKey(name)) {
-            packetsList.remove(packets.get(name));
             Packet packet = packets.get(name);
             packets.remove(name);
             return Optional.of(packet);
