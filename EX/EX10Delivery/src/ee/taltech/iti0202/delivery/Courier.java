@@ -6,6 +6,7 @@ public class Courier {
     private Strategy strategy;
     private String name;
     private Location location;
+    private int amount = 0;
 
     public Courier(String name) {
 
@@ -31,5 +32,14 @@ public class Courier {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Location getNextLocation() {
+        amount = strategy.getAction().getGoTo().getDistanceTo(location.getName());
+        return strategy.getAction().getGoTo();
+    }
+
+    public void move() {
+        amount--;
     }
 }
