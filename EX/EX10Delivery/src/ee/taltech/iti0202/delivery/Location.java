@@ -1,12 +1,14 @@
 package ee.taltech.iti0202.delivery;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 public class Location {
-    private List<Packet> packets = new ArrayList<>();
+    private HashMap<String, Packet> packets = new HashMap<>();
+    private List<Packet> packetsList = new ArrayList<>();
     private String name;
     private HashMap<String, Integer> distanceMap = new HashMap<>();
 
@@ -22,14 +24,15 @@ public class Location {
     }
 
     public void addPacket(Packet packet) {
-        packets.add(packet);
+        packets.put(packet.getName(), packet);
+        packetsList.add(packet);
     }
 
     public Optional<Packet> getPacket(String name) {
-        if (packets.stream().map(Packet::getName).toList().contains(name)) {
-            Packet packet = packets.get(packets.stream().map(Packet::getName).toList().indexOf(name));
-            packets.remove(packets.stream().map(Packet::getName).toList().indexOf(name));
-            return Optional.of(packet);
+        if (packets.containsKey(name)){
+            packets.remove(name);
+            packetsList.remove(packets.get(name));
+            return Optional.of(packets.get(name));
         }
         return Optional.empty();
     }
@@ -40,9 +43,5 @@ public class Location {
 
     public String getName() {
         return name;
-    }
-
-    public List<Packet> getPackets() {
-        return packets;
     }
 }
