@@ -15,7 +15,7 @@ public class World {
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
         if (locationMap.containsKey(name) || otherLocations.size() != distances.size()
-                || locations.size() > otherLocations.size()) {
+                || locations.size() > otherLocations.size() || !otherLocations.containsAll(locations)) {
             return Optional.empty();
         } else {
             Location location = new Location(name);
