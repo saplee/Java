@@ -26,11 +26,10 @@ public class Location {
     }
 
     public Optional<Packet> getPacket(String name) {
-        for (Packet packet : packets) {
-            if (packet.getName().equals(name)) {
-                packets.remove(packet);
-                return Optional.of(packet);
-            }
+        if (packets.stream().map(Packet::getName).toList().contains(name)) {
+            Packet packet = packets.get(packets.stream().map(Packet::getName).toList().indexOf(name));
+            packets.remove(packets.stream().map(Packet::getName).toList().indexOf(name));
+            return Optional.of(packet);
         }
         return Optional.empty();
     }
