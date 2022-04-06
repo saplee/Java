@@ -12,7 +12,7 @@ public class World {
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
         if (locationMap.containsKey(name) || otherLocations.size() != distances.size()
-                || locations.size() > otherLocations.size() || !otherLocations.containsAll(locations)) {
+                || locations.size() > otherLocations.size() || otherLocations.containsAll(locationMap.keySet())) {
             return Optional.empty();
         } else {
             Location location = new Location(name);
