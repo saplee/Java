@@ -53,4 +53,12 @@ public class Courier {
     public int getAmount() {
         return amount;
     }
+
+    public void setPackets(List<Packet> packets) {
+        this.packets = packets;
+    }
+
+    public List<Packet> getPackets() {
+        return packets;
+    }
 }

@@ -44,4 +44,12 @@ public class Location {
     public String getName() {
         return name;
     }
+
+    public HashMap<String, Packet> getPackets() {
+        return packets;
+    }
+
+    public void setPackets(HashMap<String, Packet> packets) {
+        this.packets = packets;
+    }
 }

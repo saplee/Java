@@ -1,9 +1,6 @@
 package ee.taltech.iti0202.delivery;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class World {
     private HashMap<String, Location> locationMap = new HashMap<>();
@@ -63,19 +60,35 @@ public class World {
     }
 
     public void tick() {
-        Location location = null;
         for (Courier courier : courierMap.values()) {
-            courier.move();
-            if (courier.getAmount() == 0){
-                courier.setLocation(courier.getNextLocation());
-                if (courier.getLocation().isPresent()){
-                    location = courier.getLocation().get();
+            if (courier.getLocation().isPresent()) {
+                Location location = courier.getLocation().get();
+                Action action = courier.getStrategy().getAction();
+                List<Packet> courierPackets = new ArrayList<>();
+                HashMap<String, Packet> locationPackets = new HashMap<>();
+                if (courier.getAmount() == 0) {
+                    courier.setLocation(courier.getNextLocation());
                 }
-                for (String packet :courier.getStrategy().getAction().getDeposit()){
-                    if (location != null && location.getPacket(packet).isPresent())
-                        courier.addPacket(location.getPacket(packet).get());
+                for (Packet packet : courier.getPackets()) {
+                    if (action.getDeposit().contains(packet.getName())) {
+                        location.addPacket(packet);
+                    } else {
+                        courierPackets.add(packet);
+                    }
                 }
+                courier.setPackets(courierPackets);
+                for (Packet packet : location.getPackets().values()) {
+                    if (action.getTake().contains(packet.getName())) {
+                        courier.addPacket(packet);
+                    } else {
+                        locationPackets.put(packet.getName(), packet);
+                    }
+                }
+                location.setPackets(locationPackets);
+                courier.getNextLocation();
             }
+            courier.move();
         }
+
     }
 }
