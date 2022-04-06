@@ -63,5 +63,19 @@ public class World {
     }
 
     public void tick() {
+        Location location = null;
+        for (Courier courier : courierMap.values()) {
+            courier.move();
+            if (courier.getAmount() == 0){
+                courier.setLocation(courier.getNextLocation());
+                if (courier.getLocation().isPresent()){
+                    location = courier.getLocation().get();
+                }
+                for (String packet :courier.getStrategy().getAction().getDeposit()){
+                    if (location != null && location.getPacket(packet).isPresent())
+                        courier.addPacket(location.getPacket(packet).get());
+                }
+            }
+        }
     }
 }
