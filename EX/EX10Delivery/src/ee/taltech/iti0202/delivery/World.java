@@ -1,6 +1,10 @@
 package ee.taltech.iti0202.delivery;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 
 public class World {
     private HashMap<String, Location> locationMap = new HashMap<>();
@@ -68,7 +72,8 @@ public class World {
                     location = courier.getLocation().get();
                 }
                 for (String packet : courier.getStrategy().getAction().getDeposit()) {
-                    if (location != null && location.getPacket(packet).isPresent()){
+                    if (location != null && location.getPacket(packet).isPresent()) {
+                        courier.addPacket(location.getPacket(packet).get());
                     }
                 }
             }
