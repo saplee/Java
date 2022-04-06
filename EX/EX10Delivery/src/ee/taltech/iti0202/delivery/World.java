@@ -17,7 +17,7 @@ public class World {
             }
         }
         if (locationMap.containsKey(name) || otherLocations.size() != distances.size()
-                || locations.size() != otherLocations.size()) {
+                || locations.size() != otherLocations.size() || !otherLocations.containsAll(locations)) {
             return Optional.empty();
         } else {
             Location location = new Location(name);
