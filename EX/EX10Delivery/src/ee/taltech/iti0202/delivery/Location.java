@@ -32,9 +32,11 @@ public class Location {
 
     public Optional<Packet> getPacket(String name) {
         if (packets.containsKey(name)) {
-            packets.remove(name);
             packetsList.remove(packets.get(name));
-            return Optional.of(packets.get(name));
+            Packet packet = packets.get(name);
+            packets.remove(name);
+            return Optional.of(packet);
+
         }
         return Optional.empty();
     }
