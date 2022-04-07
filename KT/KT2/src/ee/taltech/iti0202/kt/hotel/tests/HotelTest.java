@@ -29,7 +29,7 @@ class HotelTest {
         Hotel hotel = new Hotel();
         Room room = new Room(1, 5 * 5, RoomType.Type.REGULAR);
         Room room2 = new Room(2, 5 * 4, RoomType.Type.REGULAR);
-        Room room3 = new Room(2, 6 * 5, RoomType.Type.SUITE);
+        Room room3 = new Room(2, 5 * 5, RoomType.Type.SUITE);
         hotel.addRoom(room);
         hotel.addRoom(room2);
         hotel.addRoom(room3);
@@ -43,7 +43,7 @@ class HotelTest {
         Hotel hotel = new Hotel();
         Room room = new Room(1, 5 * 5, RoomType.Type.REGULAR);
         Room room2 = new Room(2, 5 * 4, RoomType.Type.REGULAR);
-        Room room3 = new Room(3, 6 * 5, RoomType.Type.SUITE);
+        Room room3 = new Room(3, 5 * 5, RoomType.Type.SUITE);
         hotel.addRoom(room);
         hotel.addRoom(room2);
         hotel.addRoom(room3);
@@ -59,7 +59,7 @@ class HotelTest {
         Hotel hotel = new Hotel();
         Room room = new Room(1, 5 * 5, RoomType.Type.REGULAR);
         Room room2 = new Room(2, 5 * 4, RoomType.Type.REGULAR);
-        Room room3 = new Room(3, 6 * 5, RoomType.Type.SUITE);
+        Room room3 = new Room(3, 5 * 5, RoomType.Type.SUITE);
         hotel.addRoom(room);
         hotel.addRoom(room2);
         hotel.addRoom(room3);
@@ -74,12 +74,12 @@ class HotelTest {
     }
 
     @Test
-    void GotSearchedRoom() {
+    void gotSearchedRoom() {
         //Get all rooms when on have same room number
         Hotel hotel = new Hotel();
         Room room = new Room(1, 5 * 5, RoomType.Type.REGULAR);
         Room room2 = new Room(2, 5 * 4, RoomType.Type.REGULAR);
-        Room room3 = new Room(3, 6 * 5, RoomType.Type.SUITE);
+        Room room3 = new Room(3, 5 * 5, RoomType.Type.SUITE);
         hotel.addRoom(room);
         hotel.addRoom(room2);
         hotel.addRoom(room3);
@@ -98,7 +98,7 @@ class HotelTest {
         Hotel hotel = new Hotel();
         Room room = new Room(1, 5 * 5, RoomType.Type.REGULAR);
         Room room2 = new Room(2, 5 * 4, RoomType.Type.REGULAR);
-        Room room3 = new Room(3, 6 * 5, RoomType.Type.SUITE);
+        Room room3 = new Room(3, 5 * 5, RoomType.Type.SUITE);
         hotel.addRoom(room);
         hotel.addRoom(room2);
         hotel.addRoom(room3);
