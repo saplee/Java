@@ -15,18 +15,17 @@ public class Exam {
     public static int singleNumber(int[] nums) {
         Set<Integer> numberSet = new HashSet<>();
         for (int number : nums) {
-            if (numberSet.contains(number)) {
-                break;
-            }
-            numberSet.add(number);
-            int count = 0;
-            for (int num : nums) {
-                if (num == number) {
-                    count++;
+            if (!numberSet.contains(number)) {
+                numberSet.add(number);
+                int count = 0;
+                for (int num : nums) {
+                    if (num == number) {
+                        count++;
+                    }
                 }
-            }
-            if (count == 1) {
-                return number;
+                if (count == 1) {
+                    return number;
+                }
             }
         }
         return 0;
@@ -43,7 +42,7 @@ public class Exam {
      * "-4+5" => 1
      */
     public static int calculate(String expression) {
-        return 0;
+        int result = 0;
+        return result;
     }
-
 }
