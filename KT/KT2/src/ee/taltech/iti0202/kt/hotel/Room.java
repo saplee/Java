@@ -19,17 +19,16 @@ public class Room {
     }
 
     public boolean isRoomTaken() {
-        if (roomTaken == false) {
+        if (!roomTaken) {
             return false;
         }
         return true;
     }
 
     public void cancelRoom() {
-        if (!getRoomType().equals(RoomType.Type.SUITE) && isRoomTaken() == true) {
+        if (!getRoomType().equals(RoomType.Type.SUITE) && isRoomTaken()) {
             roomTaken = false;
-        }
-        else {
+        } else {
             roomTaken = true;
         }
     }

@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.kt.chocolatefactory;
 
-import java.util.List;
 
 public class ChocolateFactory {
 
@@ -91,19 +90,5 @@ public class ChocolateFactory {
 
     public int getCostSoFar() {
         return costSoFar;
-    }
-
-    public static void main(String[] args) {
-        ChocolateFactory factory = new ChocolateFactory();
-        ChocolateType[][] a = factory.makeChocolateBox(new ChocolateType(7, "0"),
-                new ChocolateType(9, "o"), 4, BoxType.RECTANGLE1);
-        System.out.println(factory.getCostSoFar());  // 154
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[i].length; j++) {
-                System.out.print(a[i][j].getStringForm());
-            }
-            System.out.println();
-        }
-        // first row should be: 0o0
     }
 }
