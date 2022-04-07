@@ -1,4 +1,4 @@
-package ee.taltech.iti0202.kt.hotel.hotel;
+package ee.taltech.iti0202.kt.hotel;
 
 import ee.taltech.iti0202.kt.hotel.rooms.Room;
 
