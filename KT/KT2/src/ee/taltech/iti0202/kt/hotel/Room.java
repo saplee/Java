@@ -46,7 +46,7 @@ public class Room {
     }
 
     public void takeRoom() {
-        if (isRoomTaken() == false) {
+        if (!isRoomTaken()) {
             roomTaken = true;
         }
     }

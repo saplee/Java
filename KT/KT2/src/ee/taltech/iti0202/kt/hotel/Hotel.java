@@ -11,8 +11,8 @@ public class Hotel {
     }
 
     public void addRoom(Room room) {
-        if (!allRooms.contains(room) &&
-                !allRooms.stream().map(Room::getRoomNumber).toList().contains(room.getRoomNumber())) {
+        if (!allRooms.contains(room)
+                && !allRooms.stream().map(Room::getRoomNumber).toList().contains(room.getRoomNumber())) {
             allRooms.add(room);
         }
     }
