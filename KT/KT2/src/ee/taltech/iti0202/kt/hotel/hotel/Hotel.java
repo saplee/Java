@@ -1,4 +1,6 @@
-package ee.taltech.iti0202.kt.hotel;
+package ee.taltech.iti0202.kt.hotel.hotel;
+
+import ee.taltech.iti0202.kt.hotel.rooms.Room;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,7 @@ public class Hotel {
         }
     }
 
-    public boolean search(Integer roomSize) {
+    public boolean searchFreeRooms(Integer roomSize) {
         for (Room room : getFreeRooms()) {
             if (room.getRoomSize() >= roomSize) {
                 return true;
@@ -46,4 +48,7 @@ public class Hotel {
         return freeRooms;
     }
 
+    public List<Room> getAllRooms() {
+        return allRooms;
+    }
 }

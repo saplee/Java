@@ -1,4 +1,4 @@
-package ee.taltech.iti0202.kt.hotel;
+package ee.taltech.iti0202.kt.hotel.rooms;
 
 import java.util.ArrayList;
 import java.util.List;
