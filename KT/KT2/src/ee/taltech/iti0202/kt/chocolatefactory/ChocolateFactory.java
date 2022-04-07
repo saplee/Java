@@ -1,5 +1,7 @@
 package ee.taltech.iti0202.kt.chocolatefactory;
 
+import java.util.List;
+
 public class ChocolateFactory {
 
     private int chocolateBoxesMade;
@@ -18,6 +20,14 @@ public class ChocolateFactory {
         BoxType(int width, int length) {
             this.width = width;
             this.length = length;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public int getLength() {
+            return length;
         }
     }
 

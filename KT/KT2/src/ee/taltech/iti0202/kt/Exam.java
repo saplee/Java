@@ -43,6 +43,32 @@ public class Exam {
      */
     public static int calculate(String expression) {
         int result = 0;
+        String calculate = "+";
+        String number = "";
+        if (expression.length() == 0) {
+            return 0;
+        }
+        for (int i = 0; i < expression.length(); i++) {
+            String c = expression.substring(i, i + 1);
+            if ((c.equals("+") || c.equals("-"))) {
+                if (calculate.equals("+") && number.length() != 0) {
+                    result += Integer.parseInt(number);
+                } else if (calculate.equals("-") && number.length() != 0) {
+                    result -= Integer.parseInt(number);
+                }
+                calculate = c;
+                number = "";
+            } else {
+                number += c;
+            }
+        }
+        if (number.length() != 0) {
+            if (calculate.equals("+")) {
+                result += Integer.parseInt(number);
+            } else if (calculate.equals("-")) {
+                result -= Integer.parseInt(number);
+            }
+        }
         return result;
     }
 }
