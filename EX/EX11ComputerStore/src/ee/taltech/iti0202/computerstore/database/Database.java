@@ -93,13 +93,4 @@ public class Database {
 
     public void loadFromFile(String location) {
     }
-
-    public static void main(String[] args) throws ProductAlreadyExistsException, ProductNotFoundException {
-        BigDecimal bigDecimal = new BigDecimal(100);
-        Component component = new Component("Prose", Component.Type.CPU, bigDecimal, "Intel", 100, 100);
-        Database database = new Database();
-        Component component2 = new Component("Prose", Component.Type.CPU, bigDecimal, "Intel", 100, 100);
-        database.saveComponent(component);
-        database.saveComponent(component2);
-    }
 }
