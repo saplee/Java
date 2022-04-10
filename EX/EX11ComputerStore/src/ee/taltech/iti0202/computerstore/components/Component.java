@@ -18,11 +18,11 @@ public class Component {
     }
 
     public static int getAndIncrementNextId() {
-        return number++;
+        return ++number;
     }
 
     public static void setAndIncrementNextId() {
-        number = 0;
+        number = -1;
     }
 
     public Component(String name, Type type, BigDecimal price, String manufacturer, int performancePoints,
