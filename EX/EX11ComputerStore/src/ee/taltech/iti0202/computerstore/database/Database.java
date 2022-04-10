@@ -5,13 +5,14 @@ import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductAlreadyExistsException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
-import java.math.BigDecimal;
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+
 public class Database {
-    private Map<Integer, Component> components = new HashMap<>();
-    private Map<Component, Integer> components2 = new HashMap<>();
+    private HashMap<Component, Integer> components = new HashMap<>();
     private static Database instance = null;
 
     private Database() {
@@ -25,24 +26,18 @@ public class Database {
     }
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {
-        if (components2.containsKey(component)) {
+        if (components.containsKey(component)) {
             throw new ProductAlreadyExistsException();
         } else {
-            components2.put(component, 1);
-            components.put(1, component);
+            components.put(component, 1);
         }
     }
 
     public void deleteComponent(int id) throws ProductNotFoundException {
         int startSize = components.size();
-        for (Component component : components2.keySet()) {
+        for (Component component : components.keySet()) {
             if (component.getId() == id) {
-                components2.remove(component);
-                for (Integer component2 : components.keySet()) {
-                    if (components.get(component2).getId() == id) {
-                        components.remove(component2);
-                    }
-                }
+                components.remove(component);
             }
 
         }
@@ -56,17 +51,11 @@ public class Database {
         if (amount <= 0) {
             throw new IllegalArgumentException();
         }
-        for (Component component : components2.keySet()) {
+        for (Component component : components.keySet()) {
             if (component.getId() == id) {
-                components2.put(component, components2.get(component) + amount);
-                component.setAmount(components2.get(component));
+                components.put(component, components.get(component) + amount);
+                component.setAmount(components.get(component));
                 componentIncreased = true;
-                for (Integer component2 : components.keySet()) {
-                    if (components.get(component2).getId() == id) {
-                        components.put(component2 + amount, components.get(component2));
-                        components.remove(component2);
-                    }
-                }
             }
         }
         if (!componentIncreased) {
@@ -79,11 +68,11 @@ public class Database {
         if (amount <= 0) {
             throw new IllegalArgumentException();
         }
-        for (Component component : components2.keySet()) {
-            if (component.getId() == id && components2.get(component) >= amount) {
-                components2.put(component, components2.get(component) + amount);
+        for (Component component : components.keySet()) {
+            if (component.getId() == id && components.get(component) >= amount) {
+                components.put(component, components.get(component) + amount);
                 componentDecreased = true;
-            } else if (component.getId() == id && components2.get(component) < amount) {
+            } else if (component.getId() == id && components.get(component) < amount) {
                 throw new OutOfStockException();
             }
         }
@@ -93,12 +82,11 @@ public class Database {
     }
 
     public Map<Integer, Component> getComponents() {
-        return components;
+        return components.entrySet().stream().collect(Collectors.toMap(HashMap.Entry::getValue, HashMap.Entry::getKey));
     }
 
     public void resetEntireDatabase() {
         components.clear();
-        components2.clear();
         Component.setAndIncrementNextId();
     }
 
