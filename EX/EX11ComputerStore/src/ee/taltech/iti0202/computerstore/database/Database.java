@@ -52,6 +52,7 @@ public class Database {
         for (Component component : components.keySet()) {
             if (component.getId() == id) {
                 components.put(component, components.get(component) + amount);
+                component.setAmount(components.get(component));
                 componentIncreased = true;
             }
         }
