@@ -85,6 +85,7 @@ public class Database {
 
     public void resetEntireDatabase() {
         components.clear();
+        Component.setAndIncrementNextId();
     }
 
     public void saveToFile(String location) {
