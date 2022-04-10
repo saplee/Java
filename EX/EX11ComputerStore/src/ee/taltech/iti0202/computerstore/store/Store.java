@@ -26,13 +26,15 @@ public class Store {
         this.name = name;
         this.balance = balance;
         this.profitMargin = profitMargin;
+        if (profitMargin.intValue() < 1) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public Component purchaseComponent(int id, Customer customer) throws OutOfStockException,
             ProductNotFoundException,
             NotEnoughMoneyException {
-        if (database.getComponents().containsKey(id) && ((database.getComponents().get(id).getPrice().intValue() * profitMargin.intValue()) > customer.getBalance().intValue()))
-        {
+        if (database.getComponents().containsKey(id) && ((database.getComponents().get(id).getPrice().intValue() * profitMargin.intValue()) > customer.getBalance().intValue())) {
             throw new NotEnoughMoneyException();
         }
         database.decreaseComponentStock(id, 1);
@@ -41,8 +43,8 @@ public class Store {
 
     public List<Component> getAvailableComponents() {
         List<Component> result = new ArrayList<>();
-        for (Component component:componentList){
-            if (component.getAmount()>0){
+        for (Component component : componentList) {
+            if (component.getAmount() > 0) {
                 result.add(component);
             }
         }
