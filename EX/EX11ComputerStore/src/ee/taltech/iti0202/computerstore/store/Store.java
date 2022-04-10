@@ -31,7 +31,8 @@ public class Store {
     public Component purchaseComponent(int id, Customer customer) throws OutOfStockException,
             ProductNotFoundException,
             NotEnoughMoneyException {
-        return null;
+        database.decreaseComponentStock(id, 1);
+        return database.getComponents().get(id);
     }
 
     public List<Component> getAvailableComponents() {
