@@ -7,13 +7,20 @@ import ee.taltech.iti0202.computerstore.exceptions.NotEnoughMoneyException;
 import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
+
+import java.util.Comparator;
 import java.util.List;
 import java.math.BigDecimal;
+import java.util.stream.Collectors;
+
+
 
 public class Store {
     private String name;
     private BigDecimal balance;
     private BigDecimal profitMargin;
+    private Database database = Database.getInstance();
+    private List<Component> componentList = database.getComponents().values().stream().toList();
 
     public Store(String name, BigDecimal balance, BigDecimal profitMargin) {
         this.name = name;
@@ -28,7 +35,7 @@ public class Store {
     }
 
     public List<Component> getAvailableComponents() {
-        return null;
+        return componentList;
     }
 
     public List<Component> getComponentsSortedByAmount() {
@@ -36,7 +43,10 @@ public class Store {
     }
 
     public List<Component> getComponentsSortedByName() {
-        return null;
+        List<Component> sortedByName = componentList.stream()
+                .sorted(Comparator.comparing(Component::getName))
+                .collect(Collectors.toList());
+        return sortedByName;
     }
 
     public List<Component> getComponentsSortedByPrice() {
