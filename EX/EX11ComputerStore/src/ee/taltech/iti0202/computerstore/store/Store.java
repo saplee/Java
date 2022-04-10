@@ -36,8 +36,7 @@ public class Store {
         if (database.getComponents().containsKey(id) && ((database.getComponents().get(id).getPrice().intValue()
                 * profitMargin.intValue()) > customer.getBalance().intValue())) {
             throw new NotEnoughMoneyException();
-        }
-        else {
+        } else {
             database.decreaseComponentStock(id, 1);
             customer.addComponent(database.getComponents().get(id));
             return database.getComponents().get(id);
