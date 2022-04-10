@@ -22,7 +22,7 @@ public class Component {
     }
 
     public static void setAndIncrementNextId() {
-        number = -1;
+        number = 0;
     }
 
     public Component(String name, Type type, BigDecimal price, String manufacturer, int performancePoints,
