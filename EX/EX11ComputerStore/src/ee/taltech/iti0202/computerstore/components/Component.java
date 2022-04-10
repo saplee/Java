@@ -16,9 +16,11 @@ public class Component {
     public enum Type {
         CPU, GPU, RAM, MOTHERBOARD, HDD, SSD, PSU, KEYBOARD, TOUCHPAD, SCREEN, BATTERY, FAN
     }
+
     public static int getAndIncrementNextId() {
         return number++;
     }
+
     public static void setAndIncrementNextId() {
         number = 0;
     }

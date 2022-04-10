@@ -74,11 +74,22 @@ public class Store {
     }
 
     public List<Component> filterByType(Component.Type type) {
-        return null;
+        List<Component> sortedByType = new ArrayList<>();
+        for (Component component : getAvailableComponents()) {
+            if (component.getType().equals(type)) {
+                sortedByType.add(component);
+            }
+        }
+        return sortedByType;
     }
 
     public BigDecimal getInventoryValue() {
-        return BigDecimal.ZERO;
+        int result = 0;
+        for (Component component : getAvailableComponents()) {
+            result += component.getPrice().intValue() * component.getAmount();
+        }
+        result += profitMargin.intValue();
+        return BigDecimal.valueOf(result);
     }
 
     public String getName() {
