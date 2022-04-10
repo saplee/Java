@@ -10,7 +10,14 @@ import java.util.List;
 import java.math.BigDecimal;
 
 public class Store {
+    private String name;
+    private BigDecimal balance;
+    private BigDecimal profitMargin;
+
     public Store(String name, BigDecimal balance, BigDecimal profitMargin) {
+        this.name = name;
+        this.balance = balance;
+        this.profitMargin = profitMargin;
     }
 
     public Component purchaseComponent(int id, Customer customer) throws OutOfStockException,
@@ -44,23 +51,26 @@ public class Store {
     }
 
     public String getName() {
-        return null;
+        return name;
     }
 
     public void setName(String name) {
+        this.name = name;
     }
 
     public BigDecimal getBalance() {
-        return BigDecimal.valueOf(-1);
+        return balance;
     }
 
     public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public BigDecimal getProfitMargin() {
-        return BigDecimal.valueOf(0);
+        return profitMargin;
     }
 
     public void setProfitMargin(BigDecimal profitMargin) {
+        this.profitMargin = profitMargin;
     }
 }

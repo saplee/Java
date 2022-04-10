@@ -26,19 +26,50 @@ public class Database {
     }
 
     public void deleteComponent(int id) throws ProductNotFoundException {
-        for (Component component: components.keySet()){
-            if (component.getId() == id){
+        int startSize = components.size();
+        for (Component component : components.keySet()) {
+            if (component.getId() == id) {
                 components.remove(component);
-            }else {
-                throw new ProductNotFoundException();
             }
+
+        }
+        if (components.size() == startSize) {
+            throw new ProductNotFoundException();
         }
     }
 
     public void increaseComponentStock(int id, int amount) throws ProductNotFoundException {
+        boolean componentIncreased = false;
+        if (amount <= 0) {
+            throw new IllegalArgumentException();
+        }
+        for (Component component : components.keySet()) {
+            if (component.getId() == id) {
+                components.put(component, components.get(component) + amount);
+                componentIncreased = true;
+            }
+        }
+        if (!componentIncreased) {
+            throw new ProductNotFoundException();
+        }
     }
 
     public void decreaseComponentStock(int id, int amount) throws OutOfStockException, ProductNotFoundException {
+        boolean componentDecreased = false;
+        if (amount <= 0) {
+            throw new IllegalArgumentException();
+        }
+        for (Component component : components.keySet()) {
+            if (component.getId() == id && component.getAmount() < amount) {
+                throw new OutOfStockException();
+            } else if (component.getId() == id && component.getAmount() >= amount) {
+                components.put(component, components.get(component) + amount);
+                componentDecreased = true;
+            }
+        }
+        if (!componentDecreased) {
+            throw new ProductNotFoundException();
+        }
     }
 
     public Map<Integer, Component> getComponents() {
@@ -52,5 +83,14 @@ public class Database {
     }
 
     public void loadFromFile(String location) {
+    }
+
+    public static void main(String[] args) throws ProductAlreadyExistsException, ProductNotFoundException {
+        BigDecimal bigDecimal = new BigDecimal(100);
+        Component component = new Component("Prose", Component.Type.CPU, bigDecimal, "Intel", 100, 100);
+        Database database = new Database();
+        Component component2 = new Component("Prose", Component.Type.CPU, bigDecimal, "Intel", 100, 100);
+        database.saveComponent(component);
+        database.saveComponent(component2);
     }
 }
