@@ -72,6 +72,10 @@ public class Store {
     }
 
     public void setProfitMargin(BigDecimal profitMargin) {
-        this.profitMargin = profitMargin;
+        if (1 > profitMargin.intValue()) {
+            throw new IllegalArgumentException();
+        } else {
+            this.profitMargin = profitMargin;
+        }
     }
 }
