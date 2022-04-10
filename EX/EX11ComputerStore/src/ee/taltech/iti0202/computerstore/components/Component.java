@@ -11,7 +11,7 @@ public class Component {
     private String manufacturer;
     private int performancePoints;
     private int powerConsumption;
-    private static int number = -9;
+    private static int number = -1;
 
     public enum Type {
         CPU, GPU, RAM, MOTHERBOARD, HDD, SSD, PSU, KEYBOARD, TOUCHPAD, SCREEN, BATTERY, FAN
@@ -22,7 +22,7 @@ public class Component {
     }
 
     public static void setAndIncrementNextId() {
-        number = -1;
+        number = -9;
     }
 
     public Component(String name, Type type, BigDecimal price, String manufacturer, int performancePoints,
