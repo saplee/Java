@@ -17,7 +17,10 @@ public class Component {
         CPU, GPU, RAM, MOTHERBOARD, HDD, SSD, PSU, KEYBOARD, TOUCHPAD, SCREEN, BATTERY, FAN
     }
     public static int getAndIncrementNextId() {
-        return ++number;
+        return number++;
+    }
+    public static void setAndIncrementNextId() {
+        number = -1;
     }
 
     public Component(String name, Type type, BigDecimal price, String manufacturer, int performancePoints, int powerConsumption) {
