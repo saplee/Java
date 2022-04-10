@@ -14,7 +14,6 @@ import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
 
-
 public class Store {
     private String name;
     private BigDecimal balance;
@@ -31,6 +30,10 @@ public class Store {
     public Component purchaseComponent(int id, Customer customer) throws OutOfStockException,
             ProductNotFoundException,
             NotEnoughMoneyException {
+        if (database.getComponents().containsKey(id) && ((database.getComponents().get(id).getPrice().intValue() * profitMargin.intValue()) > customer.getBalance().intValue()))
+        {
+            throw new NotEnoughMoneyException();
+        }
         database.decreaseComponentStock(id, 1);
         return database.getComponents().get(id);
     }
@@ -44,7 +47,7 @@ public class Store {
     }
 
     public List<Component> getComponentsSortedByName() {
-        List<Component> sortedByName = componentList.stream()
+        List<Component> sortedByName = getAvailableComponents().stream()
                 .sorted(Comparator.comparing(Component::getName))
                 .collect(Collectors.toList());
         return sortedByName;
