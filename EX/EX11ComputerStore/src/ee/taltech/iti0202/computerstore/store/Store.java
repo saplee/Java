@@ -37,8 +37,11 @@ public class Store {
                 * profitMargin.intValue()) > customer.getBalance().intValue())) {
             throw new NotEnoughMoneyException();
         }
-        database.decreaseComponentStock(id, 1);
-        return database.getComponents().get(id);
+        else {
+            database.decreaseComponentStock(id, 1);
+            customer.addComponent(database.getComponents().get(id));
+            return database.getComponents().get(id);
+        }
     }
 
     public List<Component> getAvailableComponents() {
