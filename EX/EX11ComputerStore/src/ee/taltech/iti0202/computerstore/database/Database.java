@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Database {
+public final class  Database {
     private final HashMap<Integer, Component> components = new HashMap<>();
     private static Database instance = null;
 
