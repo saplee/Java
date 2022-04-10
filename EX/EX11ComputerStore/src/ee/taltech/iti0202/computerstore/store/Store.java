@@ -8,6 +8,7 @@ import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.math.BigDecimal;
@@ -39,7 +40,13 @@ public class Store {
     }
 
     public List<Component> getAvailableComponents() {
-        return componentList;
+        List<Component> result = new ArrayList<>();
+        for (Component component:componentList){
+            if (component.getAmount()>0){
+                result.add(component);
+            }
+        }
+        return result;
     }
 
     public List<Component> getComponentsSortedByAmount() {
