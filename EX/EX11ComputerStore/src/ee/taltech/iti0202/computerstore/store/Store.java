@@ -20,7 +20,6 @@ public class Store {
     private BigDecimal balance;
     private BigDecimal profitMargin;
     private Database database = Database.getInstance();
-    private List<Component> componentList = database.getComponents().values().stream().toList();
 
     public Store(String name, BigDecimal balance, BigDecimal profitMargin) {
         this.name = name;
@@ -34,7 +33,8 @@ public class Store {
     public Component purchaseComponent(int id, Customer customer) throws OutOfStockException,
             ProductNotFoundException,
             NotEnoughMoneyException {
-        if (database.getComponents().containsKey(id) && ((database.getComponents().get(id).getPrice().intValue() * profitMargin.intValue()) > customer.getBalance().intValue())) {
+        if (database.getComponents().containsKey(id) && ((database.getComponents().get(id).getPrice().intValue()
+                * profitMargin.intValue()) > customer.getBalance().intValue())) {
             throw new NotEnoughMoneyException();
         }
         database.decreaseComponentStock(id, 1);
@@ -42,6 +42,7 @@ public class Store {
     }
 
     public List<Component> getAvailableComponents() {
+        List<Component> componentList = database.getComponents().values().stream().toList();
         List<Component> result = new ArrayList<>();
         for (Component component : componentList) {
             if (component.getAmount() > 0) {
@@ -52,7 +53,10 @@ public class Store {
     }
 
     public List<Component> getComponentsSortedByAmount() {
-        return null;
+        List<Component> sortedByAmount = getAvailableComponents().stream()
+                .sorted(Comparator.comparing(Component::getAmount))
+                .collect(Collectors.toList());
+        return sortedByAmount;
     }
 
     public List<Component> getComponentsSortedByName() {
@@ -63,7 +67,10 @@ public class Store {
     }
 
     public List<Component> getComponentsSortedByPrice() {
-        return null;
+        List<Component> sortedByPrice = getAvailableComponents().stream()
+                .sorted(Comparator.comparing(Component::getPrice))
+                .collect(Collectors.toList());
+        return sortedByPrice;
     }
 
     public List<Component> filterByType(Component.Type type) {
