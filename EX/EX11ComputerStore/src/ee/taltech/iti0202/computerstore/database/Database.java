@@ -5,16 +5,12 @@ import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductAlreadyExistsException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
+import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Database {
-    private final Map<Integer, Component> components = new HashMap<>();
-    private static int number = -1;
-
-
-    public static int getAndIncrementNextId() {
-        return ++number;
-    }
+    private final Map<Component, Integer> components = new HashMap<>();
 
 
     public static Database getInstance() {
@@ -22,9 +18,21 @@ public class Database {
     }
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {
+        if (!components.containsKey(component)) {
+            components.put(component, 1);
+        } else {
+            throw new ProductAlreadyExistsException();
+        }
     }
 
     public void deleteComponent(int id) throws ProductNotFoundException {
+        for (Component component: components.keySet()){
+            if (component.getId() == id){
+                components.remove(component);
+            }else {
+                throw new ProductNotFoundException();
+            }
+        }
     }
 
     public void increaseComponentStock(int id, int amount) throws ProductNotFoundException {
@@ -34,7 +42,7 @@ public class Database {
     }
 
     public Map<Integer, Component> getComponents() {
-        return null;
+        return components.entrySet().stream().collect(Collectors.toMap(HashMap.Entry::getValue, HashMap.Entry::getKey));
     }
 
     public void resetEntireDatabase() {

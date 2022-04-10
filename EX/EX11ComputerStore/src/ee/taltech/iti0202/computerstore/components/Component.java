@@ -11,19 +11,23 @@ public class Component {
     private String manufacturer;
     private int performancePoints;
     private int powerConsumption;
+    private static int number = -1;
 
     public enum Type {
         CPU, GPU, RAM, MOTHERBOARD, HDD, SSD, PSU, KEYBOARD, TOUCHPAD, SCREEN, BATTERY, FAN
     }
+    public static int getAndIncrementNextId() {
+        return ++number;
+    }
 
     public Component(String name, Type type, BigDecimal price, String manufacturer, int performancePoints, int powerConsumption) {
-        this.id = -1;
         this.name = name;
         this.type = type;
         this.price = price;
         this.manufacturer = manufacturer;
         this.performancePoints = performancePoints;
         this.powerConsumption = powerConsumption;
+        this.id = getAndIncrementNextId();
     }
 
     public int getId() {
