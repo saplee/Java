@@ -66,11 +66,11 @@ public class Database {
             throw new IllegalArgumentException();
         }
         for (Component component : components.keySet()) {
-            if (component.getId() == id && component.getAmount() < amount) {
-                throw new OutOfStockException();
-            } else if (component.getId() == id && component.getAmount() >= amount) {
+            if (component.getId() == id && component.getAmount() >= amount) {
                 components.put(component, components.get(component) + amount);
                 componentDecreased = true;
+            } else if (component.getId() == id && component.getAmount() < amount) {
+                throw new OutOfStockException();
             }
         }
         if (!componentDecreased) {
