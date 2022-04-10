@@ -6,7 +6,6 @@ import ee.taltech.iti0202.computerstore.exceptions.ProductAlreadyExistsException
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
 
-import java.math.BigDecimal;
 
 import java.util.HashMap;
 
@@ -14,7 +13,7 @@ import java.util.Map;
 
 
 public class Database {
-    private HashMap<Integer, Component> components = new HashMap<>();
+    private final HashMap<Integer, Component> components = new HashMap<>();
     private static Database instance = null;
 
     private Database() {
