@@ -83,6 +83,7 @@ public class Database {
     }
 
     public void resetEntireDatabase() {
+        components.clear();
     }
 
     public void saveToFile(String location) {
