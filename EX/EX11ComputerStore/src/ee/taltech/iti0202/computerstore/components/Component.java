@@ -11,7 +11,7 @@ public class Component {
     private String manufacturer;
     private int performancePoints;
     private int powerConsumption;
-    private static int number = -1;
+    private static int number = -9;
 
     public enum Type {
         CPU, GPU, RAM, MOTHERBOARD, HDD, SSD, PSU, KEYBOARD, TOUCHPAD, SCREEN, BATTERY, FAN
