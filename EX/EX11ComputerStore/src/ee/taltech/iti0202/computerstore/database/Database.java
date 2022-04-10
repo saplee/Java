@@ -79,15 +79,4 @@ public class Database {
 
     public void loadFromFile(String location) {
     }
-
-
-    public static void main(String[] args) throws ProductAlreadyExistsException {
-        Database database = Database.getInstance();
-        BigDecimal bigDecimal = new BigDecimal(100);
-        Component component = new Component("b", Component.Type.CPU, bigDecimal, "f", 100, 100);
-        Component component2 = new Component("a", Component.Type.CPU, bigDecimal, "f", 100, 100);
-        database.saveComponent(component);
-        database.saveComponent(component2);
-    }
-
 }

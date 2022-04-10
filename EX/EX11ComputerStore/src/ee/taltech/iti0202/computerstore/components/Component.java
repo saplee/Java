@@ -23,7 +23,8 @@ public class Component {
         number = 0;
     }
 
-    public Component(String name, Type type, BigDecimal price, String manufacturer, int performancePoints, int powerConsumption) {
+    public Component(String name, Type type, BigDecimal price, String manufacturer, int performancePoints,
+                     int powerConsumption) {
         this.name = name;
         this.type = type;
         this.price = price;

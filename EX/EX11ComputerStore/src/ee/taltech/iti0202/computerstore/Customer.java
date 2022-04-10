@@ -1,4 +1,5 @@
 package ee.taltech.iti0202.computerstore;
+
 import ee.taltech.iti0202.computerstore.components.Component;
 
 import java.util.ArrayList;
@@ -34,7 +35,8 @@ public class Customer {
     public List<Component> getComponents() {
         return components;
     }
-    public void addComponent(Component component){
+
+    public void addComponent(Component component) {
         components.add(component);
     }
 }
