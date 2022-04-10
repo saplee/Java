@@ -66,10 +66,10 @@ public class Database {
             throw new IllegalArgumentException();
         }
         for (Component component : components.keySet()) {
-            if (component.getId() == id && component.getAmount() >= amount) {
+            if (component.getId() == id && components.get(component) >= amount) {
                 components.put(component, components.get(component) + amount);
                 componentDecreased = true;
-            } else if (component.getId() == id && component.getAmount() < amount) {
+            } else if (component.getId() == id && components.get(component) < amount) {
                 throw new OutOfStockException();
             }
         }
