@@ -9,6 +9,13 @@ import java.util.*;
 
 public class Database {
     private final Map<Integer, Component> components = new HashMap<>();
+    private static int number = -1;
+
+
+    public static int getAndIncrementNextId() {
+        return ++number;
+    }
+
 
     public static Database getInstance() {
         return null;
