@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 public class Customer {
     private String name;
     private BigDecimal balance;
-    private final List<Component> components = new ArrayList<>();
+    private List<Component> components = new ArrayList<>();
 
     public Customer(String name, BigDecimal balance) {
         this.name = name;
@@ -33,5 +33,8 @@ public class Customer {
 
     public List<Component> getComponents() {
         return components;
+    }
+    public void addComponent(Component component){
+        components.add(component);
     }
 }

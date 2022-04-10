@@ -10,11 +10,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Database {
-    private final Map<Component, Integer> components = new HashMap<>();
+    private Map<Component, Integer> components = new HashMap<>();
+    private static Database instance = null;
 
 
     public static Database getInstance() {
-        return null;
+        if (instance == null) {
+            instance = new Database();
+        }
+        return instance;
     }
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {

@@ -2,6 +2,7 @@ package ee.taltech.iti0202.computerstore.store;
 
 import ee.taltech.iti0202.computerstore.Customer;
 import ee.taltech.iti0202.computerstore.components.Component;
+import ee.taltech.iti0202.computerstore.database.Database;
 import ee.taltech.iti0202.computerstore.exceptions.NotEnoughMoneyException;
 import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
