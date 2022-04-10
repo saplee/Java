@@ -25,4 +25,36 @@ public class Component {
         this.performancePoints = performancePoints;
         this.powerConsumption = powerConsumption;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public int getPerformancePoints() {
+        return performancePoints;
+    }
+
+    public int getPowerConsumption() {
+        return powerConsumption;
+    }
 }
