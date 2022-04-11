@@ -5,6 +5,7 @@ import ee.taltech.iti0202.computerstore.components.Component;
 import ee.taltech.iti0202.computerstore.database.Database;
 import ee.taltech.iti0202.computerstore.exceptions.NotEnoughMoneyException;
 import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
+import ee.taltech.iti0202.computerstore.exceptions.ProductAlreadyExistsException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
 
@@ -88,11 +89,12 @@ public class Store {
     }
 
     public BigDecimal getInventoryValue() {
-        BigDecimal result = BigDecimal.ZERO;
+        int result = 0;
         for (Component component : getAvailableComponents()) {
-            result.add(component.getPrice().multiply(BigDecimal.valueOf(component.getAmount())).multiply(profitMargin));
+            result += component.getPrice().multiply(profitMargin).multiply(BigDecimal.valueOf(component.getAmount())).intValue();
+
         }
-        return result;
+        return new BigDecimal(result);
     }
 
     public String getName() {
