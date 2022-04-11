@@ -88,11 +88,11 @@ public class Store {
     }
 
     public BigDecimal getInventoryValue() {
-        int result = 0;
+        BigDecimal result = null;
         for (Component component : getAvailableComponents()) {
-            result += component.getPrice().intValue() * component.getAmount() * profitMargin.intValue();
+            result.add(component.getPrice().multiply(BigDecimal.valueOf(component.getAmount())).multiply(profitMargin));
         }
-        return BigDecimal.valueOf(result);
+        return result;
     }
 
     public String getName() {
