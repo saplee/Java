@@ -39,6 +39,8 @@ public class Store {
         } else {
             database.decreaseComponentStock(id, 1);
             customer.addComponent(database.getComponents().get(id));
+            customer.setBalance(BigDecimal.valueOf(customer.getBalance().intValue() - (database.getComponents().get(id).getPrice().intValue() * profitMargin.intValue())));
+            setBalance(new BigDecimal(database.getComponents().get(id).getPrice().intValue() * profitMargin.intValue() + balance.intValue()));
             return database.getComponents().get(id);
         }
     }
