@@ -88,7 +88,7 @@ public class Store {
     }
 
     public BigDecimal getInventoryValue() {
-        BigDecimal result = new BigDecimal(0);
+        BigDecimal result = BigDecimal.ZERO;
         for (Component component : getAvailableComponents()) {
             result.add(component.getPrice().multiply(BigDecimal.valueOf(component.getAmount())).multiply(profitMargin));
         }
