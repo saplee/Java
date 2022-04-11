@@ -5,10 +5,10 @@ import ee.taltech.iti0202.computerstore.components.Component;
 import ee.taltech.iti0202.computerstore.database.Database;
 import ee.taltech.iti0202.computerstore.exceptions.NotEnoughMoneyException;
 import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
-import ee.taltech.iti0202.computerstore.exceptions.ProductAlreadyExistsException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
 
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -40,7 +40,8 @@ public class Store {
         } else {
             database.decreaseComponentStock(id, 1);
             customer.addComponent(database.getComponents().get(id));
-            customer.setBalance(customer.getBalance().subtract(database.getComponents().get(id).getPrice().multiply(profitMargin)));
+            customer.setBalance(customer.getBalance().subtract(database.getComponents().get(id).getPrice()
+                    .multiply(profitMargin)));
             this.setBalance(balance.add(database.getComponents().get(id).getPrice().multiply(profitMargin)));
             return database.getComponents().get(id);
         }
@@ -89,12 +90,13 @@ public class Store {
     }
 
     public BigDecimal getInventoryValue() {
-        int result = 0;
+        float result = 0;
         for (Component component : getAvailableComponents()) {
-            result += component.getPrice().multiply(profitMargin).multiply(BigDecimal.valueOf(component.getAmount())).floatValue();
+            result += (component.getPrice().multiply(profitMargin)
+                    .multiply(BigDecimal.valueOf(component.getAmount()))).floatValue();
 
         }
-        return new BigDecimal(result);
+        return new BigDecimal(result).setScale(2, RoundingMode.HALF_UP);
     }
 
     public String getName() {
