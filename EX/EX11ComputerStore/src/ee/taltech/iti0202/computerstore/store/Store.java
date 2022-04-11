@@ -39,7 +39,7 @@ public class Store {
         } else {
             database.decreaseComponentStock(id, 1);
             customer.addComponent(database.getComponents().get(id));
-            customer.setBalance(BigDecimal.valueOf(customer.getBalance().intValue() - (database.getComponents().get(id).getPrice().intValue() * profitMargin.intValue())));
+            customer.setBalance(customer.getBalance().subtract(database.getComponents().get(id).getPrice().multiply(profitMargin)));
             setBalance(new BigDecimal(database.getComponents().get(id).getPrice().intValue() * profitMargin.intValue() + balance.intValue()));
             return database.getComponents().get(id);
         }
@@ -92,7 +92,6 @@ public class Store {
         for (Component component : getAvailableComponents()) {
             result += component.getPrice().intValue() * component.getAmount() * profitMargin.intValue();
         }
-        result += balance.intValue();
         return BigDecimal.valueOf(result);
     }
 
