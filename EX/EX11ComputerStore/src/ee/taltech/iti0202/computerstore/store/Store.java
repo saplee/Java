@@ -92,6 +92,7 @@ public class Store {
         for (Component component : getAvailableComponents()) {
             result += component.getPrice().intValue() * component.getAmount() * profitMargin.intValue();
         }
+        result += balance.intValue();
         return BigDecimal.valueOf(result);
     }
 
