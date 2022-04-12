@@ -10,6 +10,10 @@ public class Location {
     private String name;
     private HashMap<String, Integer> distanceMap = new HashMap<>();
 
+    /**
+     *
+     * @param name
+     */
     public Location(String name) {
         this.name = name;
     }
