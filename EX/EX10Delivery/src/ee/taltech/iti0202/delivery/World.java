@@ -88,11 +88,11 @@ public class World {
                     }
                 }
                 location.setPackets(locationPackets);
+                courier.setLocation(action.getGoTo());
                 courier.getNextLocation();
             }
             courier.move();
         }
 
     }
-
 }
