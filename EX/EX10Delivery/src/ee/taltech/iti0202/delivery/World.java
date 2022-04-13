@@ -69,9 +69,6 @@ public class World {
                 Action action = courier.getStrategy().getAction();
                 List<Packet> courierPackets = new ArrayList<>();
                 HashMap<String, Packet> locationPackets = new HashMap<>();
-                if (courier.getAmount() == 0) {
-                    courier.setLocation(courier.getNextLocation());
-                }
                 for (Packet packet : courier.getPackets()) {
                     if (action.getDeposit().contains(packet.getName())) {
                         location.addPacket(packet);
