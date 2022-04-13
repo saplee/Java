@@ -5,12 +5,23 @@ import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductAlreadyExistsException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.List;
 import java.util.Map;
 
 
-public final class  Database {
+public final class Database {
     private HashMap<Integer, Component> components = new HashMap<>();
     private static Database instance = null;
 
@@ -72,8 +83,23 @@ public final class  Database {
     }
 
     public void saveToFile(String location) {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+        Path path = Paths.get(location);
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+            gson.toJson(this, writer);
+        } catch (IOException i) {
+        }
     }
 
     public void loadFromFile(String location) {
+        Gson gson = new Gson();
+        Path path = Paths.get(location);
+        instance.resetEntireDatabase();
+        List<String> result = new ArrayList<>();
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
+            instance = gson.fromJson(reader.readLine(), Database.class);
+        } catch (IOException i) {
+        }
     }
 }

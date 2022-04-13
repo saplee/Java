@@ -80,6 +80,7 @@ public class Component {
         return manufacturer;
     }
 
+
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
