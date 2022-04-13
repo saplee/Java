@@ -80,12 +80,8 @@ public class Store {
     }
 
     public List<Component> filterByType(Component.Type type) {
-        List<Component> sortedByType = new ArrayList<>();
-        for (Component component : getAvailableComponents()) {
-            if (component.getType().equals(type)) {
-                sortedByType.add(component);
-            }
-        }
+        List<Component> sortedByType = getAvailableComponents().stream().filter(component -> component.getType()
+                .equals(type)).toList();
         return sortedByType;
     }
 
