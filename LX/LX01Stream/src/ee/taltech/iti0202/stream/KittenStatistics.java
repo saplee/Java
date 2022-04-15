@@ -13,7 +13,8 @@ public class KittenStatistics {
     }
 
     public OptionalDouble findKittensAverageAge() {
-        return OptionalDouble.empty();
+        List<Integer> ages = kittens.stream().map(Kitten::getAge).toList();
+        return OptionalDouble.of(ages.stream().reduce(0, Integer::sum) / ages.size());
     }
 
     public Optional<Kitten> findOldestKitten() {
@@ -36,10 +37,10 @@ public class KittenStatistics {
     }
 
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
-        if (kittens.stream().map(Kitten::getName).toList().contains(givenName)) {
-            return Optional.of(kittens.stream().filter(kitten -> kitten.getName().equals(givenName)).findFirst().stream().toList().get(0));
-        }
-        return Optional.empty();
+        return Optional.of(kittens.stream().filter(k -> !k.getName()
+                                .equals(givenName))
+                        .findFirst())
+                .orElse(Optional.empty());
     }
 
     public List<Kitten> kittensSortedByAgeYoungerFirst() {
