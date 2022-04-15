@@ -32,7 +32,12 @@ public class KittenStatistics {
     }
 
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
-        return Optional.empty();
+        if(!kittens.stream().map(Kitten::getName).toList().contains(givenName)){
+            return Optional.empty();
+        }else {
+            Kitten result = kittens.stream().filter(kitten -> kitten.getName().equals(givenName)).toList().get(0);
+            return Optional.of(result);
+        }
     }
 
     public List<Kitten> kittensSortedByAgeYoungerFirst() {
