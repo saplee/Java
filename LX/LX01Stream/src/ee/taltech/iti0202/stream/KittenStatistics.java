@@ -2,6 +2,7 @@ package ee.taltech.iti0202.stream;
 
 import com.sun.tools.javac.Main;
 
+import java.nio.channels.FileLock;
 import java.util.*;
 
 public class KittenStatistics {
@@ -13,11 +14,9 @@ public class KittenStatistics {
     }
 
     public OptionalDouble findKittensAverageAge() {
-        if (kittens.size() < 1) {
-            return OptionalDouble.empty();
-        }
-        List<Integer> ages = kittens.stream().map(Kitten::getAge).toList();
-        return OptionalDouble.of(ages.stream().reduce(0, Integer::sum) / ages.size());
+        return kittens.size() == 0 ? OptionalDouble.empty() : OptionalDouble.of(kittens.stream()
+                .mapToDouble(Kitten::getAge)
+                .average().getAsDouble());
     }
 
     public Optional<Kitten> findOldestKitten() {
@@ -36,7 +35,7 @@ public class KittenStatistics {
     }
 
     public List<Kitten> findKittensBetweenAges(int minAge, int maxAge) {
-        return kittens.stream().filter(kitten -> kitten.getAge() > minAge).filter(kitten -> kitten.getAge() < maxAge).toList();
+        return kittens.stream().filter(kitten -> kitten.getAge() >= minAge).filter(kitten -> kitten.getAge() <= maxAge).toList();
     }
 
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
