@@ -27,8 +27,7 @@ public class KittenStatistics {
 
     public List<Kitten> findYoungestKittens() {
         return kittens.stream()
-                .filter(k -> k.getAge() == kittens.stream().map(Kitten::getAge).toList().get(0))
-                .collect(Collectors.toList());
+                .filter(k -> k.getAge() == kittens.stream().map(Kitten::getAge).toList().get(0)).toList();
     }
 
     public List<Kitten> findKittensAccordingToGender(Kitten.Gender gender) {
