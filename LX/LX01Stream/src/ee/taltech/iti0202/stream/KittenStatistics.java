@@ -1,10 +1,10 @@
 package ee.taltech.iti0202.stream;
 
-import com.sun.tools.javac.Main;
 
-import java.nio.channels.FileLock;
+
+
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 public class KittenStatistics {
 
