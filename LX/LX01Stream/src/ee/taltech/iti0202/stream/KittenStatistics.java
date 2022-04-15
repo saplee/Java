@@ -13,6 +13,9 @@ public class KittenStatistics {
     }
 
     public OptionalDouble findKittensAverageAge() {
+        if (kittens.size() < 1) {
+            return OptionalDouble.empty();
+        }
         List<Integer> ages = kittens.stream().map(Kitten::getAge).toList();
         return OptionalDouble.of(ages.stream().reduce(0, Integer::sum) / ages.size());
     }
