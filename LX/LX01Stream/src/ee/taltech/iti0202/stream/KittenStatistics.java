@@ -1,4 +1,5 @@
 package ee.taltech.iti0202.stream;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
@@ -16,7 +17,7 @@ public class KittenStatistics {
     }
 
     public Optional<Kitten> findOldestKitten() {
-        return Optional.empty();
+        return null;
     }
 
     public List<Kitten> findYoungestKittens() {
@@ -32,20 +33,18 @@ public class KittenStatistics {
     }
 
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
-        if(!kittens.stream().map(Kitten::getName).toList().contains(givenName)){
-            return Optional.empty();
-        }else {
-            Kitten result = kittens.stream().filter(kitten -> kitten.getName().equals(givenName)).toList().get(0);
-            return Optional.of(result);
-        }
+        return Optional.of(kittens.stream().filter(kitten -> !kitten.getName()
+                        .equals(givenName))
+                .findFirst())
+                .orElse(Optional.empty());
     }
 
     public List<Kitten> kittensSortedByAgeYoungerFirst() {
-        return null;
+        return kittens.stream().sorted(Comparator.comparing(Kitten::getAge)).toList();
     }
 
     public List<Kitten> kittensSortedByAgeOlderFirst() {
-        return null;
+        return kittens.stream().sorted(Comparator.comparing(Kitten::getAge).reversed()).toList();
     }
     
 }
