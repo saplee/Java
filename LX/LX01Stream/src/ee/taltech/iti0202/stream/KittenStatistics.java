@@ -1,8 +1,8 @@
 package ee.taltech.iti0202.stream;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
+
+import com.sun.tools.javac.Main;
+
+import java.util.*;
 
 public class KittenStatistics {
 
@@ -13,15 +13,18 @@ public class KittenStatistics {
     }
 
     public OptionalDouble findKittensAverageAge() {
-        return OptionalDouble.empty();    
+        return OptionalDouble.empty();
     }
 
     public Optional<Kitten> findOldestKitten() {
-        return null;
+        return Optional.of(kittens.stream().sorted(Comparator.comparing(Kitten::getAge).reversed()).toList().get(0));
+
     }
 
     public List<Kitten> findYoungestKittens() {
-        return null;
+        List<Kitten> result = new ArrayList<>();
+        result.add(kittens.stream().sorted(Comparator.comparing(Kitten::getAge)).toList().get(0));
+        return result;
     }
 
     public List<Kitten> findKittensAccordingToGender(Kitten.Gender gender) {
@@ -29,14 +32,14 @@ public class KittenStatistics {
     }
 
     public List<Kitten> findKittensBetweenAges(int minAge, int maxAge) {
-        return null;
+        return kittens.stream().filter(kitten -> kitten.getAge() > minAge).filter(kitten -> kitten.getAge() < maxAge).toList();
     }
 
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
-        return Optional.of(kittens.stream().filter(kitten -> !kitten.getName()
-                        .equals(givenName))
-                .findFirst())
-                .orElse(Optional.empty());
+        if (kittens.stream().map(Kitten::getName).toList().contains(givenName)) {
+            return Optional.of(kittens.stream().filter(kitten -> kitten.getName().equals(givenName)).findFirst().stream().toList().get(0));
+        }
+        return Optional.empty();
     }
 
     public List<Kitten> kittensSortedByAgeYoungerFirst() {
@@ -46,5 +49,4 @@ public class KittenStatistics {
     public List<Kitten> kittensSortedByAgeOlderFirst() {
         return kittens.stream().sorted(Comparator.comparing(Kitten::getAge).reversed()).toList();
     }
-    
 }
