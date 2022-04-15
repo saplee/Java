@@ -24,7 +24,7 @@ public class KittenStatistics {
     }
 
     public List<Kitten> findKittensAccordingToGender(Kitten.Gender gender) {
-        return null;
+        return kittens.stream().filter(kitten -> kitten.getGender().equals(gender)).toList();
     }
 
     public List<Kitten> findKittensBetweenAges(int minAge, int maxAge) {
