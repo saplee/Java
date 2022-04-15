@@ -4,6 +4,7 @@ import com.sun.tools.javac.Main;
 
 import java.nio.channels.FileLock;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class KittenStatistics {
 
@@ -25,9 +26,9 @@ public class KittenStatistics {
     }
 
     public List<Kitten> findYoungestKittens() {
-        List<Kitten> result = new ArrayList<>();
-        result.add(kittens.stream().sorted(Comparator.comparing(Kitten::getAge)).toList().get(0));
-        return result;
+        return kittens.stream()
+                .filter(k -> k.getAge() == kittens.stream().map(Kitten::getAge).toList().get(0))
+                .collect(Collectors.toList());
     }
 
     public List<Kitten> findKittensAccordingToGender(Kitten.Gender gender) {
