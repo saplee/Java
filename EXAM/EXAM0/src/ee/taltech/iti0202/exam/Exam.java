@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.exam;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Exam {
@@ -25,15 +26,14 @@ public class Exam {
         for (Integer number : nums) {
             if (number % 10 != 0 && aBoolean == false) {
                 result.add(number);
-            }
-            else if (number % 10 == 0) {
+            } else if (number % 10 == 0) {
                 result.add(number);
                 numberA = number;
                 aBoolean = true;
-            }
-            else if (number % 10 != 0 && aBoolean == true) {
+            } else if (number % 10 != 0 && aBoolean == true) {
                 result.add(numberA);
             }
-        }return result;
+        }
+        return result;
     }
 }
