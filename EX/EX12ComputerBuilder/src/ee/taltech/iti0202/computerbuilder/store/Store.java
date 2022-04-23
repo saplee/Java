@@ -4,6 +4,7 @@ import ee.taltech.iti0202.computerbuilder.Customer;
 import ee.taltech.iti0202.computerbuilder.components.Component;
 import ee.taltech.iti0202.computerbuilder.computer.Computer;
 import ee.taltech.iti0202.computerbuilder.computer.ComputerType;
+import ee.taltech.iti0202.computerbuilder.computer.Laptop;
 import ee.taltech.iti0202.computerbuilder.computer.UseCase;
 import ee.taltech.iti0202.computerbuilder.database.Database;
 import ee.taltech.iti0202.computerbuilder.exceptions.CannotBuildComputer;
@@ -49,6 +50,7 @@ public class Store {
         }
         return result;
     }
+
     public String getName() {
         return name;
     }
@@ -77,54 +79,18 @@ public class Store {
         }
     }
 
-    public Component getBestGpu(Customer customer, float maxPrice) {
-        return getAvailableComponents().stream().filter(component -> component.getType().
-                        equals(Component.Type.GPU)).filter(component -> component.getPrice().
+    public Component getBestComponent(float maxPrice, Component.Type type) throws CannotBuildComputer {
+        List<Component> bestComponents = getAvailableComponents().stream().filter(component -> component.getType().
+                        equals(type)).filter(component -> component.getPrice().
                         floatValue() <= maxPrice).toList().stream()
-                .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList().get(0);
+                .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList();
+        if (bestComponents.size() == 0) {
+            throw new CannotBuildComputer();
+        } else {
+            return bestComponents.get(0);
+        }
     }
 
-    public Component getBestCpu(Customer customer, float maxPrice) {
-        return getAvailableComponents().stream().filter(component -> component.getType().
-                        equals(Component.Type.CPU)).filter(component -> component.getPrice().
-                        floatValue() <= maxPrice).toList().stream()
-                .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList().get(0);
-    }
-
-    public Component getBestPsu(Customer customer, float maxPrice) {
-        return getAvailableComponents().stream().filter(component -> component.getType().
-                        equals(Component.Type.PSU)).filter(component -> component.getPrice().
-                        floatValue() <= maxPrice).toList().stream()
-                .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList().get(0);
-    }
-
-    public Component getBestRam(Customer customer, float maxPrice) {
-        return getAvailableComponents().stream().filter(component -> component.getType().
-                        equals(Component.Type.RAM)).filter(component -> component.getPrice().
-                        floatValue() <= maxPrice).toList().stream()
-                .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList().get(0);
-    }
-
-    public Component getBestMotherboard(Customer customer, float maxPrice) {
-        return getAvailableComponents().stream().filter(component -> component.getType().
-                        equals(Component.Type.MOTHERBOARD)).filter(component -> component.getPrice().
-                        floatValue() <= maxPrice).toList().stream()
-                .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList().get(0);
-    }
-
-    public Component getBestCase(Customer customer, float maxPrice) {
-        return getAvailableComponents().stream().filter(component -> component.getType().
-                        equals(Component.Type.CASE)).filter(component -> component.getPrice().
-                        floatValue() <= maxPrice).toList().stream()
-                .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList().get(0);
-    }
-
-    public Component getBestStorage(Customer customer, float maxPrice) {
-        return getAvailableComponents().stream().filter(component -> component.getType().
-                        equals(Component.Type.HDD)).filter(component -> component.getPrice().
-                        floatValue() <= maxPrice).toList().stream()
-                .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList().get(0);
-    }
 
     public Computer order(ComputerType computerType, UseCase useCase, Customer customer) throws CannotBuildComputer {
         List<Component> result = new ArrayList<>();
@@ -138,39 +104,63 @@ public class Store {
         float motherboardMaxPrice = 0;
         float keyboardMaxPrice = 0;
         float screenMaxPrice = 0;
-        if (computerType.equals(ComputerType.DESKTOP) && useCase.equals(UseCase.GAMING)) {
-            gpuMaxPrice = (float) (1. / 3. * budget);
-            cpuMaxPrice = (float) (0.25 * budget);
-            psuMaxPrice = (float) (1. / 12. * budget);
-            ramMaxPrice = (float) (1.0 / 12.0 * budget);
-            motherboardMaxPrice = (float) (1.0 / 12.0 * budget);
-            caseMaxPrice = (float) (1.0 / 12.0 * budget);
-            storageMaxPrice = (float) (1.0 / 12.0 * budget);
-            result.add(getBestGpu(customer, gpuMaxPrice));
-            result.add(getBestCpu(customer, cpuMaxPrice));
-            result.add(getBestMotherboard(customer, motherboardMaxPrice));
-            result.add(getBestRam(customer, ramMaxPrice));
-            result.add(getBestPsu(customer, psuMaxPrice));
-            result.add(getBestCase(customer, caseMaxPrice));
-            result.add(getBestStorage(customer, storageMaxPrice));
-        } else if (computerType.equals(ComputerType.DESKTOP) && useCase.equals(UseCase.WORK)) {
-            gpuMaxPrice = (float) (1.0 / 4.0 * budget);
-            cpuMaxPrice = (float) (1.0 / 3.0 * budget);
-            psuMaxPrice = (float) (1. / 12. * budget);
-            ramMaxPrice = (float) (1.0 / 12.0 * budget);
-            motherboardMaxPrice = (float) (1.0 / 12.0 * budget);
-            caseMaxPrice = (float) (1.0 / 12.0 * budget);
-            storageMaxPrice = (float) (1.0 / 12.0 * budget);
-            result.add(getBestGpu(customer, gpuMaxPrice));
-            result.add(getBestCpu(customer, cpuMaxPrice));
-            result.add(getBestMotherboard(customer, motherboardMaxPrice));
-            result.add(getBestRam(customer, ramMaxPrice));
-            result.add(getBestPsu(customer, psuMaxPrice));
-            result.add(getBestCase(customer, caseMaxPrice));
-            result.add(getBestStorage(customer, storageMaxPrice));
+        if (computerType.equals(ComputerType.DESKTOP)) {
+            if (useCase.equals(UseCase.GAMING)) {
+                gpuMaxPrice = (float) (1. / 3. * budget);
+                cpuMaxPrice = (float) (0.25 * budget);
+                psuMaxPrice = (float) (1. / 12. * budget);
+                ramMaxPrice = (float) (1.0 / 12.0 * budget);
+                motherboardMaxPrice = (float) (1.0 / 12.0 * budget);
+                caseMaxPrice = (float) (1.0 / 12.0 * budget);
+                storageMaxPrice = (float) (1.0 / 12.0 * budget);
+            } else if (useCase.equals(UseCase.WORK)) {
+                gpuMaxPrice = (float) (1.0 / 4.0 * budget);
+                cpuMaxPrice = (float) (1.0 / 3.0 * budget);
+                psuMaxPrice = (float) (1.0 / 12.0 * budget);
+                ramMaxPrice = (float) (1.0 / 12.0 * budget);
+                motherboardMaxPrice = (float) (1.0 / 12.0 * budget);
+                caseMaxPrice = (float) (1.0 / 12.0 * budget);
+                storageMaxPrice = (float) (1.0 / 12.0 * budget);
+            }
+            result.add(getBestComponent(gpuMaxPrice, Component.Type.GPU));
+            result.add(getBestComponent(cpuMaxPrice, Component.Type.CPU));
+            result.add(getBestComponent(motherboardMaxPrice, Component.Type.MOTHERBOARD));
+            result.add(getBestComponent(ramMaxPrice, Component.Type.RAM));
+            result.add(getBestComponent(caseMaxPrice, Component.Type.CASE));
+            result.add(getBestComponent(storageMaxPrice, Component.Type.HDD));
+            result.add(getBestComponent(psuMaxPrice, Component.Type.PSU));
+            return new Computer(result);
+
+        } else {
+            if (useCase.equals(UseCase.WORK)) {
+                gpuMaxPrice = (float) (1.0 / 4.0 * budget);
+                cpuMaxPrice = (float) (1.0 / 3.0 * budget);
+                psuMaxPrice = (float) (9.0 / 140.0 * budget);
+                ramMaxPrice = (float) (9.0 / 140.0 * budget);
+                motherboardMaxPrice = (float) (9.0 / 140.0 * budget);
+                caseMaxPrice = (float) (9.0 / 140.0 * budget);
+                storageMaxPrice = (float) (9.0 / 140.0 * budget);
+            } else if (useCase.equals(UseCase.GAMING)) {
+                gpuMaxPrice = (float) (1.0 / 3.0 * budget);
+                cpuMaxPrice = (float) (1.0 / 4.0 * budget);
+                psuMaxPrice = (float) (9.0 / 140.0 * budget);
+                ramMaxPrice = (float) (9.0 / 140.0 * budget);
+                motherboardMaxPrice = (float) (9.0 / 140.0 * budget);
+                caseMaxPrice = (float) (9.0 / 140.0 * budget);
+                storageMaxPrice = (float) (9.0 / 140.0 * budget);
+                keyboardMaxPrice = (float) (9.0 / 140.0 * budget);
+                screenMaxPrice = (float) (9.0 / 140.0 * budget);
+            }
+            result.add(getBestComponent(gpuMaxPrice, Component.Type.GPU));
+            result.add(getBestComponent(cpuMaxPrice, Component.Type.CPU));
+            result.add(getBestComponent(motherboardMaxPrice, Component.Type.MOTHERBOARD));
+            result.add(getBestComponent(ramMaxPrice, Component.Type.RAM));
+            result.add(getBestComponent(caseMaxPrice, Component.Type.CASE));
+            result.add(getBestComponent(storageMaxPrice, Component.Type.HDD));
+            result.add(getBestComponent(keyboardMaxPrice, Component.Type.KEYBOARD));
+            result.add(getBestComponent(screenMaxPrice, Component.Type.SCREEN));
+            result.add(getBestComponent(psuMaxPrice, Component.Type.PSU));
+            return new Laptop(result);
         }
-        Computer computer = new Computer(result);
-        customer.addComputer(computer);
-        return computer;
     }
 }
