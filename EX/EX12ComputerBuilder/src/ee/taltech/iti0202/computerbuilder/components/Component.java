@@ -25,8 +25,8 @@ public class Component {
         number = -1;
     }
 
-    public Component(String name, Type type, BigDecimal price, String manufacturer, int performancePoints,
-                     int powerConsumption) {
+    public Component(String name, Type type, BigDecimal price, String manufacturer, Integer performancePoints,
+                     Integer powerConsumption) {
         this.name = name;
         this.type = type;
         this.price = price;

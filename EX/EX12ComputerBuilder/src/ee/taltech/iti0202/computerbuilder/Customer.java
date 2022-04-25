@@ -42,7 +42,12 @@ public class Customer {
     public void addComponent(Component component) {
         components.add(component);
     }
-    public void addComputer(Computer computer){
+
+    public void addComputer(Computer computer) {
         computers.add(computer);
+    }
+
+    public List<Computer> getComputers() {
+        return computers;
     }
 }

@@ -91,6 +91,20 @@ public class Store {
         }
     }
 
+    public Component getPSU(float maxPrice, List<Component> components) throws CannotBuildComputer {
+        List<Integer> integers = components.stream().map(Component::getPowerConsumption).toList();
+        Integer sum = integers.stream().reduce(0, Integer::sum);
+        List<Component> bestPsu = getAvailableComponents().stream().filter(component -> component.getType().
+                        equals(Component.Type.PSU)).filter(component -> component.getPrice().
+                        floatValue() <= maxPrice).filter(component -> component.getPowerConsumption() >= sum).toList().stream()
+                .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList();
+        if (bestPsu.size() == 0) {
+            throw new CannotBuildComputer();
+        } else {
+            return bestPsu.get(0);
+        }
+    }
+
 
     public Computer order(ComputerType computerType, UseCase useCase, Customer customer) throws CannotBuildComputer {
         List<Component> result = new ArrayList<>();
@@ -128,7 +142,7 @@ public class Store {
             result.add(getBestComponent(ramMaxPrice, Component.Type.RAM));
             result.add(getBestComponent(caseMaxPrice, Component.Type.CASE));
             result.add(getBestComponent(storageMaxPrice, Component.Type.HDD));
-            result.add(getBestComponent(psuMaxPrice, Component.Type.PSU));
+            getPSU(psuMaxPrice, result);
             return new Computer(result);
 
         } else {
@@ -159,7 +173,7 @@ public class Store {
             result.add(getBestComponent(storageMaxPrice, Component.Type.HDD));
             result.add(getBestComponent(keyboardMaxPrice, Component.Type.KEYBOARD));
             result.add(getBestComponent(screenMaxPrice, Component.Type.SCREEN));
-            result.add(getBestComponent(psuMaxPrice, Component.Type.PSU));
+            getPSU(psuMaxPrice, result);
             return new Laptop(result);
         }
     }
