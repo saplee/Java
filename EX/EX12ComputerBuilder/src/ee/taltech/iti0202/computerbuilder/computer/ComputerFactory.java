@@ -1,43 +1,19 @@
-package ee.taltech.iti0202.computerbuilder.store;
+package ee.taltech.iti0202.computerbuilder.computer;
+
 
 import ee.taltech.iti0202.computerbuilder.Customer;
 import ee.taltech.iti0202.computerbuilder.components.Component;
-import ee.taltech.iti0202.computerbuilder.computer.*;
 import ee.taltech.iti0202.computerbuilder.database.Database;
 import ee.taltech.iti0202.computerbuilder.exceptions.CannotBuildComputer;
-import ee.taltech.iti0202.computerbuilder.exceptions.OutOfStockException;
-import ee.taltech.iti0202.computerbuilder.exceptions.ProductNotFoundException;
 
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+public class ComputerFactory {
+    private static Database database = Database.getInstance();
 
-public class Store {
-    private String name;
-    private BigDecimal balance;
-    private BigDecimal profitMargin;
-    private Database database = Database.getInstance();
-
-    public Store(String name, BigDecimal balance, BigDecimal profitMargin) {
-        this.name = name;
-        this.balance = balance;
-        this.profitMargin = profitMargin;
-        if (profitMargin.intValue() < 1) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public void purchaseComponent(int id, Customer customer) throws OutOfStockException, ProductNotFoundException {
-        database.decreaseComponentStock(id, 1);
-        customer.setBalance(customer.getBalance().subtract(database.getComponents().get(id).getPrice()));
-        this.setBalance(balance.add(database.getComponents().get(id).getPrice()));
-    }
-
-
-    public List<Component> getAvailableComponents() {
+    public static List<Component> getAvailableComponents() {
         List<Component> componentList = database.getComponents().values().stream().toList();
         List<Component> result = new ArrayList<>();
         for (Component component : componentList) {
@@ -48,35 +24,7 @@ public class Store {
         return result;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
-    public BigDecimal getProfitMargin() {
-        return profitMargin;
-    }
-
-    public void setProfitMargin(BigDecimal profitMargin) {
-        if (1 > profitMargin.intValue()) {
-            throw new IllegalArgumentException();
-        } else {
-            this.profitMargin = profitMargin;
-        }
-    }
-
-    public Component getBestComponent(float maxPrice, Component.Type type) throws CannotBuildComputer {
+    public static Component getBestComponent(float maxPrice, Component.Type type) throws CannotBuildComputer {
         List<Component> bestComponents = getAvailableComponents().stream().filter(component -> component.getType().
                         equals(type)).filter(component -> component.getPrice().
                         floatValue() <= maxPrice).toList().stream()
@@ -88,7 +36,7 @@ public class Store {
         }
     }
 
-    public Component getPsu(float maxPrice, List<Component> components) throws CannotBuildComputer {
+    public static Component getPsu(float maxPrice, List<Component> components) throws CannotBuildComputer {
         List<Integer> integers = components.stream().map(Component::getPowerConsumption).toList();
         Integer sum = integers.stream().reduce(0, Integer::sum);
         List<Component> bestPsu = getAvailableComponents().stream().filter(component -> component.getType().
@@ -102,8 +50,7 @@ public class Store {
         }
     }
 
-
-    public Computer orderPc(ComputerType computerType, UseCase useCase, Customer customer) throws CannotBuildComputer {
+    public static Computer order(ComputerType computerType, UseCase useCase, Customer customer) throws CannotBuildComputer {
         List<Component> result = new ArrayList<>();
         int budget = customer.getBalance().intValue();
         float gpuMaxPrice = 0;
@@ -170,7 +117,7 @@ public class Store {
             result.add(getBestComponent(storageMaxPrice, Component.Type.HDD));
             result.add(getBestComponent(keyboardMaxPrice, Component.Type.KEYBOARD));
             result.add(getBestComponent(screenMaxPrice, Component.Type.SCREEN));
-            result.add(getPsu(psuMaxPrice, result));
+            getPsu(psuMaxPrice, result);
             return new Laptop(result);
         }
     }
