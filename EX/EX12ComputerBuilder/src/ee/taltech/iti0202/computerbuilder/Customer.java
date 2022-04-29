@@ -11,8 +11,8 @@ import java.util.List;
 public class Customer {
     private String name;
     private BigDecimal balance;
+    private List<Computer> computers = new ArrayList<>();
     private List<Component> components = new ArrayList<>();
-    private List<Computer> computers = new ArrayList<Computer>();
 
     public Customer(String name, BigDecimal balance) {
         this.name = name;
@@ -23,9 +23,6 @@ public class Customer {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public BigDecimal getBalance() {
         return balance;
@@ -35,19 +32,19 @@ public class Customer {
         this.balance = balance;
     }
 
-    public List<Component> getComponents() {
-        return components;
-    }
-
-    public void addComponent(Component component) {
-        components.add(component);
-    }
-
     public void addComputer(Computer computer) {
         computers.add(computer);
     }
 
     public List<Computer> getComputers() {
         return computers;
+    }
+
+    public void addComponent(Component component) {
+        components.add(component);
+    }
+
+    public List<Component> getComponents() {
+        return components;
     }
 }

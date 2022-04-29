@@ -5,6 +5,7 @@ import ee.taltech.iti0202.computerbuilder.components.Component;
 import ee.taltech.iti0202.computerbuilder.computer.*;
 import ee.taltech.iti0202.computerbuilder.database.Database;
 import ee.taltech.iti0202.computerbuilder.exceptions.CannotBuildComputer;
+import ee.taltech.iti0202.computerbuilder.exceptions.NotEnoughMoneyException;
 import ee.taltech.iti0202.computerbuilder.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerbuilder.exceptions.ProductNotFoundException;
 
@@ -29,11 +30,20 @@ public class Store {
             throw new IllegalArgumentException();
         }
     }
-
-    public void purchaseComponent(int id, Customer customer) throws OutOfStockException, ProductNotFoundException {
-        database.decreaseComponentStock(id, 1);
-        customer.setBalance(customer.getBalance().subtract(database.getComponents().get(id).getPrice()));
-        this.setBalance(balance.add(database.getComponents().get(id).getPrice()));
+    public Component purchaseComponent(int id, Customer customer) throws OutOfStockException,
+            ProductNotFoundException,
+            NotEnoughMoneyException {
+        if (database.getComponents().containsKey(id) && ((database.getComponents().get(id).getPrice().intValue()
+                * profitMargin.intValue()) > customer.getBalance().intValue())) {
+            throw new NotEnoughMoneyException();
+        } else {
+            database.decreaseComponentStock(id, 1);
+            customer.addComponent(database.getComponents().get(id));
+            customer.setBalance(customer.getBalance().subtract(database.getComponents().get(id).getPrice()
+                    .multiply(profitMargin)));
+            this.setBalance(balance.add(database.getComponents().get(id).getPrice().multiply(profitMargin)));
+            return database.getComponents().get(id);
+        }
     }
 
 
@@ -52,9 +62,6 @@ public class Store {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public BigDecimal getBalance() {
         return balance;
@@ -62,18 +69,6 @@ public class Store {
 
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
-    }
-
-    public BigDecimal getProfitMargin() {
-        return profitMargin;
-    }
-
-    public void setProfitMargin(BigDecimal profitMargin) {
-        if (1 > profitMargin.intValue()) {
-            throw new IllegalArgumentException();
-        } else {
-            this.profitMargin = profitMargin;
-        }
     }
 
     public Component getBestComponent(float maxPrice, Component.Type type) throws CannotBuildComputer {
