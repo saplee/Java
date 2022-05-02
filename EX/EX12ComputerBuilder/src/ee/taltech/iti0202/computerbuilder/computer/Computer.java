@@ -11,14 +11,9 @@ public abstract class Computer {
 
     public Computer(List<Component> components) throws CannotBuildComputer {
         this.components = components;
-        canBuildComputer();
     }
 
     public List<Component> getComponents() {
         return components;
-    }
-
-
-    public void canBuildComputer() throws CannotBuildComputer {
     }
 }

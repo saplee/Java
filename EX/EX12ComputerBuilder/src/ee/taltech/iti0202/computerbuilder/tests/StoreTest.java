@@ -116,6 +116,7 @@ class StoreTest {
         }
         database.resetEntireDatabase();
     }
+
     @Test
     void increaseComponentStock2() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
         try {
@@ -125,6 +126,7 @@ class StoreTest {
         }
         database.resetEntireDatabase();
     }
+
     @Test
     void decreaseComponentStock() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
         try {
@@ -144,12 +146,13 @@ class StoreTest {
         Assertions.assertEquals(BigDecimal.valueOf(700), customer.getBalance());
         database.resetEntireDatabase();
     }
+
     @Test
     void purchaseComponent3() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
         Store store = new Store("Klick", BigDecimal.valueOf(1000), BigDecimal.valueOf(2));
         Customer customer = new Customer("Rainer", BigDecimal.valueOf(1000));
         store.purchaseComponent(0, customer);
-        List<Component>components = new ArrayList<>(List.of(component));
+        List<Component> components = new ArrayList<>(List.of(component));
         Assertions.assertEquals("Rainer", customer.getName());
         Assertions.assertEquals(components, customer.getComponents());
         database.resetEntireDatabase();
@@ -173,6 +176,16 @@ class StoreTest {
         Assertions.assertEquals("Intel", database.getComponents().get(0).getManufacturer());
         Assertions.assertEquals(100, database.getComponents().get(0).getPerformancePoints());
         Assertions.assertEquals(90, database.getComponents().get(0).getPowerConsumption());
+        database.resetEntireDatabase();
+    }
+
+    @Test
+    void addComponent() throws ProductAlreadyExistsException {
+        try {
+            database.saveComponent(component);
+            fail();
+        } catch (ProductAlreadyExistsException e) {
+        }
         database.resetEntireDatabase();
     }
 }

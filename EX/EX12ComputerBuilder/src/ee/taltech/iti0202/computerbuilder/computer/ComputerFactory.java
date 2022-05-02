@@ -49,6 +49,25 @@ public class ComputerFactory {
             return bestPsu.get(0);
         }
     }
+    public static Component getHddOrSsd(float maxPrice) throws CannotBuildComputer {
+        List<Component> allSdd = getAvailableComponents().stream().filter(component -> component.getType().
+                        equals(Component.Type.SSD)).filter(component -> component.getPrice().
+                        floatValue() <= maxPrice).toList().stream()
+                .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList();
+        List<Component> allHdd = getAvailableComponents().stream().filter(component -> component.getType().
+                        equals(Component.Type.HDD)).filter(component -> component.getPrice().
+                        floatValue() <= maxPrice).toList().stream()
+                .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList();
+        List<Component> bestHddOrSsd = new ArrayList<>();
+        bestHddOrSsd.addAll(allHdd);
+        bestHddOrSsd.addAll(allSdd);
+        if (bestHddOrSsd.size() == 0) {
+            throw new CannotBuildComputer();
+        } else {
+            return bestHddOrSsd.stream().sorted(Comparator.comparing(Component::getPerformancePoints).reversed())
+                    .toList().get(0);
+        }
+    }
 
     public static Computer order(ComputerType computerType, UseCase useCase, Customer customer) throws CannotBuildComputer {
         List<Component> result = new ArrayList<>();
@@ -85,7 +104,7 @@ public class ComputerFactory {
             result.add(getBestComponent(motherboardMaxPrice, Component.Type.MOTHERBOARD));
             result.add(getBestComponent(ramMaxPrice, Component.Type.RAM));
             result.add(getBestComponent(caseMaxPrice, Component.Type.CASE));
-            result.add(getBestComponent(storageMaxPrice, Component.Type.HDD));
+            result.add(getHddOrSsd(storageMaxPrice));
             result.add(getPsu(psuMaxPrice, result));
             Desktop desktop = new Desktop(result);
             customer.addComputer(desktop);
@@ -100,6 +119,8 @@ public class ComputerFactory {
                 motherboardMaxPrice = (float) (9.0 / 140.0 * budget);
                 caseMaxPrice = (float) (9.0 / 140.0 * budget);
                 storageMaxPrice = (float) (9.0 / 140.0 * budget);
+                keyboardMaxPrice = (float) (9.0 / 140.0 * budget);
+                screenMaxPrice = (float) (9.0 / 140.0 * budget);
             } else if (useCase.equals(UseCase.GAMING)) {
                 gpuMaxPrice = (float) (1.0 / 3.0 * budget);
                 cpuMaxPrice = (float) (1.0 / 4.0 * budget);
@@ -116,10 +137,10 @@ public class ComputerFactory {
             result.add(getBestComponent(motherboardMaxPrice, Component.Type.MOTHERBOARD));
             result.add(getBestComponent(ramMaxPrice, Component.Type.RAM));
             result.add(getBestComponent(caseMaxPrice, Component.Type.CASE));
-            result.add(getBestComponent(storageMaxPrice, Component.Type.HDD));
+            result.add(getHddOrSsd(storageMaxPrice));
             result.add(getBestComponent(keyboardMaxPrice, Component.Type.KEYBOARD));
             result.add(getBestComponent(screenMaxPrice, Component.Type.SCREEN));
-            getPsu(psuMaxPrice, result);
+            result.add(getPsu(psuMaxPrice, result));
             Laptop laptop = new Laptop(result);
             customer.addComputer(laptop);
             return laptop;
