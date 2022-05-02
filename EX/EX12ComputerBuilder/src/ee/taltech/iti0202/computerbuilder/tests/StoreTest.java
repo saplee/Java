@@ -101,14 +101,14 @@ class StoreTest {
     }
 
     @Test
-    void deleteComponent() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
+    void deleteComponent() throws  ProductNotFoundException {
         database.deleteComponent(0);
         Assertions.assertTrue(!database.getComponents().containsKey(0));
         database.resetEntireDatabase();
     }
 
     @Test
-    void deleteComponent2() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
+    void deleteComponent2() {
         try {
             database.deleteComponent(100);
             fail();
@@ -118,7 +118,7 @@ class StoreTest {
     }
 
     @Test
-    void increaseComponentStock2() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
+    void increaseComponentStock2() throws ProductNotFoundException {
         try {
             database.increaseComponentStock(0, -1);
             fail();
@@ -128,7 +128,7 @@ class StoreTest {
     }
 
     @Test
-    void decreaseComponentStock() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
+    void decreaseComponentStock() throws ProductNotFoundException {
         try {
             database.increaseComponentStock(0, -1);
             fail();
