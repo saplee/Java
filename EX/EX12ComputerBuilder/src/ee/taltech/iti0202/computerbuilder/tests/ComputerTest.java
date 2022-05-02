@@ -41,23 +41,41 @@ class ComputerTest {
     void setUp() throws ProductAlreadyExistsException {
         customer = new Customer("Alex", BigDecimal.valueOf(1500));
         database = Database.getInstance();
-        component = new Component("i5", Component.Type.CPU, BigDecimal.valueOf(200), "Intel", 100, 90);
-        component1 = new Component("Gtx 1070", Component.Type.GPU, BigDecimal.valueOf(220), "MSI", 150, 220);
-        component2 = new Component("B365", Component.Type.MOTHERBOARD, BigDecimal.valueOf(68), "MSI", 150, 20);
-        component3 = new Component("1TB", Component.Type.HDD, BigDecimal.valueOf(68), "Toshiba", 150, 20);
-        component4 = new Component("CASE", Component.Type.CASE, BigDecimal.valueOf(44), "MSI", 100, 0);
-        component5 = new Component("16GB", Component.Type.RAM, BigDecimal.valueOf(77), "HyperX", 99, 10);
-        component6 = new Component("PSU", Component.Type.PSU, BigDecimal.valueOf(77), "Corsair", 100, 450);
-        component7 = new Component("i3", Component.Type.CPU, BigDecimal.valueOf(120), "Intel", 70, 90);
-        component8 = new Component("Gtx 1080", Component.Type.GPU, BigDecimal.valueOf(400), "MSI", 151, 220);
-        component9 = new Component("B360", Component.Type.MOTHERBOARD, BigDecimal.valueOf(60), "MSI", 140, 20);
-        component10 = new Component("500GB", Component.Type.SSD, BigDecimal.valueOf(68), "Samsung", 200, 15);
-        component11 = new Component("RGB CASE", Component.Type.CASE, BigDecimal.valueOf(100), "MSI", 99, 0);
-        component12 = new Component("8GB", Component.Type.RAM, BigDecimal.valueOf(68), "HyperX", 77, 10);
-        component13 = new Component("PSU", Component.Type.PSU, BigDecimal.valueOf(105), "Corsair", 220, 700);
-        component14 = new Component("i9", Component.Type.CPU, BigDecimal.valueOf(400), "Intel", 400, 90);
-        component15 = new Component("Screen", Component.Type.SCREEN, BigDecimal.valueOf(95), "Intel", 100, 20);
-        component16 = new Component("Steel-series", Component.Type.KEYBOARD, BigDecimal.valueOf(80), "Steel-series", 99, 10);
+        component = new Component("i5", Component.Type.CPU, BigDecimal.valueOf(200),
+                "Intel", 100, 90);
+        component1 = new Component("Gtx 1070", Component.Type.GPU, BigDecimal.valueOf(220),
+                "MSI", 150, 220);
+        component2 = new Component("B365", Component.Type.MOTHERBOARD, BigDecimal.valueOf(68),
+                "MSI", 150, 20);
+        component3 = new Component("1TB", Component.Type.HDD, BigDecimal.valueOf(68),
+                "Toshiba", 150, 20);
+        component4 = new Component("CASE", Component.Type.CASE, BigDecimal.valueOf(44),
+                "MSI", 100, 0);
+        component5 = new Component("16GB", Component.Type.RAM, BigDecimal.valueOf(77),
+                "HyperX", 99, 10);
+        component6 = new Component("PSU", Component.Type.PSU, BigDecimal.valueOf(77),
+                "Corsair", 100, 450);
+        component7 = new Component("i3", Component.Type.CPU, BigDecimal.valueOf(120),
+                "Intel", 70, 90);
+        component8 = new Component("Gtx 1080", Component.Type.GPU, BigDecimal.valueOf(400),
+                "MSI", 151, 220);
+        component9 = new Component("B360",
+                Component.Type.MOTHERBOARD, BigDecimal.valueOf(60),
+                "MSI", 140, 20);
+        component10 = new Component("500GB", Component.Type.SSD, BigDecimal.valueOf(68),
+                "Samsung", 200, 15);
+        component11 = new Component("RGB CASE", Component.Type.CASE, BigDecimal.valueOf(100),
+                "MSI", 99, 0);
+        component12 = new Component("8GB", Component.Type.RAM, BigDecimal.valueOf(68),
+                "HyperX", 77, 10);
+        component13 = new Component("PSU", Component.Type.PSU, BigDecimal.valueOf(105),
+                "Corsair", 220, 700);
+        component14 = new Component("i9", Component.Type.CPU, BigDecimal.valueOf(400),
+                "Intel", 400, 90);
+        component15 = new Component("Screen", Component.Type.SCREEN, BigDecimal.valueOf(95),
+                "Intel", 100, 20);
+        component16 = new Component("Steel-series", Component.Type.KEYBOARD, BigDecimal.valueOf(80),
+                "Steel-series", 99, 10);
         database.saveComponent(component);
         database.saveComponent(component1);
         database.saveComponent(component2);
@@ -81,7 +99,8 @@ class ComputerTest {
     @Test
     void orderGamingDesktop() throws CannotBuildComputer {
         Desktop computer = (Desktop) ComputerFactory.order(ComputerType.DESKTOP, UseCase.GAMING, customer);
-        List<Component> components = new ArrayList<>(List.of(component, component8, component2, component4, component10, component5, component13));
+        List<Component> components = new ArrayList<>(List.of(component, component8, component2, component4,
+                component10, component5, component13));
         Assertions.assertTrue(computer.getComponents().containsAll(components));
         database.resetEntireDatabase();
     }
@@ -89,7 +108,8 @@ class ComputerTest {
     @Test
     void orderWorkDesktop() throws CannotBuildComputer {
         Computer computer = ComputerFactory.order(ComputerType.DESKTOP, UseCase.WORK, customer);
-        List<Component> components = new ArrayList<>(List.of(component14, component1, component2, component4, component10, component5, component13));
+        List<Component> components = new ArrayList<>(List.of(component14, component1, component2, component4,
+                component10, component5, component13));
         Assertions.assertTrue(computer.getComponents().containsAll(components));
         database.resetEntireDatabase();
     }
@@ -97,7 +117,8 @@ class ComputerTest {
     @Test
     void orderGamingLaptop() throws CannotBuildComputer {
         Computer computer = ComputerFactory.order(ComputerType.LAPTOP, UseCase.GAMING, customer);
-        List<Component> components = new ArrayList<>(List.of(component, component8, component2, component4, component10, component5, component6, component15, component16));
+        List<Component> components = new ArrayList<>(List.of(component, component8, component2, component4,
+                component10, component5, component6, component15, component16));
         Assertions.assertTrue(computer.getComponents().containsAll(components));
         database.resetEntireDatabase();
     }
@@ -105,7 +126,8 @@ class ComputerTest {
     @Test
     void orderWorkLaptop() throws CannotBuildComputer {
         Computer computer = ComputerFactory.order(ComputerType.LAPTOP, UseCase.WORK, customer);
-        List<Component> components = new ArrayList<>(List.of(component14, component1, component2, component4, component10, component5, component6, component15, component16));
+        List<Component> components = new ArrayList<>(List.of(component14, component1, component2, component4,
+                component10, component5, component6, component15, component16));
         Assertions.assertTrue(computer.getComponents().containsAll(components));
         database.resetEntireDatabase();
     }
