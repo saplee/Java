@@ -41,7 +41,8 @@ public class ComputerFactory {
         Integer sum = integers.stream().reduce(0, Integer::sum);
         List<Component> bestPsu = getAvailableComponents().stream().filter(component -> component.getType().
                         equals(Component.Type.PSU)).filter(component -> component.getPrice().
-                        floatValue() <= maxPrice).filter(component -> component.getPowerConsumption() >= sum).toList().stream()
+                        floatValue() <= maxPrice).filter(component -> component.getPowerConsumption() >= sum)
+                .toList().stream()
                 .sorted(Comparator.comparing(Component::getPerformancePoints).reversed()).toList();
         if (bestPsu.size() == 0) {
             throw new CannotBuildComputer();
@@ -49,6 +50,7 @@ public class ComputerFactory {
             return bestPsu.get(0);
         }
     }
+
     public static Component getHddOrSsd(float maxPrice) throws CannotBuildComputer {
         List<Component> allSdd = getAvailableComponents().stream().filter(component -> component.getType().
                         equals(Component.Type.SSD)).filter(component -> component.getPrice().
@@ -69,7 +71,8 @@ public class ComputerFactory {
         }
     }
 
-    public static Computer order(ComputerType computerType, UseCase useCase, Customer customer) throws CannotBuildComputer {
+    public static Computer order(ComputerType computerType, UseCase useCase, Customer customer)
+            throws CannotBuildComputer {
         List<Component> result = new ArrayList<>();
         int budget = customer.getBalance().intValue();
         float gpuMaxPrice = 0;
