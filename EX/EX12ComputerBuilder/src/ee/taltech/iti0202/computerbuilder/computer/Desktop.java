@@ -12,10 +12,6 @@ public class Desktop extends Computer {
         canBuildComputer();
     }
 
-    public List<Component> getComponents() {
-        return components;
-    }
-
     @Override
     public void canBuildComputer() throws CannotBuildComputer {
         List<Component.Type> componentsTypes = components.stream().map(Component::getType).toList();

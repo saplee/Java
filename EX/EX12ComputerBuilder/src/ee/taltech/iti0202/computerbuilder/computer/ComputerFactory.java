@@ -87,7 +87,9 @@ public class ComputerFactory {
             result.add(getBestComponent(caseMaxPrice, Component.Type.CASE));
             result.add(getBestComponent(storageMaxPrice, Component.Type.HDD));
             result.add(getPsu(psuMaxPrice, result));
-            return new Desktop(result);
+            Desktop desktop = new Desktop(result);
+            customer.addComputer(desktop);
+            return desktop;
 
         } else {
             if (useCase.equals(UseCase.WORK)) {
@@ -118,7 +120,9 @@ public class ComputerFactory {
             result.add(getBestComponent(keyboardMaxPrice, Component.Type.KEYBOARD));
             result.add(getBestComponent(screenMaxPrice, Component.Type.SCREEN));
             getPsu(psuMaxPrice, result);
-            return new Laptop(result);
+            Laptop laptop = new Laptop(result);
+            customer.addComputer(laptop);
+            return laptop;
         }
     }
 }
