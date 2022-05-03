@@ -16,9 +16,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-class StoreTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class DatabaseTest {
     private Database database;
-    private Customer customer;
     private Component component;
     private Component component1;
     private Component component2;
@@ -41,7 +42,6 @@ class StoreTest {
 
     @BeforeEach
     void setUp() throws ProductAlreadyExistsException {
-        customer = new Customer("Alex", BigDecimal.valueOf(1500));
         database = Database.getInstance();
         component = new Component("i5", Component.Type.CPU, BigDecimal.valueOf(150), "Intel",
                 100, 90);
@@ -87,52 +87,77 @@ class StoreTest {
         database.saveComponent(component13);
     }
 
-
     @Test
-    void getName() {
+    void getAvailableComponents() throws ProductAlreadyExistsException {
+        List<Component> components = new ArrayList<>(List.of(component, component1, component2, component3, component4,
+                component5, component6, component7, component8, component9, component10, component11, component12,
+                component13));
         Store store = new Store("Klick", BigDecimal.valueOf(1000), BigDecimal.valueOf(1.1));
-        Assertions.assertEquals("Klick", store.getName());
+        Assertions.assertEquals(components, store.getAvailableComponents());
+        database.resetEntireDatabase();
+    }
+
+
+    @Test
+    void deleteComponent() throws ProductNotFoundException {
+        database.deleteComponent(0);
+        Assertions.assertTrue(!database.getComponents().containsKey(0));
         database.resetEntireDatabase();
     }
 
     @Test
-    void getBalance() throws ProductAlreadyExistsException {
-        Store store = new Store("Klick", BigDecimal.valueOf(1000), BigDecimal.valueOf(1.1));
-        Assertions.assertEquals(BigDecimal.valueOf(1000), store.getBalance());
+    void deleteComponent2() {
+        try {
+            database.deleteComponent(100);
+            fail();
+        } catch (ProductNotFoundException e) {
+        }
+        database.resetEntireDatabase();
+    }
+
+    @Test
+    void increaseComponentStock2() throws ProductNotFoundException {
+        try {
+            database.increaseComponentStock(0, -1);
+            fail();
+        } catch (IllegalArgumentException e) {
+        }
+        database.resetEntireDatabase();
+    }
+
+    @Test
+    void decreaseComponentStock() throws ProductNotFoundException {
+        try {
+            database.increaseComponentStock(0, 0);
+            fail();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
         database.resetEntireDatabase();
     }
 
 
 
     @Test
-    void purchaseComponent() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
-        Store store = new Store("Klick", BigDecimal.valueOf(1000), BigDecimal.valueOf(2));
-        Customer customer = new Customer("Rainer", BigDecimal.valueOf(1000));
-        store.purchaseComponent(0, customer);
-        Assertions.assertEquals(BigDecimal.valueOf(700), customer.getBalance());
+    void increaseComponentStock() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
+        database.increaseComponentStock(1, 10);
+        Assertions.assertEquals(11, database.getComponents().get(1).getAmount());
+        Assertions.assertEquals(Component.Type.GPU, database.getComponents().get(1).getType());
+        Assertions.assertEquals("Gtx 1070", database.getComponents().get(1).getName());
+        Assertions.assertEquals("Intel", database.getComponents().get(0).getManufacturer());
+        Assertions.assertEquals(100, database.getComponents().get(0).getPerformancePoints());
+        Assertions.assertEquals(90, database.getComponents().get(0).getPowerConsumption());
         database.resetEntireDatabase();
     }
 
     @Test
-    void purchaseComponent3() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
-        Store store = new Store("Klick", BigDecimal.valueOf(1000), BigDecimal.valueOf(2));
-        Customer customer = new Customer("Rainer", BigDecimal.valueOf(1000));
-        store.purchaseComponent(0, customer);
-        List<Component> components = new ArrayList<>(List.of(component));
-        Assertions.assertEquals("Rainer", customer.getName());
-        Assertions.assertEquals(components, customer.getComponents());
+    void addComponent() throws ProductAlreadyExistsException {
+        try {
+            database.saveComponent(component);
+            fail();
+        } catch (ProductAlreadyExistsException e) {
+        }
         database.resetEntireDatabase();
     }
-
-    @Test
-    void purchaseComponent2() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
-        Store store = new Store("Klick", BigDecimal.valueOf(1000), BigDecimal.valueOf(2));
-        Customer customer = new Customer("Rainer", BigDecimal.valueOf(1000));
-        store.purchaseComponent(0, customer);
-        Assertions.assertEquals(BigDecimal.valueOf(1300), store.getBalance());
-        database.resetEntireDatabase();
-    }
-
-
 
 }
