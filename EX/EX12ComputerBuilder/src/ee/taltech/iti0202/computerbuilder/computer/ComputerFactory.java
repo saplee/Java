@@ -12,9 +12,10 @@ import java.util.List;
 
 public class ComputerFactory {
     private static Database database = Database.getInstance();
-    private static double number1 = 140.0;
-    private static double number2 = 12.0;
-    private static double number3 = 9.0;
+    private static final double number1 = 140.0;
+    private static final double number2 = 12.0;
+    private static final double number3 = 9.0;
+    private static final double number4 = 0.25;
 
     public static List<Component> getAvailableComponents() {
         List<Component> componentList = database.getComponents().values().stream().toList();
@@ -90,7 +91,7 @@ public class ComputerFactory {
         if (computerType.equals(ComputerType.DESKTOP)) {
             if (useCase.equals(UseCase.GAMING)) {
                 gpuMaxPrice = (float) (1. / 3. * budget);
-                cpuMaxPrice = (float) (0.25 * budget);
+                cpuMaxPrice = (float) (number4 * budget);
                 psuMaxPrice = (float) (1. / number2 * budget);
                 ramMaxPrice = (float) (1.0 / number2 * budget);
                 motherboardMaxPrice = (float) (1.0 / number2 * budget);

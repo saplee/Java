@@ -3,8 +3,6 @@ package ee.taltech.iti0202.computerbuilder.tests;
 
 import ee.taltech.iti0202.computerbuilder.components.Component;
 import ee.taltech.iti0202.computerbuilder.database.Database;
-import ee.taltech.iti0202.computerbuilder.exceptions.NotEnoughMoneyException;
-import ee.taltech.iti0202.computerbuilder.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerbuilder.exceptions.ProductAlreadyExistsException;
 import ee.taltech.iti0202.computerbuilder.exceptions.ProductNotFoundException;
 import ee.taltech.iti0202.computerbuilder.store.Store;
@@ -149,7 +147,7 @@ class DatabaseTest {
     }
 
     @Test
-    void addComponent() throws ProductAlreadyExistsException {
+    void addComponent() {
         try {
             database.saveComponent(component);
             Assertions.fail();
