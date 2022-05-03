@@ -82,7 +82,7 @@ class ComputerTest {
         component12 = new Component("8GB", Component.Type.RAM, BigDecimal.valueOf(68),
                 "HyperX", numberD, 5 * 2);
         component13 = new Component("PSU", Component.Type.PSU, BigDecimal.valueOf(105),
-                "Corsair", numberG , 700);
+                "Corsair", numberG, 700);
         component14 = new Component("i9", Component.Type.CPU, BigDecimal.valueOf(numberE),
                 "Intel", numberE, 90);
         component15 = new Component("Screen", Component.Type.SCREEN, BigDecimal.valueOf(95),

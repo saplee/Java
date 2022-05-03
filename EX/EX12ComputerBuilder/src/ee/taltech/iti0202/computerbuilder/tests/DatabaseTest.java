@@ -1,6 +1,6 @@
 package ee.taltech.iti0202.computerbuilder.tests;
 
-import ee.taltech.iti0202.computerbuilder.Customer;
+
 import ee.taltech.iti0202.computerbuilder.components.Component;
 import ee.taltech.iti0202.computerbuilder.database.Database;
 import ee.taltech.iti0202.computerbuilder.exceptions.NotEnoughMoneyException;
@@ -15,8 +15,6 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseTest {
     private Database database;
@@ -109,7 +107,7 @@ class DatabaseTest {
     void deleteComponent2() {
         try {
             database.deleteComponent(100);
-            fail();
+            Assertions.fail();
         } catch (ProductNotFoundException e) {
         }
         database.resetEntireDatabase();
@@ -119,7 +117,7 @@ class DatabaseTest {
     void increaseComponentStock2() throws ProductNotFoundException {
         try {
             database.increaseComponentStock(0, -1);
-            fail();
+            Assertions.fail();
         } catch (IllegalArgumentException e) {
         }
         database.resetEntireDatabase();
@@ -129,7 +127,7 @@ class DatabaseTest {
     void decreaseComponentStock() throws ProductNotFoundException {
         try {
             database.increaseComponentStock(0, 0);
-            fail();
+            Assertions.fail();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
@@ -154,10 +152,9 @@ class DatabaseTest {
     void addComponent() throws ProductAlreadyExistsException {
         try {
             database.saveComponent(component);
-            fail();
+            Assertions.fail();
         } catch (ProductAlreadyExistsException e) {
         }
         database.resetEntireDatabase();
     }
-
 }

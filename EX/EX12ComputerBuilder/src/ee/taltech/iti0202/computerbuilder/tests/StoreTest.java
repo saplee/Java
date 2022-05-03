@@ -105,7 +105,8 @@ class StoreTest {
 
 
     @Test
-    void purchaseComponent() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
+    void purchaseComponent() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException,
+            ProductNotFoundException {
         Store store = new Store("Klick", BigDecimal.valueOf(1000), BigDecimal.valueOf(2));
         Customer customer = new Customer("Rainer", BigDecimal.valueOf(1000));
         store.purchaseComponent(0, customer);
@@ -114,7 +115,8 @@ class StoreTest {
     }
 
     @Test
-    void purchaseComponent3() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
+    void purchaseComponent3() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException,
+            ProductNotFoundException {
         Store store = new Store("Klick", BigDecimal.valueOf(1000), BigDecimal.valueOf(2));
         Customer customer = new Customer("Rainer", BigDecimal.valueOf(1000));
         store.purchaseComponent(0, customer);
@@ -125,14 +127,12 @@ class StoreTest {
     }
 
     @Test
-    void purchaseComponent2() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
+    void purchaseComponent2() throws OutOfStockException, NotEnoughMoneyException,
+            ProductNotFoundException {
         Store store = new Store("Klick", BigDecimal.valueOf(1000), BigDecimal.valueOf(2));
         Customer customer = new Customer("Rainer", BigDecimal.valueOf(1000));
         store.purchaseComponent(0, customer);
         Assertions.assertEquals(BigDecimal.valueOf(1300), store.getBalance());
         database.resetEntireDatabase();
     }
-
-
-
 }
