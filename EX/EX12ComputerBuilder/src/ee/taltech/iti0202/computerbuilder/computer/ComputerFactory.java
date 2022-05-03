@@ -12,10 +12,10 @@ import java.util.List;
 
 public class ComputerFactory {
     private static Database database = Database.getInstance();
-    private static final double number1 = 140.0;
-    private static final double number2 = 12.0;
-    private static final double number3 = 9.0;
-    private static final double number4 = 0.25;
+    private static final double NUMBER_1 = 140.0;
+    private static final double NUMBER_2 = 12.0;
+    private static final double NUMBER_3 = 9.0;
+    private static final double NUMBER_4 = 0.25;
 
     public static List<Component> getAvailableComponents() {
         List<Component> componentList = database.getComponents().values().stream().toList();
@@ -91,20 +91,20 @@ public class ComputerFactory {
         if (computerType.equals(ComputerType.DESKTOP)) {
             if (useCase.equals(UseCase.GAMING)) {
                 gpuMaxPrice = (float) (1. / 3. * budget);
-                cpuMaxPrice = (float) (number4 * budget);
-                psuMaxPrice = (float) (1. / number2 * budget);
-                ramMaxPrice = (float) (1.0 / number2 * budget);
-                motherboardMaxPrice = (float) (1.0 / number2 * budget);
-                caseMaxPrice = (float) (1.0 / number2 * budget);
-                storageMaxPrice = (float) (1.0 / number2 * budget);
+                cpuMaxPrice = (float) (NUMBER_4 * budget);
+                psuMaxPrice = (float) (1. / NUMBER_2 * budget);
+                ramMaxPrice = (float) (1.0 / NUMBER_2 * budget);
+                motherboardMaxPrice = (float) (1.0 / NUMBER_2 * budget);
+                caseMaxPrice = (float) (1.0 / NUMBER_2 * budget);
+                storageMaxPrice = (float) (1.0 / NUMBER_2 * budget);
             } else if (useCase.equals(UseCase.WORK)) {
                 gpuMaxPrice = (float) (1.0 / 4.0 * budget);
                 cpuMaxPrice = (float) (1.0 / 3.0 * budget);
-                psuMaxPrice = (float) (1.0 / number2 * budget);
-                ramMaxPrice = (float) (1.0 / number2 * budget);
-                motherboardMaxPrice = (float) (1.0 / number2 * budget);
-                caseMaxPrice = (float) (1.0 / number2 * budget);
-                storageMaxPrice = (float) (1.0 / number2 * budget);
+                psuMaxPrice = (float) (1.0 / NUMBER_2 * budget);
+                ramMaxPrice = (float) (1.0 / NUMBER_2 * budget);
+                motherboardMaxPrice = (float) (1.0 / NUMBER_2 * budget);
+                caseMaxPrice = (float) (1.0 / NUMBER_2 * budget);
+                storageMaxPrice = (float) (1.0 / NUMBER_2 * budget);
             }
             result.add(getBestComponent(gpuMaxPrice, Component.Type.GPU));
             result.add(getBestComponent(cpuMaxPrice, Component.Type.CPU));
@@ -121,23 +121,23 @@ public class ComputerFactory {
             if (useCase.equals(UseCase.WORK)) {
                 gpuMaxPrice = (float) (1.0 / 4.0 * budget);
                 cpuMaxPrice = (float) (1.0 / 3.0 * budget);
-                psuMaxPrice = (float) (number3 / number1 * budget);
-                ramMaxPrice = (float) (number3 / number1 * budget);
-                motherboardMaxPrice = (float) (number3 / number1 * budget);
-                caseMaxPrice = (float) (number3 / number1 * budget);
-                storageMaxPrice = (float) (number3 / number1 * budget);
-                keyboardMaxPrice = (float) (number3 / number1 * budget);
-                screenMaxPrice = (float) (number3 / number1 * budget);
+                psuMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                ramMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                motherboardMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                caseMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                storageMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                keyboardMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                screenMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
             } else if (useCase.equals(UseCase.GAMING)) {
                 gpuMaxPrice = (float) (1.0 / 3.0 * budget);
                 cpuMaxPrice = (float) (1.0 / 4.0 * budget);
-                psuMaxPrice = (float) (number3 / number1 * budget);
-                ramMaxPrice = (float) (number3 / number1 * budget);
-                motherboardMaxPrice = (float) (number3 / number1 * budget);
-                caseMaxPrice = (float) (number3 / number1 * budget);
-                storageMaxPrice = (float) (number3 / number1 * budget);
-                keyboardMaxPrice = (float) (number3 / number1 * budget);
-                screenMaxPrice = (float) (number3 / number1 * budget);
+                psuMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                ramMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                motherboardMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                caseMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                storageMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                keyboardMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
+                screenMaxPrice = (float) (NUMBER_3 / NUMBER_1 * budget);
             }
             result.add(getBestComponent(gpuMaxPrice, Component.Type.GPU));
             result.add(getBestComponent(cpuMaxPrice, Component.Type.CPU));
