@@ -137,7 +137,7 @@ class DatabaseTest {
 
 
     @Test
-    void increaseComponentStock() throws ProductAlreadyExistsException, OutOfStockException, NotEnoughMoneyException, ProductNotFoundException {
+    void increaseComponentStock() throws ProductNotFoundException {
         database.increaseComponentStock(1, 10);
         Assertions.assertEquals(11, database.getComponents().get(1).getAmount());
         Assertions.assertEquals(Component.Type.GPU, database.getComponents().get(1).getType());
