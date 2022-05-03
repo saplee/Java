@@ -46,20 +46,34 @@ class StoreTest {
     void setUp() throws ProductAlreadyExistsException {
         customer = new Customer("Alex", BigDecimal.valueOf(1500));
         database = Database.getInstance();
-        component = new Component("i5", Component.Type.CPU, BigDecimal.valueOf(150), "Intel", 100, 90);
-        component1 = new Component("Gtx 1070", Component.Type.GPU, BigDecimal.valueOf(220), "MSI", 150, 220);
-        component2 = new Component("B365", Component.Type.MOTHERBOARD, BigDecimal.valueOf(68), "MSI", 150, 20);
-        component3 = new Component("1TB", Component.Type.HDD, BigDecimal.valueOf(68), "Toshiba", 150, 20);
-        component4 = new Component("RGB CASE", Component.Type.CASE, BigDecimal.valueOf(44), "MSI", 100, 0);
-        component5 = new Component("8GB", Component.Type.RAM, BigDecimal.valueOf(77), "HyperX", 99, 10);
-        component6 = new Component("1TB", Component.Type.PSU, BigDecimal.valueOf(77), "Corsair", 100, 450);
-        component7 = new Component("i3", Component.Type.CPU, BigDecimal.valueOf(120), "Intel", 70, 90);
-        component8 = new Component("Gtx 1080", Component.Type.GPU, BigDecimal.valueOf(240), "MSI", 150, 220);
-        component9 = new Component("B360", Component.Type.MOTHERBOARD, BigDecimal.valueOf(60), "MSI", 140, 20);
-        component10 = new Component("1TB", Component.Type.SSD, BigDecimal.valueOf(68), "Samsung", 200, 15);
-        component11 = new Component("RGB CASE", Component.Type.CASE, BigDecimal.valueOf(100), "MSI", 100, 0);
-        component12 = new Component("8GB", Component.Type.RAM, BigDecimal.valueOf(68), "HyperX", 77, 10);
-        component13 = new Component("1TB", Component.Type.PSU, BigDecimal.valueOf(105), "Corsair", 220, 700);
+        component = new Component("i5", Component.Type.CPU, BigDecimal.valueOf(150), "Intel",
+                100, 90);
+        component1 = new Component("Gtx 1070", Component.Type.GPU, BigDecimal.valueOf(220),
+                "MSI", 150, 220);
+        component2 = new Component("B365", Component.Type.MOTHERBOARD, BigDecimal.valueOf(68),
+                "MSI", 150, 20);
+        component3 = new Component("1TB", Component.Type.HDD, BigDecimal.valueOf(68),
+                "Toshiba", 150, 20);
+        component4 = new Component("RGB CASE", Component.Type.CASE, BigDecimal.valueOf(44),
+                "MSI", 100, 0);
+        component5 = new Component("8GB", Component.Type.RAM, BigDecimal.valueOf(77),
+                "HyperX", 99, 10);
+        component6 = new Component("1TB", Component.Type.PSU, BigDecimal.valueOf(77),
+                "Corsair", 100, 450);
+        component7 = new Component("i3", Component.Type.CPU, BigDecimal.valueOf(120),
+                "Intel", 70, 90);
+        component8 = new Component("Gtx 1080", Component.Type.GPU, BigDecimal.valueOf(240),
+                "MSI", 150, 220);
+        component9 = new Component("B360", Component.Type.MOTHERBOARD, BigDecimal.valueOf(60),
+                "MSI", 140, 20);
+        component10 = new Component("1TB", Component.Type.SSD, BigDecimal.valueOf(68),
+                "Samsung", 200, 15);
+        component11 = new Component("RGB CASE", Component.Type.CASE, BigDecimal.valueOf(100),
+                "MSI", 100, 0);
+        component12 = new Component("8GB", Component.Type.RAM, BigDecimal.valueOf(68),
+                "HyperX", 77, 10);
+        component13 = new Component("1TB", Component.Type.PSU, BigDecimal.valueOf(105),
+                "Corsair", 220, 700);
         database.saveComponent(component);
         database.saveComponent(component1);
         database.saveComponent(component2);
@@ -130,7 +144,7 @@ class StoreTest {
     @Test
     void decreaseComponentStock() throws ProductNotFoundException {
         try {
-            database.increaseComponentStock(0, -1);
+            database.increaseComponentStock(0, 0);
             fail();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
