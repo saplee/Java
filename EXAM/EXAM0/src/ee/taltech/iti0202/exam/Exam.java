@@ -50,11 +50,15 @@ public class Exam {
      */
     public static String mixedPairs(String input) {
         List<String> result = new ArrayList<>();
+        HashSet<String> hashSet = new HashSet<>();
+        for (int i = 0; i < input.length(); i++){
+            hashSet.add(String.valueOf(input.charAt(i)));
+        }
         String lastWord = "";
         for (int i = 0; i < input.length(); i++) {
             String upper = String.valueOf(Character.toUpperCase(input.charAt(i)));
             String lower = String.valueOf(Character.toLowerCase(input.charAt(i)));
-            if (!result.contains(upper) && !result.contains(lower) && input.contains(upper) && input.contains(lower)){
+            if (!result.contains(upper) && !result.contains(lower) && hashSet.contains(upper) && hashSet.contains(lower)){
                 result.add(lower);
             }
         }
