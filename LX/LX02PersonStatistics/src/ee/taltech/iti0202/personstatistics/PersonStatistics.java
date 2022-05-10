@@ -66,18 +66,21 @@ public class PersonStatistics {
      * @return list of heights in cm
      */
     public List<Double> getHeightInCm() {
-        return null;
+        List<Double> result = new ArrayList<>();
+        for (Double double1 : persons.stream().map(Person::getHeightInMeters).toList()) {
+            result.add(double1 * 100);
+        }
+        return result;
     }
 
     /**
      * Return a sublist with the given size.
      */
     public List<Person> findSamples(int sampleSize) {
-        if (sampleSize <= 0){
+        if (sampleSize <= 0) {
             return new ArrayList<>();
-        }
-        else if (sampleSize> persons.size()){
-            return persons.subList(0,persons.size());
+        } else if (sampleSize > persons.size()) {
+            return persons.subList(0, persons.size());
         }
         return persons.subList(0, sampleSize);
     }
@@ -135,11 +138,10 @@ public class PersonStatistics {
      */
     public Map<String, List<Person>> mapOccupationToPersons() {
         HashMap<String, List<Person>> hashMap = new HashMap<>();
-        for (Person person: persons){
-            if (hashMap.containsKey(person.getOccupation())){
+        for (Person person : persons) {
+            if (hashMap.containsKey(person.getOccupation())) {
                 hashMap.get(person.getOccupation()).add(person);
-            }
-            else {
+            } else {
                 hashMap.put(person.getOccupation(), new ArrayList<>(List.of(person)));
             }
         }
