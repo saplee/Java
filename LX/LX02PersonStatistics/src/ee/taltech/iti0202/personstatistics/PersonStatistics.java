@@ -49,8 +49,8 @@ public class PersonStatistics {
      * Return the longest last name.
      */
     public Optional<String> findLongestLastName() {
-        return Optional.of(persons.stream().map(Person::getLastName).toList().stream().sorted(Comparator
-                .comparing(String::length).reversed()).toList().get(0));
+        return persons.stream().map(Person::getLastName).toList().stream().sorted(Comparator
+                .comparing(String::length).reversed()).findFirst();
     }
 
     /**
@@ -82,10 +82,10 @@ public class PersonStatistics {
      * @return first matching person
      */
     public Optional<Person> findSamplePerson(String nationality, Gender gender, int age) {
-        return Optional.of(persons.stream()
+        return persons.stream()
                 .filter(person -> person.getNationality().equals(nationality))
                 .filter(person -> person.getGender().equals(gender))
-                .filter(person -> person.getAge() == age).toList().get(0));
+                .filter(person -> person.getAge() == age).findFirst();
     }
 
     /**
