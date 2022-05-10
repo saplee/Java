@@ -73,7 +73,10 @@ public class PersonStatistics {
      * Return a sublist with the given size.
      */
     public List<Person> findSamples(int sampleSize) {
-        return null;
+        if (sampleSize <= 0){
+            return new ArrayList<>();
+        }
+        return persons.subList(0, sampleSize);
     }
 
     /**
