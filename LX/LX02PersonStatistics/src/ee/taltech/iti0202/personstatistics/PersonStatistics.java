@@ -35,14 +35,14 @@ public class PersonStatistics {
      * Return the person with the lowest age.
      */
     public Optional<Person> findYoungestPerson() {
-        return Optional.of(persons.stream().sorted(Comparator.comparing(Person::getAge)).toList().get(0));
+        return persons.stream().sorted(Comparator.comparing(Person::getAge)).findFirst();
     }
 
     /**
      * Return the person with the highest age.
      */
     public Optional<Person> findOldestPerson() {
-        return Optional.of(persons.stream().sorted(Comparator.comparing(Person::getAge).reversed()).toList().get(0));
+        return persons.stream().sorted(Comparator.comparing(Person::getAge).reversed()).findFirst();
     }
 
     /**
