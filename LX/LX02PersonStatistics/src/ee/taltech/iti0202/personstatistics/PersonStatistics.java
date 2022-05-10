@@ -1,60 +1,63 @@
 package ee.taltech.iti0202.personstatistics;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.Set;
+
+import java.util.*;
 
 /**
  * For calculating and finding statistical info based on persons.
  */
 public class PersonStatistics {
+    private List<Person> persons;
+
     /**
      * Constructor which stores the given list.
      */
     public PersonStatistics(List<Person> persons) {
+        this.persons = persons;
     }
 
     /**
      * Return the number of people in the list.
      */
     public long countPersons() {
-        return -1L;
+        return persons.size();
     }
 
     /**
      * Find the average height of the persons.
      */
     public OptionalDouble findAverageHeight() {
-        return null;
+        return persons.size() == 0 ? OptionalDouble.empty() : OptionalDouble.of(persons.stream()
+                .mapToDouble(Person::getHeightInMeters)
+                .average().getAsDouble());
     }
 
     /**
      * Return the person with the lowest age.
      */
     public Optional<Person> findYoungestPerson() {
-        return null;
+        return Optional.of(persons.stream().sorted(Comparator.comparing(Person::getAge)).toList().get(0));
     }
 
     /**
      * Return the person with the highest age.
      */
     public Optional<Person> findOldestPerson() {
-        return null;
+        return Optional.of(persons.stream().sorted(Comparator.comparing(Person::getAge).reversed()).toList().get(0));
     }
 
     /**
      * Return the longest last name.
      */
     public Optional<String> findLongestLastName() {
-        return null;
+        return Optional.of(persons.stream().map(Person::getLastName).toList().stream().sorted(Comparator
+                .comparing(String::length).reversed()).toList().get(0));
     }
 
     /**
      * Return a list of nationalities.
      */
     public List<String> getNationalityData() {
-        return null;
+        return persons.stream().map(Person::getNationality).toList();
     }
 
     /**
@@ -79,7 +82,10 @@ public class PersonStatistics {
      * @return first matching person
      */
     public Optional<Person> findSamplePerson(String nationality, Gender gender, int age) {
-        return null;
+        return Optional.of(persons.stream()
+                .filter(person -> person.getNationality().equals(nationality))
+                .filter(person -> person.getGender().equals(gender))
+                .filter(person -> person.getAge() == age).toList().get(0));
     }
 
     /**
