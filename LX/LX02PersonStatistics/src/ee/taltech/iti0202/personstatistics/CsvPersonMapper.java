@@ -30,7 +30,7 @@ public class CsvPersonMapper {
                         gender = Gender.FEMALE;
                     }
                     result.add(new Person(person.get(0), person.get(1), Integer.parseInt(person.get(2)), gender,
-                            Double.parseDouble(person.get(4)), person.get(5), person.get(6)));
+                            Double.parseDouble(person.get(4)), person.get(5), person.get(5 + 1)));
                 }
             }
         } catch (IOException e) {
