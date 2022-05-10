@@ -101,14 +101,16 @@ public class PersonStatistics {
      * @return ordered list of persons
      */
     public List<Person> getReverseOrderedByHeight() {
-        return null;
+        return persons.stream().sorted(Comparator.comparing(Person::getHeightInMeters).reversed()).toList();
     }
 
     /**
      * Return list of people whose age is between ageFrom to ageTo (inclusive).
      */
     public List<Person> findBetweenAge(int ageFrom, int ageTo) {
-        return null;
+        return persons.stream()
+                .filter(person -> person.getAge() <= (ageFrom))
+                .filter(person -> person.getAge() >= ageTo).toList();
     }
 
     /**
