@@ -112,8 +112,8 @@ public class PersonStatistics {
      */
     public List<Person> findBetweenAge(int ageFrom, int ageTo) {
         return persons.stream()
-                .filter(person -> person.getAge() <= (ageFrom))
-                .filter(person -> person.getAge() >= ageTo).toList();
+                .filter(person -> person.getAge() >= (ageFrom))
+                .filter(person -> person.getAge() <= ageTo).toList();
     }
 
     /**
