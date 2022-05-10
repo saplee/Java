@@ -76,6 +76,9 @@ public class PersonStatistics {
         if (sampleSize <= 0){
             return new ArrayList<>();
         }
+        else if (sampleSize> persons.size()){
+            return persons.subList(0,persons.size());
+        }
         return persons.subList(0, sampleSize);
     }
 
