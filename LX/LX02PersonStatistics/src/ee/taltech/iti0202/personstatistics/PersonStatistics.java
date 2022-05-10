@@ -131,8 +131,15 @@ public class PersonStatistics {
      * @return map of occupations with persons
      */
     public Map<String, List<Person>> mapOccupationToPersons() {
-        return null;
+        HashMap<String, List<Person>> hashMap = new HashMap<>();
+        for (Person person: persons){
+            if (hashMap.containsKey(person.getOccupation())){
+                hashMap.get(person.getOccupation()).add(person);
+            }
+            else {
+                hashMap.put(person.getOccupation(), new ArrayList<>(List.of(person)));
+            }
+        }
+        return hashMap;
     }
-
-
 }
