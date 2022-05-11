@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.exam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
@@ -16,10 +17,10 @@ public class Exam {
         int previousNumber = 0;
         int result = 0;
         for (int i = 0; i < numbers.size() - 1; i++) {
-            if (previousNumber != 2 && numbers.get(i + 1) == 2 && i != numbers.size() - 1) {
+            if (previousNumber != 2 && numbers.get(i + 1) != 2 && i != numbers.size() - 1) {
                 result += 1;
                 previousNumber = numbers.get(i);
-            } else {
+            } else if (numbers.get(i) == 2) {
                 previousNumber = numbers.get(i);
             }
         }
