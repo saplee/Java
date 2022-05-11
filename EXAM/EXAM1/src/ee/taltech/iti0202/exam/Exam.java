@@ -1,10 +1,9 @@
 package ee.taltech.iti0202.exam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
-    private final static int NUMBER = 26;
+    private static final int NUMBER = 26;
 
     /**
      * Given a list of numbers, count how many 2-s are alone (no 2 before or after it).

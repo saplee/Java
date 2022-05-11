@@ -37,7 +37,7 @@ public class Shop {
         } else if (getAvailableProducts().stream().map(Product::getName).toList().contains(itemName) &&
                 orders.containsKey(orderNumber)) {
             if (getAvailableProducts().stream().filter(product1 -> product1.getName().equals(itemName))
-                    .sorted(Comparator.comparing(Product::getPrice)).toList().size() < 1){
+                    .sorted(Comparator.comparing(Product::getPrice)).toList().size() < 1) {
                 return false;
             }
             Product product = getAvailableProducts().stream().filter(product1 -> product1.getName().equals(itemName))
