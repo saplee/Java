@@ -141,7 +141,7 @@ public class PersonStatistics {
     /**
      * Create map where each occupation has list of persons who have that occupation.
      *
-     * @return map of occupations with persons
+     * @return map of occupations with persons.
      */
     public Map<String, List<Person>> mapOccupationToPersons() {
         HashMap<String, List<Person>> hashMap = new HashMap<>();
