@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
+    private final static int NUMBER = 26;
 
     /**
      * Given a list of numbers, count how many 2-s are alone (no 2 before or after it).
@@ -61,12 +62,12 @@ public class Exam {
                 String num = String.valueOf(message.charAt(i));
                 num += String.valueOf(message.charAt(i + 1));
                 int number = Integer.parseInt(num);
-                result += alpha.charAt(number % 26);
+                result += alpha.charAt(number % NUMBER);
                 i += 1;
 
             } else if (numbers.contains(String.valueOf(message.charAt(i)))) {
                 int number = Integer.parseInt(String.valueOf(message.charAt(i)));
-                result += alpha.charAt(number % 26);
+                result += alpha.charAt(number % NUMBER);
             } else if (!alpha.contains(String.valueOf(message.charAt(i)).toLowerCase())
                     && !numbers.contains(String.valueOf(message.charAt(i)))) {
                 result += String.valueOf(message.charAt(i));
