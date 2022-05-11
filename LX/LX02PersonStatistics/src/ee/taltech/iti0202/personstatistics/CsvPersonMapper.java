@@ -13,6 +13,11 @@ public class CsvPersonMapper {
 
     }
 
+    /**
+     *
+     * @param path
+     * @return
+     */
     public List<Person> mapToPersons(String path) {
         Path path1 = Paths.get(path);
         List<Person> result = new ArrayList<>();
