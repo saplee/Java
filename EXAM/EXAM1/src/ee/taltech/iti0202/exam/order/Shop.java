@@ -36,8 +36,14 @@ public class Shop {
             return false;
         } else if (getAvailableProducts().stream().map(Product::getName).toList().contains(itemName) &&
                 orders.containsKey(orderNumber)) {
-            orders.get(orderNumber).add(getAvailableProducts().stream().filter(product -> product.getName().equals(itemName))
-                    .sorted(Comparator.comparing(Product::getPrice).reversed()).toList().get(0));
+            if (getAvailableProducts().stream().filter(product1 -> product1.getName().equals(itemName))
+                    .sorted(Comparator.comparing(Product::getPrice)).toList().size() < 1){
+                return false;
+            }
+            Product product = getAvailableProducts().stream().filter(product1 -> product1.getName().equals(itemName))
+                    .sorted(Comparator.comparing(Product::getPrice)).toList().get(0);
+            orders.get(orderNumber).add(product);
+            products.remove(product);
             return true;
         }
         return false;
@@ -54,6 +60,18 @@ public class Shop {
                 result += product.getPrice();
             }
             return result;
+        }
+    }
+
+    public boolean cancelOrder(int orderNumber) {
+        if (!orders.containsKey(orderNumber)) {
+            return false;
+        } else {
+            for (Product product : orders.get(orderNumber)) {
+                products.add(product);
+                orders.get(orderNumber).clear();
+            }
+            return true;
         }
     }
 
