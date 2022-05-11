@@ -49,6 +49,31 @@ public class Exam {
      * @return decoded message
      */
     public static String decodeMessage(String message) {
-        return "";
+        String alpha = "abcdefghijklmnopqrstuvwxyz";
+        String numbers = "1234567890";
+        String result = "";
+        for (int i = 0; i < message.length(); i++) {
+            if (alpha.contains(String.valueOf(message.charAt(i)).toLowerCase())) {
+                result += String.valueOf(message.charAt(i));
+            } else if (i != message.length() - 1 && numbers.contains(String.valueOf(message.charAt(i)))
+                    && numbers.contains(String.valueOf(message.charAt(i + 1)))) {
+                String num = String.valueOf(message.charAt(i));
+                num += String.valueOf(message.charAt(i + 1));
+                int number = Integer.parseInt(num);
+                result += alpha.charAt(number % 25);
+                i += 1;
+
+            } else if (numbers.contains(String.valueOf(message.charAt(i)))) {
+                int number = Integer.parseInt(String.valueOf(message.charAt(i)));
+                result += alpha.charAt(number % 25);
+            } else if (!alpha.contains(String.valueOf(message.charAt(i)).toLowerCase()) && !numbers.contains(String.valueOf(message.charAt(i)))) {
+                result += String.valueOf(message.charAt(i));
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(decodeMessage("11o11"));
     }
 }
