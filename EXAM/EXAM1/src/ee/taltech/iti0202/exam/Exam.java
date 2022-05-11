@@ -17,10 +17,10 @@ public class Exam {
         int previousNumber = 0;
         int result = 0;
         for (int i = 0; i < numbers.size() - 1; i++) {
-            if (previousNumber != 2 && numbers.get(i + 1) != 2 && i != numbers.size() - 1) {
+            if (previousNumber != 2 && numbers.get(i + 1) != 2 && numbers.get(i) == 2) {
                 result += 1;
                 previousNumber = numbers.get(i);
-            } else if (numbers.get(i) == 2) {
+            } else {
                 previousNumber = numbers.get(i);
             }
         }
