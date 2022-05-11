@@ -15,8 +15,8 @@ public class Exam {
     public static int countSingleTwos(List<Integer> numbers) {
         int previousNumber = 0;
         int result = 0;
-        for (int i = 0; i < numbers.size(); i++) {
-            if (previousNumber != 2 && numbers.get(i + 1) == 2 && i == numbers.size() - 1) {
+        for (int i = 0; i < numbers.size() - 1; i++) {
+            if (previousNumber != 2 && numbers.get(i + 1) == 2 && i != numbers.size() - 1) {
                 result += 1;
                 previousNumber = numbers.get(i);
             } else {
