@@ -65,7 +65,7 @@ public class Exam {
 
             } else if (numbers.contains(String.valueOf(message.charAt(i)))) {
                 int number = Integer.parseInt(String.valueOf(message.charAt(i)));
-                result += alpha.charAt(number % 25);
+                result += alpha.charAt(number % 24);
             } else if (!alpha.contains(String.valueOf(message.charAt(i)).toLowerCase()) && !numbers.contains(String.valueOf(message.charAt(i)))) {
                 result += String.valueOf(message.charAt(i));
             }
