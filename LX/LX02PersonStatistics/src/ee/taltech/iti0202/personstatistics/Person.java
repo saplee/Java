@@ -9,6 +9,16 @@ public class Person {
     private final String occupation;
     private final String nationality;
 
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param age
+     * @param gender
+     * @param heightInMeters
+     * @param occupation
+     * @param nationality
+     */
     public Person(String firstName, String lastName, int age, Gender gender, double heightInMeters, String occupation,
                   String nationality) {
         this.firstName = firstName;
