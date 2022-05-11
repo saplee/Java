@@ -69,8 +69,8 @@ public class Shop {
         } else {
             for (Product product : orders.get(orderNumber)) {
                 products.add(product);
-                orders.get(orderNumber).clear();
             }
+            orders.get(orderNumber).clear();
             return true;
         }
     }
