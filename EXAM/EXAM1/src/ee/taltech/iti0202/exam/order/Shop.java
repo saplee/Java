@@ -10,6 +10,7 @@ public class Shop {
     private List<Product> products = new ArrayList<>();
     private HashMap<Integer, List<Product>> orders = new HashMap<>();
     private int orderNumber = 1;
+    private List<Integer> cancelOrders = new ArrayList<>();
 
     public Shop() {
 
@@ -34,8 +35,8 @@ public class Shop {
     public boolean addProductToOrder(int orderNumber, String itemName) {
         if (!orders.containsKey(orderNumber)) {
             return false;
-        } else if (getAvailableProducts().stream().map(Product::getName).toList().contains(itemName) &&
-                orders.containsKey(orderNumber)) {
+        } else if (getAvailableProducts().stream().map(Product::getName).toList().contains(itemName)
+                && orders.containsKey(orderNumber) && !cancelOrders.contains(orderNumber)) {
             if (getAvailableProducts().stream().filter(product1 -> product1.getName().equals(itemName))
                     .sorted(Comparator.comparing(Product::getPrice)).toList().size() < 1) {
                 return false;
@@ -66,13 +67,15 @@ public class Shop {
     public boolean cancelOrder(int orderNumber) {
         if (!orders.containsKey(orderNumber)) {
             return false;
-        } else {
+        } else if (!cancelOrders.contains(orderNumber)){
             for (Product product : orders.get(orderNumber)) {
                 products.add(product);
             }
             orders.get(orderNumber).clear();
+            cancelOrders.add(orderNumber);
             return true;
         }
+        return false;
     }
 
 
