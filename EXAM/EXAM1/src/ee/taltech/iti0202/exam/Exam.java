@@ -19,7 +19,8 @@ public class Exam {
         for (int i = 0; i < numbers.size(); i++) {
             if (i == numbers.size() - 1 && numbers.get(i) == 2 && previousNumber != 2) {
                 result += 1;
-            } else if (i < numbers.size() - 1 && previousNumber != 2 && numbers.get(i + 1) != 2 && numbers.get(i) == 2) {
+            } else if (i < numbers.size() - 1 && previousNumber != 2
+                    && numbers.get(i + 1) != 2 && numbers.get(i) == 2) {
                 result += 1;
                 previousNumber = numbers.get(i);
             } else {
@@ -60,20 +61,17 @@ public class Exam {
                 String num = String.valueOf(message.charAt(i));
                 num += String.valueOf(message.charAt(i + 1));
                 int number = Integer.parseInt(num);
-                result += alpha.charAt(number % 25);
+                result += alpha.charAt(number % 26);
                 i += 1;
 
             } else if (numbers.contains(String.valueOf(message.charAt(i)))) {
                 int number = Integer.parseInt(String.valueOf(message.charAt(i)));
                 result += alpha.charAt(number % 26);
-            } else if (!alpha.contains(String.valueOf(message.charAt(i)).toLowerCase()) && !numbers.contains(String.valueOf(message.charAt(i)))) {
+            } else if (!alpha.contains(String.valueOf(message.charAt(i)).toLowerCase())
+                    && !numbers.contains(String.valueOf(message.charAt(i)))) {
                 result += String.valueOf(message.charAt(i));
             }
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(decodeMessage("11o11"));
     }
 }
