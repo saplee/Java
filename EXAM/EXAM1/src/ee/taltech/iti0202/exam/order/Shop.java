@@ -67,7 +67,7 @@ public class Shop {
     public boolean cancelOrder(int orderNumber) {
         if (!orders.containsKey(orderNumber)) {
             return false;
-        } else if (!cancelOrders.contains(orderNumber)){
+        } else if (!cancelOrders.contains(orderNumber)) {
             for (Product product : orders.get(orderNumber)) {
                 products.add(product);
             }
