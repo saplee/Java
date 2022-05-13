@@ -1,13 +1,6 @@
 package ee.taltech.iti0202.personstatistics;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.Set;
+import java.util.*;
 
 /**
  * For calculating and finding statistical info based on persons.
@@ -108,7 +101,7 @@ public class PersonStatistics {
      * Find unique first names.
      */
     public Set<String> getDistinctFirstNames() {
-        return null;
+        return new HashSet<String>((persons.stream().map(Person::getFirstName)).toList());
     }
 
     /**
@@ -125,8 +118,7 @@ public class PersonStatistics {
      */
     public List<Person> findBetweenAge(int ageFrom, int ageTo) {
         return persons.stream()
-                .filter(person -> person.getAge() >= (ageFrom))
-                .filter(person -> person.getAge() <= ageTo).toList();
+                .filter(person -> person.getAge() >= (ageFrom) && person.getAge() <= ageTo).toList();
     }
 
     /**
@@ -135,7 +127,8 @@ public class PersonStatistics {
      * @return list of matching persons
      */
     public List<Person> findSameLetterNameAndNationality() {
-        return null;
+        return persons.stream().filter(person -> String.valueOf(person.getFirstName().charAt(0))
+                .equals(String.valueOf(person.getOccupation().charAt(0)))).toList();
     }
 
     /**
