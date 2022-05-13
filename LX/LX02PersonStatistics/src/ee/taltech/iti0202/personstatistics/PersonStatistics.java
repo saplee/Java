@@ -1,6 +1,14 @@
 package ee.taltech.iti0202.personstatistics;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.Set;
 
 /**
  * For calculating and finding statistical info based on persons.
@@ -128,7 +136,7 @@ public class PersonStatistics {
      */
     public List<Person> findSameLetterNameAndNationality() {
         return persons.stream().filter(person -> String.valueOf(person.getFirstName().charAt(0))
-                .equals(String.valueOf(person.getOccupation().charAt(0)))).toList();
+                .equals(String.valueOf(person.getNationality().charAt(0)))).toList();
     }
 
     /**
