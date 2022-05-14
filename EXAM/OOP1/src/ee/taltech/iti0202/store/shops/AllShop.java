@@ -3,14 +3,14 @@ package ee.taltech.iti0202.store.shops;
 import ee.taltech.iti0202.store.product.Product;
 
 
-public class AllShop extends Shop{
-    public AllShop(String name, Integer profit){
+public class AllShop extends Shop {
+    public AllShop(String name, Integer profit) {
         super(name, profit);
     }
 
     @Override
     public void addProduct(Product product) {
-        if (!products.contains(product) && !product.productAddedToShop()){
+        if (!products.contains(product) && !product.productAddedToShop()) {
             products.add(product);
             product.productAddToShop();
         }
@@ -18,7 +18,7 @@ public class AllShop extends Shop{
 
     @Override
     public void removeProduct(Product product) {
-        if (products.contains(product)){
+        if (products.contains(product)) {
             products.remove(product);
             product.removeFromShop();
         }

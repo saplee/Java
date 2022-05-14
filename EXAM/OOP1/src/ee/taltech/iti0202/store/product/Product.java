@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.store.product;
 
 
-
 public class Product {
     private final String name;
     private final Integer price;
@@ -15,7 +14,7 @@ public class Product {
         return number++;
     }
 
-    public Product(String name, Integer price, ProductType productType){
+    public Product(String name, Integer price, ProductType productType) {
 
         this.name = name;
         this.price = price;
@@ -34,16 +33,20 @@ public class Product {
     public ProductType getProductType() {
         return productType;
     }
-    public Integer getId(){
+
+    public Integer getId() {
         return id;
     }
-    public void productAddToShop(){
+
+    public void productAddToShop() {
         productAdded = true;
     }
-    public void removeFromShop(){
+
+    public void removeFromShop() {
         productAdded = false;
     }
-    public boolean productAddedToShop(){
+
+    public boolean productAddedToShop() {
         return productAdded;
     }
 }

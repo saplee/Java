@@ -48,9 +48,11 @@ public class Client {
     public Cart getCart() {
         return cart;
     }
+
     public List<Product> getProducts() {
         return products;
     }
-    public void buyCart(){
+
+    public void buyCart() {
     }
 }
