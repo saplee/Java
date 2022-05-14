@@ -2,6 +2,9 @@ package ee.taltech.iti0202.store;
 
 import ee.taltech.iti0202.store.client.Client;
 import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
+import ee.taltech.iti0202.store.exceptions.NoClientCartFound;
+import ee.taltech.iti0202.store.exceptions.NoProductInCart;
+import ee.taltech.iti0202.store.exceptions.NotEnoughMoney;
 import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.product.ProductType;
 import ee.taltech.iti0202.store.shops.AllShop;
@@ -17,7 +20,7 @@ public class Main {
     private static final int GERT_AGE = 35;
     private static final int MEELIS_AGE = 35;
 
-    public static void main(String[] args) throws CannotAddProductToShop {
+    public static void main(String[] args) throws CannotAddProductToShop, NotEnoughMoney, NoClientCartFound, NoProductInCart {
         FoodShop foodShop = new FoodShop("Selver", PROFIT);
         AllShop allShop = new AllShop("Prisma", SECOND_SHOP_PROFIT);
         Product product = new Product("TV", TV_PRICE, ProductType.ELECTRONICS);
