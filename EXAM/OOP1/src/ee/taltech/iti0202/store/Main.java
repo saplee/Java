@@ -9,7 +9,7 @@ import ee.taltech.iti0202.store.shops.FoodShop;
 
 public class Main {
     public static void main(String[] args) throws CannotAddProductToShop {
-        FoodShop foodShop = new FoodShop("Selver",1000);
+        FoodShop foodShop = new FoodShop("Selver", 1000);
         AllShop allShop = new AllShop("Prisma", 10000);
         Product product = new Product("TV", 570, ProductType.ELECTRONICS);
         Product product1 = new Product("Painkiller", 8, ProductType.MEDICINE);
@@ -36,12 +36,18 @@ public class Main {
         System.out.println(allShop.getProducts().get(1).getName()); // Painkiller
 
 
-
         try {
             foodShop.addProduct(product);
         } catch (CannotAddProductToShop e) {
             System.out.println(e.getMessage()); // Product is already in some other store
         }
+        allShop.addProductToClientCart(client, product);
+        allShop.buyProductsWithMoney(client);
+        System.out.println(client.getProducts().get(0).getName()); // TV
 
+        System.out.println(allShop.getProducts().size()); // 1
+
+        System.out.println(allShop.getClients().get(0).getName()); // Ago
+        System.out.println(foodShop.getClients()); // []
     }
 }
