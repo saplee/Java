@@ -108,6 +108,7 @@ public abstract class Shop {
     public void buyProductsWithMoney(Client client) throws NotEnoughMoney, NoProductInCart, NoClientCartFound {
         if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0
                 && client.getMoney() >= calculateCartSum(client)) {
+            System.out.println("sum" + calculateCartSum(client));
             for (Product product : clientCartHashMap.get(client).getProductList()) {
                 client.addProduct(product, this);
                 client.setMoney(client.getMoney() - product.getPrice());
@@ -121,7 +122,7 @@ public abstract class Shop {
             throw new NoClientCartFound();
         } else if (clientCartHashMap.get(client).getProductList().size() == 0) {
             throw new NoProductInCart();
-        } else if (client.getMoney() >= calculateCartSum(client)) {
+        } else if (client.getMoney() < calculateCartSum(client)) {
             throw new NotEnoughMoney();
         }
     }
