@@ -13,6 +13,9 @@ public class Main {
     private static final double TV_PRICE = 570;
     private static final double PAINKILLER_PRICE = 8;
     private static final int AGO_AGE = 29;
+    private static final double MONEY = 1000;
+    private static final int GERT_AGE = 35;
+    private static final int MEELIS_AGE = 35;
 
     public static void main(String[] args) throws CannotAddProductToShop {
         FoodShop foodShop = new FoodShop("Selver", PROFIT);
@@ -21,18 +24,17 @@ public class Main {
         Product product1 = new Product("Painkiller", PAINKILLER_PRICE, ProductType.MEDICINE);
         Product product2 = new Product("Spoon", 3, ProductType.HOUSE_HOLD);
         Product product3 = new Product("Apple", 1, ProductType.FOOD);
-        Client client = new Client("Ago", AGO_AGE, 1000);
-        Client client1 = new Client("Annemari", 20, 1000);
-
+        Client client = new Client("Ago", AGO_AGE, MONEY);
+        Client client1 = new Client("Annemari", 20, MONEY);
 
         try {
-            Client client2 = new Client("Gert", 35, -1000);
+            Client client2 = new Client("Gert", GERT_AGE, -5);
         } catch (Exception e) {
             e.printStackTrace(); //RuntimeException
         }
 
         try {
-            Client client5 = new Client("Meelis", 17, 1000);
+            Client client5 = new Client("Meelis", MEELIS_AGE, MONEY);
         } catch (Exception e) {
             e.printStackTrace(); //RuntimeException
         }
