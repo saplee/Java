@@ -1,7 +1,5 @@
 package ee.taltech.iti0202.store.shops;
 
-
-import ee.taltech.iti0202.store.client.Client;
 import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.product.ProductType;
 

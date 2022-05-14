@@ -18,6 +18,9 @@ public class Client {
         this.name = name;
         this.age = age;
         this.money = money;
+        if (age <= 17 || money < 0) {
+            throw new RuntimeException();
+        }
     }
 
     public String getName() {
