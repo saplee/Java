@@ -44,6 +44,9 @@ public class Main {
         allShop.addProductToClientCart(client, product);
         allShop.buyProductsWithMoney(client);
         System.out.println(client.getProducts().get(0).getName()); // TV
+        System.out.println(client.getMoney()); // 430.0
+
+        System.out.println(allShop.getProfit()); // 10570.0
 
         System.out.println(allShop.getProducts().size()); // 1
 
