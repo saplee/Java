@@ -64,7 +64,7 @@ public abstract class Shop {
         }
     }
 
-    private void addCartToClient(Client client) {
+    protected void addCartToClient(Client client) {
         clientCartHashMap.put(client, new Cart());
     }
 
