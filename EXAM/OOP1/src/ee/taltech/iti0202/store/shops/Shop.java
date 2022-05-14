@@ -2,6 +2,7 @@ package ee.taltech.iti0202.store.shops;
 
 import ee.taltech.iti0202.store.cart.Cart;
 import ee.taltech.iti0202.store.client.Client;
+import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
 import ee.taltech.iti0202.store.product.Product;
 
 import java.util.ArrayList;
@@ -34,11 +35,16 @@ public abstract class Shop {
         this.profit = profit;
     }
 
-    public void addProduct(Product product) {
+    public void addProduct(Product product) throws CannotAddProductToShop {
         if (!products.contains(product) && !product.productAddedToShop()) {
             products.add(product);
             product.productAddToShop();
         }
+    }
+
+    public void addProductBackToShop(Product product) throws CannotAddProductToShop {
+        products.add(product);
+        product.productAddToShop();
     }
 
     public void removeProduct(Product product) {

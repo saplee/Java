@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.store.client;
 
 
+import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
 import ee.taltech.iti0202.store.exceptions.CannotReturnProducts;
 import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.product.ProductType;
@@ -60,10 +61,10 @@ public class Client {
         }
     }
 
-    public void returnProduct(Product product) throws CannotReturnProducts {
+    public void returnProduct(Product product) throws CannotReturnProducts, CannotAddProductToShop {
         if (!product.getProductType().equals(ProductType.FOOD) && products.containsKey(product)) {
             money += product.getPrice();
-            products.get(product).addProduct(product);
+            products.get(product).addProductBackToShop(product);
             products.get(product).setProfit(products.get(product).getProfit() - product.getPrice());
             products.remove(product);
         } else {
