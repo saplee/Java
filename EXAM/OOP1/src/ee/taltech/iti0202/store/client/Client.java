@@ -2,6 +2,7 @@ package ee.taltech.iti0202.store.client;
 
 import ee.taltech.iti0202.store.cart.Cart;
 import ee.taltech.iti0202.store.product.Product;
+import ee.taltech.iti0202.store.product.ProductType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,18 @@ public class Client {
         return products;
     }
 
-    public void buyCart() {
+    public void buyCartWithMoney() {
+        List<Integer> productPrices = cart.getProductList().stream().map(Product::getPrice).toList();
+    }
+
+    public void buyCartWithBonusPoints() {
+        List<Integer> productPrices = cart.getProductList().stream().map(Product::getPrice).toList();
+    }
+
+    public void returnProduct(Product product) {
+        if (!product.getProductType().equals(ProductType.FOOD) && products.contains(product)) {
+            money += product.getPrice();
+            products.remove(product);
+        }
     }
 }

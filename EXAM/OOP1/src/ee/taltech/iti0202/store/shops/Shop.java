@@ -53,7 +53,10 @@ public abstract class Shop {
         return products.stream().filter(product -> product.getId() == integer).findFirst();
     }
 
-    public List<Product> searchProductsByName(String name) {
-        return getProducts().stream().filter(product -> product.getName().equals(name)).toList();
+    public List<Product> searchProductsByName(String name1) {
+        return getProducts().stream().filter(product -> product.getName().equals(name1)).toList();
+    }
+    public List<Product> searchProductsByName(Integer price) {
+        return getProducts().stream().filter(product -> product.getPrice() == price).toList();
     }
 }

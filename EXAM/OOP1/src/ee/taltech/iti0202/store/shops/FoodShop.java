@@ -1,6 +1,6 @@
 package ee.taltech.iti0202.store.shops;
 
-import ee.taltech.iti0202.store.exceptions.CannotReturnProducts;
+
 import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.product.ProductType;
 
@@ -14,6 +14,13 @@ public class FoodShop extends Shop {
         if (product.getProductType().equals(ProductType.FOOD) && !product.productAddedToShop()) {
             products.add(product);
             product.productAddToShop();
+        }
+    }
+    @Override
+    public void removeProduct(Product product) {
+        if (products.contains(product)) {
+            products.remove(product);
+            product.removeFromShop();
         }
     }
 }
