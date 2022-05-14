@@ -16,7 +16,7 @@ public abstract class Shop {
     protected List<Product> products = new ArrayList<>();
     protected List<Client> clients = new ArrayList<>();
     protected HashMap<Client, Cart> clientCartHashMap = new HashMap<>();
-    protected final double BONUS = 0.25;
+    protected final double bonus = 0.25;
 
     public Shop(String name, double profit) {
 
@@ -109,7 +109,7 @@ public abstract class Shop {
                 client.addProduct(product, this);
                 client.setMoney(client.getMoney() - product.getPrice());
                 this.setProfit(profit + product.getPrice());
-                client.addBonusPoints(product.getPrice() * BONUS);
+                client.addBonusPoints(product.getPrice() * bonus);
             }
             this.addClient(client);
             clientCartHashMap.get(client).getProductList().clear();
