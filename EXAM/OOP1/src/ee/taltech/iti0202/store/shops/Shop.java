@@ -131,7 +131,8 @@ public abstract class Shop {
     }
 
 
-    public void buyProductsWithBonusPoints(Client client) throws NoProductInCart, NotEnoughBonusPoints, NoClientCartFound {
+    public void buyProductsWithBonusPoints(Client client) throws NoProductInCart, NotEnoughBonusPoints,
+            NoClientCartFound {
         if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0
                 && client.getBonusPoints() >= calculateCartSum(client)) {
             for (Product product : clientCartHashMap.get(client).getProductList()) {
