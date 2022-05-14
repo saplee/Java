@@ -16,13 +16,13 @@ public class Client {
     private double money;
     private double bonusPoints = 0;
     private HashMap<Product, Shop> products = new HashMap<>();
-    private final int AGE = 17;
 
     public Client(String name, int age, double money) {
         this.name = name;
         this.age = age;
         this.money = money;
-        if (age <= AGE || money <= 0) {
+        int ageLimit = 17;
+        if (age <= ageLimit || money <= 0) {
             throw new RuntimeException();
         }
     }
