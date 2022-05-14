@@ -39,6 +39,8 @@ public abstract class Shop {
         if (!products.contains(product) && !product.productAddedToShop()) {
             products.add(product);
             product.productAddToShop();
+        }else {
+            throw new CannotAddProductToShop();
         }
     }
 
@@ -72,7 +74,7 @@ public abstract class Shop {
         return clientCartHashMap;
     }
 
-    public void addProductToClient(Client client, Product product) {
+    public void addProductToClientCart(Client client, Product product) {
         addCartToClient(client);
         if (clientCartHashMap.containsKey(client) && products.contains(product)) {
             clientCartHashMap.get(client).addProduct(product);
@@ -122,7 +124,8 @@ public abstract class Shop {
     }
 
     public List<Product> searchProductsByName(String name1) {
-        return getProducts().stream().filter(product -> product.getName().equals(name1)).toList();
+        String result = name1.toLowerCase();
+        return getProducts().stream().filter(product -> product.getName().toLowerCase().equals(result)).toList();
     }
 
     public List<Product> searchProductsByName(Integer price) {
