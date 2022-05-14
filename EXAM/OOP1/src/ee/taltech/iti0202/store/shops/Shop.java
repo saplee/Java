@@ -12,12 +12,12 @@ import java.util.Optional;
 
 public abstract class Shop {
     protected String name;
-    protected Integer profit;
+    protected double profit;
     protected List<Product> products = new ArrayList<>();
     protected List<Client> clients = new ArrayList<>();
     protected HashMap<Client, Cart> clientCartHashMap = new HashMap<>();
 
-    public Shop(String name, Integer profit) {
+    public Shop(String name, double profit) {
 
         this.name = name;
         this.profit = profit;
@@ -27,11 +27,11 @@ public abstract class Shop {
         return name;
     }
 
-    public Integer getProfit() {
+    public double getProfit() {
         return profit;
     }
 
-    public void setProfit(Integer profit) {
+    public void setProfit(double profit) {
         this.profit = profit;
     }
 
@@ -91,7 +91,6 @@ public abstract class Shop {
     }
 
     public void buyProductsWithMoney(Client client){
-        
     }
     public void buyProductsWithBonusPoints(Client client){
 

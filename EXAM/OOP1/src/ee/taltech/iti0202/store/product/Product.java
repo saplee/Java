@@ -3,7 +3,7 @@ package ee.taltech.iti0202.store.product;
 
 public class Product {
     private final String name;
-    private final Integer price;
+    private final double price;
     private final ProductType productType;
     private static int number = 0;
     private int id;
@@ -14,7 +14,7 @@ public class Product {
         return number++;
     }
 
-    public Product(String name, Integer price, ProductType productType) {
+    public Product(String name, double price, ProductType productType) {
 
         this.name = name;
         this.price = price;
@@ -29,7 +29,7 @@ public class Product {
         return name;
     }
 
-    public Integer getPrice() {
+    public double getPrice() {
         return price;
     }
 

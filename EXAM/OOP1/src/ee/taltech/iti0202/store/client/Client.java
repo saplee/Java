@@ -13,15 +13,15 @@ import java.util.List;
 public class Client {
     private final String name;
     private final Integer age;
-    private Integer money;
+    private double money;
     private Integer bonusPoints = 0;
     private HashMap<Product, Shop> products = new HashMap<>();
 
-    public Client(String name, Integer age, Integer money) {
+    public Client(String name, Integer age, double money) {
         this.name = name;
         this.age = age;
         this.money = money;
-        if (age <= 17 || money < 0) {
+        if (age <= 17 || money <= 0) {
             throw new RuntimeException();
         }
     }
@@ -34,7 +34,7 @@ public class Client {
         return age;
     }
 
-    public Integer getMoney() {
+    public double getMoney() {
         return money;
     }
 

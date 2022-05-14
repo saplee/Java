@@ -6,7 +6,7 @@ import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.product.ProductType;
 
 public class FoodShop extends Shop {
-    public FoodShop(String name, Integer profit) {
+    public FoodShop(String name, double profit) {
         super(name, profit);
     }
 
