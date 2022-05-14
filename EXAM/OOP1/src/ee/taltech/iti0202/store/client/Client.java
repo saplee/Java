@@ -18,7 +18,7 @@ public class Client {
     private HashMap<Product, Shop> products = new HashMap<>();
     private final int AGE = 17;
 
-    public Client(String name, Integer age, double money) {
+    public Client(String name, int age, double money) {
         this.name = name;
         this.age = age;
         this.money = money;

@@ -8,7 +8,7 @@ import ee.taltech.iti0202.store.shops.AllShop;
 import ee.taltech.iti0202.store.shops.FoodShop;
 
 public class Main {
-    private final static double PROFIT = 1000;
+    private static final double PROFIT = 1000;
     public static void main(String[] args) throws CannotAddProductToShop {
         FoodShop foodShop = new FoodShop("Selver", PROFIT);
         AllShop allShop = new AllShop("Prisma", 10000);
