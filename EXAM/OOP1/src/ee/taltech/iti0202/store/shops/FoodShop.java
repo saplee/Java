@@ -17,12 +17,4 @@ public class FoodShop extends Shop {
             product.productAddToShop();
         }
     }
-    @Override
-    public void removeProduct(Product product) {
-        if (products.contains(product)) {
-            products.remove(product);
-            product.removeFromShop();
-        }
-    }
-
 }

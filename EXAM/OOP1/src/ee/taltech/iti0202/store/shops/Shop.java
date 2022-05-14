@@ -31,10 +31,17 @@ public abstract class Shop {
     }
 
     public void addProduct(Product product) {
+        if (!products.contains(product) && !product.productAddedToShop()) {
+            products.add(product);
+            product.productAddToShop();
+        }
     }
 
     public void removeProduct(Product product) {
-
+        if (products.contains(product)) {
+            products.remove(product);
+            product.removeFromShop();
+        }
     }
 
     public List<Product> getProducts() {
@@ -46,6 +53,7 @@ public abstract class Shop {
             clients.add(client);
         }
     }
+
     public void addCartToClient(Client client) {
         clientCartHashMap.put(client, new Cart());
     }
@@ -54,14 +62,15 @@ public abstract class Shop {
         return clientCartHashMap;
     }
 
-    public void addProductToClient(Client client, Product product){
-        if (clientCartHashMap.containsKey(client) && products.contains(product)){
+    public void addProductToClient(Client client, Product product) {
+        if (clientCartHashMap.containsKey(client) && products.contains(product)) {
             clientCartHashMap.get(client).addProduct(product);
             products.remove(product);
         }
     }
-    public void clearClientCart(Client client){
-        if (clientCartHashMap.containsKey(client)){
+
+    public void clearClientCart(Client client) {
+        if (clientCartHashMap.containsKey(client)) {
             products.addAll(clientCartHashMap.get(client).getProductList());
             clientCartHashMap.get(client).getProductList().clear();
         }
@@ -78,6 +87,7 @@ public abstract class Shop {
     public List<Product> searchProductsByName(String name1) {
         return getProducts().stream().filter(product -> product.getName().equals(name1)).toList();
     }
+
     public List<Product> searchProductsByName(Integer price) {
         return getProducts().stream().filter(product -> product.getPrice() == price).toList();
     }
