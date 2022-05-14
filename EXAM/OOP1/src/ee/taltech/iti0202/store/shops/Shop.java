@@ -2,7 +2,12 @@ package ee.taltech.iti0202.store.shops;
 
 import ee.taltech.iti0202.store.cart.Cart;
 import ee.taltech.iti0202.store.client.Client;
-import ee.taltech.iti0202.store.exceptions.*;
+import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
+import ee.taltech.iti0202.store.exceptions.NoClientCartFound;
+import ee.taltech.iti0202.store.exceptions.NoProductInCart;
+import ee.taltech.iti0202.store.exceptions.NoProductInShop;
+import ee.taltech.iti0202.store.exceptions.NotEnoughBonusPoints;
+import ee.taltech.iti0202.store.exceptions.NotEnoughMoney;
 import ee.taltech.iti0202.store.product.Product;
 
 import java.util.ArrayList;
@@ -125,7 +130,6 @@ public abstract class Shop {
     public void giveStrategy() {
     }
 
-    ;
 
     public void buyProductsWithBonusPoints(Client client) throws NoProductInCart, NotEnoughBonusPoints, NoClientCartFound {
         if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0
