@@ -1,11 +1,7 @@
 package ee.taltech.iti0202.store.tests;
 
 import ee.taltech.iti0202.store.client.Client;
-import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
-import ee.taltech.iti0202.store.exceptions.CannotReturnProducts;
-import ee.taltech.iti0202.store.exceptions.NoClientCartFound;
-import ee.taltech.iti0202.store.exceptions.NoProductInCart;
-import ee.taltech.iti0202.store.exceptions.NotEnoughMoney;
+import ee.taltech.iti0202.store.exceptions.*;
 import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.product.ProductType;
 import ee.taltech.iti0202.store.shops.AllShop;
@@ -142,5 +138,24 @@ class ClientTest {
             e.printStackTrace();
         }
         resetId();
+    }
+    @Test
+    void testGetClientBonusPointsAfterBuyingProductWithMoneyAndAfterWithBonusPoints() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart, NotEnoughBonusPoints {
+        Product product = new Product("Apple", 1.2, ProductType.FOOD);
+        Product product1 = new Product("Painkiller", 10, ProductType.MEDICINE);
+        Product product2 = new Product("Coffee machine", 100, ProductType.ELECTRONICS);
+        Product product3 = new Product("Macbook", 1000, ProductType.ELECTRONICS);
+        Client client = new Client("Jaan", 19, 1000);
+        AllShop allShop = new AllShop("FoodMarket", 10000);
+        allShop.addProduct(product);
+        allShop.addProduct(product1);
+        allShop.addProduct(product2);
+        allShop.addProduct(product3);
+        allShop.addProductToClientCart(client, product3);
+        allShop.buyProductsWithMoney(client);
+        allShop.addProductToClientCart(client, product2);
+        allShop.addProductToClientCart(client, product1);
+        allShop.buyProductsWithBonusPoints(client);
+        Assertions.assertEquals(30, client.getBonusPoints());
     }
 }

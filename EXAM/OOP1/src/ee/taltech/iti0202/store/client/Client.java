@@ -1,11 +1,13 @@
 package ee.taltech.iti0202.store.client;
 
 
-import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
-import ee.taltech.iti0202.store.exceptions.CannotReturnProducts;
+import ee.taltech.iti0202.store.exceptions.*;
 import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.product.ProductType;
+import ee.taltech.iti0202.store.shops.AllShop;
 import ee.taltech.iti0202.store.shops.Shop;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.List;
@@ -68,6 +70,7 @@ public class Client {
     public void returnProduct(Product product) throws CannotReturnProducts, CannotAddProductToShop {
         if (!product.getProductType().equals(ProductType.FOOD) && products.containsKey(product)) {
             money += product.getPrice();
+            product.removeFromShop();
             products.get(product).addProduct(product);
             products.get(product).setProfit(products.get(product).getProfit() - product.getPrice());
             products.remove(product);

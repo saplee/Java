@@ -115,7 +115,6 @@ public abstract class Shop {
                 client.setMoney(client.getMoney() - product.getPrice());
                 this.setProfit(profit + product.getPrice());
                 client.addBonusPoints(product.getPrice() * bonus);
-                product.removeFromShop();
             }
             this.addClient(client);
             clientCartHashMap.get(client).getProductList().clear();

@@ -1,11 +1,7 @@
 package ee.taltech.iti0202.store.tests;
 
 import ee.taltech.iti0202.store.client.Client;
-import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
-import ee.taltech.iti0202.store.exceptions.NoClientCartFound;
-import ee.taltech.iti0202.store.exceptions.NoProductInCart;
-import ee.taltech.iti0202.store.exceptions.NoProductInShop;
-import ee.taltech.iti0202.store.exceptions.NotEnoughMoney;
+import ee.taltech.iti0202.store.exceptions.*;
 import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.product.ProductType;
 import ee.taltech.iti0202.store.shops.AllShop;
@@ -218,5 +214,38 @@ class ShopTest {
         foodShop.clearClientCart(client);
         Assertions.assertEquals(4, foodShop.getProducts().size());
         resetId();
+    }
+    @Test
+    void testGetShopProfit() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+        Product product = new Product("Apple", 1.2, ProductType.FOOD);
+        Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
+        Product product2 = new Product("Potato", 5, ProductType.FOOD);
+        Product product3 = new Product("Fish", 7, ProductType.FOOD);
+        Client client = new Client("Jaan", 19, 1000);
+        AllShop allShop = new AllShop("FoodMarket", 10000);
+        allShop.addProduct(product);
+        allShop.addProduct(product1);
+        allShop.addProduct(product2);
+        allShop.addProduct(product3);
+        allShop.addProductToClientCart(client, product3);
+        allShop.addProductToClientCart(client, product2);
+        Assertions.assertEquals(10000.0, allShop.getProfit());
+    }
+    @Test
+    void testGetShopProfitAfterSellingTwoProducts() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+        Product product = new Product("Apple", 1.2, ProductType.FOOD);
+        Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
+        Product product2 = new Product("Potato", 5, ProductType.FOOD);
+        Product product3 = new Product("Fish", 7, ProductType.FOOD);
+        Client client = new Client("Jaan", 19, 1000);
+        AllShop allShop = new AllShop("FoodMarket", 10000);
+        allShop.addProduct(product);
+        allShop.addProduct(product1);
+        allShop.addProduct(product2);
+        allShop.addProduct(product3);
+        allShop.addProductToClientCart(client, product3);
+        allShop.addProductToClientCart(client, product2);
+        allShop.buyProductsWithMoney(client);
+        Assertions.assertEquals(10012.0, allShop.getProfit());
     }
 }
