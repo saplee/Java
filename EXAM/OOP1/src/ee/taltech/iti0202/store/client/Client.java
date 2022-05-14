@@ -14,7 +14,7 @@ public class Client {
     private final String name;
     private final Integer age;
     private double money;
-    private double bonusPoints = 0;
+    private int bonusPoints = 0;
     private HashMap<Product, Shop> products = new HashMap<>();
     private final int ageLimit = 17;
 
@@ -47,10 +47,13 @@ public class Client {
         bonusPoints += bonus;
     }
 
-    public double getBonusPoints() {
+    public int getBonusPoints() {
         return bonusPoints;
     }
 
+    public void setBonusPoints(int bonusPoints) {
+        this.bonusPoints = bonusPoints;
+    }
 
     public List<Product> getProducts() {
         return products.keySet().stream().toList();

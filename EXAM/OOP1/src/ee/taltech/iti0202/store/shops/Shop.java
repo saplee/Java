@@ -2,10 +2,7 @@ package ee.taltech.iti0202.store.shops;
 
 import ee.taltech.iti0202.store.cart.Cart;
 import ee.taltech.iti0202.store.client.Client;
-import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
-import ee.taltech.iti0202.store.exceptions.NoClientCartFound;
-import ee.taltech.iti0202.store.exceptions.NoProductInCart;
-import ee.taltech.iti0202.store.exceptions.NotEnoughMoney;
+import ee.taltech.iti0202.store.exceptions.*;
 import ee.taltech.iti0202.store.product.Product;
 
 import java.util.ArrayList;
@@ -105,10 +102,10 @@ public abstract class Shop {
         return result;
     }
 
+
     public void buyProductsWithMoney(Client client) throws NotEnoughMoney, NoProductInCart, NoClientCartFound {
         if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0
                 && client.getMoney() >= calculateCartSum(client)) {
-            System.out.println("sum" + calculateCartSum(client));
             for (Product product : clientCartHashMap.get(client).getProductList()) {
                 client.addProduct(product, this);
                 client.setMoney(client.getMoney() - product.getPrice());
@@ -127,18 +124,25 @@ public abstract class Shop {
         }
     }
 
-    public void buyProductsWithBonusPoints(Client client) {
-        if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0) {
+    public void buyProductsWithBonusPoints(Client client) throws NoProductInCart, NotEnoughBonusPoints, NoClientCartFound {
+        if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0
+                && client.getBonusPoints() >= calculateCartSum(client)) {
             for (Product product : clientCartHashMap.get(client).getProductList()) {
                 client.addProduct(product, this);
-                client.setMoney(client.getMoney() - product.getPrice());
-                this.setProfit(profit + product.getPrice());
-                client.addBonusPoints(product.getPrice() * bonus);
+                client.setBonusPoints((int) (client.getBonusPoints() - product.getPrice()));
             }
             this.addClient(client);
             clientCartHashMap.get(client).getProductList().clear();
+
+        } else if (!clientCartHashMap.containsKey(client)) {
+            throw new NoClientCartFound();
+        } else if (clientCartHashMap.get(client).getProductList().size() == 0) {
+            throw new NoProductInCart();
+        } else if (client.getMoney() < calculateCartSum(client)) {
+            throw new NotEnoughBonusPoints();
         }
     }
+
 
     public Optional<Product> searchProductsById(Integer integer) {
         return products.stream().filter(product -> product.getId() == integer).findFirst();
