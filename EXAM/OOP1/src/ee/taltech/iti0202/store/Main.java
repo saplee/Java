@@ -9,12 +9,14 @@ import ee.taltech.iti0202.store.shops.FoodShop;
 
 public class Main {
     private static final double PROFIT = 1000;
+    private static final double PROFIT_OF_SECOND_SHOP = 10000;
+    private static final double PRICE_OF_TV = 570;
     public static void main(String[] args) throws CannotAddProductToShop {
         FoodShop foodShop = new FoodShop("Selver", PROFIT);
-        AllShop allShop = new AllShop("Prisma", 10000);
-        Product product = new Product("TV", 570, ProductType.ELECTRONICS);
+        AllShop allShop = new AllShop("Prisma", PROFIT_OF_SECOND_SHOP);
+        Product product = new Product("TV", PRICE_OF_TV, ProductType.ELECTRONICS);
         Product product1 = new Product("Painkiller", 8, ProductType.MEDICINE);
-        Product product2 = new Product("Spoon", 1, ProductType.HOUSE_HOLD);
+        Product product2 = new Product("Spoon", 3, ProductType.HOUSE_HOLD);
         Product product3 = new Product("Apple", 1, ProductType.FOOD);
         Client client = new Client("Ago", 29, 1000);
         Client client1 = new Client("Annemari", 20, 1000);
