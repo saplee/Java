@@ -11,7 +11,6 @@ import java.util.List;
 
 public class Cart {
     private List<Product> productList = new ArrayList<>();
-    private Shop shop;
 
     public Cart() {
     }
@@ -21,24 +20,8 @@ public class Cart {
     }
 
     public void addProduct(Product product) {
-        if (!productList.contains(product) && shop.getProducts().contains(product)) {
+        if (!productList.contains(product)) {
             productList.add(product);
         }
-    }
-
-    public void setShop(Shop shop) throws CannotChangeShop {
-        if (productList.size() == 0) {
-            this.shop = shop;
-        } else {
-            throw new CannotChangeShop();
-        }
-    }
-
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void clearCart() throws CannotReturnProducts {
-        productList.clear();
     }
 }

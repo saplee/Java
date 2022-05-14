@@ -11,7 +11,6 @@ public class Client {
     private final String name;
     private final Integer age;
     private Integer money;
-    private Cart cart;
     private Integer bonusPoints = 0;
     private List<Product> products = new ArrayList<>();
 
@@ -19,7 +18,6 @@ public class Client {
         this.name = name;
         this.age = age;
         this.money = money;
-        this.cart = new Cart();
     }
 
     public String getName() {
@@ -46,20 +44,9 @@ public class Client {
         return bonusPoints;
     }
 
-    public Cart getCart() {
-        return cart;
-    }
 
     public List<Product> getProducts() {
         return products;
-    }
-
-    public void buyCartWithMoney() {
-        List<Integer> productPrices = cart.getProductList().stream().map(Product::getPrice).toList();
-    }
-
-    public void buyCartWithBonusPoints() {
-        List<Integer> productPrices = cart.getProductList().stream().map(Product::getPrice).toList();
     }
 
     public void returnProduct(Product product) {
