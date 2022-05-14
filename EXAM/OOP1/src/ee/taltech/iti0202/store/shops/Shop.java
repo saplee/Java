@@ -90,6 +90,13 @@ public abstract class Shop {
         return clients;
     }
 
+    public void buyProductsWithMoney(Client client){
+        
+    }
+    public void buyProductsWithBonusPoints(Client client){
+
+    }
+
     public Optional<Product> searchProductsById(Integer integer) {
         return products.stream().filter(product -> product.getId() == integer).findFirst();
     }
