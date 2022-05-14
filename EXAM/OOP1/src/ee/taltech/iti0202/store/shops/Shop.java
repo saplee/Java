@@ -45,15 +45,12 @@ public abstract class Shop {
         }
     }
 
-    public void addProductBackToShop(Product product) throws CannotAddProductToShop {
-        products.add(product);
-        product.productAddToShop();
-    }
-
-    public void removeProduct(Product product) {
+    public void removeProduct(Product product) throws NoProductInShop {
         if (products.contains(product)) {
             products.remove(product);
             product.removeFromShop();
+        }else {
+            throw new NoProductInShop();
         }
     }
 
@@ -124,6 +121,8 @@ public abstract class Shop {
             throw new NotEnoughMoney();
         }
     }
+
+    public void giveStrategy(){};
 
     public void buyProductsWithBonusPoints(Client client) throws NoProductInCart, NotEnoughBonusPoints, NoClientCartFound {
         if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0

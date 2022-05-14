@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ee.taltech.iti0202.store.product.Product.resetId;
+
 class ClientTest {
     @Test
     void testGetClientName() {
@@ -43,7 +45,7 @@ class ClientTest {
         Client client = new Client("Ago", 25, 100);
         List<Product> productList = new ArrayList<>();
         Assertions.assertEquals(productList, client.getProducts());
-
+        resetId();
     }
     @Test
     void testGetClientProductsWhenPurchasedProduct() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney,
@@ -57,6 +59,7 @@ class ClientTest {
         shop.buyProductsWithMoney(client);
         productList.add(product);
         Assertions.assertEquals(productList, client.getProducts());
+        resetId();
     }
     @Test
     void testClientTryToBuyProductButNotEnoughMoney() throws CannotAddProductToShop, NoClientCartFound,
@@ -71,6 +74,7 @@ class ClientTest {
         } catch (NotEnoughMoney e) {
             e.printStackTrace();
         }
+        resetId();
     }
     @Test
     void testGetClientProductsWhenPurchasedProductAndReturningIt() throws CannotAddProductToShop, NoClientCartFound,
@@ -84,6 +88,7 @@ class ClientTest {
         shop.buyProductsWithMoney(client);
         client.returnProduct(product);
         Assertions.assertEquals(productList, client.getProducts());
+        resetId();
     }
     @Test
     void testGetClientMoneyWhenPurchasedProductAndReturningIt() throws CannotAddProductToShop, NoClientCartFound,
@@ -96,6 +101,7 @@ class ClientTest {
         shop.buyProductsWithMoney(client);
         client.returnProduct(product);
         Assertions.assertEquals(100, client.getMoney());
+        resetId();
     }
     @Test
     void testGetClientBonusPointsWhenPurchasedProduct() throws CannotAddProductToShop, NoClientCartFound,
@@ -108,10 +114,11 @@ class ClientTest {
         shop.buyProductsWithMoney(client);
         client.returnProduct(product);
         Assertions.assertEquals(25.0, client.getBonusPoints());
+        resetId();
     }
     @Test
     void testClientPurchasedProductAndTryingToReturnWrongProduct() throws CannotAddProductToShop, NoClientCartFound,
-            NotEnoughMoney, NoProductInCart, CannotReturnProducts {
+            NotEnoughMoney, NoProductInCart {
         Client client = new Client("Ago", 25, 200);
         AllShop shop = new AllShop("Prisma", 1000);
         Product product = new Product("Phone", 150, ProductType.ELECTRONICS);
@@ -124,5 +131,6 @@ class ClientTest {
         } catch (CannotReturnProducts e) {
             e.printStackTrace();
         }
+        resetId();
     }
 }

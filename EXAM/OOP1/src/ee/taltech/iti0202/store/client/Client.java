@@ -68,7 +68,7 @@ public class Client {
     public void returnProduct(Product product) throws CannotReturnProducts, CannotAddProductToShop {
         if (!product.getProductType().equals(ProductType.FOOD) && products.containsKey(product)) {
             money += product.getPrice();
-            products.get(product).addProductBackToShop(product);
+            products.get(product).addProduct(product);
             products.get(product).setProfit(products.get(product).getProfit() - product.getPrice());
             products.remove(product);
         } else {

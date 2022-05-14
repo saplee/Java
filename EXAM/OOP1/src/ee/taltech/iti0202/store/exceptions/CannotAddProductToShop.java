@@ -6,6 +6,6 @@ public class CannotAddProductToShop extends Throwable {
     }
 
     public String getMessage() {
-        return "Product is already in some other store";
+        return "Can't add that product to store!";
     }
 }
