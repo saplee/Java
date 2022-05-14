@@ -26,7 +26,7 @@ public class Main {
         Product product = new Product("TV", TV_PRICE, ProductType.ELECTRONICS);
         Product product1 = new Product("Painkiller", PAINKILLER_PRICE, ProductType.MEDICINE);
         Product product2 = new Product("Spoon", 3, ProductType.HOUSE_HOLD);
-        Product product3 = new Product("Apple", 1000, ProductType.FOOD);
+        Product product3 = new Product("Apple", 2, ProductType.FOOD);
         Client client = new Client("Ago", AGO_AGE, MONEY);
         Client client1 = new Client("Annemari", 20, MONEY);
 

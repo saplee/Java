@@ -7,11 +7,15 @@ public class Product {
     private final ProductType productType;
     private static int number = 0;
     private int id;
-    private boolean productAdded = false;
+    private boolean productInShop = false;
 
 
     public static int getAndIncrementNextId() {
         return number++;
+    }
+
+    public static void resetId() {
+        number = 0;
     }
 
     public Product(String name, double price, ProductType productType) {
@@ -42,15 +46,15 @@ public class Product {
     }
 
     public void productAddToShop() {
-        productAdded = true;
+        productInShop = true;
     }
 
     public void removeFromShop() {
-        productAdded = false;
+        productInShop = false;
     }
 
     public boolean productAddedToShop() {
-        return productAdded;
+        return productInShop;
     }
 }
 
