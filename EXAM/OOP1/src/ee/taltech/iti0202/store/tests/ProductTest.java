@@ -33,6 +33,7 @@ class ProductTest {
         Assertions.assertEquals(0, product.getId());
         resetId();
     }
+
     @Test
     void testGetProductIdWhenManyProducts() {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
@@ -46,12 +47,12 @@ class ProductTest {
         Assertions.assertEquals(4, product4.getId());
         resetId();
     }
+
     @Test
     void testWrongProductPrice() {
         try {
             Product product = new Product("Apple", -1, ProductType.FOOD);
-        }
-        catch (RuntimeException e){
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
         resetId();

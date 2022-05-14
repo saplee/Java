@@ -47,6 +47,7 @@ class ClientTest {
         Assertions.assertEquals(productList, client.getProducts());
         resetId();
     }
+
     @Test
     void testGetClientProductsWhenPurchasedProduct() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney,
             NoProductInCart {
@@ -61,6 +62,7 @@ class ClientTest {
         Assertions.assertEquals(productList, client.getProducts());
         resetId();
     }
+
     @Test
     void testClientTryToBuyProductButNotEnoughMoney() throws CannotAddProductToShop, NoClientCartFound,
             NoProductInCart {
@@ -76,6 +78,7 @@ class ClientTest {
         }
         resetId();
     }
+
     @Test
     void testGetClientProductsWhenPurchasedProductAndReturningIt() throws CannotAddProductToShop, NoClientCartFound,
             NotEnoughMoney, NoProductInCart, CannotReturnProducts {
@@ -90,6 +93,7 @@ class ClientTest {
         Assertions.assertEquals(productList, client.getProducts());
         resetId();
     }
+
     @Test
     void testGetClientMoneyWhenPurchasedProductAndReturningIt() throws CannotAddProductToShop, NoClientCartFound,
             NotEnoughMoney, NoProductInCart, CannotReturnProducts {
@@ -103,6 +107,7 @@ class ClientTest {
         Assertions.assertEquals(100, client.getMoney());
         resetId();
     }
+
     @Test
     void testGetClientBonusPointsWhenPurchasedProduct() throws CannotAddProductToShop, NoClientCartFound,
             NotEnoughMoney, NoProductInCart, CannotReturnProducts {
@@ -116,6 +121,7 @@ class ClientTest {
         Assertions.assertEquals(25.0, client.getBonusPoints());
         resetId();
     }
+
     @Test
     void testClientPurchasedProductAndTryingToReturnWrongProduct() throws CannotAddProductToShop, NoClientCartFound,
             NotEnoughMoney, NoProductInCart {

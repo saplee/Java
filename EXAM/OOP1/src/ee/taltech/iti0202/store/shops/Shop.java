@@ -49,7 +49,7 @@ public abstract class Shop {
         if (products.contains(product)) {
             products.remove(product);
             product.removeFromShop();
-        }else {
+        } else {
             throw new NoProductInShop();
         }
     }
@@ -122,7 +122,10 @@ public abstract class Shop {
         }
     }
 
-    public void giveStrategy(){};
+    public void giveStrategy() {
+    }
+
+    ;
 
     public void buyProductsWithBonusPoints(Client client) throws NoProductInCart, NotEnoughBonusPoints, NoClientCartFound {
         if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0

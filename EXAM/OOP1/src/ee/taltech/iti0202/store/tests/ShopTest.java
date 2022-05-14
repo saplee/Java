@@ -40,6 +40,7 @@ class ShopTest {
         Assertions.assertEquals(2, foodShop.getProducts().size());
         resetId();
     }
+
     @Test
     void testGetShopProductsWhenRemovingOne() throws CannotAddProductToShop, NoProductInShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
@@ -52,6 +53,7 @@ class ShopTest {
         Assertions.assertEquals(result, foodShop.getProducts());
         resetId();
     }
+
     @Test
     void testTryingToRemoveProductButProductNotInShop() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
@@ -67,6 +69,7 @@ class ShopTest {
         }
         resetId();
     }
+
     @Test
     void testGetShopProductsAddingMoreProducts() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
@@ -81,6 +84,7 @@ class ShopTest {
         Assertions.assertEquals(4, foodShop.getProducts().size());
         resetId();
     }
+
     @Test
     void testAddingProductToShopWhenItIsAnOtherShop() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
@@ -95,11 +99,12 @@ class ShopTest {
         foodShop.addProduct(product3);
         try {
             allShop.addProduct(product);
-        }catch (CannotAddProductToShop e) {
+        } catch (CannotAddProductToShop e) {
             Assertions.assertEquals("Can't add that product to store!", e.getMessage());
         }
         resetId();
     }
+
     @Test
     void testAddingNotFoodTypeProductToFoodShop() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
@@ -111,11 +116,12 @@ class ShopTest {
         try {
             foodShop.addProduct(product2);
             fail();
-        }catch (CannotAddProductToShop e) {
+        } catch (CannotAddProductToShop e) {
             Assertions.assertEquals("Can't add that product to store!", e.getMessage());
         }
         resetId();
     }
+
     @Test
     void testGetShopClientsWhenNoClients() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
@@ -130,6 +136,7 @@ class ShopTest {
         Assertions.assertEquals(0, foodShop.getClients().size());
         resetId();
     }
+
     @Test
     void testGetShopClients() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
