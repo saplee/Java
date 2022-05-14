@@ -8,8 +8,9 @@ import ee.taltech.iti0202.store.shops.AllShop;
 import ee.taltech.iti0202.store.shops.FoodShop;
 
 public class Main {
+    private final static double PROFIT = 1000;
     public static void main(String[] args) throws CannotAddProductToShop {
-        FoodShop foodShop = new FoodShop("Selver", 1000);
+        FoodShop foodShop = new FoodShop("Selver", PROFIT);
         AllShop allShop = new AllShop("Prisma", 10000);
         Product product = new Product("TV", 570, ProductType.ELECTRONICS);
         Product product1 = new Product("Painkiller", 8, ProductType.MEDICINE);
