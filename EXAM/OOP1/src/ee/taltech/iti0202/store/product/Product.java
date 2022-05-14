@@ -20,6 +20,9 @@ public class Product {
         this.price = price;
         this.productType = productType;
         this.id = getAndIncrementNextId();
+        if (price <= 0) {
+            throw new RuntimeException();
+        }
     }
 
     public String getName() {

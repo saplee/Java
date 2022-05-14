@@ -30,6 +30,10 @@ public abstract class Shop {
         return profit;
     }
 
+    public void setProfit(Integer profit) {
+        this.profit = profit;
+    }
+
     public void addProduct(Product product) {
         if (!products.contains(product) && !product.productAddedToShop()) {
             products.add(product);

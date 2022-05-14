@@ -1,10 +1,12 @@
 package ee.taltech.iti0202.store.client;
 
-import ee.taltech.iti0202.store.cart.Cart;
+
+import ee.taltech.iti0202.store.exceptions.CannotReturnProducts;
 import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.product.ProductType;
+import ee.taltech.iti0202.store.shops.Shop;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Client {
@@ -12,7 +14,7 @@ public class Client {
     private final Integer age;
     private Integer money;
     private Integer bonusPoints = 0;
-    private List<Product> products = new ArrayList<>();
+    private HashMap<Product, Shop> products = new HashMap<>();
 
     public Client(String name, Integer age, Integer money) {
         this.name = name;
@@ -49,13 +51,23 @@ public class Client {
 
 
     public List<Product> getProducts() {
-        return products;
+        return products.keySet().stream().toList();
     }
 
-    public void returnProduct(Product product) {
-        if (!product.getProductType().equals(ProductType.FOOD) && products.contains(product)) {
+    public void addProduct(Product product, Shop shop){
+        if (!products.containsKey(product)){
+            products.put(product, shop);
+        }
+    }
+
+    public void returnProduct(Product product) throws CannotReturnProducts {
+        if (!product.getProductType().equals(ProductType.FOOD) && products.containsKey(product)) {
             money += product.getPrice();
+            products.get(product).addProduct(product);
+            products.get(product).setProfit(products.get(product).getProfit() - product.getPrice());
             products.remove(product);
+        } else {
+            throw new CannotReturnProducts();
         }
     }
 }
