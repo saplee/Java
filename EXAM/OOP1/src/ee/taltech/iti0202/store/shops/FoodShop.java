@@ -15,7 +15,7 @@ public class FoodShop extends Shop {
         if (product.getProductType().equals(ProductType.FOOD) && !product.productAddedToShop()) {
             products.add(product);
             product.productAddToShop();
-        }else {
+        } else {
             throw new CannotAddProductToShop();
         }
     }

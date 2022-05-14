@@ -39,7 +39,7 @@ public abstract class Shop {
         if (!products.contains(product) && !product.productAddedToShop()) {
             products.add(product);
             product.productAddToShop();
-        }else {
+        } else {
             throw new CannotAddProductToShop();
         }
     }
