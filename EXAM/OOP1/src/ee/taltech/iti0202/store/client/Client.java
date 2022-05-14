@@ -1,13 +1,14 @@
 package ee.taltech.iti0202.store.client;
 
 
-import ee.taltech.iti0202.store.exceptions.*;
+import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
+import ee.taltech.iti0202.store.exceptions.CannotReturnProducts;
 import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.product.ProductType;
-import ee.taltech.iti0202.store.shops.AllShop;
+
 import ee.taltech.iti0202.store.shops.Shop;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ public class Client {
     private int bonusPoints = 0;
     private HashMap<Product, Shop> products = new HashMap<>();
     private final int ageLimit = 17;
+    private final double number = 0.25;
 
     public Client(String name, int age, double money) {
         this.name = name;
@@ -74,6 +76,7 @@ public class Client {
             products.get(product).addProduct(product);
             products.get(product).setProfit(products.get(product).getProfit() - product.getPrice());
             products.remove(product);
+            bonusPoints -= product.getPrice() * number;
         } else {
             throw new CannotReturnProducts();
         }
