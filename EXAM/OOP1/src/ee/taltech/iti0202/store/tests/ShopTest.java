@@ -90,7 +90,7 @@ class ShopTest {
     }
 
     @Test
-    void testAddingProductToShopWhenItIsAnOtherShop() throws CannotAddProductToShop {
+    void testAddProductToShopWhenItIsAnOtherShop() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
@@ -142,7 +142,7 @@ class ShopTest {
     }
 
     @Test
-    void testGetShopClients() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testGetShopClientsAfterSellingProducts() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
@@ -160,6 +160,63 @@ class ShopTest {
         foodShop.buyProductsWithMoney(client);
         foodShop.buyProductsWithMoney(client2);
         Assertions.assertEquals(2, foodShop.getClients().size());
+        resetId();
+    }
+
+    @Test
+    void testGetClientCart() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+        Product product = new Product("Apple", 1.2, ProductType.FOOD);
+        Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
+        Product product2 = new Product("Potato", 5, ProductType.FOOD);
+        Product product3 = new Product("Fish", 7, ProductType.FOOD);
+        Client client = new Client("Jaan", 19, 1000);
+        FoodShop foodShop = new FoodShop("FoodMarket", 100);
+        List<Product> cart = new ArrayList<>(List.of(product3, product2));
+        foodShop.addProduct(product);
+        foodShop.addProduct(product1);
+        foodShop.addProduct(product2);
+        foodShop.addProduct(product3);
+        foodShop.addProductToClientCart(client, product3);
+        foodShop.addProductToClientCart(client, product2);
+        Assertions.assertEquals(cart, foodShop.getClientCartHashMap().get(client).getProductList());
+        resetId();
+    }
+
+    @Test
+    void testGetClientCartAfterClearingIt() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+        Product product = new Product("Apple", 1.2, ProductType.FOOD);
+        Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
+        Product product2 = new Product("Potato", 5, ProductType.FOOD);
+        Product product3 = new Product("Fish", 7, ProductType.FOOD);
+        Client client = new Client("Jaan", 19, 1000);
+        FoodShop foodShop = new FoodShop("FoodMarket", 100);
+        foodShop.addProduct(product);
+        foodShop.addProduct(product1);
+        foodShop.addProduct(product2);
+        foodShop.addProduct(product3);
+        foodShop.addProductToClientCart(client, product3);
+        foodShop.addProductToClientCart(client, product2);
+        foodShop.clearClientCart(client);
+        Assertions.assertEquals(0, foodShop.getClientCartHashMap().get(client).getProductList().size());
+        resetId();
+    }
+
+    @Test
+    void testGetShopProductsAfterAddingToAndClearingIt() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+        Product product = new Product("Apple", 1.2, ProductType.FOOD);
+        Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
+        Product product2 = new Product("Potato", 5, ProductType.FOOD);
+        Product product3 = new Product("Fish", 7, ProductType.FOOD);
+        Client client = new Client("Jaan", 19, 1000);
+        FoodShop foodShop = new FoodShop("FoodMarket", 100);
+        foodShop.addProduct(product);
+        foodShop.addProduct(product1);
+        foodShop.addProduct(product2);
+        foodShop.addProduct(product3);
+        foodShop.addProductToClientCart(client, product3);
+        foodShop.addProductToClientCart(client, product2);
+        foodShop.clearClientCart(client);
+        Assertions.assertEquals(4, foodShop.getProducts().size());
         resetId();
     }
 }

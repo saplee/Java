@@ -70,7 +70,9 @@ public abstract class Shop {
     }
 
     protected void addCartToClient(Client client) {
-        clientCartHashMap.put(client, new Cart());
+        if (!clientCartHashMap.containsKey(client)) {
+            clientCartHashMap.put(client, new Cart());
+        }
     }
 
     public HashMap<Client, Cart> getClientCartHashMap() {
@@ -134,11 +136,12 @@ public abstract class Shop {
     public void buyProductsWithBonusPoints(Client client) throws NoProductInCart, NotEnoughBonusPoints,
             NoClientCartFound {
         if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0
-                && client.getBonusPoints() >= calculateCartSum(client)) {
+                && client.getBonusPoints() >= calculateCartSum(client) * 2) {
+            double sum = calculateCartSum(client) * 2;
             for (Product product : clientCartHashMap.get(client).getProductList()) {
                 client.addProduct(product, this);
-                client.setBonusPoints((int) (client.getBonusPoints() - product.getPrice()));
             }
+            client.setBonusPoints((int) (client.getBonusPoints() - sum));
             this.addClient(client);
             clientCartHashMap.get(client).getProductList().clear();
 
