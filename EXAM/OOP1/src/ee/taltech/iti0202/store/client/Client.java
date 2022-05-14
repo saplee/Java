@@ -14,7 +14,7 @@ public class Client {
     private final String name;
     private final Integer age;
     private double money;
-    private Integer bonusPoints = 0;
+    private double bonusPoints = 0;
     private HashMap<Product, Shop> products = new HashMap<>();
 
     public Client(String name, Integer age, double money) {
@@ -38,15 +38,15 @@ public class Client {
         return money;
     }
 
-    public void setMoney(Integer money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 
-    public void addBonusPoints(Integer bonus) {
+    public void addBonusPoints(double bonus) {
         bonusPoints += bonus;
     }
 
-    public Integer getBonusPoints() {
+    public double getBonusPoints() {
         return bonusPoints;
     }
 

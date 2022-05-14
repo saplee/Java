@@ -64,7 +64,7 @@ public abstract class Shop {
         }
     }
 
-    public void addCartToClient(Client client) {
+    private void addCartToClient(Client client) {
         clientCartHashMap.put(client, new Cart());
     }
 
@@ -73,6 +73,7 @@ public abstract class Shop {
     }
 
     public void addProductToClient(Client client, Product product) {
+        addCartToClient(client);
         if (clientCartHashMap.containsKey(client) && products.contains(product)) {
             clientCartHashMap.get(client).addProduct(product);
             products.remove(product);
@@ -90,9 +91,29 @@ public abstract class Shop {
         return clients;
     }
 
-    public void buyProductsWithMoney(Client client){
+    private double calculateCartSum(Client client) {
+        double result = 0;
+        for (double number : clientCartHashMap.get(client).getProductList().stream().map(Product::getPrice).toList()) {
+            result += number;
+        }
+        return result;
     }
-    public void buyProductsWithBonusPoints(Client client){
+
+    public void buyProductsWithMoney(Client client) {
+        if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0
+                && client.getMoney() >= calculateCartSum(client)) {
+            for (Product product : clientCartHashMap.get(client).getProductList()) {
+                client.addProduct(product, this);
+                client.setMoney(client.getMoney() - product.getPrice());
+                this.setProfit(profit + product.getPrice());
+                client.addBonusPoints(product.getPrice() * 0.25);
+            }
+            this.addClient(client);
+            clientCartHashMap.get(client).getProductList().clear();
+        }
+    }
+
+    public void buyProductsWithBonusPoints(Client client) {
 
     }
 

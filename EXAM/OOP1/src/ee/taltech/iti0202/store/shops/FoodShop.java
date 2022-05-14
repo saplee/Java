@@ -26,10 +26,8 @@ public class FoodShop extends Shop {
         Product product = new Product("pc", 100, ProductType.FOOD);
         Product product1 = new Product("pc", 100, ProductType.FOOD);
         Client client = new Client("k", 19, 100);
-        allShop.addCartToClient(client);
         allShop.addProduct(product);
-        foodShop.addCartToClient(client);
         allShop.addProductToClient(client, product);
-        System.out.println(product1.getId());
+        System.out.println(allShop.getClientCartHashMap().get(client).getProductList());
     }
 }
