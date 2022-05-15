@@ -74,6 +74,13 @@ public class Client {
         }
     }
 
+    /**
+     * Returning product back to shop where it came if product is not Food type.
+     * If product is FOOD type it will throw CannotReturnProducts.
+     * @param product
+     * @throws CannotReturnProducts
+     * @throws CannotAddProductToShop
+     */
     public void returnProduct(Product product) throws CannotReturnProducts, CannotAddProductToShop {
         if (!product.getProductType().equals(ProductType.FOOD) && products.containsKey(product)) {
             // Getting value from map and value is the store where the product comes from

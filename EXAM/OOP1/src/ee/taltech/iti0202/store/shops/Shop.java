@@ -146,6 +146,7 @@ public abstract class Shop {
                 client.addBonusPoints((int) Math.round(product.getPrice() * bonus));
             }
             this.addClient(client);
+            // Clearing client shopping cart
             clientCartHashMap.get(client).getProductList().clear();
 
         } else if (!clientCartHashMap.containsKey(client)) {
