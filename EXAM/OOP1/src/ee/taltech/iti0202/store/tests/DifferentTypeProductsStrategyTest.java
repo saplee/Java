@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 class DifferentTypeProductsStrategyTest {
     @Test
     void testGetClientProductsAfterDifferentTypeStrategy() throws CannotAddProductToShop, NoClientCartFound,
@@ -40,5 +39,28 @@ class DifferentTypeProductsStrategyTest {
         allShop.giveStrategy(differentTypeProductsStrategy);
         allShop.buyProductsWithMoney(client);
         Assertions.assertTrue(client.getProducts().containsAll(result));
+    }
+
+    @Test
+    void testGetClientProductsAfterDifferentTypeStrategyAllSameTypeProducts() throws CannotAddProductToShop, NoClientCartFound,
+            NotEnoughMoney, NoProductInCart {
+        Product product = new Product("Orange", 1.4, ProductType.FOOD);
+        Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
+        Product product2 = new Product("Lollipop", 0.2, ProductType.FOOD);
+        Product product3 = new Product("Pizza", 5, ProductType.FOOD);
+        Product product4 = new Product("Meat", 4, ProductType.FOOD);
+        AllShop allShop = new AllShop("Market", 1000);
+        Client client = new Client("Ago", 19, 100);
+        allShop.addProduct(product);
+        allShop.addProduct(product1);
+        allShop.addProduct(product2);
+        allShop.addProduct(product3);
+        allShop.addProduct(product4);
+        DifferentTypeProductsStrategy differentTypeProductsStrategy =
+                new DifferentTypeProductsStrategy(client, allShop);
+        allShop.giveStrategy(differentTypeProductsStrategy);
+        allShop.buyProductsWithMoney(client);
+        Assertions.assertEquals(1, client.getProducts().size());
+        Assertions.assertEquals("Lollipop", client.getProducts().get(0).getName());
     }
 }
