@@ -108,6 +108,20 @@ class ClientTest {
         resetId();
     }
 
+
+    @Test
+    void testClientTryingToReturnFoodTypeProductFails() throws CannotAddProductToShop, NoClientCartFound,
+            NotEnoughMoney, NoProductInCart, CannotReturnProducts {
+        Client client = new Client("Ago", 25, 100);
+        AllShop shop = new AllShop("Prisma", 1000);
+        Product product = new Product("Pizza", 3.4, ProductType.FOOD);
+        shop.addProduct(product);
+        shop.addProductToClientCart(client, product);
+        shop.buyProductsWithMoney(client);
+        System.out.println(client.getBonusPoints());
+        resetId();
+    }
+
     @Test
     void testGetClientBonusPointsWhenPurchasedProduct() throws CannotAddProductToShop, NoClientCartFound,
             NotEnoughMoney, NoProductInCart, CannotReturnProducts {
@@ -117,7 +131,7 @@ class ClientTest {
         shop.addProduct(product);
         shop.addProductToClientCart(client, product);
         shop.buyProductsWithMoney(client);
-        Assertions.assertEquals(25.0, client.getBonusPoints());
+        Assertions.assertEquals(25, client.getBonusPoints());
         resetId();
     }
 

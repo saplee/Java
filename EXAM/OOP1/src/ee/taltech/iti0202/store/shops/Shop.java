@@ -53,7 +53,7 @@ public abstract class Shop {
     public void removeProduct(Product product) throws NoProductInShop {
         if (products.contains(product)) {
             products.remove(product);
-            product.removeFromShop();
+            product.productFree();
         } else {
             throw new NoProductInShop();
         }
@@ -69,6 +69,10 @@ public abstract class Shop {
         }
     }
 
+    /**
+     * Adding to hashmap client and client value is cart.
+     * @param client
+     */
     protected void addCartToClient(Client client) {
         if (!clientCartHashMap.containsKey(client)) {
             clientCartHashMap.put(client, new Cart());
@@ -79,6 +83,11 @@ public abstract class Shop {
         return clientCartHashMap;
     }
 
+    /**
+     * Adding product to client shopping cart.
+     * @param client
+     * @param product
+     */
     public void addProductToClientCart(Client client, Product product) {
         addCartToClient(client);
         if (clientCartHashMap.containsKey(client) && products.contains(product)) {
@@ -86,7 +95,10 @@ public abstract class Shop {
             products.remove(product);
         }
     }
-
+    /**
+     * Clearing client shopping cart in this e-shop.
+     * @param client
+     */
     public void clearClientCart(Client client) {
         if (clientCartHashMap.containsKey(client)) {
             products.addAll(clientCartHashMap.get(client).getProductList());
@@ -98,6 +110,11 @@ public abstract class Shop {
         return clients;
     }
 
+    /**
+     * Calculating client cart price.
+     * @param client
+     * @return
+     */
     private double calculateCartSum(Client client) {
         double result = 0;
         for (double number : clientCartHashMap.get(client).getProductList().stream().map(Product::getPrice).toList()) {
@@ -106,7 +123,13 @@ public abstract class Shop {
         return result;
     }
 
-
+    /**
+     *
+     * @param client
+     * @throws NotEnoughMoney
+     * @throws NoProductInCart
+     * @throws NoClientCartFound
+     */
     public void buyProductsWithMoney(Client client) throws NotEnoughMoney, NoProductInCart, NoClientCartFound {
         if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0
                 && client.getMoney() >= calculateCartSum(client)) {
@@ -114,7 +137,7 @@ public abstract class Shop {
                 client.addProduct(product, this);
                 client.setMoney(client.getMoney() - product.getPrice());
                 this.setProfit(profit + product.getPrice());
-                client.addBonusPoints(product.getPrice() * bonus);
+                client.addBonusPoints((int) Math.round(product.getPrice() * bonus));
             }
             this.addClient(client);
             clientCartHashMap.get(client).getProductList().clear();
@@ -131,12 +154,18 @@ public abstract class Shop {
     public void giveStrategy() {
     }
 
-
+    /**
+     *
+     * @param client
+     * @throws NoProductInCart
+     * @throws NotEnoughBonusPoints
+     * @throws NoClientCartFound
+     */
     public void buyProductsWithBonusPoints(Client client) throws NoProductInCart, NotEnoughBonusPoints,
             NoClientCartFound {
+        double sum = calculateCartSum(client) * 2;
         if (clientCartHashMap.containsKey(client) && clientCartHashMap.get(client).getProductList().size() != 0
                 && client.getBonusPoints() >= calculateCartSum(client) * 2) {
-            double sum = calculateCartSum(client) * 2;
             for (Product product : clientCartHashMap.get(client).getProductList()) {
                 client.addProduct(product, this);
             }
@@ -148,7 +177,7 @@ public abstract class Shop {
             throw new NoClientCartFound();
         } else if (clientCartHashMap.get(client).getProductList().size() == 0) {
             throw new NoProductInCart();
-        } else if (client.getMoney() < calculateCartSum(client)) {
+        } else if (client.getBonusPoints() < sum) {
             throw new NotEnoughBonusPoints();
         }
     }

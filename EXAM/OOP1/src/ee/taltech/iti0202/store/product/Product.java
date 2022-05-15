@@ -49,7 +49,7 @@ public class Product {
         productInShop = true;
     }
 
-    public void removeFromShop() {
+    public void productFree() {
         productInShop = false;
     }
 
