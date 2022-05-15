@@ -11,12 +11,20 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static ee.taltech.iti0202.store.product.Product.resetId;
 import static org.junit.jupiter.api.Assertions.fail;
 
 
 class ShopTest {
+
+    @Test
+    void testGetShopName() throws CannotAddProductToShop {
+        FoodShop foodShop = new FoodShop("Food Market", 100);
+        Assertions.assertEquals("Food Market", foodShop.getName());
+        resetId();
+    }
 
     @Test
     void testGetShopProducts() throws CannotAddProductToShop {
@@ -215,6 +223,7 @@ class ShopTest {
         Assertions.assertEquals(4, foodShop.getProducts().size());
         resetId();
     }
+
     @Test
     void testGetShopProfit() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
@@ -231,6 +240,7 @@ class ShopTest {
         allShop.addProductToClientCart(client, product2);
         Assertions.assertEquals(10000.0, allShop.getProfit());
     }
+
     @Test
     void testGetShopProfitAfterSellingTwoProducts() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
@@ -247,5 +257,61 @@ class ShopTest {
         allShop.addProductToClientCart(client, product2);
         allShop.buyProductsWithMoney(client);
         Assertions.assertEquals(10012.0, allShop.getProfit());
+    }
+
+    @Test
+    void testSearchProductsByName() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+        Product product = new Product("Apple", 1.2, ProductType.FOOD);
+        Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
+        Product product2 = new Product("Potato", 5, ProductType.FOOD);
+        Product product3 = new Product("Fish", 7, ProductType.FOOD);
+        AllShop allShop = new AllShop("FoodMarket", 10000);
+        List<Product> result = new ArrayList<>(List.of(product, product1));
+        allShop.addProduct(product);
+        allShop.addProduct(product1);
+        allShop.addProduct(product2);
+        allShop.addProduct(product3);
+        Assertions.assertEquals(result, allShop.searchProductsByName("APPLE"));
+    }
+
+
+    @Test
+    void testSearchProductsById() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+        Product product = new Product("Apple", 1.2, ProductType.FOOD);
+        Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
+        Product product2 = new Product("Potato", 5, ProductType.FOOD);
+        Product product3 = new Product("Fish", 7, ProductType.FOOD);
+        AllShop allShop = new AllShop("FoodMarket", 10000);
+        allShop.addProduct(product);
+        allShop.addProduct(product1);
+        allShop.addProduct(product2);
+        allShop.addProduct(product3);
+        Assertions.assertEquals(product, allShop.searchProductsById(0).get());
+    }
+    @Test
+    void testSearchProductsByIdFailsNoThatIdProduct() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+        Product product = new Product("Apple", 1.2, ProductType.FOOD);
+        Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
+        Product product2 = new Product("Potato", 5, ProductType.FOOD);
+        Product product3 = new Product("Fish", 7, ProductType.FOOD);
+        AllShop allShop = new AllShop("FoodMarket", 10000);
+        allShop.addProduct(product);
+        allShop.addProduct(product1);
+        allShop.addProduct(product2);
+        allShop.addProduct(product3);
+        Assertions.assertEquals(Optional.empty(), allShop.searchProductsById(6));
+    }
+    @Test
+    void testSearchProductsByPrice() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+        Product product = new Product("Apple", 1.2, ProductType.FOOD);
+        Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
+        Product product2 = new Product("Potato", 7, ProductType.FOOD);
+        Product product3 = new Product("Fish", 7, ProductType.FOOD);
+        AllShop allShop = new AllShop("FoodMarket", 10000);
+        allShop.addProduct(product);
+        allShop.addProduct(product1);
+        allShop.addProduct(product2);
+        allShop.addProduct(product3);
+        Assertions.assertEquals(2, allShop.searchProductsByPrice(7).size());
     }
 }

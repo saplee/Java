@@ -163,7 +163,7 @@ public abstract class Shop {
         return getProducts().stream().filter(product -> product.getName().toLowerCase().equals(result)).toList();
     }
 
-    public List<Product> searchProductsByName(Integer price) {
+    public List<Product> searchProductsByPrice(double price) {
         return getProducts().stream().filter(product -> product.getPrice() == price).toList();
     }
 }
