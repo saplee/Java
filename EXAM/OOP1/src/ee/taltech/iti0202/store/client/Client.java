@@ -76,10 +76,12 @@ public class Client {
 
     public void returnProduct(Product product) throws CannotReturnProducts, CannotAddProductToShop {
         if (!product.getProductType().equals(ProductType.FOOD) && products.containsKey(product)) {
+            // Getting value from map and value is the store where the product comes from
+            Shop productShop = products.get(product);
             money += product.getPrice();
             product.productFree();
-            products.get(product).addProduct(product);
-            products.get(product).setProfit(products.get(product).getProfit() - product.getPrice());
+            productShop.addProduct(product);
+            productShop.setProfit(productShop.getProfit() - product.getPrice());
             products.remove(product);
             bonusPoints -= (int) Math.round(product.getPrice() * number);
         } else {
