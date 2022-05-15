@@ -1,7 +1,12 @@
 package ee.taltech.iti0202.store.tests;
 
 import ee.taltech.iti0202.store.client.Client;
-import ee.taltech.iti0202.store.exceptions.*;
+import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
+import ee.taltech.iti0202.store.exceptions.CannotReturnProducts;
+import ee.taltech.iti0202.store.exceptions.NoClientCartFound;
+import ee.taltech.iti0202.store.exceptions.NoProductInCart;
+import ee.taltech.iti0202.store.exceptions.NotEnoughBonusPoints;
+import ee.taltech.iti0202.store.exceptions.NotEnoughMoney;
 import ee.taltech.iti0202.store.product.Product;
 import ee.taltech.iti0202.store.product.ProductType;
 import ee.taltech.iti0202.store.shops.AllShop;

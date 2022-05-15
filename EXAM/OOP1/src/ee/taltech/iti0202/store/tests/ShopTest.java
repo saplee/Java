@@ -146,7 +146,8 @@ class ShopTest {
     }
 
     @Test
-    void testGetShopClientsAfterSellingProducts() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testGetShopClientsAfterSellingProducts() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney,
+            NoProductInCart {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
@@ -187,7 +188,7 @@ class ShopTest {
     }
 
     @Test
-    void testGetClientCartAfterClearingIt() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testGetClientCartAfterClearingIt() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
@@ -206,7 +207,7 @@ class ShopTest {
     }
 
     @Test
-    void testGetShopProductsAfterAddingToClientCartAndClearingIt() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testGetShopProductsAfterAddingToClientCartAndClearingIt() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
@@ -225,7 +226,7 @@ class ShopTest {
     }
 
     @Test
-    void testGetShopProfit() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testGetShopProfit() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
@@ -242,7 +243,8 @@ class ShopTest {
     }
 
     @Test
-    void testGetShopProfitAfterSellingTwoProducts() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testGetShopProfitAfterSellingTwoProducts() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney,
+            NoProductInCart {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
@@ -280,7 +282,7 @@ class ShopTest {
     }
 
     @Test
-    void testSearchProductsByName() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testSearchProductsByName() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
@@ -296,7 +298,7 @@ class ShopTest {
 
 
     @Test
-    void testSearchProductsById() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testSearchProductsById() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
@@ -309,7 +311,7 @@ class ShopTest {
         Assertions.assertEquals(product, allShop.searchProductsById(0).get());
     }
     @Test
-    void testSearchProductsByIdFailsNoThatIdProduct() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testSearchProductsByIdFailsNoThatIdProduct() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
@@ -322,7 +324,7 @@ class ShopTest {
         Assertions.assertEquals(Optional.empty(), allShop.searchProductsById(6));
     }
     @Test
-    void testSearchProductsByPrice() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testSearchProductsByPrice() throws CannotAddProductToShop {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
         Product product2 = new Product("Potato", 7, ProductType.FOOD);
