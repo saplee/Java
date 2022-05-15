@@ -14,6 +14,10 @@ public class DifferentTypeProductsStrategy extends Strategy {
     public DifferentTypeProductsStrategy(Client client, Shop shop) {
         super(client, shop);
     }
+    /**
+     * Client will get different type of product from given shop to his/her shopping cart at that shop.
+     * No same Type can't be in the shopping cart.
+     */
     @Override
     public void getProducts() {
         double budget = client.getMoney();

@@ -17,6 +17,10 @@ public class CheapestProductsStrategy extends Strategy {
 
     }
 
+    /**
+     * Client will get the cheapest products from given shop
+     * Client cannot have same typed and same name product in shopping cart.
+     */
     @Override
     public void getProducts() {
         double budget = client.getMoney();
