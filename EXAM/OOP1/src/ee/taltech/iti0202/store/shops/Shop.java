@@ -169,6 +169,7 @@ public abstract class Shop {
 
     /**
      * Client is trying to buy his/her shopping cart with bonus points.
+     * Product price will be (product price * 2)
      * If he/she do not have enough bonus points it will throw NotEnoughBonusPoints.
      * If client cart is empty it will throw NoProductInCart.
      * If there is no client cart it will throw NoClientCartFound.
