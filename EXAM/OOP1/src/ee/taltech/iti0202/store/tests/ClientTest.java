@@ -174,7 +174,7 @@ class ClientTest {
         Product product2 = new Product("Coffee machine", 100, ProductType.ELECTRONICS);
         Product product3 = new Product("Macbook", 1000, ProductType.ELECTRONICS);
         Client client = new Client("Jaan", 19, 1000);
-        AllShop allShop = new AllShop("FoodMarket", 10000);
+        AllShop allShop = new AllShop("Market", 10000);
         allShop.addProduct(product);
         allShop.addProduct(product1);
         allShop.addProduct(product2);

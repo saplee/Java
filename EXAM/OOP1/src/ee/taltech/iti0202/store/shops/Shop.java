@@ -9,6 +9,8 @@ import ee.taltech.iti0202.store.exceptions.NoProductInShop;
 import ee.taltech.iti0202.store.exceptions.NotEnoughBonusPoints;
 import ee.taltech.iti0202.store.exceptions.NotEnoughMoney;
 import ee.taltech.iti0202.store.product.Product;
+import ee.taltech.iti0202.store.strategy.CheapestProductsStrategy;
+import ee.taltech.iti0202.store.strategy.Strategy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -71,6 +73,7 @@ public abstract class Shop {
 
     /**
      * Adding to hashmap client and client value is cart.
+     *
      * @param client
      */
     protected void addCartToClient(Client client) {
@@ -85,6 +88,7 @@ public abstract class Shop {
 
     /**
      * Adding product to client shopping cart.
+     *
      * @param client
      * @param product
      */
@@ -95,8 +99,10 @@ public abstract class Shop {
             products.remove(product);
         }
     }
+
     /**
      * Clearing client shopping cart in this e-shop.
+     *
      * @param client
      */
     public void clearClientCart(Client client) {
@@ -112,6 +118,7 @@ public abstract class Shop {
 
     /**
      * Calculating client cart price.
+     *
      * @param client
      * @return
      */
@@ -124,7 +131,6 @@ public abstract class Shop {
     }
 
     /**
-     *
      * @param client
      * @throws NotEnoughMoney
      * @throws NoProductInCart
@@ -151,11 +157,12 @@ public abstract class Shop {
         }
     }
 
-    public void giveStrategy() {
+    public void giveStrategy(Strategy strategy) {
+        addCartToClient(strategy.getClient());
+        strategy.getProducts();
     }
 
     /**
-     *
      * @param client
      * @throws NoProductInCart
      * @throws NotEnoughBonusPoints

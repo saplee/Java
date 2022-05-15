@@ -231,7 +231,7 @@ class ShopTest {
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
         Client client = new Client("Jaan", 19, 1000);
-        AllShop allShop = new AllShop("Food Market", 10000);
+        AllShop allShop = new AllShop("Market", 10000);
         allShop.addProduct(product);
         allShop.addProduct(product1);
         allShop.addProduct(product2);
@@ -248,7 +248,7 @@ class ShopTest {
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
         Client client = new Client("Jaan", 19, 1000);
-        AllShop allShop = new AllShop("Food Market", 10000);
+        AllShop allShop = new AllShop("Market", 10000);
         allShop.addProduct(product);
         allShop.addProduct(product1);
         allShop.addProduct(product2);
@@ -266,7 +266,7 @@ class ShopTest {
         Product product2 = new Product("Painkiller", 10, ProductType.MEDICINE);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
         Client client = new Client("Jaan", 19, 1000);
-        AllShop allShop = new AllShop("FoodMarket", 100);
+        AllShop allShop = new AllShop("Market", 100);
         allShop.addProduct(product);
         allShop.addProduct(product1);
         allShop.addProduct(product2);
@@ -285,7 +285,7 @@ class ShopTest {
         Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
-        AllShop allShop = new AllShop("Food Market", 10000);
+        AllShop allShop = new AllShop("Market", 10000);
         List<Product> result = new ArrayList<>(List.of(product, product1));
         allShop.addProduct(product);
         allShop.addProduct(product1);
@@ -301,7 +301,7 @@ class ShopTest {
         Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
-        AllShop allShop = new AllShop("Food Market", 10000);
+        AllShop allShop = new AllShop("Market", 10000);
         allShop.addProduct(product);
         allShop.addProduct(product1);
         allShop.addProduct(product2);
@@ -314,7 +314,7 @@ class ShopTest {
         Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
-        AllShop allShop = new AllShop("Food Market", 10000);
+        AllShop allShop = new AllShop("Market", 10000);
         allShop.addProduct(product);
         allShop.addProduct(product1);
         allShop.addProduct(product2);
@@ -327,7 +327,7 @@ class ShopTest {
         Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
         Product product2 = new Product("Potato", 7, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
-        AllShop allShop = new AllShop("Food Market", 10000);
+        AllShop allShop = new AllShop("Market", 10000);
         allShop.addProduct(product);
         allShop.addProduct(product1);
         allShop.addProduct(product2);
