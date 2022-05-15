@@ -63,6 +63,11 @@ public class Client {
         return products.keySet().stream().toList();
     }
 
+    /**
+     * Adding product to client and hashmap key is product and value is shop where product came.
+     * @param product
+     * @param shop
+     */
     public void addProduct(Product product, Shop shop) {
         if (!products.containsKey(product)) {
             products.put(product, shop);
