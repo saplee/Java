@@ -20,7 +20,8 @@ import java.util.List;
 
 class DifferentTypeProductsStrategyTest {
     @Test
-    void testGetClientProductsAfterDifferentTypeStrategy() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testGetClientProductsAfterDifferentTypeStrategy() throws CannotAddProductToShop, NoClientCartFound,
+            NotEnoughMoney, NoProductInCart {
         Product product = new Product("Keyboard", 55, ProductType.ELECTRONICS);
         Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
         Product product2 = new Product("Lollipop", 0.2, ProductType.FOOD);
@@ -34,7 +35,8 @@ class DifferentTypeProductsStrategyTest {
         allShop.addProduct(product3);
         allShop.addProduct(product4);
         List<Product> result = new ArrayList<>(List.of(product, product2, product3, product4));
-        DifferentTypeProductsStrategy differentTypeProductsStrategy = new DifferentTypeProductsStrategy(client, allShop);
+        DifferentTypeProductsStrategy differentTypeProductsStrategy =
+                new DifferentTypeProductsStrategy(client, allShop);
         allShop.giveStrategy(differentTypeProductsStrategy);
         allShop.buyProductsWithMoney(client);
         Assertions.assertTrue(client.getProducts().containsAll(result));

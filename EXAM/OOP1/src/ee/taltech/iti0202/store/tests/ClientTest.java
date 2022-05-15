@@ -168,7 +168,8 @@ class ClientTest {
     }
 
     @Test
-    void testGetClientBonusPointsAfterBuyingProductWithMoneyAndAfterWithBonusPoints() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart, NotEnoughBonusPoints {
+    void testGetClientBonusPointsAfterBuyingProductWithMoneyAndAfterWithBonusPoints() throws CannotAddProductToShop,
+            NoClientCartFound, NotEnoughMoney, NoProductInCart, NotEnoughBonusPoints {
         Product product = new Product("Apple", 1.2, ProductType.FOOD);
         Product product1 = new Product("Painkiller", 10, ProductType.MEDICINE);
         Product product2 = new Product("Coffee machine", 100, ProductType.ELECTRONICS);

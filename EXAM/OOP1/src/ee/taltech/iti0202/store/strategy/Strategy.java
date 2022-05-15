@@ -7,13 +7,13 @@ public abstract class Strategy {
     protected Client client;
     protected Shop shop;
 
-    public Strategy (Client client, Shop shop){
+    public Strategy(Client client, Shop shop) {
 
         this.client = client;
         this.shop = shop;
     }
 
-    public void getProducts(){
+    public void getProducts() {
 
     }
 

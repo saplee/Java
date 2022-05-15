@@ -18,7 +18,8 @@ import java.util.List;
 
 class CheapestProductsStrategyTest {
     @Test
-    void testGetClientProductsAfterCheapestProductStrategy() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testGetClientProductsAfterCheapestProductStrategy() throws CannotAddProductToShop, NoClientCartFound,
+            NotEnoughMoney, NoProductInCart {
         Product product = new Product("Keyboard", 55, ProductType.ELECTRONICS);
         Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
         Product product2 = new Product("Lollipop", 0.2, ProductType.FOOD);
@@ -39,7 +40,8 @@ class CheapestProductsStrategyTest {
     }
 
     @Test
-    void testGetClientProductsAfterCheapestProductStrategySameTypeAndNameProducts() throws CannotAddProductToShop, NoClientCartFound, NotEnoughMoney, NoProductInCart {
+    void testGetClientProductsAfterCheapestProductStrategySameTypeAndNameProducts() throws CannotAddProductToShop,
+            NoClientCartFound, NotEnoughMoney, NoProductInCart {
         Product product = new Product("Apple", 0.8, ProductType.FOOD);
         Product product1 = new Product("apple", 1.2, ProductType.FOOD);
         AllShop allShop = new AllShop("Market", 1000);

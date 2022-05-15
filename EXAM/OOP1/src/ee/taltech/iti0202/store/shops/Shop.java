@@ -9,7 +9,6 @@ import ee.taltech.iti0202.store.exceptions.NoProductInShop;
 import ee.taltech.iti0202.store.exceptions.NotEnoughBonusPoints;
 import ee.taltech.iti0202.store.exceptions.NotEnoughMoney;
 import ee.taltech.iti0202.store.product.Product;
-import ee.taltech.iti0202.store.strategy.CheapestProductsStrategy;
 import ee.taltech.iti0202.store.strategy.Strategy;
 
 import java.util.ArrayList;
@@ -131,6 +130,7 @@ public abstract class Shop {
     }
 
     /**
+     * Buys client shop cart at that shop and after that giving products to client and removing them from shop.
      * @param client
      * @throws NotEnoughMoney
      * @throws NoProductInCart
