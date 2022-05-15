@@ -42,7 +42,8 @@ class DifferentTypeProductsStrategyTest {
     }
 
     @Test
-    void testGetClientProductsAfterDifferentTypeStrategyAllSameTypeProducts() throws CannotAddProductToShop, NoClientCartFound,
+    void testGetClientProductsAfterDifferentTypeStrategyAllSameTypeProducts() throws CannotAddProductToShop,
+            NoClientCartFound,
             NotEnoughMoney, NoProductInCart {
         Product product = new Product("Orange", 1.4, ProductType.FOOD);
         Product product1 = new Product("Apple", 0.8, ProductType.FOOD);
