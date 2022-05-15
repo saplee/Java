@@ -130,7 +130,11 @@ public abstract class Shop {
     }
 
     /**
-     * Buys client shop cart at that shop and after that giving products to client and removing them from shop.
+     * Client buys his/her shopping cart with money.
+     * After that products will go to client and shop lose them and client lose money and shop earn profit.
+     * If he/she do not have enough money it will throw NotEnoughMoney.
+     * If client cart is empty it will throw NoProductInCart.
+     * If there is no client cart it will throw NoClientCartFound.
      * @param client
      * @throws NotEnoughMoney
      * @throws NoProductInCart
@@ -164,6 +168,10 @@ public abstract class Shop {
     }
 
     /**
+     * Client is trying to buy his/her shopping cart with bonus points.
+     * If he/she do not have enough bonus points it will throw NotEnoughBonusPoints.
+     * If client cart is empty it will throw NoProductInCart.
+     * If there is no client cart it will throw NoClientCartFound.
      * @param client
      * @throws NoProductInCart
      * @throws NotEnoughBonusPoints
