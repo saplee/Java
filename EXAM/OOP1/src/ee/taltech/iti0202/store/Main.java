@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.store;
 
 import ee.taltech.iti0202.store.client.Client;
+import ee.taltech.iti0202.store.client.ClientBuilder;
 import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
 import ee.taltech.iti0202.store.exceptions.NoClientCartFound;
 import ee.taltech.iti0202.store.exceptions.NoProductInCart;
@@ -29,17 +30,17 @@ public class Main {
         Product product1 = new Product("Painkiller", PAINKILLER_PRICE, ProductType.MEDICINE);
         Product product2 = new Product("Spoon", 3, ProductType.HOUSE_HOLD);
         Product product3 = new Product("Apple", 2, ProductType.FOOD);
-        Client client = new Client("Ago", AGO_AGE, MONEY);
-        Client client1 = new Client("Annemari", ANNEMARI_AGE, MONEY);
+        Client client = new ClientBuilder().setName("Ago").setAge(AGO_AGE).setMoney(MONEY).createClient();
+        Client client1 = new ClientBuilder().setName("Annemari").setAge(ANNEMARI_AGE).setMoney(MONEY).createClient();
 
         try {
-            Client client2 = new Client("Gert", GERT_AGE, -5);
+            Client client2 = new ClientBuilder().setName("Gert").setAge(GERT_AGE).setMoney(-5).createClient();
         } catch (Exception e) {
             e.printStackTrace(); //RuntimeException
         }
 
         try {
-            Client client5 = new Client("Meelis", MEELIS_AGE, MONEY);
+            Client client5 = new ClientBuilder().setName("Meelis").setAge(MEELIS_AGE).setMoney(MONEY).createClient();
         } catch (Exception e) {
             e.printStackTrace(); //RuntimeException
         }

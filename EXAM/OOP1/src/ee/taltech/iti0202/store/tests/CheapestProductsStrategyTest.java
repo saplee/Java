@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.store.tests;
 
 import ee.taltech.iti0202.store.client.Client;
+import ee.taltech.iti0202.store.client.ClientBuilder;
 import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
 import ee.taltech.iti0202.store.exceptions.NoClientCartFound;
 import ee.taltech.iti0202.store.exceptions.NoProductInCart;
@@ -26,7 +27,7 @@ class CheapestProductsStrategyTest {
         Product product3 = new Product("Lipstick", 7, ProductType.COSMETIC);
         Product product4 = new Product("Painkiller", 4, ProductType.MEDICINE);
         AllShop allShop = new AllShop("Market", 1000);
-        Client client = new Client("Ago", 19, 20);
+        Client client = new ClientBuilder().setName("Ago").setAge(19).setMoney(20).createClient();
         allShop.addProduct(product);
         allShop.addProduct(product1);
         allShop.addProduct(product2);
@@ -45,7 +46,7 @@ class CheapestProductsStrategyTest {
         Product product = new Product("Apple", 0.8, ProductType.FOOD);
         Product product1 = new Product("apple", 1.2, ProductType.FOOD);
         AllShop allShop = new AllShop("Market", 1000);
-        Client client = new Client("Ago", 19, 20);
+        Client client = new ClientBuilder().setName("Ago").setAge(19).setMoney(20).createClient();
         allShop.addProduct(product);
         allShop.addProduct(product1);
         CheapestProductsStrategy cheapestProductsStrategy = new CheapestProductsStrategy(client, allShop);

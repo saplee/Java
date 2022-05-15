@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.store.tests;
 
 import ee.taltech.iti0202.store.client.Client;
+import ee.taltech.iti0202.store.client.ClientBuilder;
 import ee.taltech.iti0202.store.exceptions.CannotAddProductToShop;
 import ee.taltech.iti0202.store.exceptions.NoClientCartFound;
 import ee.taltech.iti0202.store.exceptions.NoProductInCart;
@@ -157,8 +158,8 @@ class ShopTest {
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
-        Client client = new Client("Jaan", 19, 1000);
-        Client client2 = new Client("Taavi", 28, 100);
+        Client client = new ClientBuilder().setName("Jaan").setAge(19).setMoney(1000).createClient();
+        Client client2 = new ClientBuilder().setName("Taavi").setAge(28).setMoney(100).createClient();
         FoodShop foodShop = new FoodShop("FoodMarket", 100);
         foodShop.addProduct(product);
         foodShop.addProduct(product1);
@@ -179,7 +180,7 @@ class ShopTest {
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
-        Client client = new Client("Jaan", 19, 1000);
+        Client client = new ClientBuilder().setName("Jaan").setAge(19).setMoney(1000).createClient();
         FoodShop foodShop = new FoodShop("FoodMarket", 100);
         List<Product> cart = new ArrayList<>(List.of(product3, product2));
         foodShop.addProduct(product);
@@ -198,7 +199,7 @@ class ShopTest {
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
-        Client client = new Client("Jaan", 19, 1000);
+        Client client = new ClientBuilder().setName("Jaan").setAge(19).setMoney(1000).createClient();
         FoodShop foodShop = new FoodShop("Food Market", 100);
         foodShop.addProduct(product);
         foodShop.addProduct(product1);
@@ -217,7 +218,7 @@ class ShopTest {
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
-        Client client = new Client("Jaan", 19, 1000);
+        Client client = new ClientBuilder().setName("Jaan").setAge(19).setMoney(1000).createClient();
         FoodShop foodShop = new FoodShop("Food Market", 100);
         foodShop.addProduct(product);
         foodShop.addProduct(product1);
@@ -236,7 +237,7 @@ class ShopTest {
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
-        Client client = new Client("Jaan", 19, 1000);
+        Client client = new ClientBuilder().setName("Jaan").setAge(19).setMoney(1000).createClient();
         AllShop allShop = new AllShop("Market", 10000);
         allShop.addProduct(product);
         allShop.addProduct(product1);
@@ -254,7 +255,7 @@ class ShopTest {
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Potato", 5, ProductType.FOOD);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
-        Client client = new Client("Jaan", 19, 1000);
+        Client client = new ClientBuilder().setName("Jaan").setAge(19).setMoney(1000).createClient();
         AllShop allShop = new AllShop("Market", 10000);
         allShop.addProduct(product);
         allShop.addProduct(product1);
@@ -272,7 +273,7 @@ class ShopTest {
         Product product1 = new Product("Orange", 1.2, ProductType.FOOD);
         Product product2 = new Product("Painkiller", 10, ProductType.MEDICINE);
         Product product3 = new Product("Fish", 7, ProductType.FOOD);
-        Client client = new Client("Jaan", 19, 1000);
+        Client client = new ClientBuilder().setName("Jaan").setAge(19).setMoney(1000).createClient();
         AllShop allShop = new AllShop("Market", 100);
         allShop.addProduct(product);
         allShop.addProduct(product1);
