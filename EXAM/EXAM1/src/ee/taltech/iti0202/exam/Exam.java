@@ -50,7 +50,7 @@ public class Exam {
                 number = "";
             }
         }
-        if (result.length() != 0) {
+        if (number.length() != 0) {
             result += alpha.charAt(Integer.parseInt(number) % 26);
         }
         return result;
