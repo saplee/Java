@@ -47,7 +47,7 @@ public class Exam {
             } else if (!Character.isDigit(message.charAt(i)) && number.length() != 0) {
                 result += alpha.charAt(Integer.parseInt(number) % 26);
                 result += message.charAt(i);
-                result = "";
+                number = "";
             }
         }
         if (result.length() != 0) {
