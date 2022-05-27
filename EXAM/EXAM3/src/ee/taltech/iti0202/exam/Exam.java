@@ -41,6 +41,9 @@ public class Exam {
                         result += i;
                         number = number / i;
                     }
+                    else {
+                        break;
+                    }
                 }
             }
         }
@@ -66,7 +69,6 @@ public class Exam {
      */
     public static int longestDistanceBetweenEqualSymbols(String s) {
         return -1;
-
     }
 }
 
