@@ -36,7 +36,7 @@ public class Exam {
             if (number % i == 0 && isPrimeNumber(i)) {
                 result += i;
                 number = number / i;
-                for (int n = 0; n < number; n++) {
+                for (int n = 0; n <= number; n++) {
                     if (number % i == 0 && isPrimeNumber(i)) {
                         result += i;
                         number = number / i;
@@ -66,6 +66,7 @@ public class Exam {
      */
     public static int longestDistanceBetweenEqualSymbols(String s) {
         return -1;
+
     }
 }
 
