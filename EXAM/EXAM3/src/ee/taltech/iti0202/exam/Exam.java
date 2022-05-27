@@ -35,7 +35,13 @@ public class Exam {
         for (int i = num; i > 1; i--) {
             if (number % i == 0 && isPrimeNumber(i)) {
                 result += i;
-                number = num / i;
+                number = number / i;
+                for (int n = 0; n < number; n++) {
+                    if (number % i == 0 && isPrimeNumber(i)) {
+                        result += i;
+                        number = number / i;
+                    }
+                }
             }
         }
         return result;
@@ -60,10 +66,6 @@ public class Exam {
      */
     public static int longestDistanceBetweenEqualSymbols(String s) {
         return -1;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(primeFactorsSum(999961));
     }
 }
 
