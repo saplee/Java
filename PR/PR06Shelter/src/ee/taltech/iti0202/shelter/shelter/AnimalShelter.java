@@ -23,7 +23,7 @@ public class AnimalShelter {
      * Also, the number of results from provider is not defined, you have to call the provider
      * multiple times to get all the results (but not more than required).
      * The results should come in the order provided by the provider.
-     * Also, provider can return duplicate animals. You should return only unique animals.
+     * Also, provider can return duplicate animals.You should return only unique animals.
      * If the provider returns an empty list, stop calling it
      * and return whatever you have by that point.
      *
