@@ -3,7 +3,7 @@ package ee.taltech.iti0202.introduction;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Locale;
+
 
 public class Introduction {
 
