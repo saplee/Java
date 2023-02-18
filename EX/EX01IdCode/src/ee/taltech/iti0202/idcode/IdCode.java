@@ -1,4 +1,3 @@
-
 package ee.taltech.iti0202.idcode;
 
 import java.util.List;
